@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "B37CB7D0-39CD-4672-B9E7-709F94FBCB92"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0B9DB50D-C33A-42CB-A2B3-A1C0098953B2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShoppingItems/Views/PickerDetailView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "PickerDetailView"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "0B9DB50D-C33A-42CB-A2B3-A1C0098953B2 - aae9a9ec63116c1b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Yer_Messages.PickerDetailView.managedObjectContext.getter : __C.NSManagedObjectContext"
+                  moduleName = "Yer Messages"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Marc/Documents/Swift/ShoppingItems-master/ShoppingItems/Views/PickerDetailView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "127">
+               </Location>
+               <Location
+                  uuid = "0B9DB50D-C33A-42CB-A2B3-A1C0098953B2 - 4267347f3a49e3e4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Yer_Messages.PickerDetailView.init() -&gt; Yer_Messages.PickerDetailView"
+                  moduleName = "Yer Messages"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Marc/Documents/Swift/ShoppingItems-master/ShoppingItems/Views/PickerDetailView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "102">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

@@ -1,0 +1,20 @@
+Things to mention:
+
+SwiftUI
+
+Identifiable: new protocol item for SwiftUI
+Means that this class will hold the value of an entity with a stable identity
+
+Structs for views
+
+Combining of HStacks and VStacks in order to build views
+
+Super easy to implement with code. Far fewer lines and bit less hassle than using Storyboards (love .onDelete)
+
+@FetchRequest
+
+More uses of structs than before: Done research and it appears they are simpler and faster than classes
+See the benefit now of using it over UIView (not having to deal with every subview and within every class)
+
+SceneDelegate rather than AppDelegate for persistentContainer
+ManagedObjectContainer is the same and in SceneDelegate
