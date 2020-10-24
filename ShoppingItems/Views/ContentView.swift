@@ -43,7 +43,7 @@ struct ContentView: View {
                 //MARK: - Start of the list and it's defining elements
                 List{
                     Section(header: HStack{
-                        Text("Enter What You Need Here")
+                        Text("What's Needed")
                             .underline()
                             .padding(10)
                             .font(Font.system(size: 30, design: .rounded))
@@ -57,7 +57,6 @@ struct ContentView: View {
                     ){
                         
                         //MARK: - TextEntry field
-                        
                         HStack {
                             ///$newShoppingItem to get the binding to the state newShoppingItem
                             TextField("Type here", text: self.$newShoppingItem)
@@ -89,18 +88,17 @@ struct ContentView: View {
                                     .foregroundColor(.black)
                                     .imageScale(.large)
                             }
-                                ///Have disabled the newShoppingItem text unless there is some text within the field. Button won't add empty entries now
-                                .frame (height: 60)
-                                .disabled(self.newShoppingItem.isEmpty)
+                            ///Have disabled the newShoppingItem text unless there is some text within the field. Button won't add empty entries now
+                            .frame (height: 60)
+                            .disabled(self.newShoppingItem.isEmpty)
                         }
                         .font(.headline)
                     }
-                        ///Sets the background colour for the text entry box
-                        .listRowBackground(Color.init(red: 0.07, green: 0.45, blue: 0.87))
+                    .listRowBackground(Color.init(red: 0.07, green: 0.45, blue: 0.87))
                     
                     //MARK: - HStack that deals with how the cells are displayed and populated
                     Section (header: HStack {
-                        Text("Items Needed")
+                        Text("On The List")
                             .underline()
                             .padding(10)
                             .font(.title)
@@ -112,50 +110,56 @@ struct ContentView: View {
                     .background(Color.init(red: 0.07, green: 0.45, blue: 0.87))
                     .listRowInsets(EdgeInsets()))
                     {
-                        
-                        ///Iterates through the model and fetches any entries from the ShoppingItem model
+                        ///Populates each cell with an item from the ShoppingItem model and also a NavLink to the picker that will let them determine the amount of an item
                         ForEach(self.shoppingItemsFetch) { shoppingItemNew in
-                            ShoppingItemNewView(itemToBeAdded: shoppingItemNew.itemToBeAdded!)
-                            
-                            ///.onDelete does the heavy lifting for removing an item
-                            ///Items must be on ForEach or else can't be applied
-                        } .onDelete {indexSet in
-                            let deleteItem = self.shoppingItemsFetch[indexSet.first!]
-                            self.managedObjectContext.delete(deleteItem)
-                            
-                            ///Haptic feedback for when the user taps on Delete
-                            self.generator.notificationOccurred(.error)
-                        }
-                            ///Sets background colour to the desired blue
-                            .listRowBackground(Color.init(red: 0.07, green: 0.45, blue: 0.87))
+                            HStack {
+                                ShoppingItemNewView(itemToBeAdded: shoppingItemNew.itemToBeAdded!)
+                                NavigationLink ("", destination: DetailView())
+                            }
+                            ///Removes a desired cell from the list
+                        } .onDelete(perform: self.deleteItem)
                     }
                     .listStyle(PlainListStyle())
-                }
-                    
-                    //MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list, the trailing launches MapView
-                    .navigationBarItems(leading: EditButton(),
-                                        trailing: NavigationLink(destination: MapView()
-                                            .navigationBarTitle("Shops Nearby")
-                                            .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment: .center)
-                                            .edgesIgnoringSafeArea(.all)
-                                        ){
-                                            ///Image of the trailing icon tha leads the user to the map
-                                            Image(ContentViewImages.cuteWeeImage.rawValue)
-                                        })
-                    .foregroundColor(.white)
-                    
-                    ///Light blue colour that appears on the populated cells and the text entry box
                     .listRowBackground(Color.init(red: 0.07, green: 0.45, blue: 0.87))
-                    .padding(.trailing, 5)
-                    .padding(.leading, 5)
-                    .padding(.top, 4)
-                    .padding(.bottom, 4)
+                }
                 
+                //MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list, the trailing launches MapView
+                .navigationBarItems(leading: EditButton(),
+                                    trailing: NavigationLink(destination: MapView()
+                                                                .navigationBarTitle("Shops Nearby")
+                                                                .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment: .center)
+                                                                .edgesIgnoringSafeArea(.all)
+                                    ){
+                                        ///Image of the trailing icon tha leads the user to the map
+                                        Image(ContentViewImages.cuteWeeImage.rawValue)
+                                    })
+                .foregroundColor(.white)
+                
+                ///Light blue colour that appears on the populated cells and the text entry box
+                .listRowBackground(Color.init(red: 0.07, green: 0.45, blue: 0.87))
+                .padding(.trailing, 5)
+                .padding(.leading, 5)
+                .padding(.top, 4)
+                .padding(.bottom, 4)
             }
         }
-            ///Removes the split view from iPad versions
-            .navigationViewStyle(StackNavigationViewStyle())
+        ///Removes the split view from iPad versions
+        .navigationViewStyle(StackNavigationViewStyle())
     }
+    
+    //MARK: - DeleteItem func
+    private func deleteItem(at indexSet: IndexSet) {
+        ///When the user wants to delete a cell, the index of the selected cell is found and then removed
+        let deleteItem = self.shoppingItemsFetch[indexSet.first!]
+        self.managedObjectContext.delete(deleteItem)
+        
+        ///Haptic feedback for when the user taps on Delete
+        self.generator.notificationOccurred(.error)
+    }
+    
+//    private func saveNewEntry() {
+//        
+//    }
 }
 
 extension View {
@@ -176,5 +180,11 @@ struct KeyboardAvoiderDemo: View {
         .onLongPressGesture(
             pressing: { isPressed in if isPressed { self.endEditing() } },
             perform: {})
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
     }
 }

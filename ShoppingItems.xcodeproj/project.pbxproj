@@ -19,7 +19,8 @@
 		491D798523C11EB400B537EB /* ShoppingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D798423C11EB400B537EB /* ShoppingItem.swift */; };
 		491D798723C1EAA800B537EB /* ShoppingItemNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D798623C1EAA800B537EB /* ShoppingItemNewView.swift */; };
 		491D798B23CB0FE300B537EB /* Notes in Resources */ = {isa = PBXBuildFile; fileRef = 491D798A23CB0FE200B537EB /* Notes */; };
-		493B3A96253BD31200CAF0F9 /* PickerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493B3A95253BD31200CAF0F9 /* PickerDetailView.swift */; };
+		493B3A96253BD31200CAF0F9 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493B3A95253BD31200CAF0F9 /* DetailView.swift */; };
+		494CE1CE2543BB0A007B8D0D /* NumberOfItemsNeeded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494CE1CD2543BB0A007B8D0D /* NumberOfItemsNeeded.swift */; };
 		49CDA4B72464D70C0007DD09 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CDA4B62464D70C0007DD09 /* MapView.swift */; };
 		49F146CF244623870053A5A0 /* MultiGestureRecogniser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F146CE244623870053A5A0 /* MultiGestureRecogniser.swift */; };
 		49F935002473295C00690DE5 /* Placemark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F934FF2473295C00690DE5 /* Placemark.swift */; };
@@ -61,7 +62,8 @@
 		491D798423C11EB400B537EB /* ShoppingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItem.swift; sourceTree = "<group>"; };
 		491D798623C1EAA800B537EB /* ShoppingItemNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemNewView.swift; sourceTree = "<group>"; };
 		491D798A23CB0FE200B537EB /* Notes */ = {isa = PBXFileReference; lastKnownFileType = text; path = Notes; sourceTree = "<group>"; };
-		493B3A95253BD31200CAF0F9 /* PickerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerDetailView.swift; sourceTree = "<group>"; };
+		493B3A95253BD31200CAF0F9 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		494CE1CD2543BB0A007B8D0D /* NumberOfItemsNeeded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberOfItemsNeeded.swift; sourceTree = "<group>"; };
 		49CDA4B62464D70C0007DD09 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		49F146CE244623870053A5A0 /* MultiGestureRecogniser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiGestureRecogniser.swift; sourceTree = "<group>"; };
 		49F934FF2473295C00690DE5 /* Placemark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Placemark.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 		491D794523C11D1700B537EB = {
 			isa = PBXGroup;
 			children = (
+				494CE1CD2543BB0A007B8D0D /* NumberOfItemsNeeded.swift */,
 				491D795023C11D1700B537EB /* ShoppingItems */,
 				491D796A23C11D1800B537EB /* ShoppingItemsTests */,
 				491D797523C11D1800B537EB /* ShoppingItemsUITests */,
@@ -160,7 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				491D795823C11D1700B537EB /* ContentView.swift */,
-				493B3A95253BD31200CAF0F9 /* PickerDetailView.swift */,
+				493B3A95253BD31200CAF0F9 /* DetailView.swift */,
 				49CDA4B62464D70C0007DD09 /* MapView.swift */,
 				491D798623C1EAA800B537EB /* ShoppingItemNewView.swift */,
 			);
@@ -312,12 +315,13 @@
 				49CDA4B72464D70C0007DD09 /* MapView.swift in Sources */,
 				49F146CF244623870053A5A0 /* MultiGestureRecogniser.swift in Sources */,
 				491D795223C11D1700B537EB /* AppDelegate.swift in Sources */,
+				494CE1CE2543BB0A007B8D0D /* NumberOfItemsNeeded.swift in Sources */,
 				49F935002473295C00690DE5 /* Placemark.swift in Sources */,
 				491D795723C11D1700B537EB /* ShoppingItems.xcdatamodeld in Sources */,
 				491D795923C11D1700B537EB /* ContentView.swift in Sources */,
 				491D795423C11D1700B537EB /* SceneDelegate.swift in Sources */,
 				491D798523C11EB400B537EB /* ShoppingItem.swift in Sources */,
-				493B3A96253BD31200CAF0F9 /* PickerDetailView.swift in Sources */,
+				493B3A96253BD31200CAF0F9 /* DetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
