@@ -14,7 +14,7 @@ A simple list making app to help ease the stress of going to the supermarket
 A simple list making app that allows a user to add and remove items easily and also find their nearest supermarket for when they do need to go shopping.
 
 ## Screenshots
-![](BigBlue.gif)
+![](ShoppingList.gif)
 
 ## Technologies
 * ShoppingItems - version 1.0
@@ -29,14 +29,15 @@ Click on "Clone or Download" > "Open in XCode" > "Open in XCode" > "Clone" and t
 * Eadily remove any items with the stand left swipe or by using the 'Edit' function and then selecting the item to be removed
 * MapKit integrationt to allow the user to find their nearest supermarket
 
-## Future Potential:
+## Future Features
+* A detailView with a Picker that will allow the user to show the quantity of the item they want
 * Have the MKPointsOfInterest show a bit more information about each of the shops such as opening times or rough travel time
 * Allow users across a defined group share their shopping lists
 * Cross check the items on a list with the stock in a store and allow the user to just see or reserve the item for pickup
 * Create a Favourites list to allow easy addition to the list for items that are frequently bought (MLModel or one the user can define their self)
 
 ## Status
-Project is: _finished_
+Project is: _Under Development_
 
 ## Inspiration
 The Bear application is a beauty and I can only aspire to make something as simple and functional as that but the world does need more list applications...
