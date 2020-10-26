@@ -38,15 +38,12 @@ struct MapView: UIViewRepresentable {
         ///Ensures that the only places on interest shown are supermarkets
         let filter = MKPointOfInterestFilter(including: [.foodMarket])
         mapView.pointOfInterestFilter = filter
-        print("Showing points of interest")
                 
         ///An example location - could scale this up in the future to have the annotations be the pointsOfInterest from above
         let annotation = MKPointAnnotation()
         annotation.subtitle = "Where I should be"
         annotation.coordinate = CLLocationCoordinate2D(latitude: 51.5, longitude: 0.13)
         mapView.addAnnotation(annotation)
-        print("Annotate this")
-        
         return mapView
     }
     

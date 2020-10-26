@@ -42,48 +42,28 @@ struct ContentView: View {
                 
                 //MARK: - Start of the list and it's defining elements
                 List{
-                    Section(header: HStack{
-                        Text("What's Needed")
-                            .underline()
-                            .padding(10)
-                            .font(Font.system(size: 30, design: .rounded))
-                            .foregroundColor(.yellow)
-                            .textCase(.none)
-                            .frame(maxWidth: .infinity)
-                    }
-                    .padding(3)
-                    .background(Color.init(red: 0.07, green: 0.45, blue: 0.87))
-                    .listRowInsets(EdgeInsets())
+                    Section(header: Text("What's Needed")
+                                .underline()
+                                .padding(10)
+                                .font(Font.system(size: 25, design: .rounded))
+                                .foregroundColor(.yellow)
+                                .textCase(.none)
+                                .frame(maxWidth: .infinity)
+                                .background(Color.init(red: 0.07, green: 0.45, blue: 0.87))
+                                .listRowInsets(EdgeInsets())
                     ){
-                        
+                
                         //MARK: - TextEntry field
                         HStack {
                             ///$newShoppingItem to get the binding to the state newShoppingItem
                             TextField("Type here", text: self.$newShoppingItem)
-                                .foregroundColor(.white)
-                                
+
                                 ///If the entered text in this field exceeds 'characterEntryLimit' then the field is disabled
                                 .disabled(newShoppingItem.count > (characterEntryLimit - 1))
                             
                             ///Uses the two entities of model and then applies them to shoppingItemNew variable
-                            Button(action: {
-                                let shoppingItemNew = ShoppingItem(context: self.managedObjectContext)
-                                shoppingItemNew.itemToBeAdded = self.newShoppingItem
-                                
-                                ///Will just print the error for the time being should it be unable to save the new entries
-                                do {
-                                    try self.managedObjectContext.save()
-                                } catch {
-                                    Alert(title: Text("Unable to save that one"), message: Text("Please try again"), dismissButton: .default(Text("Okay")))
-                                }
-                                
-                                ///Resets the newShoppingItem back to being blank
-                                self.newShoppingItem = ""
-                                
-                                ///Haptic feedback for when the user has tapped on the Add/Plus button
-                                self.generator.notificationOccurred(.success)
-                                
-                            }) {
+                            Button(action: self.saveNewEntry)
+                            {
                                 Image (ContentViewImages.plusImage.rawValue)
                                     .foregroundColor(.black)
                                     .imageScale(.large)
@@ -97,18 +77,15 @@ struct ContentView: View {
                     .listRowBackground(Color.init(red: 0.07, green: 0.45, blue: 0.87))
                     
                     //MARK: - HStack that deals with how the cells are displayed and populated
-                    Section (header: HStack {
-                        Text("On The List")
-                            .underline()
-                            .padding(10)
-                            .font(.title)
-                            .foregroundColor(.yellow)
-                            .textCase(.none)
-                            .frame(maxWidth: .infinity )
-                    }
-                    .padding(3)
-                    .background(Color.init(red: 0.07, green: 0.45, blue: 0.87))
-                    .listRowInsets(EdgeInsets()))
+                    Section (header: Text("On The List")
+                                .underline()
+                                .padding(10)
+                                .font(Font.system(size: 25, design: .rounded))
+                                .foregroundColor(.yellow)
+                                .textCase(.none)
+                                .frame(maxWidth: .infinity)
+                                .background(Color.init(red: 0.07, green: 0.45, blue: 0.87))
+                                .listRowInsets(EdgeInsets()))
                     {
                         ///Populates each cell with an item from the ShoppingItem model and also a NavLink to the picker that will let them determine the amount of an item
                         ForEach(self.shoppingItemsFetch) { shoppingItemNew in
@@ -134,8 +111,6 @@ struct ContentView: View {
                                         Image(ContentViewImages.cuteWeeImage.rawValue)
                                     })
                 .foregroundColor(.white)
-                
-                ///Light blue colour that appears on the populated cells and the text entry box
                 .listRowBackground(Color.init(red: 0.07, green: 0.45, blue: 0.87))
                 .padding(.trailing, 5)
                 .padding(.leading, 5)
@@ -157,9 +132,23 @@ struct ContentView: View {
         self.generator.notificationOccurred(.error)
     }
     
-//    private func saveNewEntry() {
-//        
-//    }
+    //MARK: SaveNewEntry func
+    private func saveNewEntry() {
+        let shoppingItemNew = ShoppingItem(context: self.managedObjectContext)
+        shoppingItemNew.itemToBeAdded = self.newShoppingItem
+        
+        ///Will just print the error for the time being should it be unable to save the new entries
+        do {
+            try self.managedObjectContext.save()
+        } catch {
+            Alert(title: Text("Unable to save that one"), message: Text("Please try again"), dismissButton: .default(Text("Okay")))
+        }
+        ///Resets the newShoppingItem back to being blank
+        self.newShoppingItem = ""
+        ///Haptic feedback for when the user has tapped on the Add/Plus button
+        self.generator.notificationOccurred(.success)
+        
+    }
 }
 
 extension View {

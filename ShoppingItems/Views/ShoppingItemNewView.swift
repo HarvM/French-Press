@@ -28,7 +28,6 @@ struct ShoppingItemNewView: View {
     
     //MARK: - View
     var body: some View {
-        
         ///Calls the "toggle" func above that differentiates between the two states
         Button(action: toggle)
         {
@@ -41,7 +40,7 @@ struct ShoppingItemNewView: View {
                 ///Defines the cell dimensions and what's displayed within it
                 VStack(alignment: .leading) {
                     Text("\(itemToBeAdded)")
-                        .font(Font.system(size: 18, design: .rounded))
+                        .font(Font.system(size: 17, design: .rounded))
                         .frame(height: 55)
                         .padding(10)
                 }
