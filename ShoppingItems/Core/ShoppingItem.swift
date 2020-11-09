@@ -16,7 +16,8 @@ public class ShoppingItem: NSManagedObject, Identifiable {
     
     //NSManaged means: compiler won't have to check if below are there as we are planning on using CoreData and it will be there at runtime
     @NSManaged public var itemToBeAdded: String?
-    @NSManaged public var numberOfItem: Int
+    @NSManaged public var quantityOfItem: Int
+    @NSManaged public var notesOnItem: String?
 }
 
 //Fetches the defined elements both defined already and added by the user

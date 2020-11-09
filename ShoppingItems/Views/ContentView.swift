@@ -17,15 +17,15 @@ enum ContentViewImages: String {
 struct ContentView: View {
     
     //MARK: - Properties
+    
     @State private var newShoppingItem = ""
-    @State var showsAlert = false
     let characterEntryLimit = 60
     let generator = UINotificationFeedbackGenerator()
     @Environment (\.managedObjectContext) var managedObjectContext
     @Environment (\.presentationMode) var presentationMode
     @FetchRequest(fetchRequest: ShoppingItem.getAllShoppingItems()) var shoppingItemsFetch:FetchedResults<ShoppingItem>
     
-    //MARK: Setting the empty/potential cells to the desired blue colour
+    //MARK: - Setting the empty/potential cells to the desired blue colour
     init() {
         UITableView.appearance().backgroundColor = .init(red: 0.07, green: 0.45, blue: 0.87, alpha: 1)
         UITableView.appearance().separatorInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
@@ -41,7 +41,7 @@ struct ContentView: View {
                     .edgesIgnoringSafeArea(.all)
                 
                 //MARK: - Start of the list and it's defining elements
-                List{
+                List {
                     Section(header: Text("What's Needed")
                                 .underline()
                                 .padding(10)
@@ -52,12 +52,12 @@ struct ContentView: View {
                                 .background(Color.init(red: 0.07, green: 0.45, blue: 0.87))
                                 .listRowInsets(EdgeInsets())
                     ){
-                
+                        
                         //MARK: - TextEntry field
                         HStack {
                             ///$newShoppingItem to get the binding to the state newShoppingItem
                             TextField("Type here", text: self.$newShoppingItem)
-
+                                
                                 ///If the entered text in this field exceeds 'characterEntryLimit' then the field is disabled
                                 .disabled(newShoppingItem.count > (characterEntryLimit - 1))
                             
@@ -122,7 +122,8 @@ struct ContentView: View {
         .navigationViewStyle(StackNavigationViewStyle())
     }
     
-    //MARK: - DeleteItem func
+    //MARK: - Functions
+    
     private func deleteItem(at indexSet: IndexSet) {
         ///When the user wants to delete a cell, the index of the selected cell is found and then removed
         let deleteItem = self.shoppingItemsFetch[indexSet.first!]
@@ -132,8 +133,8 @@ struct ContentView: View {
         self.generator.notificationOccurred(.error)
     }
     
-    //MARK: SaveNewEntry func
     private func saveNewEntry() {
+        ///Will get the new item and then place it within the CoreData under the attritbute of itemToBeAdded
         let shoppingItemNew = ShoppingItem(context: self.managedObjectContext)
         shoppingItemNew.itemToBeAdded = self.newShoppingItem
         
