@@ -24,6 +24,7 @@ struct DetailView: View {
     @ObservedObject var extraNotesOnItem = TextLimit(limit: 200)
     @State private var fullText: String = ""
     @State private var isShowingContentView = false
+    @State private var quantityOfItem: Int = 0
     
     //MARK: - Body the UI that will have a Stepper at the top, Save and Back Button, and somewhere to add extra notes too
     var body: some View {
@@ -34,8 +35,8 @@ struct DetailView: View {
                 //MARK: - Stepper Section
                 Section (header: Text("How Many Would You Like?")
                             .foregroundColor(.yellow)) {
-                    Stepper ("Quantity: \(numberOf)",
-                             value: $numberOf.quantityOfItem, in: 1...14)
+                    Stepper ("Quantity: \(quantityOfItem)",
+                             value: $quantityOfItem, in: 1...14)
                 }
                 
                 //MARK: - TextEditor Section
@@ -55,41 +56,23 @@ struct DetailView: View {
                 Spacer()
                 HStack {
                     Spacer()
-                    Button(action: self.save,
-                           label: {
+                    Button(action: self.save, label: {
                             Image(DetailViewImages.saveButtonImage.rawValue)
-                                .frame(width: 80,
-                                       height: 80)
+                                .frame(width: 80, height: 80)
                            })
                         .background(Color.white)
                         .cornerRadius(38.5)
                         .padding()
-                        .shadow(color: Color.black.opacity(0.3),
-                                radius: 3,
-                                x: 3,
-                                y: 3)
+                        .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
                 }
             }
         }
-        .background(Color.init(red: 0.07,
-                               green: 0.45,
-                               blue: 0.87))
+        .background(Color.init(red: 0.07, green: 0.45, blue: 0.87))
     }
     
     private func save() {
-        let extraDetails = ShoppingItem(context: self.managedObjectContext)
-        self.managedObjectContext.performAndWait {
-            
-            extraDetails.notesOnItem = self.fullText
-            self.isShowingContentView = true
-            
-            ///Error will be displayed if there's an issue with the new contact data being saved
-            do {
-                try self.managedObjectContext.save()
-            } catch {
-                Alert(title: Text("Unable to save that one"), message: Text("Please try again"), dismissButton: .default(Text("Okay")))
-            }
-        }
+        print("Trying to save")
+        
     }
 }
 

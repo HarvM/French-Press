@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="20A5395g" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="20B5022a" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="ShoppingItem" representedClassName=".ShoppingItem" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="itemToBeAdded" optional="YES" attributeType="String"/>
         <attribute name="notesOnItem" optional="YES" attributeType="String"/>
-        <attribute name="quantityOfItem" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="quantityOfItem" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <fetchedProperty name="fetchedProperty" optional="YES">
             <fetchRequest name="fetchedPropertyFetchRequest" entity="ShoppingItem"/>
@@ -13,6 +14,6 @@
         </fetchedProperty>
     </entity>
     <elements>
-        <element name="ShoppingItem" positionX="-63" positionY="-18" width="128" height="125"/>
+        <element name="ShoppingItem" positionX="-63" positionY="-18" width="128" height="140"/>
     </elements>
 </model>

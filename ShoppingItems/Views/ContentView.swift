@@ -10,7 +10,6 @@ import MapKit
 
 ///Images used across the ContentView
 enum ContentViewImages: String {
-    case cuteWeeImage = "cuteWee" ///Will take user to the MapVIew
     case plusImage = "plusIcon" ///On the textEntry field and will let the user add an item
 }
 
@@ -41,7 +40,7 @@ struct ContentView: View {
                     .edgesIgnoringSafeArea(.all)
                 
                 //MARK: - Start of the list and it's defining elements
-                List {
+                List{
                     Section(header: Text("What's Needed")
                                 .underline()
                                 .padding(10)
@@ -90,7 +89,7 @@ struct ContentView: View {
                         ///Populates each cell with an item from the ShoppingItem model and also a NavLink to the picker that will let them determine the amount of an item
                         ForEach(self.shoppingItemsFetch) { shoppingItemNew in
                             HStack {
-                                ShoppingItemNewView(itemToBeAdded: shoppingItemNew.itemToBeAdded!)
+                                ShoppingItemNewView(itemToBeAdded: shoppingItemNew.itemToBeAdded)
                                 NavigationLink ("", destination: DetailView())
                             }
                             ///Removes a desired cell from the list
@@ -102,13 +101,13 @@ struct ContentView: View {
                 
                 //MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list, the trailing launches MapView
                 .navigationBarItems(leading: EditButton(),
-                                    trailing: NavigationLink(destination: MapView()
-                                                                .navigationBarTitle("Shops Nearby")
+                                    trailing: NavigationLink(destination: DetailView()
+                                                                .navigationBarTitle("Add Item")
                                                                 .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment: .center)
                                                                 .edgesIgnoringSafeArea(.all)
                                     ){
                                         ///Image of the trailing icon tha leads the user to the map
-                                        Image(ContentViewImages.cuteWeeImage.rawValue)
+                                        Image(ContentViewImages.plusImage.rawValue)
                                     })
                 .foregroundColor(.white)
                 .listRowBackground(Color.init(red: 0.07, green: 0.45, blue: 0.87))
