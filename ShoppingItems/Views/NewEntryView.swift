@@ -21,12 +21,12 @@ struct NewEntryView: View {
 
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var extraNotesOnItem = TextLimit(limit: 200)
-    @State private var newShoppingItem = ""
+
     let characterEntryLimit = 60
     let generator = UINotificationFeedbackGenerator()
-    @FetchRequest(fetchRequest: ShoppingItem.getAllShoppingItems()) var shoppingItemsFetch:FetchedResults<ShoppingItem>
-    @State private var fullText: String = ""
+    @FetchRequest(fetchRequest: ShoppingItems.getAllShoppingItems()) var shoppingItemsFetch:FetchedResults<ShoppingItems>
+    @State private var newShoppingItem = ""
+    @State private var notesOnItem: String = ""
     @State private var isShowingContentView = false
     @State private var quantityOfItem: Int = 0
     
@@ -41,13 +41,11 @@ struct NewEntryView: View {
                                 HStack {
                                     ///$newShoppingItem to get the binding to the state newShoppingItem
                                     TextField("Type here", text: self.$newShoppingItem)
+                                        .frame (height: 60)
                                         
                                         ///If the entered text in this field exceeds 'characterEntryLimit' then the field is disabled
                                         .disabled(newShoppingItem.count > (characterEntryLimit - 1))
                                 
-                                    ///Have disabled the newShoppingItem text unless there is some text within the field. Button won't add empty entries now
-                                    .frame (height: 60)
-                                    .disabled(self.newShoppingItem.isEmpty)
                                 }
                                 .font(.headline)
                             }
@@ -56,20 +54,19 @@ struct NewEntryView: View {
                 Section (header: Text("How Many Would You Like?")
                             .foregroundColor(.yellow)) {
                     Stepper ("Quantity: \(quantityOfItem)",
-                             value: $quantityOfItem, in: 1...14)
+                             value: self.$quantityOfItem, in: 1...70)
                         .frame(height: 60)
                 }
                 
                 //MARK: - TextEditor Section
                 Section(header: Text("Extra Notes")
                             .foregroundColor(.yellow)
-                ){
-                    TextEditor (text: $fullText)
+                )
+                {
+                    TextEditor (text: $notesOnItem)
                 }
-                .frame(height: 120)
                 .foregroundColor(.black)
-                .lineSpacing(10)
-                .lineLimit(3)
+                .frame(height: 60)
                 .disableAutocorrection(true)
             }
             
@@ -94,8 +91,9 @@ struct NewEntryView: View {
     
     private func saveNewEntry() {
         ///Will get the new item and then place it within the CoreData under the attritbute of itemToBeAdded
-        let shoppingItemNew = ShoppingItem(context: self.managedObjectContext)
+        let shoppingItemNew = ShoppingItems(context: self.managedObjectContext)
         shoppingItemNew.itemToBeAdded = self.newShoppingItem
+//        shoppingItemNew.quantityOfItem = self.quantityOfItem
         
         ///Will just print the error for the time being should it be unable to save the new entries
         do {
@@ -105,6 +103,7 @@ struct NewEntryView: View {
         }
         ///Resets the newShoppingItem back to being blank
         self.newShoppingItem = ""
+//        self.quantityOfItem = 1
         ///Haptic feedback for when the user has tapped on the Add/Plus button
         self.generator.notificationOccurred(.success)
         

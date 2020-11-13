@@ -21,7 +21,7 @@ struct ContentView: View {
     let generator = UINotificationFeedbackGenerator()
     @Environment (\.managedObjectContext) var managedObjectContext
     @Environment (\.presentationMode) var presentationMode
-    @FetchRequest(fetchRequest: ShoppingItem.getAllShoppingItems()) var shoppingItemsFetch:FetchedResults<ShoppingItem>
+    @FetchRequest(fetchRequest: ShoppingItems.getAllShoppingItems()) var shoppingItemsFetch:FetchedResults<ShoppingItems>
     
     //MARK: - Setting the empty/potential cells to the desired blue colour
     init() {
@@ -39,15 +39,13 @@ struct ContentView: View {
                     .edgesIgnoringSafeArea(.all)
                 List {
                     //MARK: - HStack that deals with how the cells are displayed and populated
-                    Section (header: Text("On The List")
+                    Section (header: Text("Yer Messages")
                                 .underline()
-                                .padding(10)
                                 .font(Font.system(size: 25, design: .rounded))
                                 .foregroundColor(.yellow)
                                 .textCase(.none)
-                                .frame(maxWidth: .infinity)
                                 .background(Color.init(red: 0.07, green: 0.45, blue: 0.87))
-                                .listRowInsets(EdgeInsets()))
+                    )
                     {
                         ///Populates each cell with an item from the ShoppingItem model and also a NavLink to the picker that will let them determine the amount of an item
                         ForEach(self.shoppingItemsFetch) { shoppingItemNew in

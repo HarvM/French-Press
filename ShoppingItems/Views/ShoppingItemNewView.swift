@@ -13,7 +13,7 @@ struct ShoppingItemNewView: View {
     
     //MARK: - Properties
     var itemToBeAdded: String = ""
-    var quantity: Int = 0
+    var quantityOfItem: Int = 0
     @State var isChecked = false
     
     //MARK: - View
@@ -22,7 +22,7 @@ struct ShoppingItemNewView: View {
             HStack {
                 ///Have a toggle here followed by the item that the user desires
                 Toggle("", isOn: $isChecked).labelsHidden()
-                Text("\(itemToBeAdded)")
+                Text("\(itemToBeAdded) x \(quantityOfItem)")
                     .font(Font.system(size: 18, design: .rounded))
                     .frame(height: 55)
                     .padding(10)
