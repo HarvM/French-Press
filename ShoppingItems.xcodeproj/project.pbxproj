@@ -19,6 +19,7 @@
 		491D798523C11EB400B537EB /* ShoppingItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D798423C11EB400B537EB /* ShoppingItems.swift */; };
 		491D798723C1EAA800B537EB /* ShoppingItemNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D798623C1EAA800B537EB /* ShoppingItemNewView.swift */; };
 		491D798B23CB0FE300B537EB /* Notes in Resources */ = {isa = PBXBuildFile; fileRef = 491D798A23CB0FE200B537EB /* Notes */; };
+		49267E042560B2160075798F /* ShoppingItemsMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49267E032560B2160075798F /* ShoppingItemsMain.swift */; };
 		493B3A96253BD31200CAF0F9 /* NewEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493B3A95253BD31200CAF0F9 /* NewEntryView.swift */; };
 		498B43092559F15500734F40 /* CheckboxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498B43082559F15400734F40 /* CheckboxStyle.swift */; };
 		49C85B60254780E400A9C901 /* TextLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C85B5F254780E400A9C901 /* TextLimit.swift */; };
@@ -61,9 +62,10 @@
 		491D797223C11D1800B537EB /* ShoppingItemsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShoppingItemsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		491D797623C11D1800B537EB /* ShoppingItemsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemsUITests.swift; sourceTree = "<group>"; };
 		491D797823C11D1800B537EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		491D798423C11EB400B537EB /* ShoppingItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItems.swift; sourceTree = "<group>"; };
+		491D798423C11EB400B537EB /* ShoppingItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShoppingItems.swift; path = ShoppingItems/Core/ShoppingItems.swift; sourceTree = "<group>"; };
 		491D798623C1EAA800B537EB /* ShoppingItemNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemNewView.swift; sourceTree = "<group>"; };
 		491D798A23CB0FE200B537EB /* Notes */ = {isa = PBXFileReference; lastKnownFileType = text; path = Notes; sourceTree = "<group>"; };
+		49267E032560B2160075798F /* ShoppingItemsMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemsMain.swift; sourceTree = "<group>"; };
 		493B3A95253BD31200CAF0F9 /* NewEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryView.swift; sourceTree = "<group>"; };
 		498B43082559F15400734F40 /* CheckboxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxStyle.swift; sourceTree = "<group>"; };
 		49C85B5F254780E400A9C901 /* TextLimit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLimit.swift; sourceTree = "<group>"; };
@@ -101,6 +103,8 @@
 		491D794523C11D1700B537EB = {
 			isa = PBXGroup;
 			children = (
+				491D798423C11EB400B537EB /* ShoppingItems.swift */,
+				49267E032560B2160075798F /* ShoppingItemsMain.swift */,
 				491D795023C11D1700B537EB /* ShoppingItems */,
 				491D796A23C11D1800B537EB /* ShoppingItemsTests */,
 				491D797523C11D1800B537EB /* ShoppingItemsUITests */,
@@ -179,7 +183,6 @@
 		4983E8B724660832005E9063 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				491D798423C11EB400B537EB /* ShoppingItems.swift */,
 				491D795523C11D1700B537EB /* ShoppingItems.xcdatamodeld */,
 			);
 			path = Core;
@@ -334,6 +337,7 @@
 				491D795723C11D1700B537EB /* ShoppingItems.xcdatamodeld in Sources */,
 				491D795923C11D1700B537EB /* ContentView.swift in Sources */,
 				49C85B60254780E400A9C901 /* TextLimit.swift in Sources */,
+				49267E042560B2160075798F /* ShoppingItemsMain.swift in Sources */,
 				491D795423C11D1700B537EB /* SceneDelegate.swift in Sources */,
 				491D798523C11EB400B537EB /* ShoppingItems.swift in Sources */,
 				49FF1F05255C83F700C1BBAF /* DetailView.swift in Sources */,

@@ -16,12 +16,14 @@ enum ContentViewImages: String {
 struct ContentView: View {
     
     //MARK: - Properties
-    
-    @State private var newShoppingItem = ""
     let generator = UINotificationFeedbackGenerator()
     @Environment (\.managedObjectContext) var managedObjectContext
     @Environment (\.presentationMode) var presentationMode
-    @FetchRequest(fetchRequest: ShoppingItems.getAllShoppingItems()) var shoppingItemsFetch:FetchedResults<ShoppingItems>
+    @FetchRequest(entity: ShoppingItems.entity(), sortDescriptors:[
+        NSSortDescriptor(keyPath: \ShoppingItems.itemToBeAdded, ascending: true),
+        NSSortDescriptor(keyPath: \ShoppingItems.notesOnItem, ascending: true),
+    ])
+    var shoppingItemEntries: FetchedResults<ShoppingItems>
     
     //MARK: - Setting the empty/potential cells to the desired blue colour
     init() {
@@ -40,21 +42,20 @@ struct ContentView: View {
                 List {
                     //MARK: - HStack that deals with how the cells are displayed and populated
                     Section (header: Text("Yer Messages")
-                                .underline()
-                                .font(Font.system(size: 25, design: .rounded))
+                                .font(Font.system(size: 35, design: .rounded))
                                 .foregroundColor(.yellow)
                                 .textCase(.none)
                                 .background(Color.init(red: 0.07, green: 0.45, blue: 0.87))
                     )
                     {
-                        ///Populates each cell with an item from the ShoppingItem model and also a NavLink to the picker that will let them determine the amount of an item
-                        ForEach(self.shoppingItemsFetch) { shoppingItemNew in
+                        ForEach(shoppingItemEntries, id: \.self) {
+                            shoppingItemNew in
                             HStack {
                                 ShoppingItemNewView(itemToBeAdded: shoppingItemNew.itemToBeAdded)
-                                NavigationLink ("", destination: DetailView())
+                                NavigationLink("", destination: DetailView (itemToBeDisplayed: shoppingItemNew))
                             }
-                            ///Removes a desired cell from the list
-                        } .onDelete(perform: self.deleteItem)
+                        }
+                        .onDelete(perform: self.deleteItem)
                     }
                     .listStyle(PlainListStyle())
                     .listRowBackground(Color.init(red: 0.07, green: 0.45, blue: 0.87))
@@ -64,7 +65,11 @@ struct ContentView: View {
                 .navigationBarItems(leading: EditButton(),
                                     trailing: NavigationLink(destination: NewEntryView()
                                                                 .navigationBarTitle("Add Item")
-                                                                .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment: .center)
+                                                                .frame(minWidth: 0, idealWidth: 0,
+                                                                       maxWidth: .infinity,
+                                                                       minHeight: 0, idealHeight: 0,
+                                                                       maxHeight: .infinity,
+                                                                       alignment:.center)
                                                                 .edgesIgnoringSafeArea(.all)
                                     ){
                                         ///Image of the trailing icon tha leads the user to the map
@@ -80,13 +85,14 @@ struct ContentView: View {
             ///Removes the split view from iPad versions
             .navigationViewStyle(StackNavigationViewStyle())
         }
+        
     }
     
     //MARK: - Function
     
     private func deleteItem(at indexSet: IndexSet) {
         ///When the user wants to delete a cell, the index of the selected cell is found and then removed
-        let deleteItem = self.shoppingItemsFetch[indexSet.first!]
+        let deleteItem = self.shoppingItemEntries[indexSet.first!]
         self.managedObjectContext.delete(deleteItem)
         
         ///Haptic feedback for when the user taps on Delete

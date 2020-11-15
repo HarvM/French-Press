@@ -24,6 +24,7 @@ struct ShoppingItemNewView: View {
                 Toggle("", isOn: $isChecked).labelsHidden()
                 Text("\(itemToBeAdded) x \(quantityOfItem)")
                     .font(Font.system(size: 18, design: .rounded))
+                    .foregroundColor(.yellow)
                     .frame(height: 55)
                     .padding(10)
             }

@@ -18,18 +18,15 @@ enum DetailViewImages: String {
 struct NewEntryView: View {
     
     //MARK: - Properties
-
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode
-
     let characterEntryLimit = 60
     let generator = UINotificationFeedbackGenerator()
-    @FetchRequest(fetchRequest: ShoppingItems.getAllShoppingItems()) var shoppingItemsFetch:FetchedResults<ShoppingItems>
-    @State private var newShoppingItem = ""
-    @State private var notesOnItem: String = ""
-    @State private var isShowingContentView = false
-    @State private var quantityOfItem: Int = 0
-    
+    @ObservedObject var newShoppingItem = TextLimit(limit: 30)
+    @ObservedObject var notesOnItem = TextLimit(limit: 60)
+    @State var quantityOfItem: Int = 0
+    @State var isShowingContentView = false
+   
     //MARK: - Body the UI that will have a Stepper at the top, Save and Back Button, and somewhere to add extra notes too
     var body: some View {
         ZStack{
@@ -38,17 +35,17 @@ struct NewEntryView: View {
             Form {
                 Section (header: Text("What would you like?")
                             .foregroundColor(.yellow)) {
-                                HStack {
-                                    ///$newShoppingItem to get the binding to the state newShoppingItem
-                                    TextField("Type here", text: self.$newShoppingItem)
-                                        .frame (height: 60)
-                                        
-                                        ///If the entered text in this field exceeds 'characterEntryLimit' then the field is disabled
-                                        .disabled(newShoppingItem.count > (characterEntryLimit - 1))
-                                
-                                }
-                                .font(.headline)
-                            }
+                    HStack {
+                        ///$newShoppingItem to get the binding to the state newShoppingItem
+                        TextField("Type here", text: $newShoppingItem.text)
+                            .frame (height: 60)
+                            
+                            ///If the entered text in this field exceeds 'characterEntryLimit' then the field is disabled
+                            .disabled(newShoppingItem.text.count > (characterEntryLimit - 1))
+                        
+                    }
+                    .font(.headline)
+                }
                 
                 //MARK: - Stepper Section
                 Section (header: Text("How Many Would You Like?")
@@ -63,7 +60,7 @@ struct NewEntryView: View {
                             .foregroundColor(.yellow)
                 )
                 {
-                    TextEditor (text: $notesOnItem)
+                    TextEditor (text: $notesOnItem.text)
                 }
                 .foregroundColor(.black)
                 .frame(height: 60)
@@ -76,13 +73,13 @@ struct NewEntryView: View {
                 HStack {
                     Spacer()
                     Button(action: self.saveNewEntry, label: {
-                            Image(DetailViewImages.saveButtonImage.rawValue)
-                                .frame(width: 80, height: 80)
-                           })
-                        .background(Color.white)
-                        .cornerRadius(38.5)
-                        .padding()
-                        .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
+                        Image(DetailViewImages.saveButtonImage.rawValue)
+                            .frame(width: 80, height: 80)
+                    })
+                    .background(Color.white)
+                    .cornerRadius(38.5)
+                    .padding()
+                    .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
                 }
             }
         }
@@ -92,8 +89,10 @@ struct NewEntryView: View {
     private func saveNewEntry() {
         ///Will get the new item and then place it within the CoreData under the attritbute of itemToBeAdded
         let shoppingItemNew = ShoppingItems(context: self.managedObjectContext)
-        shoppingItemNew.itemToBeAdded = self.newShoppingItem
-//        shoppingItemNew.quantityOfItem = self.quantityOfItem
+        self.managedObjectContext.performAndWait {
+        shoppingItemNew.itemToBeAdded = self.newShoppingItem.text
+        shoppingItemNew.notesOnItem = self.notesOnItem.text
+        self.isShowingContentView = true
         
         ///Will just print the error for the time being should it be unable to save the new entries
         do {
@@ -102,11 +101,12 @@ struct NewEntryView: View {
             Alert(title: Text("Unable to save that one"), message: Text("Please try again"), dismissButton: .default(Text("Okay")))
         }
         ///Resets the newShoppingItem back to being blank
-        self.newShoppingItem = ""
-//        self.quantityOfItem = 1
+        newShoppingItem.text = ""
+        notesOnItem.text = ""
+
         ///Haptic feedback for when the user has tapped on the Add/Plus button
         self.generator.notificationOccurred(.success)
-        
+        }
     }
 }
 
