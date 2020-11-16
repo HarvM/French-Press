@@ -22,11 +22,11 @@ struct NewEntryView: View {
     @Environment(\.presentationMode) var presentationMode
     let characterEntryLimit = 60
     let generator = UINotificationFeedbackGenerator()
-    @ObservedObject var newShoppingItem = TextLimit(limit: 30)
+    @ObservedObject var newShoppingItem = TextLimit(limit: 20)
     @ObservedObject var notesOnItem = TextLimit(limit: 60)
     @State var quantityOfItem: Int = 0
     @State var isShowingContentView = false
-   
+    
     //MARK: - Body the UI that will have a Stepper at the top, Save and Back Button, and somewhere to add extra notes too
     var body: some View {
         ZStack{
@@ -39,10 +39,6 @@ struct NewEntryView: View {
                         ///$newShoppingItem to get the binding to the state newShoppingItem
                         TextField("Type here", text: $newShoppingItem.text)
                             .frame (height: 60)
-                            
-                            ///If the entered text in this field exceeds 'characterEntryLimit' then the field is disabled
-                            .disabled(newShoppingItem.text.count > (characterEntryLimit - 1))
-                        
                     }
                     .font(.headline)
                 }
@@ -58,12 +54,12 @@ struct NewEntryView: View {
                 //MARK: - TextEditor Section
                 Section(header: Text("Extra Notes")
                             .foregroundColor(.yellow)
-                )
-                {
-                    TextEditor (text: $notesOnItem.text)
+                ) {
+                    TextField("", text: $notesOnItem.text)
+                        .frame(height: 120)
                 }
+                ///Need to deal with newLine and how it's disaplayed
                 .foregroundColor(.black)
-                .frame(height: 60)
                 .disableAutocorrection(true)
             }
             
@@ -71,14 +67,13 @@ struct NewEntryView: View {
             VStack {
                 Spacer()
                 HStack {
-                    Spacer()
                     Button(action: self.saveNewEntry, label: {
                         Image(DetailViewImages.saveButtonImage.rawValue)
-                            .frame(width: 80, height: 80)
+                            .frame(width: 100, height: 60)
                     })
                     .background(Color.white)
                     .cornerRadius(38.5)
-                    .padding()
+                    .padding(.bottom, 30)
                     .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
                 }
             }
@@ -90,22 +85,28 @@ struct NewEntryView: View {
         ///Will get the new item and then place it within the CoreData under the attritbute of itemToBeAdded
         let shoppingItemNew = ShoppingItems(context: self.managedObjectContext)
         self.managedObjectContext.performAndWait {
-        shoppingItemNew.itemToBeAdded = self.newShoppingItem.text
-        shoppingItemNew.notesOnItem = self.notesOnItem.text
-        self.isShowingContentView = true
-        
-        ///Will just print the error for the time being should it be unable to save the new entries
-        do {
-            try self.managedObjectContext.save()
-        } catch {
-            Alert(title: Text("Unable to save that one"), message: Text("Please try again"), dismissButton: .default(Text("Okay")))
-        }
-        ///Resets the newShoppingItem back to being blank
-        newShoppingItem.text = ""
-        notesOnItem.text = ""
-
-        ///Haptic feedback for when the user has tapped on the Add/Plus button
-        self.generator.notificationOccurred(.success)
+            shoppingItemNew.itemToBeAdded = self.newShoppingItem.text
+            shoppingItemNew.notesOnItem = self.notesOnItem.text
+            self.isShowingContentView = true
+            
+            ///Save button will kick the user back to the ContentView()
+            NavigationLink(destination: ContentView(),
+                           isActive: $isShowingContentView) {
+                EmptyView() }
+            
+            ///Will just print the error for the time being should it be unable to save the new entries
+            do {
+                try self.managedObjectContext.save()
+            } catch {
+                Alert(title: Text("Unable to save that one"), message: Text("Please try again"), dismissButton: .default(Text("Okay")))
+            }
+            ///Resets the newShoppingItem back to being blank
+            newShoppingItem.text = ""
+            notesOnItem.text = ""
+            
+            ///Haptic feedback for when the user has tapped on the Add/Plus button
+            self.generator.notificationOccurred(.success)
+            self.presentationMode.wrappedValue.dismiss()
         }
     }
 }

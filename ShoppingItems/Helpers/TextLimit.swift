@@ -19,7 +19,7 @@ class TextLimit: ObservableObject {
         }
     }
     let characterLimit: Int
-    init(limit: Int = 200){
+    init(limit: Int = 100){
         characterLimit = limit
     }
 }

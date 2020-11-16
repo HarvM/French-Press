@@ -25,14 +25,6 @@ struct ContentView: View {
     ])
     var shoppingItemEntries: FetchedResults<ShoppingItems>
     
-    //MARK: - Setting the empty/potential cells to the desired blue colour
-    init() {
-        UITableView.appearance().backgroundColor = .init(red: 0.07, green: 0.45, blue: 0.87, alpha: 1)
-        UITableView.appearance().separatorInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
-        ///For the unpopulated cells: the separators will be clear
-        UITableView.appearance().separatorColor = .clear
-    }
-    
     //MARK: - Body of the view
     var body: some View {
         NavigationView {
@@ -41,13 +33,7 @@ struct ContentView: View {
                     .edgesIgnoringSafeArea(.all)
                 List {
                     //MARK: - HStack that deals with how the cells are displayed and populated
-                    Section (header: Text("Yer Messages")
-                                .font(Font.system(size: 35, design: .rounded))
-                                .foregroundColor(.yellow)
-                                .textCase(.none)
-                                .background(Color.init(red: 0.07, green: 0.45, blue: 0.87))
-                    )
-                    {
+                    Section () {
                         ForEach(shoppingItemEntries, id: \.self) {
                             shoppingItemNew in
                             HStack {
@@ -84,11 +70,12 @@ struct ContentView: View {
             }
             ///Removes the split view from iPad versions
             .navigationViewStyle(StackNavigationViewStyle())
+            .navigationBarTitle("Yer Messages")
         }
-        
+        .listStyle(DefaultListStyle())
     }
     
-    //MARK: - Function
+    //MARK: - Delete Item Function
     
     private func deleteItem(at indexSet: IndexSet) {
         ///When the user wants to delete a cell, the index of the selected cell is found and then removed
@@ -98,8 +85,21 @@ struct ContentView: View {
         ///Haptic feedback for when the user taps on Delete
         self.generator.notificationOccurred(.error)
     }
+    
+    //MARK: - Setting the empty/potential cells to the desired blue colour
+    init() {
+        UITableView.appearance().backgroundColor = .init(red: 0.07, green: 0.45, blue: 0.87, alpha: 1)
+        UITableView.appearance().separatorInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
+        ///For the unpopulated cells: the separators will be clear
+        UITableView.appearance().separatorColor = .clear
+        
+        ///Use this if NavigationBarTitle is with Large Font
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        ///Use this if NavigationBarTitle is with displayMode = .inline
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
+    }
 }
-
 
 extension View {
     func endEditing() {

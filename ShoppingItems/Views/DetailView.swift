@@ -10,21 +10,31 @@ import SwiftUI
 
 struct DetailView: View {
     
+    enum DetailViewImages: String {
+        case appIconNavBar = "appHeader"
+    }
+    
     //MARK: - Properties
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode
     let itemToBeDisplayed: ShoppingItems
     @State private var hasData = false
-
-   //MARK: - Body of the view
+    
+    //MARK: - Body of the view
     var body: some View {
-        ZStack{
-            Color.init(red: 0.07, green: 0.45, blue: 0.87)
-                .edgesIgnoringSafeArea(.all)
-            Text("\(itemToBeDisplayed.itemToBeAdded) and \(itemToBeDisplayed.notesOnItem)")
-                .foregroundColor(.white)
+        NavigationView {
+            ZStack{
+                Color.init(red: 0.07, green: 0.45, blue: 0.87)
+                    .edgesIgnoringSafeArea(.all)
+                Text("\(itemToBeDisplayed.itemToBeAdded) and \(itemToBeDisplayed.notesOnItem)")
+                    .foregroundColor(.white)
+            }
         }
+        .navigationBarItems(trailing: Image(DetailViewImages.appIconNavBar.rawValue)
+                                .accentColor(.white))
+        
     }
+
 }
 
 //struct DetailView_Previews: PreviewProvider {

@@ -40,6 +40,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             //NOTE: May have to change contentView here later
             window.rootViewController = UIHostingController(rootView: contentView)
             self.window = window
+            ///Changes the navigationBarItem on the DetailView and NewEntryView to white
+            window.tintColor = .white
             window.makeKeyAndVisible()
             
         }
