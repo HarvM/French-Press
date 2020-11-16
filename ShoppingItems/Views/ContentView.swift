@@ -62,7 +62,7 @@ struct ContentView: View {
                                         Image(ContentViewImages.plusImage.rawValue)
                                     })
                 .foregroundColor(.white)
-                .listRowBackground(Color.init(red: 0.07, green: 0.45, blue: 0.87))
+//                .listRowBackground(Color.init(red: 0.07, green: 0.45, blue: 0.87))
                 .padding(.trailing, 5)
                 .padding(.leading, 5)
                 .padding(.top, 4)
@@ -71,8 +71,10 @@ struct ContentView: View {
             ///Removes the split view from iPad versions
             .navigationViewStyle(StackNavigationViewStyle())
             .navigationBarTitle("Yer Messages")
+            .navigationBarTitleDisplayMode(.inline)
+            ///Removes the header and the wee arrow that hides/shows the cells
+            .listStyle(PlainListStyle())
         }
-        .listStyle(DefaultListStyle())
     }
     
     //MARK: - Delete Item Function
@@ -86,18 +88,24 @@ struct ContentView: View {
         self.generator.notificationOccurred(.error)
     }
     
-    //MARK: - Setting the empty/potential cells to the desired blue colour
     init() {
+        ///Setting the empty/potential cells to the desired blue colour
         UITableView.appearance().backgroundColor = .init(red: 0.07, green: 0.45, blue: 0.87, alpha: 1)
         UITableView.appearance().separatorInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
         ///For the unpopulated cells: the separators will be clear
         UITableView.appearance().separatorColor = .clear
-        
+        ///The NavigationBar had a white tint over it after moving the title to .inline but below addresses this and keeps the desired blue
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().isTranslucent = true
+        UINavigationBar.appearance().tintColor = .clear
+        UINavigationBar.appearance().backgroundColor = .clear
         ///Use this if NavigationBarTitle is with Large Font
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        
         ///Use this if NavigationBarTitle is with displayMode = .inline
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        
     }
 }
 

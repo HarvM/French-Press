@@ -33,6 +33,7 @@ struct NewEntryView: View {
             Color.init(red: 0.07, green: 0.45, blue: 0.87)
                 .edgesIgnoringSafeArea(.all)
             Form {
+                //MARK: - Textfield - Item entry (Main) section
                 Section (header: Text("What would you like?")
                             .foregroundColor(.yellow)) {
                     HStack {
@@ -51,7 +52,7 @@ struct NewEntryView: View {
                         .frame(height: 60)
                 }
                 
-                //MARK: - TextEditor Section
+                //MARK: - Textfield (Extra Notes) Section
                 Section(header: Text("Extra Notes")
                             .foregroundColor(.yellow)
                 ) {
@@ -81,6 +82,7 @@ struct NewEntryView: View {
         .background(Color.init(red: 0.07, green: 0.45, blue: 0.87))
     }
     
+    //MARK: - Functions
     private func saveNewEntry() {
         ///Will get the new item and then place it within the CoreData under the attritbute of itemToBeAdded
         let shoppingItemNew = ShoppingItems(context: self.managedObjectContext)

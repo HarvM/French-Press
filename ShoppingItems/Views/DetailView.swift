@@ -26,12 +26,14 @@ struct DetailView: View {
             ZStack{
                 Color.init(red: 0.07, green: 0.45, blue: 0.87)
                     .edgesIgnoringSafeArea(.all)
-                Text("\(itemToBeDisplayed.itemToBeAdded) and \(itemToBeDisplayed.notesOnItem)")
+                Text("\(itemToBeDisplayed.notesOnItem)")
                     .foregroundColor(.white)
+                    .font(.system(size: 30, weight: .bold, design: .default))
             }
         }
-        .navigationBarItems(trailing: Image(DetailViewImages.appIconNavBar.rawValue)
-                                .accentColor(.white))
+        .navigationBarItems(trailing: Image(DetailViewImages.appIconNavBar.rawValue))
+        .navigationBarTitle("\(itemToBeDisplayed.itemToBeAdded)")
+        .navigationBarTitleDisplayMode(.large)
         
     }
 
