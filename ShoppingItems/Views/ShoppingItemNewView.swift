@@ -23,12 +23,22 @@ struct ShoppingItemNewView: View {
                 ///Have a toggle here followed by the item that the user desires
                 Toggle("", isOn: $isChecked).labelsHidden()
                     .padding(-10)
-                Text("\(itemToBeAdded) x \(quantityOfItem)")
-                    .font(Font.system(size: 15, design: .rounded))
-                    .foregroundColor(.yellow)
-                    .frame(height: 40)
-                    .padding(20)
-                    .lineLimit(1)
+                VStack (alignment: .leading, spacing: 2) {
+                    Text("\(itemToBeAdded)")
+                        .font(Font.system(size: 20, design: .rounded))
+                        .foregroundColor(.yellow)
+                        .frame(height: 40)
+                        .lineLimit(1)
+                        .allowsTightening(true)
+                    
+                    Text("Quantity: \(quantityOfItem)")
+                        .font(Font.system(size: 20, design: .rounded))
+                        .foregroundColor(.yellow)
+                        .frame(height: 40)
+                        .lineLimit(1)
+                        
+                }
+                .padding(15)
             }
             .toggleStyle(CheckboxStyle())
         }

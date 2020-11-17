@@ -22,8 +22,8 @@ struct NewEntryView: View {
     @Environment(\.presentationMode) var presentationMode
     let characterEntryLimit = 60
     let generator = UINotificationFeedbackGenerator()
-    @ObservedObject var newShoppingItem = TextLimit(limit: 20)
-    @ObservedObject var notesOnItem = TextLimit(limit: 60)
+    @ObservedObject var newShoppingItem = TextLimit(limit: 30)
+    @ObservedObject var notesOnItem = TextLimit(limit: 120)
     @State var quantityOfItem: Int = 0
     @State var isShowingContentView = false
     
@@ -33,13 +33,14 @@ struct NewEntryView: View {
             Color.init(red: 0.07, green: 0.45, blue: 0.87)
                 .edgesIgnoringSafeArea(.all)
             Form {
-                //MARK: - Textfield - Item entry (Main) section
+                //MARK: - TextEditor - Item entry (Main) section
                 Section (header: Text("What would you like?")
                             .foregroundColor(.yellow)) {
                     HStack {
                         ///$newShoppingItem to get the binding to the state newShoppingItem
-                        TextField("Type here", text: $newShoppingItem.text)
-                            .frame (height: 60)
+                        TextEditor(text: $newShoppingItem.text)
+                            .frame (height: 40)
+                            .multilineTextAlignment(.leading)
                     }
                     .font(.headline)
                 }
@@ -49,20 +50,24 @@ struct NewEntryView: View {
                             .foregroundColor(.yellow)) {
                     Stepper ("Quantity: \(quantityOfItem)",
                              value: self.$quantityOfItem, in: 1...70)
-                        .frame(height: 60)
+                        .frame(height: 40)
+                        .font(.headline)
                 }
+               
                 
-                //MARK: - Textfield (Extra Notes) Section
+                //MARK: - TextEditor (Extra Notes) Section
                 Section(header: Text("Extra Notes")
                             .foregroundColor(.yellow)
                 ) {
-                    TextField("", text: $notesOnItem.text)
+                    TextEditor( text: $notesOnItem.text)
                         .frame(height: 120)
+                        .multilineTextAlignment(.leading)
+                        .font(.headline)
                 }
-                ///Need to deal with newLine and how it's disaplayed
                 .foregroundColor(.black)
                 .disableAutocorrection(true)
-            }
+                           }
+            .padding(20)
             
             //MARK: - Save Button
             VStack {

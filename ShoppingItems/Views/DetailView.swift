@@ -28,15 +28,15 @@ struct DetailView: View {
                     .edgesIgnoringSafeArea(.all)
                 Text("\(itemToBeDisplayed.notesOnItem)")
                     .foregroundColor(.white)
-                    .font(.system(size: 30, weight: .bold, design: .default))
+                    .font(.system(size: 25, weight: .bold, design: .default))
+                    .padding(.leading, 20)
+                    .padding(.top, 50)
             }
         }
         .navigationBarItems(trailing: Image(DetailViewImages.appIconNavBar.rawValue))
         .navigationBarTitle("\(itemToBeDisplayed.itemToBeAdded)")
         .navigationBarTitleDisplayMode(.large)
-        
     }
-
 }
 
 //struct DetailView_Previews: PreviewProvider {
