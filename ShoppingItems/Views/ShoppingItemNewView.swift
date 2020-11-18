@@ -13,7 +13,7 @@ struct ShoppingItemNewView: View {
     
     //MARK: - Properties
     var itemToBeAdded: String = ""
-    var quantityOfItem: Int = 0
+    var quantityOfItem: Int
     @State var isChecked = false
     
     //MARK: - View
@@ -38,7 +38,7 @@ struct ShoppingItemNewView: View {
                         .lineLimit(1)
                         
                 }
-                .padding(15)
+                .padding(25)
             }
             .toggleStyle(CheckboxStyle())
         }

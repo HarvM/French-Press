@@ -24,7 +24,7 @@ struct NewEntryView: View {
     let generator = UINotificationFeedbackGenerator()
     @ObservedObject var newShoppingItem = TextLimit(limit: 30)
     @ObservedObject var notesOnItem = TextLimit(limit: 120)
-    @State var quantityOfItem: Int = 0
+    @State var quantityOfItem: Int = 1
     @State var isShowingContentView = false
     
     //MARK: - Body the UI that will have a Stepper at the top, Save and Back Button, and somewhere to add extra notes too
@@ -49,7 +49,7 @@ struct NewEntryView: View {
                 Section (header: Text("How Many Would You Like?")
                             .foregroundColor(.yellow)) {
                     Stepper ("Quantity: \(quantityOfItem)",
-                             value: self.$quantityOfItem, in: 1...70)
+                             value: $quantityOfItem, in: 1...70)
                         .frame(height: 40)
                         .font(.headline)
                 }
@@ -94,6 +94,8 @@ struct NewEntryView: View {
         self.managedObjectContext.performAndWait {
             shoppingItemNew.itemToBeAdded = self.newShoppingItem.text
             shoppingItemNew.notesOnItem = self.notesOnItem.text
+            ///Note: had to explicity state Int16 both here and in the extension of the model
+            shoppingItemNew.quantityOfItem = Int16(self.quantityOfItem)
             self.isShowingContentView = true
             
             ///Save button will kick the user back to the ContentView()
@@ -110,6 +112,7 @@ struct NewEntryView: View {
             ///Resets the newShoppingItem back to being blank
             newShoppingItem.text = ""
             notesOnItem.text = ""
+//            quantityOfItem = 0
             
             ///Haptic feedback for when the user has tapped on the Add/Plus button
             self.generator.notificationOccurred(.success)

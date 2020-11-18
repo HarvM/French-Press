@@ -31,11 +31,13 @@ struct DetailView: View {
                     .font(.system(size: 25, weight: .bold, design: .default))
                     .padding(.leading, 20)
                     .padding(.top, 50)
+                    .allowsTightening(true)
             }
         }
         .navigationBarItems(trailing: Image(DetailViewImages.appIconNavBar.rawValue))
         .navigationBarTitle("\(itemToBeDisplayed.itemToBeAdded)")
         .navigationBarTitleDisplayMode(.large)
+        .allowsTightening(true)
     }
 }
 

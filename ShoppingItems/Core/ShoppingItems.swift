@@ -16,7 +16,7 @@ extension ShoppingItems {
         return NSFetchRequest<ShoppingItems>(entityName: "ShoppingItems")
     }
     @NSManaged public var itemToBeAdded: String
-    @NSManaged public var quantityOfItem: Int
+    @NSManaged public var quantityOfItem: Int16
     @NSManaged public var notesOnItem: String
     @NSManaged public var id: UUID
 }
