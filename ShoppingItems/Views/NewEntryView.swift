@@ -27,7 +27,7 @@ struct NewEntryView: View {
     @State var quantityOfItem: Int = 1
     @State var isShowingContentView = false
     @State var showAlert = false
-    
+        
     //MARK: - Body the UI that will have a Stepper at the top, Save and Back Button, and somewhere to add extra notes too
     var body: some View {
         ZStack{
@@ -36,12 +36,14 @@ struct NewEntryView: View {
             Form {
                 //MARK: - TextEditor - Item entry (Main) section
                 Section (header: Text("What would you like?")
-                            .foregroundColor(.yellow)) {
+                            .foregroundColor(.yellow)
+                            .truncationMode(.head)) {
                     HStack {
                         ///$newShoppingItem to get the binding to the state newShoppingItem
                         TextEditor(text: $newShoppingItem.text)
                             .frame (height: 40)
                             .multilineTextAlignment(.leading)
+                            .lineLimit(0)
                     }
                     .font(.headline)
                 }
@@ -88,14 +90,16 @@ struct NewEntryView: View {
         .alert(isPresented: $showAlert) { () -> Alert in
             Alert(title: Text("Heads Up"),
                   message: Text("Sorry but there has to be an item to add"),
-                  dismissButton: .default(Text("Noted")
-                                            .foregroundColor(.black))
+                  dismissButton: .default(Text("Noted"))
             )
         }
     }
     
-    //MARK: - Functions
+    //MARK: - Function
     private func saveNewEntry() {
+        
+        ///Removes the whitespace and newLines from the item as it messes with how the name is displayed on the ContentView
+        let trimmedItem = self.newShoppingItem.text.trimmingCharacters(in: .whitespacesAndNewlines)
         
         ///There has to be a value within the "itemsToBeAdded" or else nothing will be saved
         if self.newShoppingItem.text == "" {
@@ -104,7 +108,7 @@ struct NewEntryView: View {
         ///Will get the new item and then place it within the CoreData under the attritbute of itemToBeAdded
         let shoppingItemNew = ShoppingItems(context: self.managedObjectContext)
         self.managedObjectContext.performAndWait {
-            shoppingItemNew.itemToBeAdded = self.newShoppingItem.text
+            shoppingItemNew.itemToBeAdded = trimmedItem
             shoppingItemNew.notesOnItem = self.notesOnItem.text
             ///Note: had to explicity state Int16 both here and in the extension of the model
             shoppingItemNew.quantityOfItem = Int16(self.quantityOfItem)
@@ -115,12 +119,13 @@ struct NewEntryView: View {
                            isActive: $isShowingContentView) {
                 EmptyView() }
             
-            ///Will just print the error for the time being should it be unable to save the new entries
+           ///Will save the new entry but if not the user will be notifified that there was an issue saving to to the device
             do {
                 try self.managedObjectContext.save()
             } catch {
                 Alert(title: Text("Unable to save that one"), message: Text("Please try again"), dismissButton: .default(Text("Okay")))
             }
+            
             ///Resets the newShoppingItem back to being blank
             newShoppingItem.text = ""
             notesOnItem.text = ""

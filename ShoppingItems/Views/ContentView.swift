@@ -52,22 +52,17 @@ struct ContentView: View {
                 .navigationBarItems(leading: EditButton(),
                                     trailing: NavigationLink(destination: NewEntryView()
                                                                 .navigationBarTitle("Add Item")
-                                                                .frame(minWidth: 0, idealWidth: 0,
-                                                                       maxWidth: .infinity,
-                                                                       minHeight: 0, idealHeight: 0,
-                                                                       maxHeight: .infinity,
-                                                                       alignment:.center)
+                                                                .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
                                                                 .edgesIgnoringSafeArea(.all)
                                     ){
                                         ///Image of the trailing icon tha leads the user to the map
                                         Image(ContentViewImages.plusImage.rawValue)
                                     })
                 .foregroundColor(.white)
-//                .listRowBackground(Color.init(red: 0.07, green: 0.45, blue: 0.87))
                 .padding(.trailing, 5)
                 .padding(.leading, 5)
-                .padding(.top, 4)
-                .padding(.bottom, 4)
+                .padding(.top, 5)
+                .padding(.bottom, 5)
             }
             ///Removes the split view from iPad versions
             .navigationViewStyle(StackNavigationViewStyle())
@@ -99,14 +94,12 @@ struct ContentView: View {
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().isTranslucent = true
-        UINavigationBar.appearance().tintColor = .clear
+        UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().backgroundColor = .clear
         ///Use this if NavigationBarTitle is with Large Font
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         ///Use this if NavigationBarTitle is with displayMode = .inline
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
-        
-        
     }
 }
 

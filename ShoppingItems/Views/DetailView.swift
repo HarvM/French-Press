@@ -26,20 +26,17 @@ struct DetailView: View {
             ZStack{
                 Color.init(red: 0.07, green: 0.45, blue: 0.87)
                     .edgesIgnoringSafeArea(.all)
-                VStack {
                 Text("\(itemToBeDisplayed.notesOnItem)")
                     .foregroundColor(.white)
-                    .font(.custom("Raleway", size: 25, relativeTo: .headline))
+                    .font(.custom("Cinzel", size: 25, relativeTo: .headline))
                     .padding(.leading, 20)
                     .padding(.trailing, 20)
                     .padding(.top, 20)
                     .padding(.bottom, 20)
                     .allowsTightening(true)
-                }
             }
         }
         .navigationBarTitle("\(itemToBeDisplayed.itemToBeAdded)")
-        .font(.custom("Open Sans", size: 30, relativeTo: .body))
         .navigationBarTitleDisplayMode(.inline)
         .allowsTightening(true)
     }

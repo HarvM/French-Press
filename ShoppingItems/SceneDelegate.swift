@@ -42,7 +42,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.window = window
             
             ///Changes the navigationBarItem on the DetailView and NewEntryView to white
-            window.tintColor = .black
+            window.tintColor = .white
             window.makeKeyAndVisible()
             
         }

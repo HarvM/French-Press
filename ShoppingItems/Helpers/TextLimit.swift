@@ -11,7 +11,6 @@ import Foundation
 class TextLimit: ObservableObject {
     
     ///Ensures that the user's TextField entry cannot exceed the character limit which is further defined in the SaveView for each of the different TextFields
-    @Published var number: Int = 0
     @Published var text = "" {
         didSet {
             if text.count > characterLimit && oldValue.count <= characterLimit {
