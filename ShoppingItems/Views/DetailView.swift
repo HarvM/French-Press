@@ -26,23 +26,27 @@ struct DetailView: View {
             ZStack{
                 Color.init(red: 0.07, green: 0.45, blue: 0.87)
                     .edgesIgnoringSafeArea(.all)
+                VStack {
                 Text("\(itemToBeDisplayed.notesOnItem)")
                     .foregroundColor(.white)
-                    .font(.system(size: 25, weight: .bold, design: .default))
+                    .font(.custom("Raleway", size: 25, relativeTo: .headline))
                     .padding(.leading, 20)
-                    .padding(.top, 50)
+                    .padding(.trailing, 20)
+                    .padding(.top, 20)
+                    .padding(.bottom, 20)
                     .allowsTightening(true)
+                }
             }
         }
-        .navigationBarItems(trailing: Image(DetailViewImages.appIconNavBar.rawValue))
         .navigationBarTitle("\(itemToBeDisplayed.itemToBeAdded)")
-        .navigationBarTitleDisplayMode(.large)
+        .font(.custom("Open Sans", size: 30, relativeTo: .body))
+        .navigationBarTitleDisplayMode(.inline)
         .allowsTightening(true)
     }
 }
 
-//struct DetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-////        DetailView()
-//    }
-//}
+struct DetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        Text("Henlo")
+    }
+}

@@ -38,7 +38,7 @@ struct ContentView: View {
                         ForEach(shoppingItemEntries, id: \.self) {
                             shoppingItemNew in
                             HStack {
-                                ShoppingItemNewView(itemToBeAdded: shoppingItemNew.itemToBeAdded, quantityOfItem: Int(shoppingItemNew.quantityOfItem))
+                                CellView(itemToBeAdded: shoppingItemNew.itemToBeAdded, quantityOfItem: Int(shoppingItemNew.quantityOfItem))
                                 NavigationLink("", destination: DetailView (itemToBeDisplayed: shoppingItemNew))
                             }
                         }

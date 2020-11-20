@@ -1,5 +1,5 @@
 //
-//  ShoppingItemNewView.swift
+//  CellView.swift
 //  ShoppingItems
 //
 //  Created by Marc Harvey on 05/01/2020.
@@ -9,7 +9,7 @@
 import SwiftUI
 
 //This class will deal with the cell creation that will be inserted into the stack in the ContentView class
-struct ShoppingItemNewView: View {
+struct CellView: View {
     
     //MARK: - Properties
     var itemToBeAdded: String = ""
@@ -25,19 +25,15 @@ struct ShoppingItemNewView: View {
                     .padding(-10)
                 VStack (alignment: .leading, spacing: 2) {
                     Text("\(itemToBeAdded)")
-                        .font(Font.system(size: 20, design: .rounded))
-                        .foregroundColor(.yellow)
-                        .frame(height: 40)
-                        .lineLimit(1)
+                        .font(.custom("Merriweather", size: 24, relativeTo: .title))
                         .allowsTightening(true)
                     
-                    Text("Quantity: \(quantityOfItem)")
-                        .font(Font.system(size: 20, design: .rounded))
-                        .foregroundColor(.yellow)
-                        .frame(height: 40)
+                    Text("x \(quantityOfItem)")
+                        .font(.custom("Cinzel", size: 18, relativeTo: .title))
                         .lineLimit(1)
-                        
                 }
+                .foregroundColor(.yellow)
+                .frame(minWidth: 60, idealWidth: 250, maxWidth: 300, minHeight: 30, idealHeight: 40, maxHeight: 45, alignment: .leading)
                 .padding(25)
             }
             .toggleStyle(CheckboxStyle())

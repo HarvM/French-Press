@@ -26,6 +26,7 @@ struct NewEntryView: View {
     @ObservedObject var notesOnItem = TextLimit(limit: 120)
     @State var quantityOfItem: Int = 1
     @State var isShowingContentView = false
+    @State var showAlert = false
     
     //MARK: - Body the UI that will have a Stepper at the top, Save and Back Button, and somewhere to add extra notes too
     var body: some View {
@@ -53,20 +54,19 @@ struct NewEntryView: View {
                         .frame(height: 40)
                         .font(.headline)
                 }
-               
                 
                 //MARK: - TextEditor (Extra Notes) Section
                 Section(header: Text("Extra Notes")
                             .foregroundColor(.yellow)
                 ) {
                     TextEditor( text: $notesOnItem.text)
-                        .frame(height: 120)
+                        .frame(height: 220)
                         .multilineTextAlignment(.leading)
                         .font(.headline)
                 }
                 .foregroundColor(.black)
                 .disableAutocorrection(true)
-                           }
+            }
             .padding(20)
             
             //MARK: - Save Button
@@ -85,10 +85,22 @@ struct NewEntryView: View {
             }
         }
         .background(Color.init(red: 0.07, green: 0.45, blue: 0.87))
+        .alert(isPresented: $showAlert) { () -> Alert in
+            Alert(title: Text("Heads Up"),
+                  message: Text("Sorry but there has to be an item to add"),
+                  dismissButton: .default(Text("Noted")
+                                            .foregroundColor(.black))
+            )
+        }
     }
     
     //MARK: - Functions
     private func saveNewEntry() {
+        
+        ///There has to be a value within the "itemsToBeAdded" or else nothing will be saved
+        if self.newShoppingItem.text == "" {
+            self.showAlert = true
+        } else {
         ///Will get the new item and then place it within the CoreData under the attritbute of itemToBeAdded
         let shoppingItemNew = ShoppingItems(context: self.managedObjectContext)
         self.managedObjectContext.performAndWait {
@@ -112,14 +124,15 @@ struct NewEntryView: View {
             ///Resets the newShoppingItem back to being blank
             newShoppingItem.text = ""
             notesOnItem.text = ""
-//            quantityOfItem = 0
             
             ///Haptic feedback for when the user has tapped on the Add/Plus button
             self.generator.notificationOccurred(.success)
             self.presentationMode.wrappedValue.dismiss()
         }
+        }
     }
 }
+
 
 struct NewEntryView_Previews: PreviewProvider {
     static var previews: some View {
