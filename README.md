@@ -2,7 +2,6 @@ A simple list making app to help ease the stress of going to the supermarket
 
 ## Table of contents
 * [General info](#general-info)
-* [Screenshots](#screenshots)
 * [Technologies](#technologies)
 * [Setup](#setup)
 * [Features](#features)
