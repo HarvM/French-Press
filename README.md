@@ -27,10 +27,7 @@ Click on "Clone or Download" > "Open in XCode" > "Open in XCode" > "Clone" and t
 * MapKit integrationt to allow the user to find their nearest supermarket
 
 ## Future Features
-* A detailView with a Picker that will allow the user to show the quantity of the item they want
-* Have the MKPointsOfInterest show a bit more information about each of the shops such as opening times or rough travel time
 * Allow users across a defined group share their shopping lists
-* Cross check the items on a list with the stock in a store and allow the user to just see or reserve the item for pickup
 * Create a Favourites list to allow easy addition to the list for items that are frequently bought (MLModel or one the user can define their self)
 
 ## Status
