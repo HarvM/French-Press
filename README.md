@@ -13,9 +13,6 @@ A simple list making app to help ease the stress of going to the supermarket
 ## General info
 A simple list making app that allows a user to add and remove items easily and also find their nearest supermarket for when they do need to go shopping.
 
-## Screenshots
-![](ShoppingList.gif)
-
 ## Technologies
 * ShoppingItems - version 1.0
 * XCode version: 12.0 Beta
