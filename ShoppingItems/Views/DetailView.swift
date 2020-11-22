@@ -26,19 +26,22 @@ struct DetailView: View {
             ZStack{
                 Color.init(red: 0.07, green: 0.45, blue: 0.87)
                     .edgesIgnoringSafeArea(.all)
-                Text("\(itemToBeDisplayed.notesOnItem)")
-                    .foregroundColor(.white)
-                    .font(.custom("Cinzel", size: 25, relativeTo: .headline))
-                    .padding(.leading, 20)
-                    .padding(.trailing, 20)
-                    .padding(.top, 20)
-                    .padding(.bottom, 20)
-                    .allowsTightening(true)
+                VStack {
+                    Text ("\(itemToBeDisplayed.itemToBeAdded)")
+                        .font(.custom("Futura", size: 35, relativeTo: .headline))
+                        .lineLimit(2)
+                        .foregroundColor(.yellow)
+                   
+                    Text("\(itemToBeDisplayed.notesOnItem)")
+                        .foregroundColor(.white)
+                        .font(.custom("Futura", size: 25, relativeTo: .headline))
+                        .lineLimit(7)
+                }
+                .multilineTextAlignment(.center)
+                .allowsTightening(true)
+                .minimumScaleFactor(0.5)
             }
         }
-        .navigationBarTitle("\(itemToBeDisplayed.itemToBeAdded)")
-        .navigationBarTitleDisplayMode(.inline)
-        .allowsTightening(true)
     }
 }
 

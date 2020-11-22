@@ -27,7 +27,7 @@ struct NewEntryView: View {
     @State var quantityOfItem: Int = 1
     @State var isShowingContentView = false
     @State var showAlert = false
-        
+    
     //MARK: - Body the UI that will have a Stepper at the top, Save and Back Button, and somewhere to add extra notes too
     var body: some View {
         ZStack{
@@ -43,7 +43,6 @@ struct NewEntryView: View {
                         TextEditor(text: $newShoppingItem.text)
                             .frame (height: 40)
                             .multilineTextAlignment(.leading)
-                            .lineLimit(0)
                     }
                     .font(.headline)
                 }
@@ -77,7 +76,7 @@ struct NewEntryView: View {
                 HStack {
                     Button(action: self.saveNewEntry, label: {
                         Image(DetailViewImages.saveButtonImage.rawValue)
-                            .frame(width: 100, height: 60)
+                            .frame(width: 60, height: 60)
                     })
                     .background(Color.white)
                     .cornerRadius(38.5)
@@ -100,40 +99,41 @@ struct NewEntryView: View {
         
         ///Removes the whitespace and newLines from the item as it messes with how the name is displayed on the ContentView
         let trimmedItem = self.newShoppingItem.text.trimmingCharacters(in: .whitespacesAndNewlines)
+        let trimmedNote = self.notesOnItem.text.trimmingCharacters(in: .whitespacesAndNewlines)
         
         ///There has to be a value within the "itemsToBeAdded" or else nothing will be saved
         if self.newShoppingItem.text == "" {
             self.showAlert = true
         } else {
-        ///Will get the new item and then place it within the CoreData under the attritbute of itemToBeAdded
-        let shoppingItemNew = ShoppingItems(context: self.managedObjectContext)
-        self.managedObjectContext.performAndWait {
-            shoppingItemNew.itemToBeAdded = trimmedItem
-            shoppingItemNew.notesOnItem = self.notesOnItem.text
-            ///Note: had to explicity state Int16 both here and in the extension of the model
-            shoppingItemNew.quantityOfItem = Int16(self.quantityOfItem)
-            self.isShowingContentView = true
-            
-            ///Save button will kick the user back to the ContentView()
-            NavigationLink(destination: ContentView(),
-                           isActive: $isShowingContentView) {
-                EmptyView() }
-            
-           ///Will save the new entry but if not the user will be notifified that there was an issue saving to to the device
-            do {
-                try self.managedObjectContext.save()
-            } catch {
-                Alert(title: Text("Unable to save that one"), message: Text("Please try again"), dismissButton: .default(Text("Okay")))
+            ///Will get the new item and then place it within the CoreData under the attritbute of itemToBeAdded
+            let shoppingItemNew = ShoppingItems(context: self.managedObjectContext)
+            self.managedObjectContext.performAndWait {
+                shoppingItemNew.itemToBeAdded = trimmedItem
+                shoppingItemNew.notesOnItem = trimmedNote
+                ///Note: had to explicity state Int16 both here and in the extension of the model
+                shoppingItemNew.quantityOfItem = Int16(self.quantityOfItem)
+                self.isShowingContentView = true
+                
+                ///Save button will kick the user back to the ContentView()
+                NavigationLink(destination: ContentView(),
+                               isActive: $isShowingContentView) {
+                    EmptyView() }
+                
+                ///Will save the new entry but if not the user will be notifified that there was an issue saving to to the device
+                do {
+                    try self.managedObjectContext.save()
+                } catch {
+                    Alert(title: Text("Unable to save that one"), message: Text("Please try again"), dismissButton: .default(Text("Okay")))
+                }
+                
+                ///Resets the newShoppingItem back to being blank
+                newShoppingItem.text = ""
+                notesOnItem.text = ""
+                
+                ///Haptic feedback for when the user has tapped on the Add/Plus button
+                self.generator.notificationOccurred(.success)
+                self.presentationMode.wrappedValue.dismiss()
             }
-            
-            ///Resets the newShoppingItem back to being blank
-            newShoppingItem.text = ""
-            notesOnItem.text = ""
-            
-            ///Haptic feedback for when the user has tapped on the Add/Plus button
-            self.generator.notificationOccurred(.success)
-            self.presentationMode.wrappedValue.dismiss()
-        }
         }
     }
 }

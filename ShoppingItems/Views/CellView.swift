@@ -22,19 +22,21 @@ struct CellView: View {
             HStack {
                 ///Have a toggle here followed by the item that the user desires
                 Toggle("", isOn: $isChecked).labelsHidden()
-                    .padding(-10)
+                    .padding(-8)
                 VStack (alignment: .leading, spacing: 2) {
                     Text("\(itemToBeAdded)")
-                        .font(.custom("Merriweather", size: 24, relativeTo: .title))
+                        .font(.custom("Futura", size: 24, relativeTo: .title))
                         .allowsTightening(true)
+                        .clipped()
                     
                     Text("x \(quantityOfItem)")
-                        .font(.custom("Cinzel", size: 18, relativeTo: .title))
+                        .font(.custom("Futura", size: 18, relativeTo: .title))
                         .lineLimit(1)
+                        
                 }
                 .foregroundColor(.yellow)
-                .frame(minWidth: 60, idealWidth: 250, maxWidth: 300, minHeight: 30, idealHeight: 40, maxHeight: 45, alignment: .leading)
-                .padding(25)
+                .frame(minWidth: 300, idealWidth: 400, maxWidth: 450, minHeight: 80, idealHeight: 85, maxHeight: 95, alignment: .leading)
+                .padding(15)
             }
             .toggleStyle(CheckboxStyle())
         }
