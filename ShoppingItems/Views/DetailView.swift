@@ -24,22 +24,25 @@ struct DetailView: View {
     var body: some View {
         NavigationView {
             ZStack{
-                Color.init(red: 0.07, green: 0.45, blue: 0.87)
+                Color("backgroundBlue")
                     .edgesIgnoringSafeArea(.all)
                 VStack {
+                    Section {
                     Text ("\(itemToBeDisplayed.itemToBeAdded)")
                         .font(.custom("Futura", size: 35, relativeTo: .headline))
                         .lineLimit(2)
                         .foregroundColor(.yellow)
-                   
+                    }.frame(minWidth: 300, idealWidth: 350, maxWidth: 400, minHeight: 80, idealHeight: 100, maxHeight: 120, alignment: .top)
+                    Section {
                     Text("\(itemToBeDisplayed.notesOnItem)")
                         .foregroundColor(.white)
                         .font(.custom("Futura", size: 25, relativeTo: .headline))
-                        .lineLimit(7)
+                    }.frame(minWidth: 300, idealWidth: 350, maxWidth: 400, minHeight: 600, idealHeight: 700, maxHeight: 800, alignment: .center)
                 }
                 .multilineTextAlignment(.center)
                 .allowsTightening(true)
                 .minimumScaleFactor(0.5)
+                .padding(.top, 20)
             }
         }
     }

@@ -28,11 +28,9 @@ struct CellView: View {
                         .font(.custom("Futura", size: 24, relativeTo: .title))
                         .allowsTightening(true)
                         .clipped()
-                    
                     Text("x \(quantityOfItem)")
                         .font(.custom("Futura", size: 18, relativeTo: .title))
                         .lineLimit(1)
-                        
                 }
                 .foregroundColor(.yellow)
                 .frame(minWidth: 300, idealWidth: 400, maxWidth: 450, minHeight: 80, idealHeight: 85, maxHeight: 95, alignment: .leading)

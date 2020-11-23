@@ -12,6 +12,7 @@ import CoreData
 ///Image that is used for the floating save button
 enum DetailViewImages: String {
     case saveButtonImage = "plusIcon" ///Will take user to the ContentView
+    case sorryShrug = "🤷🏻‍♂️"
 }
 
 ///View that will let the user select the amount of the item they want and also add any notes that they need
@@ -23,15 +24,19 @@ struct NewEntryView: View {
     let characterEntryLimit = 60
     let generator = UINotificationFeedbackGenerator()
     @ObservedObject var newShoppingItem = TextLimit(limit: 30)
-    @ObservedObject var notesOnItem = TextLimit(limit: 120)
+    @ObservedObject var notesOnItem = TextLimit(limit: 60)
     @State var quantityOfItem: Int = 1
     @State var isShowingContentView = false
     @State var showAlert = false
     
+    //add feature where the user's input into the notesOnItem would get the weight and then not display the quantityOfItem on the ContentView
+    //Hpw to search through string: two different vars attack the String with one pulling numbers ("6"/"six") and the other quantities ("ml"/"kg"/etc) and then match them off based off the quantity selected
+    //Feels more elegant than having another data entry point for the user to endure
+    
     //MARK: - Body the UI that will have a Stepper at the top, Save and Back Button, and somewhere to add extra notes too
     var body: some View {
         ZStack{
-            Color.init(red: 0.07, green: 0.45, blue: 0.87)
+            Color("backgroundDefault")
                 .edgesIgnoringSafeArea(.all)
             Form {
                 //MARK: - TextEditor - Item entry (Main) section
@@ -66,7 +71,6 @@ struct NewEntryView: View {
                         .font(.headline)
                 }
                 .foregroundColor(.black)
-                .disableAutocorrection(true)
             }
             .padding(20)
             
@@ -85,7 +89,7 @@ struct NewEntryView: View {
                 }
             }
         }
-        .background(Color.init(red: 0.07, green: 0.45, blue: 0.87))
+        .background(Color("backgroundDefault"))
         .alert(isPresented: $showAlert) { () -> Alert in
             Alert(title: Text("Heads Up"),
                   message: Text("Sorry but there has to be an item to add"),
@@ -114,16 +118,11 @@ struct NewEntryView: View {
                 shoppingItemNew.quantityOfItem = Int16(self.quantityOfItem)
                 self.isShowingContentView = true
                 
-                ///Save button will kick the user back to the ContentView()
-                NavigationLink(destination: ContentView(),
-                               isActive: $isShowingContentView) {
-                    EmptyView() }
-                
                 ///Will save the new entry but if not the user will be notifified that there was an issue saving to to the device
                 do {
                     try self.managedObjectContext.save()
                 } catch {
-                    Alert(title: Text("Unable to save that one"), message: Text("Please try again"), dismissButton: .default(Text("Okay")))
+                    Alert(title: Text("Sorry \(DetailViewImages.sorryShrug.rawValue)"), message: Text("Please try again"), dismissButton: .default(Text("Okay")))
                 }
                 
                 ///Resets the newShoppingItem back to being blank

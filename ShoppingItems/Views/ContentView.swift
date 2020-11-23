@@ -19,6 +19,7 @@ struct ContentView: View {
     let generator = UINotificationFeedbackGenerator()
     @Environment (\.managedObjectContext) var managedObjectContext
     @Environment (\.presentationMode) var presentationMode
+    @Environment(\.colorScheme) var colorScheme
     @FetchRequest(entity: ShoppingItems.entity(), sortDescriptors:[
         NSSortDescriptor(keyPath: \ShoppingItems.itemToBeAdded, ascending: true),
         NSSortDescriptor(keyPath: \ShoppingItems.notesOnItem, ascending: true),
@@ -30,7 +31,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack{
-                Color.init(red: 0.07, green: 0.45, blue: 0.87)
+                Color("backgroundDefault")
                     .edgesIgnoringSafeArea(.all)
                 List {
                     //MARK: - HStack that deals with how the cells are displayed and populated
@@ -45,7 +46,7 @@ struct ContentView: View {
                         .onDelete(perform: self.deleteItem)
                     }
                     .listStyle(PlainListStyle())
-                    .listRowBackground(Color.init(red: 0.07, green: 0.45, blue: 0.87))
+                    .listRowBackground(Color("backgroundDefault"))
                 }
                 
                 //MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list, the trailing launches MapView
@@ -85,8 +86,8 @@ struct ContentView: View {
     }
     
     init() {
-        ///Setting the empty/potential cells to the desired blue colour
-        UITableView.appearance().backgroundColor = .init(red: 0.07, green: 0.45, blue: 0.87, alpha: 1)
+        ///Setting the empty/potential cells to the desired colour
+        UITableView.appearance().backgroundColor = UIColor(Color("backgroundDefault"))
         UITableView.appearance().separatorInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
         ///For the unpopulated cells: the separators will be clear
         UITableView.appearance().separatorColor = .clear
