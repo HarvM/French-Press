@@ -1,4 +1,4 @@
-#ShoppingItems
+# ShoppingList
 Why tweak the Post-It
 
 ## Table of contents
