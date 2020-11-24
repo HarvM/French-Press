@@ -32,12 +32,14 @@ struct DetailView: View {
                         .font(.custom("Futura", size: 35, relativeTo: .headline))
                         .lineLimit(2)
                         .foregroundColor(.yellow)
-                    }.frame(minWidth: 300, idealWidth: 350, maxWidth: 400, minHeight: 80, idealHeight: 100, maxHeight: 120, alignment: .top)
+                    }
+                    .frame(minWidth: 300, idealWidth: 350, maxWidth: 400, minHeight: 80, idealHeight: 100, maxHeight: 120, alignment: .top)
                     Section {
                     Text("\(itemToBeDisplayed.notesOnItem)")
                         .foregroundColor(.white)
                         .font(.custom("Futura", size: 25, relativeTo: .headline))
-                    }.frame(minWidth: 300, idealWidth: 350, maxWidth: 400, minHeight: 600, idealHeight: 700, maxHeight: 800, alignment: .center)
+                    }
+                    .frame(minWidth: 300, idealWidth: 350, maxWidth: 400, minHeight: 600, idealHeight: 700, maxHeight: 800, alignment: .center)
                 }
                 .multilineTextAlignment(.center)
                 .allowsTightening(true)

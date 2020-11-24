@@ -25,12 +25,15 @@ struct NewEntryView: View {
     let generator = UINotificationFeedbackGenerator()
     @ObservedObject var newShoppingItem = TextLimit(limit: 30)
     @ObservedObject var notesOnItem = TextLimit(limit: 60)
+    @ObservedObject var quantitySelected = TextLimit(limit: 6)
     @State var quantityOfItem: Int = 1
     @State var isShowingContentView = false
     @State var showAlert = false
+    @State var selectedMeasurement = 0
+    let measurementFound = ["Liters", "Pints","Grams","Kilograms","Packs"]
     
     //add feature where the user's input into the notesOnItem would get the weight and then not display the quantityOfItem on the ContentView
-    //Hpw to search through string: two different vars attack the String with one pulling numbers ("6"/"six") and the other quantities ("ml"/"kg"/etc) and then match them off based off the quantity selected
+    //How to search through string: two different vars attack the String with one pulling numbers ("6"/"six") and the other quantities ("ml"/"kg"/etc) and then match them off based off the quantity selected
     //Feels more elegant than having another data entry point for the user to endure
     
     //MARK: - Body the UI that will have a Stepper at the top, Save and Back Button, and somewhere to add extra notes too
@@ -48,6 +51,10 @@ struct NewEntryView: View {
                         TextEditor(text: $newShoppingItem.text)
                             .frame (height: 40)
                             .multilineTextAlignment(.leading)
+                        ///Will display the number of characters already typed and the limit
+                        Text("\(self.newShoppingItem.text.count)|30")
+                            .font(.custom("Futura", size: 14, relativeTo: .headline))
+                            .foregroundColor(.gray)
                     }
                     .font(.headline)
                 }
@@ -55,22 +62,36 @@ struct NewEntryView: View {
                 //MARK: - Stepper Section
                 Section (header: Text("How Many Would You Like?")
                             .foregroundColor(.yellow)) {
-                    Stepper ("Quantity: \(quantityOfItem)",
-                             value: $quantityOfItem, in: 1...70)
-                        .frame(height: 40)
-                        .font(.headline)
+                    VStack {
+                        Picker(selection: $selectedMeasurement, label: Text("")) {
+                            ForEach(0 ..< measurementFound.count) {
+                                Text(self.measurementFound[$0])
+                                    .frame(height: 40)
+                            }
+                        }
+                        TextEditor(text: $quantitySelected.text)
+                            .frame (height: 40)
+                            .multilineTextAlignment(.leading)
+                            .keyboardType(.numberPad)
+                    }
                 }
                 
                 //MARK: - TextEditor (Extra Notes) Section
                 Section(header: Text("Extra Notes")
                             .foregroundColor(.yellow)
-                ) {
-                    TextEditor( text: $notesOnItem.text)
-                        .frame(height: 220)
-                        .multilineTextAlignment(.leading)
-                        .font(.headline)
+                ){
+                    HStack {
+                        TextEditor( text: $notesOnItem.text)
+                            .frame(height: 220)
+                            .multilineTextAlignment(.leading)
+                            .font(.headline)
+                        Spacer()
+                        ///Will display the number of characters already typed and the limit
+                        Text("\(self.notesOnItem.text.count)|60")
+                            .font(.custom("Futura", size: 14, relativeTo: .headline))
+                            .foregroundColor(.gray)
+                    }
                 }
-                .foregroundColor(.black)
             }
             .padding(20)
             
@@ -104,21 +125,23 @@ struct NewEntryView: View {
         ///Removes the whitespace and newLines from the item as it messes with how the name is displayed on the ContentView
         let trimmedItem = self.newShoppingItem.text.trimmingCharacters(in: .whitespacesAndNewlines)
         let trimmedNote = self.notesOnItem.text.trimmingCharacters(in: .whitespacesAndNewlines)
-        
+        let trimmedQuantity = self.quantitySelected.text.trimmingCharacters(in: .whitespacesAndNewlines)
+    
         ///There has to be a value within the "itemsToBeAdded" or else nothing will be saved
         if self.newShoppingItem.text == "" {
             self.showAlert = true
-        } else {
-            ///Will get the new item and then place it within the CoreData under the attritbute of itemToBeAdded
+        }
+        else {
+            ///Will get the new item and then place it within the CoreData under the attribute of itemToBeAdded
             let shoppingItemNew = ShoppingItems(context: self.managedObjectContext)
             self.managedObjectContext.performAndWait {
                 shoppingItemNew.itemToBeAdded = trimmedItem
                 shoppingItemNew.notesOnItem = trimmedNote
-                ///Note: had to explicity state Int16 both here and in the extension of the model
-                shoppingItemNew.quantityOfItem = Int16(self.quantityOfItem)
+                shoppingItemNew.quantitySelected = trimmedQuantity
+                shoppingItemNew.selectedMeasurement = Int16(self.selectedMeasurement)
                 self.isShowingContentView = true
                 
-                ///Will save the new entry but if not the user will be notifified that there was an issue saving to to the device
+                ///Will save the new entry but if not the user will be notified that there was an issue saving to to the device
                 do {
                     try self.managedObjectContext.save()
                 } catch {

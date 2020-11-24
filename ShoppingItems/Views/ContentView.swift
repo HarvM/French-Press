@@ -23,7 +23,8 @@ struct ContentView: View {
     @FetchRequest(entity: ShoppingItems.entity(), sortDescriptors:[
         NSSortDescriptor(keyPath: \ShoppingItems.itemToBeAdded, ascending: true),
         NSSortDescriptor(keyPath: \ShoppingItems.notesOnItem, ascending: true),
-        NSSortDescriptor(keyPath: \ShoppingItems.quantityOfItem, ascending: true)
+        NSSortDescriptor(keyPath: \ShoppingItems.selectedMeasurement, ascending: true),
+        NSSortDescriptor(keyPath: \ShoppingItems.quantitySelected, ascending: true)
     ])
     var shoppingItemEntries: FetchedResults<ShoppingItems>
     
@@ -39,7 +40,7 @@ struct ContentView: View {
                         ForEach(shoppingItemEntries, id: \.self) {
                             shoppingItemNew in
                             HStack {
-                                CellView(itemToBeAdded: shoppingItemNew.itemToBeAdded, quantityOfItem: Int(shoppingItemNew.quantityOfItem))
+                                CellView(itemToBeAdded: shoppingItemNew.itemToBeAdded, selectedMeasurement: Int(shoppingItemNew.selectedMeasurement), quantitySelected: shoppingItemNew.quantitySelected)
                                 NavigationLink("", destination: DetailView (itemToBeDisplayed: shoppingItemNew))
                             }
                         }
