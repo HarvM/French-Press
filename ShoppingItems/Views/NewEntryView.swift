@@ -15,6 +15,10 @@ enum DetailViewImages: String {
     case sorryShrug = "🤷🏻‍♂️"
 }
 
+enum Data: String {
+    case
+}
+
 ///View that will let the user select the amount of the item they want and also add any notes that they need
 struct NewEntryView: View {
     
@@ -30,7 +34,7 @@ struct NewEntryView: View {
     @State var isShowingContentView = false
     @State var showAlert = false
     @State var selectedMeasurement = 0
-    let measurementFound = ["Liters", "Pints","Grams","Kilograms","Packs"]
+    let measurementFound = ["packs"," liters", "pints","grams","kilograms","wee bags", "punnet", "bottles", "thingys", "doodaahs", "jars", "packets"]
     
     //add feature where the user's input into the notesOnItem would get the weight and then not display the quantityOfItem on the ContentView
     //How to search through string: two different vars attack the String with one pulling numbers ("6"/"six") and the other quantities ("ml"/"kg"/etc) and then match them off based off the quantity selected
@@ -63,17 +67,19 @@ struct NewEntryView: View {
                 Section (header: Text("How Many Would You Like?")
                             .foregroundColor(.yellow)) {
                     VStack {
+                        TextField("Type quantity here",text: $quantitySelected.text)
+                            .frame (height: 40)
+                            .multilineTextAlignment(.leading)
+                            .keyboardType(.numberPad)
+                        
+                    }
                         Picker(selection: $selectedMeasurement, label: Text("")) {
                             ForEach(0 ..< measurementFound.count) {
                                 Text(self.measurementFound[$0])
                                     .frame(height: 40)
                             }
                         }
-                        TextEditor(text: $quantitySelected.text)
-                            .frame (height: 40)
-                            .multilineTextAlignment(.leading)
-                            .keyboardType(.numberPad)
-                    }
+                       
                 }
                 
                 //MARK: - TextEditor (Extra Notes) Section
@@ -126,7 +132,9 @@ struct NewEntryView: View {
         let trimmedItem = self.newShoppingItem.text.trimmingCharacters(in: .whitespacesAndNewlines)
         let trimmedNote = self.notesOnItem.text.trimmingCharacters(in: .whitespacesAndNewlines)
         let trimmedQuantity = self.quantitySelected.text.trimmingCharacters(in: .whitespacesAndNewlines)
-    
+        let chosenMeasurement = self.measurementFound[self.selectedMeasurement]
+        print("Here you go: \(chosenMeasurement)")
+        
         ///There has to be a value within the "itemsToBeAdded" or else nothing will be saved
         if self.newShoppingItem.text == "" {
             self.showAlert = true
@@ -138,7 +146,8 @@ struct NewEntryView: View {
                 shoppingItemNew.itemToBeAdded = trimmedItem
                 shoppingItemNew.notesOnItem = trimmedNote
                 shoppingItemNew.quantitySelected = trimmedQuantity
-                shoppingItemNew.selectedMeasurement = Int16(self.selectedMeasurement)
+                shoppingItemNew.preferredMeasurement = chosenMeasurement
+                //                shoppingItemNew.selectedMeasurement = Int16(self.selectedMeasurement)
                 self.isShowingContentView = true
                 
                 ///Will save the new entry but if not the user will be notified that there was an issue saving to to the device

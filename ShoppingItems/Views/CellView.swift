@@ -13,8 +13,8 @@ struct CellView: View {
     
     //MARK: - Properties
     var itemToBeAdded: String = ""
-    var selectedMeasurement: Int
     var quantitySelected: String = ""
+    var preferredMeasurement: String = ""
     @State var isChecked = false
     
     //MARK: - View
@@ -29,7 +29,7 @@ struct CellView: View {
                         .font(.custom("Futura", size: 24, relativeTo: .title))
                         .allowsTightening(true)
                         .clipped()
-                    Text("\(quantitySelected)\(selectedMeasurement)")
+                    Text("\(quantitySelected) \(preferredMeasurement)")
                         .font(.custom("Futura", size: 18, relativeTo: .title))
                         .lineLimit(1)
                 }
