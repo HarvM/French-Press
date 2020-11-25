@@ -1,9 +1,9 @@
-A simple list making app to help ease the stress of going to the supermarket
+# ShoppingList
+Why tweak the Post-It
 
 ## Table of contents
 * [General info](#general-info)
 * [Technologies](#technologies)
-* [Setup](#setup)
 * [Features](#features)
 * [Status](#status)
 * [Inspiration](#inspiration)
@@ -16,9 +16,6 @@ A simple list making app that allows a user to add and remove items easily and a
 * ShoppingItems - version 1.0
 * XCode version: 12.0 Beta
 * iOS: 14.0 with iPhone 11 Pro (simulator) and iPhone X (device)
-
-## Setup
-Click on "Clone or Download" > "Open in XCode" > "Open in XCode" > "Clone" and then wait for the project to clone into XCode OR "Download Zip" > unzip the file > open the folder > double-click on the ShoppingItems.xcodeproj > open in XCode
 
 ## Features
 * Easily add items using the text entry field
