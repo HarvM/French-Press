@@ -32,6 +32,7 @@ struct CellView: View {
                     Text("\(quantitySelected) \(preferredMeasurement)")
                         .font(.custom("Futura", size: 18, relativeTo: .title))
                         .lineLimit(1)
+                        .textCase(.lowercase)
                 }
                 .foregroundColor(.yellow)
                 .frame(minWidth: 300, idealWidth: 400, maxWidth: 450, minHeight: 80, idealHeight: 85, maxHeight: 95, alignment: .leading)

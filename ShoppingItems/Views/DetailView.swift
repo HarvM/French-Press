@@ -10,8 +10,9 @@ import SwiftUI
 
 struct DetailView: View {
     
-    enum DetailViewImages: String {
-        case appIconNavBar = "appHeader"
+    //Using the Futura font 
+    enum CustomFont: String {
+        case futuraFont = "Futura"
     }
     
     //MARK: - Properties
@@ -29,17 +30,17 @@ struct DetailView: View {
                 VStack {
                     Section {
                     Text ("\(itemToBeDisplayed.itemToBeAdded)")
-                        .font(.custom("Futura", size: 35, relativeTo: .headline))
+                        .font(.custom(CustomFont.futuraFont.rawValue, size: 35, relativeTo: .headline))
                         .lineLimit(2)
                         .foregroundColor(.yellow)
                     }
-                    .frame(minWidth: 300, idealWidth: 350, maxWidth: 400, minHeight: 80, idealHeight: 100, maxHeight: 120, alignment: .top)
+                    .frame(minWidth: 200, idealWidth: 350, maxWidth: 400, minHeight: 80, idealHeight: 100, maxHeight: 120, alignment: .top)
                     Section {
                     Text("\(itemToBeDisplayed.notesOnItem)")
                         .foregroundColor(.white)
-                        .font(.custom("Futura", size: 25, relativeTo: .headline))
+                        .font(.custom(CustomFont.futuraFont.rawValue, size: 25, relativeTo: .headline))
                     }
-                    .frame(minWidth: 300, idealWidth: 350, maxWidth: 400, minHeight: 600, idealHeight: 700, maxHeight: 800, alignment: .center)
+                    .frame(minWidth: 200, idealWidth: 350, maxWidth: 400, minHeight: 400, idealHeight: 700, maxHeight: 800, alignment: .center)
                 }
                 .multilineTextAlignment(.center)
                 .allowsTightening(true)
@@ -49,6 +50,10 @@ struct DetailView: View {
         }
     }
 }
+
+//Keyboard: stop the keyboard from hiding the final TextField on smaller devices.
+//The singular/plural of the words - I'd like something a bit cleaner
+//Nightmode: still super weird and wrong when in the "day" view so needs adjusted. Weirdly doesn't conform to the colour asset
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {

@@ -14,9 +14,14 @@ enum DetailViewImages: String {
     case saveButtonImage = "plusIcon" ///Will take user to the ContentView
     case sorryShrug = "🤷🏻‍♂️"
 }
+///Will hold the array of measurement options that the user can use for their shopping
+//enum Data: String {
+//    case
+//}
 
-enum Data: String {
-    case
+//Using the Futura font
+enum CustomFontDetailView: String {
+    case futuraFont = "Futura"
 }
 
 ///View that will let the user select the amount of the item they want and also add any notes that they need
@@ -25,20 +30,14 @@ struct NewEntryView: View {
     //MARK: - Properties
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode
-    let characterEntryLimit = 60
     let generator = UINotificationFeedbackGenerator()
     @ObservedObject var newShoppingItem = TextLimit(limit: 30)
     @ObservedObject var notesOnItem = TextLimit(limit: 60)
-    @ObservedObject var quantitySelected = TextLimit(limit: 6)
-    @State var quantityOfItem: Int = 1
+    @ObservedObject var quantitySelected = TextLimit(limit: 8)
     @State var isShowingContentView = false
     @State var showAlert = false
     @State var selectedMeasurement = 0
-    let measurementFound = ["packs"," liters", "pints","grams","kilograms","wee bags", "punnet", "bottles", "thingys", "doodaahs", "jars", "packets"]
-    
-    //add feature where the user's input into the notesOnItem would get the weight and then not display the quantityOfItem on the ContentView
-    //How to search through string: two different vars attack the String with one pulling numbers ("6"/"six") and the other quantities ("ml"/"kg"/etc) and then match them off based off the quantity selected
-    //Feels more elegant than having another data entry point for the user to endure
+    let measurementFound = ["pack/s", "Liter/s", "pint/s", "gram/s", "Kilogram/s", "wee bag/s", "punnet/s", "bottle/s", "thingy/s", "doodaah/s", "jar/s", "packet/s", "bunch/es", "box/es", "crate/s", "keg/s", "tub/s", "tin/s"]
     
     //MARK: - Body the UI that will have a Stepper at the top, Save and Back Button, and somewhere to add extra notes too
     var body: some View {
@@ -57,7 +56,7 @@ struct NewEntryView: View {
                             .multilineTextAlignment(.leading)
                         ///Will display the number of characters already typed and the limit
                         Text("\(self.newShoppingItem.text.count)|30")
-                            .font(.custom("Futura", size: 14, relativeTo: .headline))
+                            .font(.custom(CustomFontDetailView.futuraFont.rawValue, size: 14, relativeTo: .headline))
                             .foregroundColor(.gray)
                     }
                     .font(.headline)
@@ -70,7 +69,7 @@ struct NewEntryView: View {
                         TextField("Type quantity here",text: $quantitySelected.text)
                             .frame (height: 40)
                             .multilineTextAlignment(.leading)
-                            .keyboardType(.numberPad)
+                            .keyboardType(.decimalPad)
                         
                     }
                         Picker(selection: $selectedMeasurement, label: Text("")) {
@@ -94,7 +93,7 @@ struct NewEntryView: View {
                         Spacer()
                         ///Will display the number of characters already typed and the limit
                         Text("\(self.notesOnItem.text.count)|60")
-                            .font(.custom("Futura", size: 14, relativeTo: .headline))
+                            .font(.custom(CustomFontDetailView.futuraFont.rawValue, size: 14, relativeTo: .headline))
                             .foregroundColor(.gray)
                     }
                 }
@@ -118,9 +117,9 @@ struct NewEntryView: View {
         }
         .background(Color("backgroundDefault"))
         .alert(isPresented: $showAlert) { () -> Alert in
-            Alert(title: Text("Heads Up"),
-                  message: Text("Sorry but there has to be an item to add"),
-                  dismissButton: .default(Text("Noted"))
+            Alert(title: Text("Sorry"),
+                  message: Text("There has to be an item to add"),
+                  dismissButton: .default(Text("Okay"))
             )
         }
     }
@@ -133,7 +132,6 @@ struct NewEntryView: View {
         let trimmedNote = self.notesOnItem.text.trimmingCharacters(in: .whitespacesAndNewlines)
         let trimmedQuantity = self.quantitySelected.text.trimmingCharacters(in: .whitespacesAndNewlines)
         let chosenMeasurement = self.measurementFound[self.selectedMeasurement]
-        print("Here you go: \(chosenMeasurement)")
         
         ///There has to be a value within the "itemsToBeAdded" or else nothing will be saved
         if self.newShoppingItem.text == "" {
