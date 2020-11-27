@@ -32,7 +32,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack{
-                Color("backgroundDefault")
+                Color("twoFace")
                     .edgesIgnoringSafeArea(.all)
                 List {
                     //MARK: - HStack that deals with how the cells are displayed and populated
@@ -48,7 +48,7 @@ struct ContentView: View {
                         .onDelete(perform: self.deleteItem)
                     }
                     .listStyle(PlainListStyle())
-                    .listRowBackground(Color("backgroundDefault"))
+                    .listRowBackground(Color("twoFace"))
                 }
                 
                 //MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list, the trailing launches MapView
@@ -77,7 +77,6 @@ struct ContentView: View {
     }
     
     //MARK: - Delete Item Function
-    
     private func deleteItem(at indexSet: IndexSet) {
         ///When the user wants to delete a cell, the index of the selected cell is found and then removed
         let deleteItem = self.shoppingItemEntries[indexSet.first!]
@@ -89,7 +88,7 @@ struct ContentView: View {
     
     init() {
         ///Setting the empty/potential cells to the desired colour
-        UITableView.appearance().backgroundColor = UIColor(Color("backgroundDefault"))
+        UITableView.appearance().backgroundColor = UIColor(Color("twoFace"))
         UITableView.appearance().separatorInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
         ///For the unpopulated cells: the separators will be clear
         UITableView.appearance().separatorColor = .clear

@@ -42,7 +42,7 @@ struct NewEntryView: View {
     //MARK: - Body the UI that will have a Stepper at the top, Save and Back Button, and somewhere to add extra notes too
     var body: some View {
         ZStack{
-            Color("backgroundDefault")
+            Color("twoFace")
                 .edgesIgnoringSafeArea(.all)
             Form {
                 //MARK: - TextEditor - Item entry (Main) section
@@ -78,7 +78,6 @@ struct NewEntryView: View {
                                     .frame(height: 40)
                             }
                         }
-                       
                 }
                 
                 //MARK: - TextEditor (Extra Notes) Section
@@ -99,7 +98,7 @@ struct NewEntryView: View {
                 }
             }
             .padding(20)
-            
+
             //MARK: - Save Button
             VStack {
                 Spacer()
@@ -115,7 +114,8 @@ struct NewEntryView: View {
                 }
             }
         }
-        .background(Color("backgroundDefault"))
+        
+        .background(Color("twoFace"))
         .alert(isPresented: $showAlert) { () -> Alert in
             Alert(title: Text("Sorry"),
                   message: Text("There has to be an item to add"),
@@ -145,7 +145,6 @@ struct NewEntryView: View {
                 shoppingItemNew.notesOnItem = trimmedNote
                 shoppingItemNew.quantitySelected = trimmedQuantity
                 shoppingItemNew.preferredMeasurement = chosenMeasurement
-                //                shoppingItemNew.selectedMeasurement = Int16(self.selectedMeasurement)
                 self.isShowingContentView = true
                 
                 ///Will save the new entry but if not the user will be notified that there was an issue saving to to the device

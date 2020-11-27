@@ -25,7 +25,7 @@ struct DetailView: View {
     var body: some View {
         NavigationView {
             ZStack{
-                Color("backgroundBlue")
+                Color("twoFace")
                     .edgesIgnoringSafeArea(.all)
                 VStack {
                     Section {

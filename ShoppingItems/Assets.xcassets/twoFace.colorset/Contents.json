@@ -16,9 +16,21 @@
       "appearances" : [
         {
           "appearance" : "luminosity",
-          "value" : "light"
+          "value" : "dark"
         }
       ],
+      "color" : {
+        "color-space" : "srgb",
+        "components" : {
+          "alpha" : "1.000",
+          "blue" : "0.000",
+          "green" : "0.000",
+          "red" : "0.007"
+        }
+      },
+      "idiom" : "universal"
+    },
+    {
       "color" : {
         "color-space" : "srgb",
         "components" : {
@@ -28,7 +40,7 @@
           "red" : "0.007"
         }
       },
-      "idiom" : "universal"
+      "idiom" : "iphone"
     },
     {
       "appearances" : [
@@ -46,7 +58,7 @@
           "red" : "0.007"
         }
       },
-      "idiom" : "universal"
+      "idiom" : "iphone"
     }
   ],
   "info" : {
