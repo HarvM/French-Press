@@ -23,6 +23,7 @@ struct DetailView: View {
     
     //MARK: - Body of the view
     var body: some View {
+        
         NavigationView {
             ZStack{
                 Color("twoFace")

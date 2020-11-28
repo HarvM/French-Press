@@ -14,10 +14,12 @@ enum DetailViewImages: String {
     case saveButtonImage = "plusIcon" ///Will take user to the ContentView
     case sorryShrug = "🤷🏻‍♂️"
 }
-///Will hold the array of measurement options that the user can use for their shopping
-//enum Data: String {
-//    case
-//}
+//Will hold the array of measurement options that the user can use for their shopping
+enum Data: String { //MAKE THIS "CaseIterable
+    
+    case pack, litre, pint,
+         //         "Data.allCases.count" etc for dealing with how everything is handled in the Picker
+}
 
 //Using the Futura font
 enum CustomFontDetailView: String {
@@ -37,7 +39,7 @@ struct NewEntryView: View {
     @State var isShowingContentView = false
     @State var showAlert = false
     @State var selectedMeasurement = 0
-    let measurementFound = ["pack/s", "Liter/s", "pint/s", "gram/s", "Kilogram/s", "wee bag/s", "punnet/s", "bottle/s", "thingy/s", "doodaah/s", "jar/s", "packet/s", "bunch/es", "box/es", "crate/s", "keg/s", "tub/s", "tin/s"]
+    let measurementFound = ["pack", "litre", "pint", "gram", "kilogram", "wee bag", "tin", "bottle", "jar", "bunch", "box", "thingy", "crate", "keg", "tub", "punnet"]
     
     //MARK: - Body the UI that will have a Stepper at the top, Save and Back Button, and somewhere to add extra notes too
     var body: some View {
@@ -70,14 +72,14 @@ struct NewEntryView: View {
                             .frame (height: 40)
                             .multilineTextAlignment(.leading)
                             .keyboardType(.decimalPad)
-                        
                     }
-                        Picker(selection: $selectedMeasurement, label: Text("")) {
-                            ForEach(0 ..< measurementFound.count) {
-                                Text(self.measurementFound[$0])
-                                    .frame(height: 40)
-                            }
+                    Picker(selection: $selectedMeasurement, label: Text("")) {
+                        ForEach(0 ..< measurementFound.count) {
+                            Text(self.measurementFound[$0])
+                                .frame(height: 40)
                         }
+                    }
+                    .pickerStyle(DefaultPickerStyle())
                 }
                 
                 //MARK: - TextEditor (Extra Notes) Section
@@ -98,7 +100,7 @@ struct NewEntryView: View {
                 }
             }
             .padding(20)
-
+            
             //MARK: - Save Button
             VStack {
                 Spacer()

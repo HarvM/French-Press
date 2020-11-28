@@ -87,6 +87,7 @@ struct ContentView: View {
     }
     
     init() {
+        UIPickerView.appearance().backgroundColor = UIColor(Color("twoFace"))
         ///Setting the empty/potential cells to the desired colour
         UITableView.appearance().backgroundColor = UIColor(Color("twoFace"))
         UITableView.appearance().separatorInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
