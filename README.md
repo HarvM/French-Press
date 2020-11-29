@@ -10,7 +10,7 @@ Why tweak the Post-It
 * [Contact](#contact)
 
 ## General info
-A simple list making app that allows a user to add and remove items easily and also find their nearest supermarket for when they do need to go shopping.
+At the start of lockdown, going to Tesco felt like going over the trenches so I wanted to make something simple that my parents could use to help make things a little less stressful for them. I had noticed that they were continually heading out with a slip of paper/the back of an envelope/some ripped from something important and wanted to change that. 
 
 ## Technologies
 * ShoppingItems - version 1.0
