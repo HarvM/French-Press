@@ -21,8 +21,8 @@
 		49267E042560B2160075798F /* ShoppingItemsMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49267E032560B2160075798F /* ShoppingItemsMain.swift */; };
 		493B3A96253BD31200CAF0F9 /* NewEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493B3A95253BD31200CAF0F9 /* NewEntryView.swift */; };
 		494682DE256B46CE0088BC51 /* ColourExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494682DD256B46CE0088BC51 /* ColourExtension.swift */; };
-		49697E762570976B00E86DD0 /* KeyboardResponseModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49697E752570976A00E86DD0 /* KeyboardResponseModifier.swift */; };
 		49697E7E2570AB9000E86DD0 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49697E7D2570AB9000E86DD0 /* PickerView.swift */; };
+		49768FC225730BCF00B93AC1 /* AdaptsToKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49768FC125730BCF00B93AC1 /* AdaptsToKeyboard.swift */; };
 		498B43092559F15500734F40 /* CheckboxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498B43082559F15400734F40 /* CheckboxStyle.swift */; };
 		49968CA22565897200725D4A /* ShoppingItems.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49968CA02565897200725D4A /* ShoppingItems.xcdatamodeld */; };
 		499C66A9256743AE00EDD614 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499C66A8256743AE00EDD614 /* DetailView.swift */; };
@@ -69,8 +69,8 @@
 		49267E032560B2160075798F /* ShoppingItemsMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemsMain.swift; sourceTree = "<group>"; };
 		493B3A95253BD31200CAF0F9 /* NewEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryView.swift; sourceTree = "<group>"; };
 		494682DD256B46CE0088BC51 /* ColourExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourExtension.swift; sourceTree = "<group>"; };
-		49697E752570976A00E86DD0 /* KeyboardResponseModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponseModifier.swift; sourceTree = "<group>"; };
 		49697E7D2570AB9000E86DD0 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
+		49768FC125730BCF00B93AC1 /* AdaptsToKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptsToKeyboard.swift; sourceTree = "<group>"; };
 		498B43082559F15400734F40 /* CheckboxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxStyle.swift; sourceTree = "<group>"; };
 		49968CA12565897200725D4A /* ShoppingItems.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShoppingItems.xcdatamodel; sourceTree = "<group>"; };
 		499C66A8256743AE00EDD614 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
@@ -107,6 +107,7 @@
 		491D794523C11D1700B537EB = {
 			isa = PBXGroup;
 			children = (
+				49768FC125730BCF00B93AC1 /* AdaptsToKeyboard.swift */,
 				491D798423C11EB400B537EB /* ShoppingItems.swift */,
 				49267E032560B2160075798F /* ShoppingItemsMain.swift */,
 				491D795023C11D1700B537EB /* ShoppingItems */,
@@ -195,7 +196,6 @@
 		49FF1F0C255C852500C1BBAF /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				49697E752570976A00E86DD0 /* KeyboardResponseModifier.swift */,
 				49C85B5F254780E400A9C901 /* TextLimit.swift */,
 				494682DD256B46CE0088BC51 /* ColourExtension.swift */,
 			);
@@ -336,12 +336,12 @@
 			files = (
 				498B43092559F15500734F40 /* CheckboxStyle.swift in Sources */,
 				491D798723C1EAA800B537EB /* CellView.swift in Sources */,
+				49768FC225730BCF00B93AC1 /* AdaptsToKeyboard.swift in Sources */,
 				499C66A9256743AE00EDD614 /* DetailView.swift in Sources */,
 				49F146CF244623870053A5A0 /* MultiGestureRecogniser.swift in Sources */,
 				49697E7E2570AB9000E86DD0 /* PickerView.swift in Sources */,
 				491D795223C11D1700B537EB /* AppDelegate.swift in Sources */,
 				49F935002473295C00690DE5 /* Placemark.swift in Sources */,
-				49697E762570976B00E86DD0 /* KeyboardResponseModifier.swift in Sources */,
 				491D795923C11D1700B537EB /* ContentView.swift in Sources */,
 				49C85B60254780E400A9C901 /* TextLimit.swift in Sources */,
 				49267E042560B2160075798F /* ShoppingItemsMain.swift in Sources */,

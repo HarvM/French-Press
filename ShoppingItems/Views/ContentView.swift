@@ -35,7 +35,7 @@ struct ContentView: View {
                 Color("twoFace")
                     .edgesIgnoringSafeArea(.all)
                 List {
-                    //MARK: - HStack that deals with how the cells are displayed and populated
+                    //MARK: - HStack: how the cells are displayed and populated
                     Section () {
                         ForEach(shoppingItemEntries, id: \.self) {
                             shoppingItemNew in
@@ -60,6 +60,9 @@ struct ContentView: View {
                                     ){
                                         ///Image of the trailing icon tha leads the user to the map
                                         Image(ContentViewImages.plusImage.rawValue)
+                                            .background(Color.white)
+                                            .cornerRadius(38.5)
+                                            .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
                                     })
                 .foregroundColor(.white)
                 .padding(.trailing, 5)
@@ -88,6 +91,7 @@ struct ContentView: View {
     
     init() {
         UIPickerView.appearance().backgroundColor = UIColor(Color("twoFace"))
+        UIPickerView.appearance().tintColor = UIColor(Color("twoFace"))
         ///Setting the empty/potential cells to the desired colour
         UITableView.appearance().backgroundColor = UIColor(Color("twoFace"))
         UITableView.appearance().separatorInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
