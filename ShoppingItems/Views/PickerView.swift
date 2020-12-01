@@ -1,21 +1,31 @@
+////
+////  PickerView.swift
+////  ShoppingItems
+////
+////  Created by Marc Harvey on 27/11/2020.
+////  Copyright © 2020 Marc Harvey. All rights reserved.
+////
 //
-//  PickerView.swift
-//  ShoppingItems
+//import SwiftUI
 //
-//  Created by Marc Harvey on 27/11/2020.
-//  Copyright © 2020 Marc Harvey. All rights reserved.
+//struct PickerView: View {
+//    @State var selectedMeasurement = 0
+//    let measurementFound = ["pack", "litre", "pint/s", "gram", "kilogram", "millilitre", "wee bag/s", "tin/s", "bottle/s", "jar/s", "bunch/es", "box/es", "crate/s", "keg/s", "tub/s", "punnet/s"]
+//    var body: some View {
+//        Picker(selection: $selectedMeasurement, label: Text("").background(Color("defaultBackground"))) {
+//            ForEach(0 ..< measurementFound.count) {
+//                Text(self.measurementFound[$0])
+//                    .frame(height: 40)
+//            }
+//            .font(.custom(CustomFontDetailView.futuraFont.rawValue, size: 14, relativeTo: .headline))
+//            
+//        }
+//        .pickerStyle(DefaultPickerStyle())
+//    }
+//}
 //
-
-import SwiftUI
-
-struct PickerView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-struct PickerView_Previews: PreviewProvider {
-    static var previews: some View {
-        PickerView()
-    }
-}
+//struct PickerView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PickerView()
+//    }
+//}

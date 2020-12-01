@@ -35,17 +35,16 @@ struct NewEntryView: View {
     let generator = UINotificationFeedbackGenerator()
     @ObservedObject var newShoppingItem = TextLimit(limit: 30)
     @ObservedObject var notesOnItem = TextLimit(limit: 30)
-    @ObservedObject var quantitySelected = TextLimit(limit: 8)
+    @ObservedObject var quantitySelected = TextLimit(limit: 6)
     @State var isShowingContentView = false
     @State var showAlert = false
     @State var selectedMeasurement = 0
-    @State var value: CGFloat = 0
-    let measurementFound = ["pack", "litre", "pint/s", "gram", "kilogram", "millilitre", "wee bag/s", "tin/s", "bottle/s", "jar/s", "bunch/es", "box/es", "crate/s", "keg/s", "tub/s", "punnet/s"]
+    let measurementFound = ["pack", "litre", "pint", "gram", "kilogram", "millilitre", "wee bag", "tin", "bottle", "jar", "crate", "keg", "tub", "punnet"]
     
     //MARK: - Body the UI that will have a Stepper at the top, Save and Back Button, and somewhere to add extra notes too
     var body: some View {
         ZStack{
-            Color("twoFace")
+            Color("defaultBackground")
                 .edgesIgnoringSafeArea(.all)
             Form {
                 //MARK: - TextEditor - Item entry (Main) section
@@ -76,7 +75,10 @@ struct NewEntryView: View {
                             .keyboardType(.decimalPad)
                             .font(.custom(CustomFontDetailView.futuraFont.rawValue, size: 14, relativeTo: .headline))
                     }
-                    Picker(selection: $selectedMeasurement, label: Text("")) {
+                    Picker(selection: $selectedMeasurement, label: Text("")
+                            .listStyle(PlainListStyle())
+                            .listRowBackground(Color("defaultBackground"))
+                    ) {
                         ForEach(0 ..< measurementFound.count) {
                             Text(self.measurementFound[$0])
                                 .frame(height: 40)
@@ -84,6 +86,7 @@ struct NewEntryView: View {
                         .font(.custom(CustomFontDetailView.futuraFont.rawValue, size: 14, relativeTo: .headline))
                     }
                     .pickerStyle(DefaultPickerStyle())
+                    .foregroundColor(.black)
                 }
                 
                 //MARK: - TextEditor (Extra Notes) Section
@@ -105,24 +108,33 @@ struct NewEntryView: View {
                     }
                 }
             }
+            ///Getting this to work was a fucking nightmare. Found something useful for a TextField but done sweet FA on a TextEditor
+            ///Uses the AdaptsToKeyboard struct to bump the screen up when the user brings up the keyboard
+            .modifier(AdaptsToKeyboard())
             .padding(20)
-            .navigationBarItems(trailing: Button(action: self.saveNewEntry, label: {
-                Image(DetailViewImages.saveButtonImage.rawValue)
-            })
-            .background(Color.white)
-            .cornerRadius(38.5)
-            .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3))
+            
+            //MARK: - Save Button
+            VStack {
+                Spacer()
+                HStack {
+                    Button(action: self.saveNewEntry, label: {
+                        Image(DetailViewImages.saveButtonImage.rawValue)
+                            .frame(width: 80, height: 80)
+                    })
+                    .background(Color.white)
+                    .cornerRadius(38.5)
+                    .padding(.bottom, 30)
+                    .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
+                }
+            }
         }
-        .background(Color("twoFace"))
+        .background(Color("defaultBackground"))
         .alert(isPresented: $showAlert) { () -> Alert in
             Alert(title: Text("Sorry"),
                   message: Text("There has to be an item to add"),
                   dismissButton: .default(Text("Okay"))
             )
         }
-        ///Getting this to work was a fucking nightmare. Found something useful for a TextField but done sweet FA on a TextEditor
-        ///Uses the AdaptsToKeyboard struct to bump the screen up when the user brings up the keyboard
-        .modifier(AdaptsToKeyboard())
     }
     
     

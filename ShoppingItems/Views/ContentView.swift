@@ -32,7 +32,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack{
-                Color("twoFace")
+                Color("defaultBackground")
                     .edgesIgnoringSafeArea(.all)
                 List {
                     //MARK: - HStack: how the cells are displayed and populated
@@ -48,7 +48,7 @@ struct ContentView: View {
                         .onDelete(perform: self.deleteItem)
                     }
                     .listStyle(PlainListStyle())
-                    .listRowBackground(Color("twoFace"))
+                    .listRowBackground(Color("defaultBackground"))
                 }
                 
                 //MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list, the trailing launches MapView
@@ -90,10 +90,11 @@ struct ContentView: View {
     }
     
     init() {
-        UIPickerView.appearance().backgroundColor = UIColor(Color("twoFace"))
-        UIPickerView.appearance().tintColor = UIColor(Color("twoFace"))
+        UIListContentView.appearance().backgroundColor = UIColor(Color("defaultBackground"))
+        UIPickerView.appearance().backgroundColor = UIColor(Color("defaultBackground"))
+        UIPickerView.appearance().tintColor = UIColor(Color("defaultBackground"))
         ///Setting the empty/potential cells to the desired colour
-        UITableView.appearance().backgroundColor = UIColor(Color("twoFace"))
+        UITableView.appearance().backgroundColor = UIColor(Color("defaultBackground"))
         UITableView.appearance().separatorInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
         ///For the unpopulated cells: the separators will be clear
         UITableView.appearance().separatorColor = .clear
@@ -107,6 +108,7 @@ struct ContentView: View {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         ///Use this if NavigationBarTitle is with displayMode = .inline
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
+        
     }
 }
 

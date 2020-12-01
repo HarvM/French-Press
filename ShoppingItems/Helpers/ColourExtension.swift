@@ -10,9 +10,9 @@ import SwiftUI
 
 extension Color {
     static var tableViewBackground: Color {
-        Color("twoFace")
+        Color("defaultBackground")
     }
     static var backgroundDefault: Color {
-        Color("twoFace")
+        Color("defaultBackground")
     }
 }

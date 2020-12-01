@@ -107,7 +107,6 @@
 		491D794523C11D1700B537EB = {
 			isa = PBXGroup;
 			children = (
-				49768FC125730BCF00B93AC1 /* AdaptsToKeyboard.swift */,
 				491D798423C11EB400B537EB /* ShoppingItems.swift */,
 				49267E032560B2160075798F /* ShoppingItemsMain.swift */,
 				491D795023C11D1700B537EB /* ShoppingItems */,
@@ -197,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				49C85B5F254780E400A9C901 /* TextLimit.swift */,
+				49768FC125730BCF00B93AC1 /* AdaptsToKeyboard.swift */,
 				494682DD256B46CE0088BC51 /* ColourExtension.swift */,
 			);
 			path = Helpers;

@@ -26,13 +26,13 @@ struct DetailView: View {
         
         NavigationView {
             ZStack{
-                Color("twoFace")
+                Color("defaultBackground")
                     .edgesIgnoringSafeArea(.all)
                 VStack {
                     Section {
                     Text ("\(itemToBeDisplayed.itemToBeAdded)")
                         .font(.custom(CustomFont.futuraFont.rawValue, size: 35, relativeTo: .headline))
-                        .lineLimit(2)
+                        .lineLimit(3)
                         .foregroundColor(.yellow)
                     }
                     .frame(minWidth: 200, idealWidth: 350, maxWidth: 400, minHeight: 80, idealHeight: 100, maxHeight: 120, alignment: .top)
@@ -45,16 +45,12 @@ struct DetailView: View {
                 }
                 .multilineTextAlignment(.center)
                 .allowsTightening(true)
-                .minimumScaleFactor(0.5)
+                .minimumScaleFactor(0.9)
                 .padding(.top, 20)
             }
         }
     }
 }
-
-//Keyboard: stop the keyboard from hiding the final TextField on smaller devices.
-//The singular/plural of the words - I'd like something a bit cleaner
-//Nightmode: still super weird and wrong when in the "day" view so needs adjusted. Weirdly doesn't conform to the colour asset
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
