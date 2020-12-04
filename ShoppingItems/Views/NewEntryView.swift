@@ -40,7 +40,7 @@ struct NewEntryView: View {
     @State var showAlert = false
     @State var selectedMeasurement = 0
     let measurementFound = ["pack", "litre", "pint", "gram", "kilogram", "millilitre", "wee bag", "tin", "bottle", "jar", "crate", "keg", "tub", "punnet"]
-    
+
     //MARK: - Body the UI that will have a Stepper at the top, Save and Back Button, and somewhere to add extra notes too
     var body: some View {
         ZStack{
@@ -56,10 +56,10 @@ struct NewEntryView: View {
                         TextField("Type the item here", text: $newShoppingItem.text)
                             .frame (height: 40)
                             .multilineTextAlignment(.leading)
-                            .font(.custom(CustomFontDetailView.futuraFont.rawValue, size: 14, relativeTo: .headline))
+                            .font(.custom(CustomFontDetailView.futuraFont.rawValue, size: 16, relativeTo: .headline))
                         ///Will display the number of characters already typed and the limit
                         Text("\(self.newShoppingItem.text.count)|30")
-                            .font(.custom(CustomFontDetailView.futuraFont.rawValue, size: 14, relativeTo: .headline))
+                            .font(.custom(CustomFontDetailView.futuraFont.rawValue, size: 16, relativeTo: .headline))
                             .foregroundColor(.gray)
                     }
                     .font(.headline)
@@ -73,20 +73,19 @@ struct NewEntryView: View {
                             .frame (height: 40)
                             .multilineTextAlignment(.leading)
                             .keyboardType(.decimalPad)
-                            .font(.custom(CustomFontDetailView.futuraFont.rawValue, size: 14, relativeTo: .headline))
+                            .font(.custom(CustomFontDetailView.futuraFont.rawValue, size: 16, relativeTo: .headline))
                     }
                     Picker(selection: $selectedMeasurement, label: Text("")
-                            .listStyle(PlainListStyle())
-                            .listRowBackground(Color("defaultBackground"))
                     ) {
+                        
                         ForEach(0 ..< measurementFound.count) {
                             Text(self.measurementFound[$0])
                                 .frame(height: 40)
                         }
-                        .font(.custom(CustomFontDetailView.futuraFont.rawValue, size: 14, relativeTo: .headline))
+                        .font(.custom(CustomFontDetailView.futuraFont.rawValue, size: 16, relativeTo: .headline))
                     }
                     .pickerStyle(DefaultPickerStyle())
-                    .foregroundColor(.black)
+                    .foregroundColor(.red)
                 }
                 
                 //MARK: - TextEditor (Extra Notes) Section
@@ -98,12 +97,12 @@ struct NewEntryView: View {
                         TextField("Type here", text: $notesOnItem.text)
                             .frame(height: 50)
                             .multilineTextAlignment(.leading)
-                            .font(.custom(CustomFontDetailView.futuraFont.rawValue, size: 14, relativeTo: .headline))
+                            .font(.custom(CustomFontDetailView.futuraFont.rawValue, size: 16, relativeTo: .headline))
                         
                         Spacer()
                         ///Will display the number of characters already typed and the limit
                         Text("\(self.notesOnItem.text.count)|30")
-                            .font(.custom(CustomFontDetailView.futuraFont.rawValue, size: 14, relativeTo: .headline))
+                            .font(.custom(CustomFontDetailView.futuraFont.rawValue, size: 16, relativeTo: .headline))
                             .foregroundColor(.gray)
                     }
                 }
@@ -132,7 +131,8 @@ struct NewEntryView: View {
         .alert(isPresented: $showAlert) { () -> Alert in
             Alert(title: Text("Sorry"),
                   message: Text("There has to be an item to add"),
-                  dismissButton: .default(Text("Okay"))
+                  dismissButton: .default(Text("👍🏼"))
+                  ///Bit tacky using the thumbs up but with the colour across the app being white with the init, it couldn't be changed here (tried .foregroundColour)
             )
         }
     }
@@ -141,40 +141,42 @@ struct NewEntryView: View {
     //MARK: - Function (saves the user's item [iten name, quantity, measurement, and extra notes]
     
     private func saveNewEntry() {
-        ///Removes the whitespace and newLines from the item as it messes with how the name is displayed on the ContentView
-        let trimmedItem = self.newShoppingItem.text.trimmingCharacters(in: .whitespacesAndNewlines)
-        let trimmedNote = self.notesOnItem.text.trimmingCharacters(in: .whitespacesAndNewlines)
-        let trimmedQuantity = self.quantitySelected.text.trimmingCharacters(in: .whitespacesAndNewlines)
-        let chosenMeasurement = self.measurementFound[self.selectedMeasurement]
-        
-        ///There has to be a value within the "itemsToBeAdded" or else nothing will be saved
-        if self.newShoppingItem.text == "" {
-            self.showAlert = true
-        }
-        else {
-            ///Will get the new item and then place it within the CoreData under the attribute of itemToBeAdded
-            let shoppingItemNew = ShoppingItems(context: self.managedObjectContext)
-            self.managedObjectContext.performAndWait {
-                shoppingItemNew.itemToBeAdded = trimmedItem
-                shoppingItemNew.notesOnItem = trimmedNote
-                shoppingItemNew.quantitySelected = trimmedQuantity
-                shoppingItemNew.preferredMeasurement = chosenMeasurement
-                self.isShowingContentView = true
-                
-                ///Will save the new entry but if not the user will be notified that there was an issue saving to to the device
-                do {
-                    try self.managedObjectContext.save()
-                } catch {
-                    Alert(title: Text("Sorry \(DetailViewImages.sorryShrug.rawValue)"), message: Text("Please try again"), dismissButton: .default(Text("Okay")))
+        DispatchQueue.main.async {
+            ///Removes the whitespace and newLines from the item as it messes with how the name is displayed on the ContentView
+            let trimmedItem = self.newShoppingItem.text.trimmingCharacters(in: .whitespacesAndNewlines)
+            let trimmedNote = self.notesOnItem.text.trimmingCharacters(in: .whitespacesAndNewlines)
+            let trimmedQuantity = self.quantitySelected.text.trimmingCharacters(in: .whitespacesAndNewlines)
+            let chosenMeasurement = self.measurementFound[self.selectedMeasurement]
+            
+            ///There has to be a value within the "itemsToBeAdded" or else nothing will be saved
+            if self.newShoppingItem.text == "" {
+                self.showAlert = true
+            }
+            else {
+                ///Will get the new item and then place it within the CoreData under the attribute of itemToBeAdded
+                let shoppingItemNew = ShoppingItems(context: self.managedObjectContext)
+                self.managedObjectContext.performAndWait {
+                    shoppingItemNew.itemToBeAdded = trimmedItem
+                    shoppingItemNew.notesOnItem = trimmedNote
+                    shoppingItemNew.quantitySelected = trimmedQuantity
+                    shoppingItemNew.preferredMeasurement = chosenMeasurement
+                    self.isShowingContentView = true
+                    
+                    ///Will save the new entry but if not the user will be notified that there was an issue saving to to the device
+                    do {
+                        try self.managedObjectContext.save()
+                    } catch {
+                        Alert(title: Text("Sorry \(DetailViewImages.sorryShrug.rawValue)"), message: Text("Please try again"), dismissButton: .default(Text("Okay")))
+                    }
+                    
+                    ///Resets the newShoppingItem back to being blank
+                    newShoppingItem.text = ""
+                    notesOnItem.text = ""
+                    
+                    ///Haptic feedback for when the user has tapped on the Add/Plus button
+                    self.generator.notificationOccurred(.success)
+                    self.presentationMode.wrappedValue.dismiss()
                 }
-                
-                ///Resets the newShoppingItem back to being blank
-                newShoppingItem.text = ""
-                notesOnItem.text = ""
-                
-                ///Haptic feedback for when the user has tapped on the Add/Plus button
-                self.generator.notificationOccurred(.success)
-                self.presentationMode.wrappedValue.dismiss()
             }
         }
     }

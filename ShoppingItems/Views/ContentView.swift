@@ -81,21 +81,25 @@ struct ContentView: View {
     
     //MARK: - Delete Item Function
     private func deleteItem(at indexSet: IndexSet) {
+        DispatchQueue.main.async {
         ///When the user wants to delete a cell, the index of the selected cell is found and then removed
         let deleteItem = self.shoppingItemEntries[indexSet.first!]
         self.managedObjectContext.delete(deleteItem)
         
         ///Haptic feedback for when the user taps on Delete
         self.generator.notificationOccurred(.error)
+        }
     }
     
     init() {
+        ///Below is various attempts at getting the from from the Picker to display a different background colour
         UIListContentView.appearance().backgroundColor = UIColor(Color("defaultBackground"))
         UIPickerView.appearance().backgroundColor = UIColor(Color("defaultBackground"))
         UIPickerView.appearance().tintColor = UIColor(Color("defaultBackground"))
         ///Setting the empty/potential cells to the desired colour
         UITableView.appearance().backgroundColor = UIColor(Color("defaultBackground"))
         UITableView.appearance().separatorInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
+        UITableViewCell.appearance().backgroundColor = .blue
         ///For the unpopulated cells: the separators will be clear
         UITableView.appearance().separatorColor = .clear
         ///The NavigationBar had a white tint over it after moving the title to .inline but below addresses this and keeps the desired blue
