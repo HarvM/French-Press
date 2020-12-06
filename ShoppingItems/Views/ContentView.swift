@@ -14,7 +14,6 @@ enum ContentViewImages: String {
 }
 
 struct ContentView: View {
-    
     //MARK: - Properties
     let generator = UINotificationFeedbackGenerator()
     @Environment (\.managedObjectContext) var managedObjectContext
@@ -60,7 +59,7 @@ struct ContentView: View {
                                     ){
                                         ///Image of the trailing icon tha leads the user to the map
                                         Image(ContentViewImages.plusImage.rawValue)
-                                            .background(Color.white)
+                                            .frame(width: 35, height: 35)
                                             .cornerRadius(38.5)
                                             .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
                                     })

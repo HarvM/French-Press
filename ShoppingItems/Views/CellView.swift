@@ -28,10 +28,12 @@ struct CellView: View {
                 Toggle("", isOn: $isChecked).labelsHidden()
                     .padding(-8)
                 VStack (alignment: .leading, spacing: 2) {
+                    ///Header: name of the item the user has selected
                     Text("\(itemToBeAdded)")
                         .font(.custom("Futura", size: 24, relativeTo: .title))
                         .allowsTightening(true)
                         .clipped()
+                    ///Notes on the item that has been selected
                     Text("\(quantitySelected) \(preferredMeasurement)\(finalOutput)")
                         .font(.custom("Futura", size: 18, relativeTo: .title))
                         .lineLimit(1)
@@ -51,8 +53,7 @@ struct CellView: View {
         ///Will look into changing the quantity at the NewEntryView to a float to allow a range between 0 and 1.9 instead
         ///Finally seen that it was worth using a @State instead for the finalOutput
         if quantitySelected == "1" {
-            print("Do nothing")
-            //Future: 0...<1.9
+            print("Singular")
         } else {
             finalOutput = self.multipleItems
         }

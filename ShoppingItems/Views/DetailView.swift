@@ -10,7 +10,7 @@ import SwiftUI
 
 struct DetailView: View {
     
-    //Using the Futura font 
+    ///The Futura font 
     enum CustomFont: String {
         case futuraFont = "Futura"
     }

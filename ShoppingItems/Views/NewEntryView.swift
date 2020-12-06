@@ -14,12 +14,6 @@ enum DetailViewImages: String {
     case saveButtonImage = "plusIcon" ///Will take user to the ContentView
     case sorryShrug = "🤷🏻‍♂️"
 }
-//Will hold the array of measurement options that the user can use for their shopping
-//enum Data: String { //MAKE THIS "CaseIterable
-//    
-//    case pack, litre, pint,
-//         //         "Data.allCases.count" etc for dealing with how everything is handled in the Picker
-//}
 
 //Using the Futura font
 enum CustomFontDetailView: String {
@@ -34,14 +28,14 @@ struct NewEntryView: View {
     @Environment(\.presentationMode) var presentationMode
     let generator = UINotificationFeedbackGenerator()
     @ObservedObject var newShoppingItem = TextLimit(limit: 30)
-    @ObservedObject var notesOnItem = TextLimit(limit: 30)
+    @ObservedObject var notesOnItem = TextLimit(limit: 40)
     @ObservedObject var quantitySelected = TextLimit(limit: 6)
     @State var isShowingContentView = false
     @State var showAlert = false
     @State var selectedMeasurement = 0
-    let measurementFound = ["pack", "litre", "pint", "gram", "kilogram", "millilitre", "wee bag", "tin", "bottle", "jar", "crate", "keg", "tub", "punnet"]
+    let measurementFound = ["pack", "litre", "pint", "gram", "kilogram", "millilitre", "wee bag", "big bag", "tin", "bottle", "jar", "crate", "multipack", "keg", "tub", "roll", "tube", "punnet", "thingy"]
 
-    //MARK: - Body the UI that will have a Stepper at the top, Save and Back Button, and somewhere to add extra notes too
+    //MARK: - Body the UI that will have a Form (Item Entry, Stepper, and Notes) and a Save Button (bottom of the screen)
     var body: some View {
         ZStack{
             Color("defaultBackground")
@@ -101,7 +95,7 @@ struct NewEntryView: View {
                         
                         Spacer()
                         ///Will display the number of characters already typed and the limit
-                        Text("\(self.notesOnItem.text.count)|30")
+                        Text("\(self.notesOnItem.text.count)|40")
                             .font(.custom(CustomFontDetailView.futuraFont.rawValue, size: 16, relativeTo: .headline))
                             .foregroundColor(.gray)
                     }
@@ -118,7 +112,7 @@ struct NewEntryView: View {
                 HStack {
                     Button(action: self.saveNewEntry, label: {
                         Image(DetailViewImages.saveButtonImage.rawValue)
-                            .frame(width: 80, height: 80)
+                            .frame(width: 60, height: 60)
                     })
                     .background(Color.white)
                     .cornerRadius(38.5)
