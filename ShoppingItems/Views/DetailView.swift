@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import SpriteKit
 
 struct DetailView: View {
     
@@ -20,10 +21,19 @@ struct DetailView: View {
     @Environment(\.presentationMode) var presentationMode
     let itemToBeDisplayed: ShoppingItems
     @State private var hasData = false
+    @State private var displayGame = false
+    
+    ///Setting up the GameScene
+    var scene: SKScene {
+        let scene = GameScene()
+        scene.size = CGSize(width: 100, height: 100)
+        scene.scaleMode = .fill
+        
+        return scene
+    }
     
     //MARK: - Body of the view
     var body: some View {
-        
         NavigationView {
             ZStack{
                 Color("defaultBackground")
@@ -47,7 +57,20 @@ struct DetailView: View {
                 .allowsTightening(true)
                 .minimumScaleFactor(0.9)
                 .padding(.top, 20)
+                .onAppear(perform: startFidgetGame)
             }
+        }
+    }
+    private func startFidgetGame() {
+        if itemToBeDisplayed.notesOnItem == "" {
+           ///Display the game
+            SpriteView(scene: scene)
+                .frame(width: 100, height: 100, alignment: .center)
+                .edgesIgnoringSafeArea(.all)
+            print("Trying to display the game")
+        } else {
+            ///Do nothing
+            print("Keeping it normmal")
         }
     }
 }

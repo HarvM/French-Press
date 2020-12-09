@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		491AD0B7258079CC006151E8 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491AD0B6258079CC006151E8 /* GameScene.swift */; };
 		491D795223C11D1700B537EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D795123C11D1700B537EB /* AppDelegate.swift */; };
 		491D795423C11D1700B537EB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D795323C11D1700B537EB /* SceneDelegate.swift */; };
 		491D795923C11D1700B537EB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D795823C11D1700B537EB /* ContentView.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		491AD0B6258079CC006151E8 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		491D794E23C11D1700B537EB /* Yer Messages.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yer Messages.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		491D795123C11D1700B537EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		491D795323C11D1700B537EB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 		491D794523C11D1700B537EB = {
 			isa = PBXGroup;
 			children = (
+				491AD0B6258079CC006151E8 /* GameScene.swift */,
 				491D798423C11EB400B537EB /* ShoppingItems.swift */,
 				49267E032560B2160075798F /* ShoppingItemsMain.swift */,
 				491D795023C11D1700B537EB /* ShoppingItems */,
@@ -325,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				498B43092559F15500734F40 /* CheckboxStyle.swift in Sources */,
+				491AD0B7258079CC006151E8 /* GameScene.swift in Sources */,
 				491D798723C1EAA800B537EB /* CellView.swift in Sources */,
 				49768FC225730BCF00B93AC1 /* AdaptsToKeyboard.swift in Sources */,
 				499C66A9256743AE00EDD614 /* DetailView.swift in Sources */,
