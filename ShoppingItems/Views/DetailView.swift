@@ -70,7 +70,7 @@ struct DetailView: View {
             print("Trying to display the game")
         } else {
             ///Do nothing
-            print("Keeping it normmal")
+            print("Keeping it normal")
         }
     }
 }
