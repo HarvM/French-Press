@@ -8,17 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		491AD0B7258079CC006151E8 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491AD0B6258079CC006151E8 /* GameScene.swift */; };
-		491AD0BF2582D194006151E8 /* WatchConnectivityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491AD0BE2582D194006151E8 /* WatchConnectivityProvider.swift */; };
-		491AD0C925831A97006151E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 491AD0C825831A97006151E8 /* Assets.xcassets */; };
-		491AD0D025831A98006151E8 /* WatchYerMessages Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 491AD0CF25831A98006151E8 /* WatchYerMessages Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		491AD0D525831A98006151E8 /* ShoppingItemsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491AD0D425831A98006151E8 /* ShoppingItemsApp.swift */; };
-		491AD0D725831A98006151E8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491AD0D625831A98006151E8 /* ContentView.swift */; };
-		491AD0D925831A98006151E8 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491AD0D825831A98006151E8 /* NotificationController.swift */; };
-		491AD0DB25831A98006151E8 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491AD0DA25831A98006151E8 /* NotificationView.swift */; };
-		491AD0DD25831A98006151E8 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491AD0DC25831A98006151E8 /* ComplicationController.swift */; };
-		491AD0DF25831A98006151E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 491AD0DE25831A98006151E8 /* Assets.xcassets */; };
-		491AD0E225831A99006151E8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 491AD0E125831A99006151E8 /* Preview Assets.xcassets */; };
-		491AD0E725831A99006151E8 /* WatchYerMessages.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 491AD0C625831A95006151E8 /* WatchYerMessages.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		491D795223C11D1700B537EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D795123C11D1700B537EB /* AppDelegate.swift */; };
 		491D795423C11D1700B537EB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D795323C11D1700B537EB /* SceneDelegate.swift */; };
 		491D795923C11D1700B537EB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D795823C11D1700B537EB /* ContentView.swift */; };
@@ -36,25 +25,12 @@
 		498B43092559F15500734F40 /* CheckboxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498B43082559F15400734F40 /* CheckboxStyle.swift */; };
 		49968CA22565897200725D4A /* ShoppingItems.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49968CA02565897200725D4A /* ShoppingItems.xcdatamodeld */; };
 		499C66A9256743AE00EDD614 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499C66A8256743AE00EDD614 /* DetailView.swift */; };
+		49A33A1825846D9C0007F48C /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A33A1725846D9C0007F48C /* GameView.swift */; };
 		49C85B60254780E400A9C901 /* TextLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C85B5F254780E400A9C901 /* TextLimit.swift */; };
 		49F146CF244623870053A5A0 /* MultiGestureRecogniser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F146CE244623870053A5A0 /* MultiGestureRecogniser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		491AD0D125831A98006151E8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 491D794623C11D1700B537EB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 491AD0CE25831A98006151E8;
-			remoteInfo = "WatchYerMessages Extension";
-		};
-		491AD0E525831A99006151E8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 491D794623C11D1700B537EB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 491AD0C525831A95006151E8;
-			remoteInfo = WatchYerMessages;
-		};
 		491D796823C11D1800B537EB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 491D794623C11D1700B537EB /* Project object */;
@@ -72,24 +48,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		491AD0EB25831A99006151E8 /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				491AD0D025831A98006151E8 /* WatchYerMessages Extension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		491AD0EF25831A99006151E8 /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				491AD0E725831A99006151E8 /* WatchYerMessages.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -98,20 +62,6 @@
 
 /* Begin PBXFileReference section */
 		491AD0B6258079CC006151E8 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		491AD0BE2582D194006151E8 /* WatchConnectivityProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityProvider.swift; sourceTree = "<group>"; };
-		491AD0C625831A95006151E8 /* WatchYerMessages.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchYerMessages.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		491AD0C825831A97006151E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		491AD0CA25831A97006151E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		491AD0CF25831A98006151E8 /* WatchYerMessages Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "WatchYerMessages Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		491AD0D425831A98006151E8 /* ShoppingItemsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemsApp.swift; sourceTree = "<group>"; };
-		491AD0D625831A98006151E8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		491AD0D825831A98006151E8 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
-		491AD0DA25831A98006151E8 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
-		491AD0DC25831A98006151E8 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
-		491AD0DE25831A98006151E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		491AD0E125831A99006151E8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		491AD0E325831A99006151E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		491AD0E425831A99006151E8 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		491D794E23C11D1700B537EB /* Yer Messages.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yer Messages.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		491D795123C11D1700B537EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		491D795323C11D1700B537EB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,18 +85,12 @@
 		498B43082559F15400734F40 /* CheckboxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxStyle.swift; sourceTree = "<group>"; };
 		49968CA12565897200725D4A /* ShoppingItems.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShoppingItems.xcdatamodel; sourceTree = "<group>"; };
 		499C66A8256743AE00EDD614 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		49A33A1725846D9C0007F48C /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		49C85B5F254780E400A9C901 /* TextLimit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLimit.swift; sourceTree = "<group>"; };
 		49F146CE244623870053A5A0 /* MultiGestureRecogniser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiGestureRecogniser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		491AD0CC25831A98006151E8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		491D794B23C11D1700B537EB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -171,59 +115,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		491AD0C32582D198006151E8 /* Watch */ = {
-			isa = PBXGroup;
-			children = (
-				491AD0BE2582D194006151E8 /* WatchConnectivityProvider.swift */,
-			);
-			path = Watch;
-			sourceTree = "<group>";
-		};
-		491AD0C725831A95006151E8 /* WatchYerMessages */ = {
-			isa = PBXGroup;
-			children = (
-				491AD0C825831A97006151E8 /* Assets.xcassets */,
-				491AD0CA25831A97006151E8 /* Info.plist */,
-			);
-			path = WatchYerMessages;
-			sourceTree = "<group>";
-		};
-		491AD0D325831A98006151E8 /* WatchYerMessages Extension */ = {
-			isa = PBXGroup;
-			children = (
-				491AD0D425831A98006151E8 /* ShoppingItemsApp.swift */,
-				491AD0D625831A98006151E8 /* ContentView.swift */,
-				491AD0D825831A98006151E8 /* NotificationController.swift */,
-				491AD0DA25831A98006151E8 /* NotificationView.swift */,
-				491AD0DC25831A98006151E8 /* ComplicationController.swift */,
-				491AD0DE25831A98006151E8 /* Assets.xcassets */,
-				491AD0E325831A99006151E8 /* Info.plist */,
-				491AD0E425831A99006151E8 /* PushNotificationPayload.apns */,
-				491AD0E025831A99006151E8 /* Preview Content */,
-			);
-			path = "WatchYerMessages Extension";
-			sourceTree = "<group>";
-		};
-		491AD0E025831A99006151E8 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				491AD0E125831A99006151E8 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
 		491D794523C11D1700B537EB = {
 			isa = PBXGroup;
 			children = (
-				491AD0C32582D198006151E8 /* Watch */,
-				491AD0B6258079CC006151E8 /* GameScene.swift */,
+				49A33A1725846D9C0007F48C /* GameView.swift */,
 				491D798423C11EB400B537EB /* ShoppingItems.swift */,
+				491AD0B6258079CC006151E8 /* GameScene.swift */,
 				49267E032560B2160075798F /* ShoppingItemsMain.swift */,
 				491D795023C11D1700B537EB /* ShoppingItems */,
 				491D796A23C11D1800B537EB /* ShoppingItemsTests */,
 				491D797523C11D1800B537EB /* ShoppingItemsUITests */,
-				491AD0C725831A95006151E8 /* WatchYerMessages */,
-				491AD0D325831A98006151E8 /* WatchYerMessages Extension */,
 				491D794F23C11D1700B537EB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -234,8 +135,6 @@
 				491D794E23C11D1700B537EB /* Yer Messages.app */,
 				491D796723C11D1800B537EB /* ShoppingItemsTests.xctest */,
 				491D797223C11D1800B537EB /* ShoppingItemsUITests.xctest */,
-				491AD0C625831A95006151E8 /* WatchYerMessages.app */,
-				491AD0CF25831A98006151E8 /* WatchYerMessages Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -316,40 +215,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		491AD0C525831A95006151E8 /* WatchYerMessages */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 491AD0EC25831A99006151E8 /* Build configuration list for PBXNativeTarget "WatchYerMessages" */;
-			buildPhases = (
-				491AD0C425831A95006151E8 /* Resources */,
-				491AD0EB25831A99006151E8 /* Embed App Extensions */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				491AD0D225831A98006151E8 /* PBXTargetDependency */,
-			);
-			name = WatchYerMessages;
-			productName = WatchYerMessages;
-			productReference = 491AD0C625831A95006151E8 /* WatchYerMessages.app */;
-			productType = "com.apple.product-type.application.watchapp2";
-		};
-		491AD0CE25831A98006151E8 /* WatchYerMessages Extension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 491AD0E825831A99006151E8 /* Build configuration list for PBXNativeTarget "WatchYerMessages Extension" */;
-			buildPhases = (
-				491AD0CB25831A98006151E8 /* Sources */,
-				491AD0CC25831A98006151E8 /* Frameworks */,
-				491AD0CD25831A98006151E8 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "WatchYerMessages Extension";
-			productName = "WatchYerMessages Extension";
-			productReference = 491AD0CF25831A98006151E8 /* WatchYerMessages Extension.appex */;
-			productType = "com.apple.product-type.watchkit2-extension";
-		};
 		491D794D23C11D1700B537EB /* ShoppingItems */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 491D797B23C11D1800B537EB /* Build configuration list for PBXNativeTarget "ShoppingItems" */;
@@ -362,7 +227,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				491AD0E625831A99006151E8 /* PBXTargetDependency */,
 			);
 			name = ShoppingItems;
 			productName = ShoppingItems;
@@ -415,12 +279,6 @@
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Marc Harvey";
 				TargetAttributes = {
-					491AD0C525831A95006151E8 = {
-						CreatedOnToolsVersion = 12.2;
-					};
-					491AD0CE25831A98006151E8 = {
-						CreatedOnToolsVersion = 12.2;
-					};
 					491D794D23C11D1700B537EB = {
 						CreatedOnToolsVersion = 11.3;
 					};
@@ -450,30 +308,11 @@
 				491D794D23C11D1700B537EB /* ShoppingItems */,
 				491D796623C11D1800B537EB /* ShoppingItemsTests */,
 				491D797123C11D1800B537EB /* ShoppingItemsUITests */,
-				491AD0C525831A95006151E8 /* WatchYerMessages */,
-				491AD0CE25831A98006151E8 /* WatchYerMessages Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		491AD0C425831A95006151E8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				491AD0C925831A97006151E8 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		491AD0CD25831A98006151E8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				491AD0E225831A99006151E8 /* Preview Assets.xcassets in Resources */,
-				491AD0DF25831A98006151E8 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		491D794C23C11D1700B537EB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -501,18 +340,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		491AD0CB25831A98006151E8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				491AD0D925831A98006151E8 /* NotificationController.swift in Sources */,
-				491AD0D725831A98006151E8 /* ContentView.swift in Sources */,
-				491AD0DD25831A98006151E8 /* ComplicationController.swift in Sources */,
-				491AD0D525831A98006151E8 /* ShoppingItemsApp.swift in Sources */,
-				491AD0DB25831A98006151E8 /* NotificationView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		491D794A23C11D1700B537EB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -528,10 +355,10 @@
 				49C85B60254780E400A9C901 /* TextLimit.swift in Sources */,
 				49267E042560B2160075798F /* ShoppingItemsMain.swift in Sources */,
 				491D795423C11D1700B537EB /* SceneDelegate.swift in Sources */,
-				491AD0BF2582D194006151E8 /* WatchConnectivityProvider.swift in Sources */,
 				491D798523C11EB400B537EB /* ShoppingItems.swift in Sources */,
 				494682DE256B46CE0088BC51 /* ColourExtension.swift in Sources */,
 				49968CA22565897200725D4A /* ShoppingItems.xcdatamodeld in Sources */,
+				49A33A1825846D9C0007F48C /* GameView.swift in Sources */,
 				493B3A96253BD31200CAF0F9 /* NewEntryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -555,16 +382,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		491AD0D225831A98006151E8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 491AD0CE25831A98006151E8 /* WatchYerMessages Extension */;
-			targetProxy = 491AD0D125831A98006151E8 /* PBXContainerItemProxy */;
-		};
-		491AD0E625831A99006151E8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 491AD0C525831A95006151E8 /* WatchYerMessages */;
-			targetProxy = 491AD0E525831A99006151E8 /* PBXContainerItemProxy */;
-		};
 		491D796923C11D1800B537EB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 491D794D23C11D1700B537EB /* ShoppingItems */;
@@ -589,94 +406,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		491AD0E925831A99006151E8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"WatchYerMessages Extension/Preview Content\"";
-				DEVELOPMENT_TEAM = YU65V62LAA;
-				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "WatchYerMessages Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.YerMessages.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.1;
-			};
-			name = Debug;
-		};
-		491AD0EA25831A99006151E8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"WatchYerMessages Extension/Preview Content\"";
-				DEVELOPMENT_TEAM = YU65V62LAA;
-				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "WatchYerMessages Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.YerMessages.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.1;
-			};
-			name = Release;
-		};
-		491AD0ED25831A99006151E8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YU65V62LAA;
-				IBSC_MODULE = WatchYerMessages_Extension;
-				INFOPLIST_FILE = WatchYerMessages/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = com.YerMessages.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.1;
-			};
-			name = Debug;
-		};
-		491AD0EE25831A99006151E8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YU65V62LAA;
-				IBSC_MODULE = WatchYerMessages_Extension;
-				INFOPLIST_FILE = WatchYerMessages/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = com.YerMessages.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.1;
-			};
-			name = Release;
-		};
 		491D797923C11D1800B537EB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -728,7 +457,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -783,7 +512,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -924,24 +653,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		491AD0E825831A99006151E8 /* Build configuration list for PBXNativeTarget "WatchYerMessages Extension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				491AD0E925831A99006151E8 /* Debug */,
-				491AD0EA25831A99006151E8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		491AD0EC25831A99006151E8 /* Build configuration list for PBXNativeTarget "WatchYerMessages" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				491AD0ED25831A99006151E8 /* Debug */,
-				491AD0EE25831A99006151E8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		491D794923C11D1700B537EB /* Build configuration list for PBXProject "ShoppingItems" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

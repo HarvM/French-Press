@@ -26,9 +26,8 @@ struct DetailView: View {
     ///Setting up the GameScene
     var scene: SKScene {
         let scene = GameScene()
-        scene.size = CGSize(width: 100, height: 100)
+        scene.size = CGSize(width: 300, height: 300)
         scene.scaleMode = .fill
-        
         return scene
     }
     
@@ -61,11 +60,12 @@ struct DetailView: View {
             }
         }
     }
+    
     private func startFidgetGame() {
         if itemToBeDisplayed.notesOnItem == "" {
            ///Display the game
             SpriteView(scene: scene)
-                .frame(width: 100, height: 100, alignment: .center)
+                .frame(width: 300, height: 300, alignment: .center)
                 .edgesIgnoringSafeArea(.all)
             print("Trying to display the game")
         } else {

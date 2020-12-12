@@ -9,8 +9,9 @@
 import Foundation
 import SpriteKit
 
-//When the user taps on the screen, some boxes will fall from their touch point
+///When the user taps on the screen, some boxes will fall from their touch point
 class GameScene: SKScene {
+    
     override func didMove(to view: SKView) {
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
     }
@@ -21,6 +22,7 @@ class GameScene: SKScene {
         let box = SKSpriteNode(color: UIColor.red, size: CGSize(width: 50, height: 50))
         box.position = location
         box.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 50, height: 50))
+        print("Touch")
         addChild(box)
     }
     
