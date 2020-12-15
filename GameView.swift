@@ -19,7 +19,7 @@ struct GameView: UIViewRepresentable {
         view.allowsTransparency = true
          
         if let scene = GameScene(fileNamed: "GameScene") {
-            scene.backgroundColor = UIColor.clear
+            scene.backgroundColor = .clear
             view.presentScene(scene)
         }
         return view

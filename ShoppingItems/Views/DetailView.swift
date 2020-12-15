@@ -8,7 +8,6 @@
 
 import SwiftUI
 import SpriteKit
-import UserNotifications
 
 struct DetailView: View {
     
@@ -21,8 +20,8 @@ struct DetailView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode
     let itemToBeDisplayed: ShoppingItems
-    @State public var notesEmpty = false
-    @State var displayGame = false
+    @State private var hasData = false
+    @State private var displayGame = false
     
     ///Setting up the GameScene
     var scene: SKScene {
@@ -36,12 +35,6 @@ struct DetailView: View {
     var body: some View {
         NavigationView {
             ZStack{
-//                SpriteView(scene: scene)
-//                    .frame(width: 300, height: 300, alignment: .center)
-//                    .edgesIgnoringSafeArea(.all)
-//                    .zIndex(3)
-//                    .background(Color(.clear))
-//                    .onAppear(perform: startFidgetGame)
                 Color("defaultBackground")
                     .edgesIgnoringSafeArea(.all)
                 VStack {
@@ -63,17 +56,23 @@ struct DetailView: View {
                 .allowsTightening(true)
                 .minimumScaleFactor(0.9)
                 .padding(.top, 20)
+                .onAppear(perform: startFidgetGame)
             }
         }
     }
     
-//    private func startFidgetGame() {
-//        if itemToBeDisplayed.notesOnItem == "" {
-//
-//        } else {
-//         print("Hello there")
-//        }
-//    }
+    private func startFidgetGame() {
+        if itemToBeDisplayed.notesOnItem == "" {
+           ///Display the game
+            SpriteView(scene: scene)
+                .frame(width: 300, height: 300, alignment: .center)
+                .edgesIgnoringSafeArea(.all)
+            print("Trying to display the game")
+        } else {
+            ///Do nothing
+            print("Keeping it normal")
+        }
+    }
 }
 
 struct DetailView_Previews: PreviewProvider {

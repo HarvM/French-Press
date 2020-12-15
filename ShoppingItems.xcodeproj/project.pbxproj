@@ -26,8 +26,6 @@
 		49968CA22565897200725D4A /* ShoppingItems.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49968CA02565897200725D4A /* ShoppingItems.xcdatamodeld */; };
 		499C66A9256743AE00EDD614 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499C66A8256743AE00EDD614 /* DetailView.swift */; };
 		49A33A1825846D9C0007F48C /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A33A1725846D9C0007F48C /* GameView.swift */; };
-		49A33A27258684120007F48C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49A33A25258684120007F48C /* Assets.xcassets */; };
-		49A33A2F258698490007F48C /* SnowParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = 49A33A2E258698490007F48C /* SnowParticles.sks */; };
 		49C85B60254780E400A9C901 /* TextLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C85B5F254780E400A9C901 /* TextLimit.swift */; };
 		49F146CF244623870053A5A0 /* MultiGestureRecogniser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F146CE244623870053A5A0 /* MultiGestureRecogniser.swift */; };
 /* End PBXBuildFile section */
@@ -88,8 +86,6 @@
 		49968CA12565897200725D4A /* ShoppingItems.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShoppingItems.xcdatamodel; sourceTree = "<group>"; };
 		499C66A8256743AE00EDD614 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		49A33A1725846D9C0007F48C /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
-		49A33A25258684120007F48C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		49A33A2E258698490007F48C /* SnowParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SnowParticles.sks; sourceTree = "<group>"; };
 		49C85B5F254780E400A9C901 /* TextLimit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLimit.swift; sourceTree = "<group>"; };
 		49F146CE244623870053A5A0 /* MultiGestureRecogniser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiGestureRecogniser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,9 +118,7 @@
 		491D794523C11D1700B537EB = {
 			isa = PBXGroup;
 			children = (
-				49A33A25258684120007F48C /* Assets.xcassets */,
 				49A33A1725846D9C0007F48C /* GameView.swift */,
-				49A33A2E258698490007F48C /* SnowParticles.sks */,
 				491D798423C11EB400B537EB /* ShoppingItems.swift */,
 				491AD0B6258079CC006151E8 /* GameScene.swift */,
 				49267E032560B2160075798F /* ShoppingItemsMain.swift */,
@@ -324,10 +318,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				491D796123C11D1800B537EB /* LaunchScreen.storyboard in Resources */,
-				49A33A2F258698490007F48C /* SnowParticles.sks in Resources */,
 				491D795E23C11D1800B537EB /* Preview Assets.xcassets in Resources */,
 				491D795B23C11D1800B537EB /* Assets.xcassets in Resources */,
-				49A33A27258684120007F48C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
