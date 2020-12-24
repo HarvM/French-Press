@@ -1,5 +1,5 @@
 # ShoppingList
-Why tweak the Post-It
+Why change the Post-It note
 
 ## Table of contents
 * [General info](#general-info)
