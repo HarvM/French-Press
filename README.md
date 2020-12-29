@@ -1,7 +1,7 @@
 # ShoppingList
 Why change the Post-It note
 
-# App Store Link
+## App Store Link
 https://apps.apple.com/gb/app/yer-messages/id1511206291
 
 ## Table of contents
