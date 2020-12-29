@@ -1,7 +1,7 @@
 # ShoppingList
 Why change the Post-It note <br>
 <br>
-<u>App Store:<u> https://apps.apple.com/gb/app/yer-messages/id1511206291
+<u>App Store:</u> https://apps.apple.com/gb/app/yer-messages/id1511206291
 
 ## Table of contents
 * [General info](#general-info)
