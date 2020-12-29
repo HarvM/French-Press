@@ -1,9 +1,6 @@
 # ShoppingList
 Why change the Post-It note
 
-# App Store Link
-https://apps.apple.com/gb/app/yer-messages/id1511206291
-
 ## Table of contents
 * [General info](#general-info)
 * [Technologies](#technologies)
@@ -34,3 +31,6 @@ The Bear application is a beauty and I can only aspire to make something as simp
 
 ## Contact
 Created by [Marc Harvey](www.linkedin.com/in/marc-harvey-lru) - feel free to contact me!
+
+# App Store Link
+https://apps.apple.com/gb/app/yer-messages/id1511206291
