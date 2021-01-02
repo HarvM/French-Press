@@ -8,7 +8,6 @@ https://apps.apple.com/gb/app/yer-messages/id1511206291
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Features](#features)
-* [Status](#status)
 * [Inspiration](#inspiration)
 * [Contact](#contact)
 
