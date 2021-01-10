@@ -2,8 +2,7 @@
 Why change the Post-It note 
 
 # App Store
-<a href="https://apps.apple.com/gb/app/yer-messages/id1511206291">App Store Link!</a> 
-<a href="https://www.w3schools.com/">Visit W3Schools.com!</a>
+<a href="https://apps.apple.com/gb/app/yer-messages/id1511206291">App Store</a> 
 
 ## Table of contents
 * [General info](#general-info)
