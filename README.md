@@ -1,5 +1,5 @@
 # ShoppingList
-Why change the Post-It note - <a href="https://apps.apple.com/gb/app/yer-messages/id1511206291">App Store</a>
+Why change the Post-It note  <a href="https://apps.apple.com/gb/app/yer-messages/id1511206291">App Store</a>
 
 ## Table of contents
 * [General info](#general-info)
