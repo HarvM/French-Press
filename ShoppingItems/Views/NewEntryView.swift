@@ -15,7 +15,7 @@ enum DetailViewImages: String {
     case sorryShrug = "🤷🏻‍♂️"
 }
 
-//Using the Futura font
+/// Futura font
 enum CustomFontDetailView: String {
     case futuraFont = "Futura"
 }
@@ -33,9 +33,9 @@ struct NewEntryView: View {
     @State var isShowingContentView = false
     @State var showAlert = false
     @State var selectedMeasurement = 0
-    let measurementFound = ["pack", "litre", "pint", "gram", "kilogram", "millilitre", "wee bag", "big bag", "tin", "bottle", "jar", "crate", "multipack", "keg", "tub", "roll", "tube", "punnet", "thingy"]
+    let measurementFound = ["pack", "litre", "pint", "gram", "kilogram", "millilitre", "ounce", "pound", "wee bag", "big bag", "bar", "tin", "bottle", "jar", "crate", "multipack", "keg", "tub", "roll", "tube", "punnet", "book", "magazine", "thingy"]
 
-    //MARK: - Body the UI that will have a Form (Item Entry, Stepper, and Notes) and a Save Button (bottom of the screen)
+    //MARK: - Body the UI that will have a Form (Item Entry, Stepper, and Notes) and a Save Button (bottom of view)
     var body: some View {
         ZStack{
             Color("defaultBackground")

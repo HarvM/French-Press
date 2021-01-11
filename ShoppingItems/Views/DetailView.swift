@@ -11,7 +11,7 @@ import SpriteKit
 
 struct DetailView: View {
     
-    ///The Futura font 
+    ///Futura font 
     enum CustomFont: String {
         case futuraFont = "Futura"
     }
@@ -21,15 +21,6 @@ struct DetailView: View {
     @Environment(\.presentationMode) var presentationMode
     let itemToBeDisplayed: ShoppingItems
     @State private var hasData = false
-    @State private var displayGame = false
-    
-    ///Setting up the GameScene
-    var scene: SKScene {
-        let scene = GameScene()
-        scene.size = CGSize(width: 300, height: 300)
-        scene.scaleMode = .fill
-        return scene
-    }
     
     //MARK: - Body of the view
     var body: some View {
@@ -56,21 +47,8 @@ struct DetailView: View {
                 .allowsTightening(true)
                 .minimumScaleFactor(0.9)
                 .padding(.top, 20)
-                .onAppear(perform: startFidgetGame)
+//                .onAppear(perform: startFidgetGame)
             }
-        }
-    }
-    
-    private func startFidgetGame() {
-        if itemToBeDisplayed.notesOnItem == "" {
-           ///Display the game
-            SpriteView(scene: scene)
-                .frame(width: 300, height: 300, alignment: .center)
-                .edgesIgnoringSafeArea(.all)
-            print("Trying to display the game")
-        } else {
-            ///Do nothing
-            print("Keeping it normal")
         }
     }
 }

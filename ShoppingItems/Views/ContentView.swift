@@ -15,17 +15,20 @@ enum ContentViewImages: String {
 
 struct ContentView: View {
     //MARK: - Properties
+    @ObservedObject var listStore: ShoppingItemStore
     let generator = UINotificationFeedbackGenerator()
     @Environment (\.managedObjectContext) var managedObjectContext
     @Environment (\.presentationMode) var presentationMode
     @Environment(\.colorScheme) var colorScheme
-    @FetchRequest(entity: ShoppingItems.entity(), sortDescriptors:[
-        NSSortDescriptor(keyPath: \ShoppingItems.itemToBeAdded, ascending: true),
-        NSSortDescriptor(keyPath: \ShoppingItems.notesOnItem, ascending: true),
-        NSSortDescriptor(keyPath: \ShoppingItems.quantitySelected, ascending: true),
-        NSSortDescriptor(keyPath: \ShoppingItems.preferredMeasurement, ascending: true)
-    ])
+    ///NEED TO SORT HERE
+    @FetchRequest(entity: ShoppingItems.entity(), sortDescriptors:[])
+//        NSSortDescriptor(keyPath: \ShoppingItems.itemToBeAdded, ascending: ),
+//        NSSortDescriptor(keyPath: \ShoppingItems.notesOnItem, ascending: false),
+//        NSSortDescriptor(keyPath: \ShoppingItems.quantitySelected, ascending: false),
+//        NSSortDescriptor(keyPath: \ShoppingItems.preferredMeasurement, ascending: false)
+//    ])
     var shoppingItemEntries: FetchedResults<ShoppingItems>
+    
     
     //MARK: - Body of the view
     var body: some View {
@@ -45,10 +48,16 @@ struct ContentView: View {
                             }
                         }
                         .onDelete(perform: self.deleteItem)
+//                        .onMove(perform: self.moveItem)
+                        .onMove { set, i in
+                            listStore.shoppingItems.move(fromOffsets: set, toOffset: i)
+                                   }
                     }
                     .listStyle(PlainListStyle())
                     .listRowBackground(Color("defaultBackground"))
                 }
+                ///Appears to help with the reordering of the List and makes it less laggy when a row is moved
+//                .id(UUID)
                 
                 //MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list, the trailing launches MapView
                 .navigationBarItems(leading: EditButton(),
@@ -64,14 +73,10 @@ struct ContentView: View {
                                             .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
                                     })
                 .foregroundColor(.white)
-                .padding(.trailing, 5)
-                .padding(.leading, 5)
-                .padding(.top, 5)
-                .padding(.bottom, 5)
+                .padding(.init(top: 5, leading: 5, bottom: 5, trailing: 5))
             }
             ///Removes the split view from iPad versions
             .navigationViewStyle(StackNavigationViewStyle())
-            .navigationBarTitle("Yer Messages")
             .navigationBarTitleDisplayMode(.inline)
             ///Removes the header and the wee arrow that hides/shows the cells
             .listStyle(PlainListStyle())
@@ -81,14 +86,24 @@ struct ContentView: View {
     //MARK: - Delete Item Function
     private func deleteItem(at indexSet: IndexSet) {
         DispatchQueue.main.async {
-        ///When the user wants to delete a cell, the index of the selected cell is found and then removed
-        let deleteItem = self.shoppingItemEntries[indexSet.first!]
-        self.managedObjectContext.delete(deleteItem)
-        
-        ///Haptic feedback for when the user taps on Delete
-        self.generator.notificationOccurred(.error)
+            ///When the user wants to delete a cell, the index of the selected cell is found and then removed
+            let deleteItem = self.shoppingItemEntries[indexSet.first!]
+            self.managedObjectContext.delete(deleteItem)
+            
+            ///Haptic feedback for when the user taps on Delete
+            self.generator.notificationOccurred(.error)
         }
     }
+    
+    //MARK: - moveItem Function
+//    private func moveItem(from: IndexSet, to: Int) -> Void {
+//        ///Will allow the user to change the order of the list when the
+//        DispatchQueue.main.async {
+//            withAnimation {
+//                listStore.shoppingItems.move(fromOffsets: source, toOffset: to)
+//            }
+//        }
+//    }
     
     init() {
         ///Below is various attempts at getting the from from the Picker to display a different background colour
@@ -111,6 +126,8 @@ struct ContentView: View {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         ///Use this if NavigationBarTitle is with displayMode = .inline
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
+        ///Have to init the listStore with a value
+        self.listStore = ShoppingItemStore.init()
         
     }
 }

@@ -12,6 +12,13 @@ import CoreData
 ///Fetches the defined elements both defined already and added by the user
 extension ShoppingItems {
     
+//    static func getListItemFetchRequest() -> NSFetchRequest<ShoppingItems>{
+//    let request = ShoppingItems.fetchRequest() as! NSFetchRequest<ShoppingItems>
+//            request.sortDescriptors = [NSSortDescriptor(key: "order", ascending: true)]
+//    return request
+//        }
+//    }
+    
     @nonobjc public class func fetchRequest() -> NSFetchRequest<ShoppingItems> {
         return NSFetchRequest<ShoppingItems>(entityName: "ShoppingItems")
     }
@@ -20,4 +27,5 @@ extension ShoppingItems {
     @NSManaged public var notesOnItem: String
     @NSManaged public var id: UUID
     @NSManaged public var preferredMeasurement: String
+    @NSManaged public var order: Int
 }
