@@ -31,4 +31,4 @@ The Bear application is a beauty and I can only aspire to make something as simp
 ## Contact
 Created by [Marc Harvey](www.linkedin.com/in/marc-harvey-lru) - feel free to contact me!
 
-<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+<div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="horizontal" data-theme="light" data-vanity="marc-harvey-lru"><a class="LI-simple-link" href='https://uk.linkedin.com/in/marc-harvey-lru?trk=profile-badge'>Marc Harvey</a></div>
