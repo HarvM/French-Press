@@ -29,4 +29,4 @@ At the start of lockdown, going to Tesco felt like going over the trenches so I 
 The Bear application is a beauty and I can only aspire to make something as simple and functional as that. The world does need more list applications...
 
 ## Contact
-Created by <div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="horizontal" data-theme="light" data-vanity="marc-harvey-lru"><a class="LI-simple-link" href='https://uk.linkedin.com/in/marc-harvey-lru?trk=profile-badge'>Marc Harvey</a></div> - feel free to contact me!
+Created by [Marc Harvey](https://www.linkedin.com/in/marc-harvey-lru/) - feel free to contact me!
