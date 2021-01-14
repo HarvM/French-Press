@@ -30,3 +30,5 @@ The Bear application is a beauty and I can only aspire to make something as simp
 
 ## Contact
 Created by [Marc Harvey](www.linkedin.com/in/marc-harvey-lru) - feel free to contact me!
+
+<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
