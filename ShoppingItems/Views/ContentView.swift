@@ -11,6 +11,7 @@ import MapKit
 ///Images used across the ContentView
 enum ContentViewImages: String {
     case plusImage = "plusIcon" ///On the textEntry field and will let the user add an item
+    case placeholderImage = "appHeader"
 }
 
 struct ContentView: View {
@@ -20,9 +21,10 @@ struct ContentView: View {
     @Environment (\.managedObjectContext) var managedObjectContext
     @Environment (\.presentationMode) var presentationMode
     @Environment (\.colorScheme) var colorScheme
-    @FetchRequest(entity: ShoppingItems.entity(), sortDescriptors:[])
+    @FetchRequest(entity: ShoppingItems.entity(), sortDescriptors:
+                    [NSSortDescriptor (keyPath: \ShoppingItems.order, ascending: true)
+                    ])
     var shoppingItemEntries: FetchedResults<ShoppingItems>
-    
     
     //MARK: - Body of the view
     var body: some View {
@@ -48,10 +50,7 @@ struct ContentView: View {
                     .listRowBackground(Color("defaultBackground"))
                 }
                 ///Appears to help with the reordering of the List and makes it less laggy when a row is moved
-                                .id(UUID())
-                ///Keeps edit mode on all the time
-                //                .environment(\.editMode, Binding.constant(EditMode.active))
-                
+                .id(UUID())
                 
                 //MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list, the trailing launches MapView
                 .navigationBarItems(leading: EditButton(),
@@ -68,6 +67,13 @@ struct ContentView: View {
                                     })
                 .foregroundColor(.white)
                 .padding(.init(top: 5, leading: 5, bottom: 5, trailing: 5))
+                ///Placeholder image should there be no entries - just looks a little nicer
+                if shoppingItemEntries.count == 0 {
+                    Image(ContentViewImages.placeholderImage.rawValue)
+                        .resizable()
+                        .frame(width: 100, height: 100, alignment: .center)
+                        .scaledToFit()
+                }
             }
             ///Removes the split view from iPad versions
             .navigationViewStyle(StackNavigationViewStyle())
@@ -89,28 +95,30 @@ struct ContentView: View {
         }
     }
     
+    ///Triggered for when the user is in EditMode and wishes to move an item on the list
     private func moveItem(from source: IndexSet, to destination: Int) {
         DispatchQueue.main.async {
-        ///An array of them items from the fetched results
-        var orderedItems: [ShoppingItems] = shoppingItemEntries.map{$0}
-        
-        ///Alter the order of the items in the new array
-        orderedItems.move(fromOffsets: source, toOffset: destination)
-        
-        ///Updates the userOrder to maintain the new order
-        ///Done in reverse to minimise changes to indices of the array
-        for reverseIndex in stride(from: orderedItems.count - 1,
-                                   through: 0,
-                                   by: -1)
-        {
-            orderedItems[reverseIndex].order =
-                NSNumber(value: Int16(reverseIndex))
-            do {
-                try self.managedObjectContext.save()
-            } catch {
-                Alert(title: Text("Sorry"), message: Text("Please try again"), dismissButton: .default(Text("Okay")))
+            ///An array of them items from the fetched results
+            var orderedItems: [ShoppingItems] = shoppingItemEntries.map{$0}
+            
+            ///Alter the order of the items in the new array
+            orderedItems.move(fromOffsets: source, toOffset: destination)
+            
+            ///Updates the userOrder to maintain the new order
+            ///Done in reverse to minimise changes to indices of the array
+            for reverseIndex in stride(from: orderedItems.count - 1,
+                                       through: 0,
+                                       by: -1)
+            {
+                orderedItems[reverseIndex].order =
+                    NSNumber(value: Int16(reverseIndex))
+                ///The change in order has to be saved
+                do {
+                    try self.managedObjectContext.save()
+                } catch {
+                    Alert(title: Text("Sorry"), message: Text("Please try again"), dismissButton: .default(Text("Okay")))
+                }
             }
-        }
         }
     }
     
