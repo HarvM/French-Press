@@ -9,8 +9,8 @@
 import Foundation
 import CoreData
 
-@objc(ShoppingItems)
-public class ShoppingItems: NSManagedObject {
-    var context : NSManagedObjectContext? = nil ///Used in UnitTests
-}
+//@objc(ShoppingItems)
+//public class ShoppingItems: NSManagedObject {
+//    var context : NSManagedObjectContext? = nil ///Used in UnitTests
+//}
 

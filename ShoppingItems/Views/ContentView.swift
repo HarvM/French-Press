@@ -19,14 +19,8 @@ struct ContentView: View {
     let generator = UINotificationFeedbackGenerator()
     @Environment (\.managedObjectContext) var managedObjectContext
     @Environment (\.presentationMode) var presentationMode
-    @Environment(\.colorScheme) var colorScheme
-    ///NEED TO SORT HERE
+    @Environment (\.colorScheme) var colorScheme
     @FetchRequest(entity: ShoppingItems.entity(), sortDescriptors:[])
-//        NSSortDescriptor(keyPath: \ShoppingItems.itemToBeAdded, ascending: ),
-//        NSSortDescriptor(keyPath: \ShoppingItems.notesOnItem, ascending: false),
-//        NSSortDescriptor(keyPath: \ShoppingItems.quantitySelected, ascending: false),
-//        NSSortDescriptor(keyPath: \ShoppingItems.preferredMeasurement, ascending: false)
-//    ])
     var shoppingItemEntries: FetchedResults<ShoppingItems>
     
     
@@ -48,16 +42,16 @@ struct ContentView: View {
                             }
                         }
                         .onDelete(perform: self.deleteItem)
-//                        .onMove(perform: self.moveItem)
-                        .onMove { set, i in
-                            listStore.shoppingItems.move(fromOffsets: set, toOffset: i)
-                                   }
+                        .onMove(perform: moveItem)
                     }
                     .listStyle(PlainListStyle())
                     .listRowBackground(Color("defaultBackground"))
                 }
                 ///Appears to help with the reordering of the List and makes it less laggy when a row is moved
-//                .id(UUID)
+                                .id(UUID())
+                ///Keeps edit mode on all the time
+                //                .environment(\.editMode, Binding.constant(EditMode.active))
+                
                 
                 //MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list, the trailing launches MapView
                 .navigationBarItems(leading: EditButton(),
@@ -95,15 +89,31 @@ struct ContentView: View {
         }
     }
     
-    //MARK: - moveItem Function
-//    private func moveItem(from: IndexSet, to: Int) -> Void {
-//        ///Will allow the user to change the order of the list when the
-//        DispatchQueue.main.async {
-//            withAnimation {
-//                listStore.shoppingItems.move(fromOffsets: source, toOffset: to)
-//            }
-//        }
-//    }
+    private func moveItem(from source: IndexSet, to destination: Int) {
+        DispatchQueue.main.async {
+        ///An array of them items from the fetched results
+        var orderedItems: [ShoppingItems] = shoppingItemEntries.map{$0}
+        
+        ///Alter the order of the items in the new array
+        orderedItems.move(fromOffsets: source, toOffset: destination)
+        
+        ///Updates the userOrder to maintain the new order
+        ///Done in reverse to minimise changes to indices of the array
+        for reverseIndex in stride(from: orderedItems.count - 1,
+                                   through: 0,
+                                   by: -1)
+        {
+            orderedItems[reverseIndex].order =
+                NSNumber(value: Int16(reverseIndex))
+            do {
+                try self.managedObjectContext.save()
+            } catch {
+                Alert(title: Text("Sorry"), message: Text("Please try again"), dismissButton: .default(Text("Okay")))
+            }
+        }
+        }
+    }
+    
     
     init() {
         ///Below is various attempts at getting the from from the Picker to display a different background colour
@@ -115,7 +125,7 @@ struct ContentView: View {
         UITableView.appearance().separatorInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
         UITableViewCell.appearance().backgroundColor = .blue
         ///For the unpopulated cells: the separators will be clear
-        UITableView.appearance().separatorColor = .clear
+        UITableView.appearance().separatorColor = .white
         ///The NavigationBar had a white tint over it after moving the title to .inline but below addresses this and keeps the desired blue
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         UINavigationBar.appearance().shadowImage = UIImage()
