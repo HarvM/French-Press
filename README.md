@@ -1,4 +1,4 @@
-# Yer Messages (<a href="https://apps.apple.com/gb/app/yer-messages/id1511206291">App Store</a>)
+# Yer Messages (<a href="https://apps.apple.com/gb/app/yer-messages/id1511206291">App Store 🔗</a>)
 Why change the Post-It note
 
 ## Table of contents
