@@ -17,11 +17,12 @@ At the start of lockdown, going to Tesco felt like going over the trenches so I 
 * With the quantity: the user can say if it's a pack/bag/tin etc from a Picker
 * A DetailView that will show both the item and any of the notes that the user has input
 * All entries on the model are stored in CoreData
-* Eadily remove any items with the stand left swipe or by using the 'Edit' function and then selecting the item to be removed
+* Easily remove any items with the stand left swipe or by using the 'Edit' function and then selecting the item to be removed
+* Items can be rearranged on the list when the user clicks on "Edit"
 
 ## Future Features
 * Allow users across a defined group share their shopping lists (Family Sharing)
-* Create a Favourites list to allow easy addition to the list for items that are frequently bought
+* Create a Favourites list to allow easy addition to the list for items that are frequently bought (Machine Learning opportunity?)
 * Let the users define items by categories like "Fruit and veg", "Household Products", etc
 * Use of VNRecognizeTextRequest to allow the user to "scan in" any hand written shopping lists
 
