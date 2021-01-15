@@ -9,7 +9,9 @@ Why change the Post-It note
 * [Contact](#contact)
 
 ## General info
-At the start of lockdown, going to Tesco felt like going over the trenches so I wanted to make something simple that my parents could use to help make things a little less stressful for them. I had noticed that they were continually heading out with a slip of paper/the back of an envelope/some ripped from something important and wanted to change that.
+At the start of lockdown, going to the supermarket felt like staring down the barrel of a loaded gun, so I wanted to make something simple that my parents could use to help make things a little less stressful for them. I had noticed that they were continually heading out with a slip of paper/the back of an envelope/some ripped from something important or nothing at all and wanted to change that.
+
+Previously, I've returned from the shops more times than I care to remember missing an item or five
 
 ## Features
 * Easily add items using the text entry field
