@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:ShoppingItems.xcodeproj">
+      location = "self:/Users/Marc/Documents/Swift/ShoppingItems-master/Yer Messages.xcodeproj">
    </FileRef>
 </Workspace>

@@ -30,12 +30,12 @@ struct CellView: View {
                 VStack (alignment: .leading, spacing: 2) {
                     ///Header: name of the item the user has selected
                     Text("\(itemToBeAdded)")
-                        .font(.custom("Futura", size: 24, relativeTo: .title))
+                        .font(.custom("SF Pro", size: 24, relativeTo: .title))
                         .allowsTightening(true)
                         .clipped()
                     ///Notes on the item that has been selected
                     Text("\(quantitySelected) \(preferredMeasurement)\(finalOutput)")
-                        .font(.custom("Futura", size: 18, relativeTo: .title))
+                        .font(.custom("SF Pro", size: 18, relativeTo: .title))
                         .lineLimit(1)
                         .textCase(.lowercase)
                 }

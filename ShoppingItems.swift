@@ -17,6 +17,9 @@ public class ShoppingItems: NSManagedObject, Identifiable {
     @NSManaged public var id: UUID
     @NSManaged public var preferredMeasurement: String
     @NSManaged public var order: NSNumber
+    
+    ///Used in UnitTests
+    var context : NSManagedObjectContext? = nil
 }
 
 extension ShoppingItems {

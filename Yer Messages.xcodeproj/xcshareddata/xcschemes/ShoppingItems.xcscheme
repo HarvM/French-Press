@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "491D794D23C11D1700B537EB"
                BuildableName = "Yer Messages.app"
-               BlueprintName = "ShoppingItems"
-               ReferencedContainer = "container:ShoppingItems.xcodeproj">
+               BlueprintName = "Yer Messages"
+               ReferencedContainer = "container:Yer Messages.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "491D796623C11D1800B537EB"
-               BuildableName = "ShoppingItemsTests.xctest"
-               BlueprintName = "ShoppingItemsTests"
-               ReferencedContainer = "container:ShoppingItems.xcodeproj">
+               BuildableName = "Yer MessagesTests.xctest"
+               BlueprintName = "Yer MessagesTests"
+               ReferencedContainer = "container:Yer Messages.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "491D797123C11D1800B537EB"
-               BuildableName = "ShoppingItemsUITests.xctest"
-               BlueprintName = "ShoppingItemsUITests"
-               ReferencedContainer = "container:ShoppingItems.xcodeproj">
+               BuildableName = "Yer MessagesUITests.xctest"
+               BlueprintName = "Yer MessagesUITests"
+               ReferencedContainer = "container:Yer Messages.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -66,8 +66,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "491D794D23C11D1700B537EB"
             BuildableName = "Yer Messages.app"
-            BlueprintName = "ShoppingItems"
-            ReferencedContainer = "container:ShoppingItems.xcodeproj">
+            BlueprintName = "Yer Messages"
+            ReferencedContainer = "container:Yer Messages.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -83,8 +83,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "491D794D23C11D1700B537EB"
             BuildableName = "Yer Messages.app"
-            BlueprintName = "ShoppingItems"
-            ReferencedContainer = "container:ShoppingItems.xcodeproj">
+            BlueprintName = "Yer Messages"
+            ReferencedContainer = "container:Yer Messages.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

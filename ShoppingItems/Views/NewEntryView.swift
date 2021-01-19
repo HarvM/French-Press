@@ -17,7 +17,7 @@ enum DetailViewImages: String {
 
 /// Futura font
 enum CustomFontDetailView: String {
-    case futuraFont = "Futura"
+    case defaultFont = "SF Pro"
 }
 
 ///View that will let the user select the amount of the item they want and also add any notes that they need
@@ -50,10 +50,10 @@ struct NewEntryView: View {
                         TextField("Type the item here", text: $newShoppingItem.text)
                             .frame (height: 40)
                             .multilineTextAlignment(.leading)
-                            .font(.custom(CustomFontDetailView.futuraFont.rawValue, size: 16, relativeTo: .headline))
+                            .font(.custom(CustomFontDetailView.defaultFont.rawValue, size: 16, relativeTo: .headline))
                         ///Will display the number of characters already typed and the limit
                         Text("\(self.newShoppingItem.text.count)|30")
-                            .font(.custom(CustomFontDetailView.futuraFont.rawValue, size: 16, relativeTo: .headline))
+                            .font(.custom(CustomFontDetailView.defaultFont.rawValue, size: 16, relativeTo: .headline))
                             .foregroundColor(.gray)
                     }
                     .font(.headline)
@@ -67,7 +67,7 @@ struct NewEntryView: View {
                             .frame (height: 40)
                             .multilineTextAlignment(.leading)
                             .keyboardType(.decimalPad)
-                            .font(.custom(CustomFontDetailView.futuraFont.rawValue, size: 16, relativeTo: .headline))
+                            .font(.custom(CustomFontDetailView.defaultFont.rawValue, size: 16, relativeTo: .headline))
                     }
                     Picker(selection: $selectedMeasurement, label: Text("")
                     ) {
@@ -76,7 +76,7 @@ struct NewEntryView: View {
                             Text(self.measurementFound[$0])
                                 .frame(height: 40)
                         }
-                        .font(.custom(CustomFontDetailView.futuraFont.rawValue, size: 16, relativeTo: .headline))
+                        .font(.custom(CustomFontDetailView.defaultFont.rawValue, size: 16, relativeTo: .headline))
                     }
                     .pickerStyle(DefaultPickerStyle())
                     .foregroundColor(.red)
@@ -91,12 +91,12 @@ struct NewEntryView: View {
                         TextField("Type here", text: $notesOnItem.text)
                             .frame(height: 50)
                             .multilineTextAlignment(.leading)
-                            .font(.custom(CustomFontDetailView.futuraFont.rawValue, size: 16, relativeTo: .headline))
+                            .font(.custom(CustomFontDetailView.defaultFont.rawValue, size: 16, relativeTo: .headline))
                         
                         Spacer()
                         ///Will display the number of characters already typed and the limit
                         Text("\(self.notesOnItem.text.count)|40")
-                            .font(.custom(CustomFontDetailView.futuraFont.rawValue, size: 16, relativeTo: .headline))
+                            .font(.custom(CustomFontDetailView.defaultFont.rawValue, size: 16, relativeTo: .headline))
                             .foregroundColor(.gray)
                     }
                 }
@@ -132,7 +132,7 @@ struct NewEntryView: View {
     }
     
     
-    //MARK: - Function (saves the user's item [iten name, quantity, measurement, and extra notes]
+    //MARK: - Function (saves the user's item [item name, quantity, measurement, and extra notes]
     
     private func saveNewEntry() {
         DispatchQueue.main.async {

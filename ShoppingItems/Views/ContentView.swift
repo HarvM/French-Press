@@ -133,7 +133,7 @@ struct ContentView: View {
         UITableView.appearance().separatorInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
         UITableViewCell.appearance().backgroundColor = .blue
         ///For the unpopulated cells: the separators will be clear
-        UITableView.appearance().separatorColor = .white
+        UITableView.appearance().separatorColor = .clear
         ///The NavigationBar had a white tint over it after moving the title to .inline but below addresses this and keeps the desired blue
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         UINavigationBar.appearance().shadowImage = UIImage()

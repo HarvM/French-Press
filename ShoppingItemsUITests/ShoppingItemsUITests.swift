@@ -49,7 +49,7 @@ class ShoppingItemsUITests: XCTestCase {
         //Three checks on each of the buttons available to the user
         //Firstly ensure that every button is able to be selected and then ensures that with a tap, the button exists
         if addNewEntry.isSelected {
-            XCTAssert(true, "The button can be pressed and the sound should play")
+            XCTAssert(true, "The button can be pressed and the new entry should appear")
             
             addNewEntry.tap()
             XCTAssertTrue(addNewEntry.exists)

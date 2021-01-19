@@ -13,10 +13,8 @@
 		491D795B23C11D1800B537EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 491D795A23C11D1800B537EB /* Assets.xcassets */; };
 		491D795E23C11D1800B537EB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 491D795D23C11D1800B537EB /* Preview Assets.xcassets */; };
 		491D796123C11D1800B537EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 491D795F23C11D1800B537EB /* LaunchScreen.storyboard */; };
-		491D796C23C11D1800B537EB /* ShoppingItemsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D796B23C11D1800B537EB /* ShoppingItemsTests.swift */; };
 		491D797723C11D1800B537EB /* ShoppingItemsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D797623C11D1800B537EB /* ShoppingItemsUITests.swift */; };
 		491D798723C1EAA800B537EB /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D798623C1EAA800B537EB /* CellView.swift */; };
-		49267E042560B2160075798F /* ShoppingItemsMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49267E032560B2160075798F /* ShoppingItemsMain.swift */; };
 		492F956325A9E48F00F56126 /* ShoppingItemsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F956225A9E48F00F56126 /* ShoppingItemsStore.swift */; };
 		493B3A96253BD31200CAF0F9 /* NewEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493B3A95253BD31200CAF0F9 /* NewEntryView.swift */; };
 		494682DE256B46CE0088BC51 /* ColourExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494682DD256B46CE0088BC51 /* ColourExtension.swift */; };
@@ -27,6 +25,8 @@
 		49C85B60254780E400A9C901 /* TextLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C85B5F254780E400A9C901 /* TextLimit.swift */; };
 		49ED956325B1CE9F005EF305 /* ShoppingItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ED956225B1CE9F005EF305 /* ShoppingItems.swift */; };
 		49F146CF244623870053A5A0 /* MultiGestureRecogniser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F146CE244623870053A5A0 /* MultiGestureRecogniser.swift */; };
+		49F4158825B62FED0011B2E5 /* ShoppingItemsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F4158725B62FED0011B2E5 /* ShoppingItemsTest.swift */; };
+		49F415A825B638790011B2E5 /* UnitTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F415A725B638790011B2E5 /* UnitTestHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,14 +68,12 @@
 		491D795D23C11D1800B537EB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		491D796023C11D1800B537EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		491D796223C11D1800B537EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		491D796723C11D1800B537EB /* ShoppingItemsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShoppingItemsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		491D796B23C11D1800B537EB /* ShoppingItemsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemsTests.swift; sourceTree = "<group>"; };
+		491D796723C11D1800B537EB /* Yer MessagesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Yer MessagesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		491D796D23C11D1800B537EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		491D797223C11D1800B537EB /* ShoppingItemsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShoppingItemsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		491D797223C11D1800B537EB /* Yer MessagesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Yer MessagesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		491D797623C11D1800B537EB /* ShoppingItemsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemsUITests.swift; sourceTree = "<group>"; };
 		491D797823C11D1800B537EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		491D798623C1EAA800B537EB /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
-		49267E032560B2160075798F /* ShoppingItemsMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemsMain.swift; sourceTree = "<group>"; };
 		492F956225A9E48F00F56126 /* ShoppingItemsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemsStore.swift; sourceTree = "<group>"; };
 		493B3A95253BD31200CAF0F9 /* NewEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryView.swift; sourceTree = "<group>"; };
 		494682DD256B46CE0088BC51 /* ColourExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourExtension.swift; sourceTree = "<group>"; };
@@ -86,6 +84,8 @@
 		49C85B5F254780E400A9C901 /* TextLimit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLimit.swift; sourceTree = "<group>"; };
 		49ED956225B1CE9F005EF305 /* ShoppingItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItems.swift; sourceTree = "<group>"; };
 		49F146CE244623870053A5A0 /* MultiGestureRecogniser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiGestureRecogniser.swift; sourceTree = "<group>"; };
+		49F4158725B62FED0011B2E5 /* ShoppingItemsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemsTest.swift; sourceTree = "<group>"; };
+		49F415A725B638790011B2E5 /* UnitTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTestHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +118,6 @@
 			children = (
 				49ED956225B1CE9F005EF305 /* ShoppingItems.swift */,
 				492F956225A9E48F00F56126 /* ShoppingItemsStore.swift */,
-				49267E032560B2160075798F /* ShoppingItemsMain.swift */,
 				491D795023C11D1700B537EB /* ShoppingItems */,
 				491D796A23C11D1800B537EB /* ShoppingItemsTests */,
 				491D797523C11D1800B537EB /* ShoppingItemsUITests */,
@@ -130,8 +129,8 @@
 			isa = PBXGroup;
 			children = (
 				491D794E23C11D1700B537EB /* Yer Messages.app */,
-				491D796723C11D1800B537EB /* ShoppingItemsTests.xctest */,
-				491D797223C11D1800B537EB /* ShoppingItemsUITests.xctest */,
+				491D796723C11D1800B537EB /* Yer MessagesTests.xctest */,
+				491D797223C11D1800B537EB /* Yer MessagesUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -164,8 +163,9 @@
 		491D796A23C11D1800B537EB /* ShoppingItemsTests */ = {
 			isa = PBXGroup;
 			children = (
-				491D796B23C11D1800B537EB /* ShoppingItemsTests.swift */,
 				491D796D23C11D1800B537EB /* Info.plist */,
+				49F4158725B62FED0011B2E5 /* ShoppingItemsTest.swift */,
+				49F415A725B638790011B2E5 /* UnitTestHelpers.swift */,
 			);
 			path = ShoppingItemsTests;
 			sourceTree = "<group>";
@@ -212,9 +212,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		491D794D23C11D1700B537EB /* ShoppingItems */ = {
+		491D794D23C11D1700B537EB /* Yer Messages */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 491D797B23C11D1800B537EB /* Build configuration list for PBXNativeTarget "ShoppingItems" */;
+			buildConfigurationList = 491D797B23C11D1800B537EB /* Build configuration list for PBXNativeTarget "Yer Messages" */;
 			buildPhases = (
 				491D794A23C11D1700B537EB /* Sources */,
 				491D794B23C11D1700B537EB /* Frameworks */,
@@ -225,14 +225,14 @@
 			);
 			dependencies = (
 			);
-			name = ShoppingItems;
+			name = "Yer Messages";
 			productName = ShoppingItems;
 			productReference = 491D794E23C11D1700B537EB /* Yer Messages.app */;
 			productType = "com.apple.product-type.application";
 		};
-		491D796623C11D1800B537EB /* ShoppingItemsTests */ = {
+		491D796623C11D1800B537EB /* Yer MessagesTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 491D797E23C11D1800B537EB /* Build configuration list for PBXNativeTarget "ShoppingItemsTests" */;
+			buildConfigurationList = 491D797E23C11D1800B537EB /* Build configuration list for PBXNativeTarget "Yer MessagesTests" */;
 			buildPhases = (
 				491D796323C11D1800B537EB /* Sources */,
 				491D796423C11D1800B537EB /* Frameworks */,
@@ -243,14 +243,14 @@
 			dependencies = (
 				491D796923C11D1800B537EB /* PBXTargetDependency */,
 			);
-			name = ShoppingItemsTests;
+			name = "Yer MessagesTests";
 			productName = ShoppingItemsTests;
-			productReference = 491D796723C11D1800B537EB /* ShoppingItemsTests.xctest */;
+			productReference = 491D796723C11D1800B537EB /* Yer MessagesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		491D797123C11D1800B537EB /* ShoppingItemsUITests */ = {
+		491D797123C11D1800B537EB /* Yer MessagesUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 491D798123C11D1800B537EB /* Build configuration list for PBXNativeTarget "ShoppingItemsUITests" */;
+			buildConfigurationList = 491D798123C11D1800B537EB /* Build configuration list for PBXNativeTarget "Yer MessagesUITests" */;
 			buildPhases = (
 				491D796E23C11D1800B537EB /* Sources */,
 				491D796F23C11D1800B537EB /* Frameworks */,
@@ -261,9 +261,9 @@
 			dependencies = (
 				491D797423C11D1800B537EB /* PBXTargetDependency */,
 			);
-			name = ShoppingItemsUITests;
+			name = "Yer MessagesUITests";
 			productName = ShoppingItemsUITests;
-			productReference = 491D797223C11D1800B537EB /* ShoppingItemsUITests.xctest */;
+			productReference = 491D797223C11D1800B537EB /* Yer MessagesUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -289,7 +289,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 491D794923C11D1700B537EB /* Build configuration list for PBXProject "ShoppingItems" */;
+			buildConfigurationList = 491D794923C11D1700B537EB /* Build configuration list for PBXProject "Yer Messages" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -302,9 +302,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				491D794D23C11D1700B537EB /* ShoppingItems */,
-				491D796623C11D1800B537EB /* ShoppingItemsTests */,
-				491D797123C11D1800B537EB /* ShoppingItemsUITests */,
+				491D794D23C11D1700B537EB /* Yer Messages */,
+				491D796623C11D1800B537EB /* Yer MessagesTests */,
+				491D797123C11D1800B537EB /* Yer MessagesUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -350,7 +350,6 @@
 				491D795923C11D1700B537EB /* ContentView.swift in Sources */,
 				49C85B60254780E400A9C901 /* TextLimit.swift in Sources */,
 				49ED956325B1CE9F005EF305 /* ShoppingItems.swift in Sources */,
-				49267E042560B2160075798F /* ShoppingItemsMain.swift in Sources */,
 				491D795423C11D1700B537EB /* SceneDelegate.swift in Sources */,
 				494682DE256B46CE0088BC51 /* ColourExtension.swift in Sources */,
 				49968CA22565897200725D4A /* ShoppingItems.xcdatamodeld in Sources */,
@@ -363,7 +362,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				491D796C23C11D1800B537EB /* ShoppingItemsTests.swift in Sources */,
+				49F4158825B62FED0011B2E5 /* ShoppingItemsTest.swift in Sources */,
+				49F415A825B638790011B2E5 /* UnitTestHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,12 +380,12 @@
 /* Begin PBXTargetDependency section */
 		491D796923C11D1800B537EB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 491D794D23C11D1700B537EB /* ShoppingItems */;
+			target = 491D794D23C11D1700B537EB /* Yer Messages */;
 			targetProxy = 491D796823C11D1800B537EB /* PBXContainerItemProxy */;
 		};
 		491D797423C11D1800B537EB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 491D794D23C11D1700B537EB /* ShoppingItems */;
+			target = 491D794D23C11D1700B537EB /* Yer Messages */;
 			targetProxy = 491D797323C11D1800B537EB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -453,7 +453,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -508,7 +508,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -528,11 +528,12 @@
 				DEVELOPMENT_TEAM = YU65V62LAA;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ShoppingItems/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.YerMessages;
 				PRODUCT_NAME = "Yer Messages";
 				SWIFT_VERSION = 5.0;
@@ -550,11 +551,12 @@
 				DEVELOPMENT_TEAM = YU65V62LAA;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ShoppingItems/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.YerMessages;
 				PRODUCT_NAME = "Yer Messages";
 				SWIFT_VERSION = 5.0;
@@ -568,9 +570,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 82BS2PLQD5;
+				DEVELOPMENT_TEAM = YU65V62LAA;
 				INFOPLIST_FILE = ShoppingItemsTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -580,7 +582,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ShoppingItems.app/ShoppingItems";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Yer Messages.app/Yer Messages";
 			};
 			name = Debug;
 		};
@@ -590,9 +592,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 82BS2PLQD5;
+				DEVELOPMENT_TEAM = YU65V62LAA;
 				INFOPLIST_FILE = ShoppingItemsTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -602,7 +604,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ShoppingItems.app/ShoppingItems";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Yer Messages.app/Yer Messages";
 			};
 			name = Release;
 		};
@@ -649,7 +651,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		491D794923C11D1700B537EB /* Build configuration list for PBXProject "ShoppingItems" */ = {
+		491D794923C11D1700B537EB /* Build configuration list for PBXProject "Yer Messages" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				491D797923C11D1800B537EB /* Debug */,
@@ -658,7 +660,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		491D797B23C11D1800B537EB /* Build configuration list for PBXNativeTarget "ShoppingItems" */ = {
+		491D797B23C11D1800B537EB /* Build configuration list for PBXNativeTarget "Yer Messages" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				491D797C23C11D1800B537EB /* Debug */,
@@ -667,7 +669,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		491D797E23C11D1800B537EB /* Build configuration list for PBXNativeTarget "ShoppingItemsTests" */ = {
+		491D797E23C11D1800B537EB /* Build configuration list for PBXNativeTarget "Yer MessagesTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				491D797F23C11D1800B537EB /* Debug */,
@@ -676,7 +678,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		491D798123C11D1800B537EB /* Build configuration list for PBXNativeTarget "ShoppingItemsUITests" */ = {
+		491D798123C11D1800B537EB /* Build configuration list for PBXNativeTarget "Yer MessagesUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				491D798223C11D1800B537EB /* Debug */,

@@ -13,7 +13,7 @@ struct DetailView: View {
     
     ///Futura font 
     enum CustomFont: String {
-        case futuraFont = "Futura"
+        case defaultFont = "SF Pro"
     }
     
     //MARK: - Properties
@@ -31,7 +31,7 @@ struct DetailView: View {
                 VStack {
                     Section {
                     Text ("\(itemToBeDisplayed.itemToBeAdded)")
-                        .font(.custom(CustomFont.futuraFont.rawValue, size: 35, relativeTo: .headline))
+                        .font(.custom(CustomFont.defaultFont.rawValue, size: 35, relativeTo: .headline))
                         .lineLimit(3)
                         .foregroundColor(.yellow)
                     }
@@ -39,7 +39,7 @@ struct DetailView: View {
                     Section {
                     Text("\(itemToBeDisplayed.notesOnItem)")
                         .foregroundColor(.white)
-                        .font(.custom(CustomFont.futuraFont.rawValue, size: 25, relativeTo: .headline))
+                        .font(.custom(CustomFont.defaultFont.rawValue, size: 25, relativeTo: .headline))
                     }
                     .frame(minWidth: 200, idealWidth: 350, maxWidth: 400, minHeight: 400, idealHeight: 700, maxHeight: 800, alignment: .center)
                 }
@@ -47,7 +47,6 @@ struct DetailView: View {
                 .allowsTightening(true)
                 .minimumScaleFactor(0.9)
                 .padding(.top, 20)
-//                .onAppear(perform: startFidgetGame)
             }
         }
     }
