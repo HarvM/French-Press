@@ -52,12 +52,12 @@
 		<key>UIColorName</key>
 		<string>defaultBackground</string>
 		<key>UIImageName</key>
-		<string>appHeader</string>
+		<string>shoppingCart</string>
 		<key>UIImageRespectsSafeAreaInsets</key>
-		<true/>
+		<false/>
 	</dict>
 	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<string>LaunchScreenNew</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

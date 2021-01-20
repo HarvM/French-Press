@@ -11,7 +11,7 @@ import MapKit
 ///Images used across the ContentView
 enum ContentViewImages: String {
     case plusImage = "plusIcon" ///On the textEntry field and will let the user add an item
-    case placeholderImage = "appHeader"
+    case placeholderImage = "appHeader" ///Placeholder image that's displayed when there are no entries
 }
 
 struct ContentView: View {
@@ -75,12 +75,13 @@ struct ContentView: View {
                         .scaledToFit()
                 }
             }
-            ///Removes the split view from iPad versions
-            .navigationViewStyle(StackNavigationViewStyle())
-            .navigationBarTitleDisplayMode(.inline)
             ///Removes the header and the wee arrow that hides/shows the cells
             .listStyle(PlainListStyle())
+            ///Ensures that the list is closer to the top of the window
+            .navigationBarTitleDisplayMode(.inline)
         }
+        ///Removes the split view from iPad versions - had to be bumped down
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     //MARK: - Delete Item Function

@@ -36,7 +36,7 @@ class ShoppingItemsUITests: XCTestCase {
         let typeHere = app.textFields["Type here"]
         let addNewEntry = app.buttons["plus.circle"]
         let editList = app.buttons["Edit"]
-        let deleteButton = app.buttons["Delete "]
+        let deleteButton = app.buttons["Delete"]
         
         
         //Test to ensure that with the "Hello, testing" input that the textField will still exist later and also display the input

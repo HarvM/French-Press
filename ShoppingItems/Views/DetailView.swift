@@ -48,7 +48,7 @@ struct DetailView: View {
                 .minimumScaleFactor(0.9)
                 .padding(.top, 20)
             }
-        }
+        } .navigationViewStyle(StackNavigationViewStyle()) ///removes iPad split screen
     }
 }
 
