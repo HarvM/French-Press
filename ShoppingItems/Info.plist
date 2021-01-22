@@ -51,10 +51,6 @@
 	<dict>
 		<key>UIColorName</key>
 		<string>defaultBackground</string>
-		<key>UIImageName</key>
-		<string>shoppingCart</string>
-		<key>UIImageRespectsSafeAreaInsets</key>
-		<false/>
 	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreenNew</string>

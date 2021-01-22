@@ -46,6 +46,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.tintColor = .white
             window.makeKeyAndVisible()
             
+            window.rootViewController?.view.backgroundColor = UIColor(Color("defaultBackground"))
+            window.inputViewController?.view.backgroundColor =
+                UIColor(Color("defaultBackground"))
+            
         }
         
         //This ensure that any touch outside of the textField will hide the keyboard

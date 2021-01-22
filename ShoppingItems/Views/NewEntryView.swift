@@ -59,7 +59,7 @@ struct NewEntryView: View {
                     .font(.headline)
                 }
                 
-                //MARK: - Stepper Section
+                //MARK: - Picker Section for quantity & quantity type
                 Section (header: Text("How Many Would You Like?")
                             .foregroundColor(.yellow)) {
                     VStack {
@@ -69,9 +69,7 @@ struct NewEntryView: View {
                             .keyboardType(.decimalPad)
                             .font(.custom(CustomFontDetailView.defaultFont.rawValue, size: 16, relativeTo: .headline))
                     }
-                    Picker(selection: $selectedMeasurement, label: Text("")
-                    ) {
-                        
+                    Picker(selection: $selectedMeasurement, label: Text("")) {
                         ForEach(0 ..< measurementFound.count) {
                             Text(self.measurementFound[$0])
                                 .frame(height: 40)
@@ -84,15 +82,13 @@ struct NewEntryView: View {
                 
                 //MARK: - TextEditor (Extra Notes) Section
                 Section(header: Text("Extra Notes")
-                            .foregroundColor(.yellow)
-                ){
+                            .foregroundColor(.yellow)) {
                     HStack {
                         ///I'd ideally love to have this as TextEditor instead to allow more detailed notes but getting the keyboard to hide has been a 'mare
                         TextField("Type here", text: $notesOnItem.text)
                             .frame(height: 50)
                             .multilineTextAlignment(.leading)
                             .font(.custom(CustomFontDetailView.defaultFont.rawValue, size: 16, relativeTo: .headline))
-                        
                         Spacer()
                         ///Will display the number of characters already typed and the limit
                         Text("\(self.notesOnItem.text.count)|40")
