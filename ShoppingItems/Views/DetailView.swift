@@ -25,9 +25,6 @@ struct DetailView: View {
     //MARK: - Body of the view
     var body: some View {
         NavigationView {
-            ZStack{
-                Color("defaultBackground")
-                    .edgesIgnoringSafeArea(.all)
                 VStack {
                     Section {
                     Text ("\(itemToBeDisplayed.itemToBeAdded)")
@@ -40,6 +37,7 @@ struct DetailView: View {
                     Text("\(itemToBeDisplayed.notesOnItem)")
                         .foregroundColor(.white)
                         .font(.custom(CustomFont.defaultFont.rawValue, size: 25, relativeTo: .headline))
+                        .background(Color("defaultBackground").edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/))
                     }
                     .frame(minWidth: 200, idealWidth: 350, maxWidth: 400, minHeight: 400, idealHeight: 700, maxHeight: 800, alignment: .center)
                 }
@@ -47,13 +45,16 @@ struct DetailView: View {
                 .allowsTightening(true)
                 .minimumScaleFactor(0.9)
                 .padding(.top, 20)
+                .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
             }
-        } .navigationViewStyle(StackNavigationViewStyle()) ///removes iPad split screen
-    }
+        .navigationViewStyle(StackNavigationViewStyle()) ///removes iPad split screen
+        .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+        }
 }
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        Text("Henlo")
+//        DetailView(itemToBeDisplayed:)
+        EmptyView()
     }
 }

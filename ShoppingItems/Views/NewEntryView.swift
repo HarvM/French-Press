@@ -34,12 +34,10 @@ struct NewEntryView: View {
     @State var showAlert = false
     @State var selectedMeasurement = 0
     let measurementFound = ["pack", "litre", "pint", "gram", "kilogram", "millilitre", "ounce", "pound", "wee bag", "big bag", "bar", "tin", "bottle", "jar", "crate", "multipack", "keg", "tub", "roll", "tube", "punnet", "book", "magazine", "thingy"]
-
+    
     //MARK: - Body the UI that will have a Form (Item Entry, Stepper, and Notes) and a Save Button (bottom of view)
     var body: some View {
-        ZStack{
-            Color("defaultBackground")
-                .edgesIgnoringSafeArea(.all)
+        VStack {
             Form {
                 //MARK: - TextEditor - Item entry (Main) section
                 Section (header: Text("What would you like?")
@@ -97,36 +95,30 @@ struct NewEntryView: View {
                     }
                 }
             }
-            ///Getting this to work was a fucking nightmare. Found something useful for a TextField but done sweet FA on a TextEditor
+            ///Getting this to work was a nightmare. Found something useful for a TextField but done sweet FA on a TextEditor
             ///Uses the AdaptsToKeyboard struct to bump the screen up when the user brings up the keyboard
             .modifier(AdaptsToKeyboard())
-            .padding(20)
-            
-            //MARK: - Save Button
-            VStack {
-                Spacer()
-                HStack {
-                    Button(action: self.saveNewEntry, label: {
-                        Image(DetailViewImages.saveButtonImage.rawValue)
-                            .frame(width: 60, height: 60)
-                    })
-                    .background(Color.white)
-                    .cornerRadius(38.5)
-                    .padding(.bottom, 30)
-                    .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
-                }
+            .alert(isPresented: $showAlert) { () -> Alert in
+                Alert(title: Text("Sorry"),
+                      message: Text("There has to be an item to add"),
+                      dismissButton: .default(Text("👍🏼"))
+                      ///Bit tacky using the thumbs up but with the colour across the app being white with the init, it couldn't be changed here (tried .foregroundColour)
+                )
             }
+            .navigationBarItems(trailing:Button(action: self.saveNewEntry, label: {
+                Image(ContentViewImages.plusImage.rawValue)
+                    .frame(width: 35, height: 35)
+                    .cornerRadius(38.5)
+                    .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
+            }))
         }
-        .background(Color("defaultBackground"))
-        .alert(isPresented: $showAlert) { () -> Alert in
-            Alert(title: Text("Sorry"),
-                  message: Text("There has to be an item to add"),
-                  dismissButton: .default(Text("👍🏼"))
-                  ///Bit tacky using the thumbs up but with the colour across the app being white with the init, it couldn't be changed here (tried .foregroundColour)
-            )
-        }
+        .background(Color("defaultBackground").edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/))
     }
     
+    ///Atttempt at getting the background color to sit properly as it should
+    init() {
+        UITableView.appearance().backgroundColor = UIColor(Color("defaultBackground"))
+    }
     
     //MARK: - Function (saves the user's item [item name, quantity, measurement, and extra notes]
     
@@ -175,7 +167,7 @@ struct NewEntryView: View {
 
 struct NewEntryView_Previews: PreviewProvider {
     static var previews: some View {
-        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+        NewEntryView()
     }
 }
 

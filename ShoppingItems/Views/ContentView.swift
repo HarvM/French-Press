@@ -51,6 +51,12 @@ struct ContentView: View {
                 }
                 ///Appears to help with the reordering of the List and makes it less laggy when a row is moved
                 .id(UUID())
+                ///Removes the header and the wee arrow that hides/shows the cells
+                .listStyle(PlainListStyle())
+                ///Ensures that the list is closer to the top of the window
+                .navigationBarTitleDisplayMode(.inline)
+                ///Removes the split view from iPad versions - had to be bumped down
+                .navigationViewStyle(StackNavigationViewStyle())
                 
                 //MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list, the trailing launches MapView
                 .navigationBarItems(leading: EditButton(),
@@ -75,13 +81,8 @@ struct ContentView: View {
                         .scaledToFit()
                 }
             }
-            ///Removes the header and the wee arrow that hides/shows the cells
-            .listStyle(PlainListStyle())
-            ///Ensures that the list is closer to the top of the window
-            .navigationBarTitleDisplayMode(.inline)
         }
-        ///Removes the split view from iPad versions - had to be bumped down
-        .navigationViewStyle(StackNavigationViewStyle())
+        .background(Color("defaultBackground"))
     }
     
     //MARK: - Delete Item Function
@@ -132,7 +133,7 @@ struct ContentView: View {
         ///Setting the empty/potential cells to the desired colour
         UITableView.appearance().backgroundColor = UIColor(Color("defaultBackground"))
         UITableView.appearance().separatorInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
-        UITableViewCell.appearance().backgroundColor = .blue
+//        UITableViewCell.appearance().backgroundColor = .blue
         ///For the unpopulated cells: the separators will be clear
         UITableView.appearance().separatorColor = .clear
         ///The NavigationBar had a white tint over it after moving the title to .inline but below addresses this and keeps the desired blue
@@ -140,7 +141,7 @@ struct ContentView: View {
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().isTranslucent = true
         UINavigationBar.appearance().tintColor = .white
-        UINavigationBar.appearance().backgroundColor = .clear
+        UINavigationBar.appearance().backgroundColor = UIColor(Color("defaultBackground"))
         ///Use this if NavigationBarTitle is with Large Font
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         ///Use this if NavigationBarTitle is with displayMode = .inline
@@ -174,6 +175,7 @@ struct KeyboardAvoiderDemo: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+        ContentView()
+        
     }
 }
