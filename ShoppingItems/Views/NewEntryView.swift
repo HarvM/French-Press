@@ -105,14 +105,19 @@ struct NewEntryView: View {
                       ///Bit tacky using the thumbs up but with the colour across the app being white with the init, it couldn't be changed here (tried .foregroundColour)
                 )
             }
-            .navigationBarItems(trailing:Button(action: self.saveNewEntry, label: {
-                Image(ContentViewImages.plusImage.rawValue)
-                    .frame(width: 35, height: 35)
-                    .cornerRadius(38.5)
-                    .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
-            }))
+            //MARK: - Button that will save the user's entry - sits at the bottom of the view
+            VStack(alignment: .center, spacing: 10) {
+                Button(action: self.saveNewEntry, label: {
+                    Image(ContentViewImages.plusImage.rawValue)
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                        .cornerRadius(38.5)
+                        .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
+                        .padding(30) ///Pulls it off the bottom - will adjust if more options are added to the Form
+                })
+            }
         }
-        .background(Color("defaultBackground").edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/))
+        .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
     }
     
     ///Atttempt at getting the background color to sit properly as it should

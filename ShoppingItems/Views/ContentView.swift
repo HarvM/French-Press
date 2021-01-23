@@ -6,7 +6,6 @@
 //  Copyright © 2020 Marc Harvey. All rights reserved.
 //
 import SwiftUI
-import MapKit
 
 ///Images used across the ContentView
 enum ContentViewImages: String {
@@ -29,9 +28,6 @@ struct ContentView: View {
     //MARK: - Body of the view
     var body: some View {
         NavigationView {
-            ZStack{
-                Color("defaultBackground")
-                    .edgesIgnoringSafeArea(.all)
                 List {
                     //MARK: - HStack: how the cells are displayed and populated
                     Section () {
@@ -47,7 +43,7 @@ struct ContentView: View {
                         .onMove(perform: moveItem)
                     }
                     .listStyle(PlainListStyle())
-                    .listRowBackground(Color("defaultBackground"))
+                    .listRowBackground(Color("defaultBackground").edgesIgnoringSafeArea(.all))
                 }
                 ///Appears to help with the reordering of the List and makes it less laggy when a row is moved
                 .id(UUID())
@@ -73,6 +69,8 @@ struct ContentView: View {
                                     })
                 .foregroundColor(.white)
                 .padding(.init(top: 5, leading: 5, bottom: 5, trailing: 5))
+                ///Changes the background colour
+                .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
                 ///Placeholder image should there be no entries - just looks a little nicer
                 if shoppingItemEntries.count == 0 {
                     Image(ContentViewImages.placeholderImage.rawValue)
@@ -80,9 +78,7 @@ struct ContentView: View {
                         .frame(width: 100, height: 100, alignment: .center)
                         .scaledToFit()
                 }
-            }
         }
-        .background(Color("defaultBackground"))
     }
     
     //MARK: - Delete Item Function
@@ -133,7 +129,7 @@ struct ContentView: View {
         ///Setting the empty/potential cells to the desired colour
         UITableView.appearance().backgroundColor = UIColor(Color("defaultBackground"))
         UITableView.appearance().separatorInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
-//        UITableViewCell.appearance().backgroundColor = .blue
+        UITableViewCell.appearance().backgroundColor = UIColor(Color("defaultBackground"))
         ///For the unpopulated cells: the separators will be clear
         UITableView.appearance().separatorColor = .clear
         ///The NavigationBar had a white tint over it after moving the title to .inline but below addresses this and keeps the desired blue
