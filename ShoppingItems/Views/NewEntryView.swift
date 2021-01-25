@@ -42,7 +42,8 @@ struct NewEntryView: View {
                 //MARK: - TextEditor - Item entry (Main) section
                 Section (header: Text("What would you like?")
                             .foregroundColor(.yellow)
-                            .truncationMode(.head)) {
+                            .truncationMode(.head)
+                            .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))) {
                     HStack {
                         ///$newShoppingItem to get the binding to the state newShoppingItem
                         TextField("Type the item here", text: $newShoppingItem.text)
@@ -56,10 +57,12 @@ struct NewEntryView: View {
                     }
                     .font(.headline)
                 }
+                .padding(5)
                 
                 //MARK: - Picker Section for quantity & quantity type
                 Section (header: Text("How Many Would You Like?")
-                            .foregroundColor(.yellow)) {
+                            .foregroundColor(.yellow)
+                            .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))) {
                     VStack {
                         TextField("Type quantity here",text: $quantitySelected.text)
                             .frame (height: 40)
@@ -77,10 +80,12 @@ struct NewEntryView: View {
                     .pickerStyle(DefaultPickerStyle())
                     .foregroundColor(.red)
                 }
+                .padding(5)
                 
                 //MARK: - TextEditor (Extra Notes) Section
                 Section(header: Text("Extra Notes")
-                            .foregroundColor(.yellow)) {
+                            .foregroundColor(.yellow)
+                            .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))) {
                     HStack {
                         ///I'd ideally love to have this as TextEditor instead to allow more detailed notes but getting the keyboard to hide has been a 'mare
                         TextField("Type here", text: $notesOnItem.text)
@@ -94,9 +99,11 @@ struct NewEntryView: View {
                             .foregroundColor(.gray)
                     }
                 }
+                .padding(5)
             }
             ///Getting this to work was a nightmare. Found something useful for a TextField but done sweet FA on a TextEditor
             ///Uses the AdaptsToKeyboard struct to bump the screen up when the user brings up the keyboard
+            .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
             .modifier(AdaptsToKeyboard())
             .alert(isPresented: $showAlert) { () -> Alert in
                 Alert(title: Text("Sorry"),
@@ -110,23 +117,19 @@ struct NewEntryView: View {
                 Button(action: self.saveNewEntry, label: {
                     Image(ContentViewImages.plusImage.rawValue)
                         .resizable()
-                        .frame(width: 50, height: 50)
+                        .frame(width: 70, height: 70)
                         .cornerRadius(38.5)
                         .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
                         .padding(30) ///Pulls it off the bottom - will adjust if more options are added to the Form
                 })
+                .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
             }
+            .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
         }
         .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
     }
-    
-    ///Atttempt at getting the background color to sit properly as it should
-    init() {
-        UITableView.appearance().backgroundColor = UIColor(Color("defaultBackground"))
-    }
-    
+
     //MARK: - Function (saves the user's item [item name, quantity, measurement, and extra notes]
-    
     private func saveNewEntry() {
         DispatchQueue.main.async {
             ///Removes the whitespace and newLines from the item as it messes with how the name is displayed on the ContentView
