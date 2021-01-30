@@ -10,7 +10,6 @@ import SwiftUI
 ///Images used across the ContentView
 enum ContentViewImages: String {
     case plusImage = "plusIcon" ///On the textEntry field and will let the user add an item
-    case placeholderImage = "appHeader" ///Placeholder image that's displayed when there are no entries
 }
 
 struct ContentView: View {
@@ -27,67 +26,54 @@ struct ContentView: View {
     
     //MARK: - Body of the view
     var body: some View {
-        NavigationView {
-            List {
-                //MARK: - HStack: how the cells are displayed and populated
-                Section() {
-                    ForEach(shoppingItemEntries, id: \.self) {
-                        shoppingItemNew in
-                        HStack {
-                            CellView(itemToBeAdded: shoppingItemNew.itemToBeAdded, quantitySelected: shoppingItemNew.quantitySelected,
-                                     preferredMeasurement: shoppingItemNew.preferredMeasurement)
-                            NavigationLink("", destination: DetailView (itemToBeDisplayed: shoppingItemNew))
+        ZStack {
+            Color("defaultBackground")
+                .edgesIgnoringSafeArea(.all)
+            NavigationView {
+                List {
+                    //MARK: - HStack: how the cells are displayed and populated
+                    Section() {
+                        ForEach(shoppingItemEntries, id: \.self) {
+                            shoppingItemNew in
+                            HStack {
+                                CellView(itemToBeAdded: shoppingItemNew.itemToBeAdded, quantitySelected: shoppingItemNew.quantitySelected,
+                                         preferredMeasurement: shoppingItemNew.preferredMeasurement)
+                                NavigationLink("", destination: DetailView (itemToBeDisplayed: shoppingItemNew))
+                            }
                         }
-                        .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+                        .onDelete(perform: self.deleteItem)
+                        .onMove(perform: moveItem)
                     }
-                    .onDelete(perform: self.deleteItem)
-                    .onMove(perform: moveItem)
-                    .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+                    .listStyle(PlainListStyle())
+                    .listRowBackground(Color("defaultBackground").edgesIgnoringSafeArea(.all))
                 }
+                ///Appears to help with the reordering of the List and makes it less laggy when a row is moved
+                .id(UUID())
+                ///Removes the header and the wee arrow that hides/shows the cells
                 .listStyle(PlainListStyle())
-                .listRowBackground(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+                ///Ensures that the list is closer to the top of the window
+                .navigationBarTitleDisplayMode(.inline)
+                ///Removes the split view from iPad versions - had to be bumped down
+                .navigationViewStyle(StackNavigationViewStyle())
+                
+                //MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list, the trailing launches MapView
+                .navigationBarItems(leading: EditButton(),
+                                    trailing: NavigationLink(destination: NewEntryView()
+                                                                .navigationBarTitle("Add Item")
+                                                                .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
+                                                                .edgesIgnoringSafeArea(.all)
+                                    ){
+                                        ///Image of the trailing icon tha leads the user to the map
+                                        Image(ContentViewImages.plusImage.rawValue)
+                                            .frame(width: 35, height: 35)
+                                            .cornerRadius(38.5)
+                                            .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
+                                    })
+                .foregroundColor(.white)
+                .padding(.init(top: 5, leading: 5, bottom: 5, trailing: 5))
                 .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
             }
-            ///Appears to help with the reordering of the List and makes it less laggy when a row is moved
-            .id(UUID())
-            ///Removes the header and the wee arrow that hides/shows the cells
-            .listStyle(PlainListStyle())
-            ///Ensures that the list is closer to the top of the window
-            .navigationBarTitleDisplayMode(.inline)
-            ///Removes the split view from iPad versions - had to be bumped down
-            .navigationViewStyle(StackNavigationViewStyle())
-            
-            //MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list, the trailing launches MapView
-            .navigationBarItems(leading: EditButton(),
-                                trailing: NavigationLink(destination: NewEntryView()
-                                                            .navigationBarTitle("Add Item")
-                                                            .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
-                                                            .edgesIgnoringSafeArea(.all)
-                                ){
-                                    ///Image of the trailing icon tha leads the user to the map
-                                    Image(ContentViewImages.plusImage.rawValue)
-                                        .frame(width: 35, height: 35)
-                                        .cornerRadius(38.5)
-                                        .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
-                                })
-            .foregroundColor(.white)
-            .padding(.init(top: 5, leading: 5, bottom: 5, trailing: 5))
             .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
-        }
-        .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
-        .onAppear(perform: self.placeholderAppear)
-    }
-    
-    //MARK: - Placeholder function - used on .onAppear
-    private func placeholderAppear() {
-        ///Just looks a little nicer having the placeholder when there are no entries
-        DispatchQueue.main.async {
-            if shoppingItemEntries.count == 0 {
-                Image(ContentViewImages.placeholderImage.rawValue)
-                    .resizable()
-                    .frame(width: 100, height: 100, alignment: .center)
-                    .scaledToFit()
-            }
         }
     }
     
@@ -136,17 +122,17 @@ struct ContentView: View {
         UIListContentView.appearance().backgroundColor = UIColor(Color("defaultBackground"))
         UIPickerView.appearance().backgroundColor = UIColor(Color("defaultBackground"))
         UIPickerView.appearance().tintColor = UIColor(Color("defaultBackground"))
-        ///Setting the empty/potential cells to the desired colour
+        //        ///Setting the empty/potential cells to the desired colour
         UITableView.appearance().backgroundColor = UIColor(Color("defaultBackground"))
-        UITableView.appearance().separatorInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
-        UITableViewCell.appearance().backgroundColor = UIColor(Color("defaultBackground"))
-        ///For the unpopulated cells: the separators will be clear
-        UITableView.appearance().separatorColor = .clear
-        ///The NavigationBar had a white tint over it after moving the title to .inline but below addresses this and keeps the desired blue
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        UINavigationBar.appearance().shadowImage = UIImage()
+        //        UITableView.appearance().separatorInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
+        //        UITableViewCell.appearance().backgroundColor = UIColor(Color("defaultBackground"))
+        //        ///For the unpopulated cells: the separators will be clear
+        //        UITableView.appearance().separatorColor = .clear
+        //        ///The NavigationBar had a white tint over it after moving the title to .inline but below addresses this and keeps the desired blue
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default) ///clears navBar to background colour
+        UINavigationBar.appearance().shadowImage = UIImage() ///removes seperator
         UINavigationBar.appearance().isTranslucent = true
-        UINavigationBar.appearance().tintColor = .white
+        //        UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().backgroundColor = UIColor(Color("defaultBackground"))
         ///Use this if NavigationBarTitle is with Large Font
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]

@@ -37,98 +37,102 @@ struct NewEntryView: View {
     
     //MARK: - Body the UI that will have a Form (Item Entry, Stepper, and Notes) and a Save Button (bottom of view)
     var body: some View {
-        VStack {
-            Form {
-                //MARK: - TextEditor - Item entry (Main) section
-                Section (header: Text("What would you like?")
-                            .foregroundColor(.yellow)
-                            .truncationMode(.head)
-                            .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))) {
-                    HStack {
-                        ///$newShoppingItem to get the binding to the state newShoppingItem
-                        TextField("Type the item here", text: $newShoppingItem.text)
-                            .frame (height: 40)
-                            .multilineTextAlignment(.leading)
-                            .font(.custom(CustomFontDetailView.defaultFont.rawValue, size: 16, relativeTo: .headline))
-                        ///Will display the number of characters already typed and the limit
-                        Text("\(self.newShoppingItem.text.count)|30")
-                            .font(.custom(CustomFontDetailView.defaultFont.rawValue, size: 16, relativeTo: .headline))
-                            .foregroundColor(.gray)
-                    }
-                    .font(.headline)
-                }
-                .padding(5)
-                
-                //MARK: - Picker Section for quantity & quantity type
-                Section (header: Text("How Many Would You Like?")
-                            .foregroundColor(.yellow)
-                            .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))) {
-                    VStack {
-                        TextField("Type quantity here",text: $quantitySelected.text)
-                            .frame (height: 40)
-                            .multilineTextAlignment(.leading)
-                            .keyboardType(.decimalPad)
-                            .font(.custom(CustomFontDetailView.defaultFont.rawValue, size: 16, relativeTo: .headline))
-                    }
-                    Picker(selection: $selectedMeasurement, label: Text("")) {
-                        ForEach(0 ..< measurementFound.count) {
-                            Text(self.measurementFound[$0])
-                                .frame(height: 40)
+        ZStack {
+            Color("defaultBackground")
+                .edgesIgnoringSafeArea(.all)
+            VStack {
+                Form {
+                    //MARK: - TextEditor - Item entry (Main) section
+                    Section (header: Text("What would you like?")
+                                .foregroundColor(.yellow)
+                                .truncationMode(.head)
+                                .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))) {
+                        HStack {
+                            ///$newShoppingItem to get the binding to the state newShoppingItem
+                            TextField("Type the item here", text: $newShoppingItem.text)
+                                .frame (height: 40)
+                                .multilineTextAlignment(.leading)
+                                .font(.custom(CustomFontDetailView.defaultFont.rawValue, size: 16, relativeTo: .headline))
+                            ///Will display the number of characters already typed and the limit
+                            Text("\(self.newShoppingItem.text.count)|30")
+                                .font(.custom(CustomFontDetailView.defaultFont.rawValue, size: 16, relativeTo: .headline))
+                                .foregroundColor(.gray)
                         }
-                        .font(.custom(CustomFontDetailView.defaultFont.rawValue, size: 16, relativeTo: .headline))
+                        .font(.headline)
                     }
-                    .pickerStyle(DefaultPickerStyle())
-                    .foregroundColor(.red)
-                }
-                .padding(5)
-                
-                //MARK: - TextEditor (Extra Notes) Section
-                Section(header: Text("Extra Notes")
-                            .foregroundColor(.yellow)
-                            .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))) {
-                    HStack {
-                        ///I'd ideally love to have this as TextEditor instead to allow more detailed notes but getting the keyboard to hide has been a 'mare
-                        TextField("Type here", text: $notesOnItem.text)
-                            .frame(height: 50)
-                            .multilineTextAlignment(.leading)
+                    .padding(2)
+                    
+                    //MARK: - Picker Section for quantity & quantity type
+                    Section (header: Text("How Many Would You Like?")
+                                .foregroundColor(.yellow)
+                                .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))) {
+                        VStack {
+                            TextField("Type quantity here",text: $quantitySelected.text)
+                                .frame (height: 40)
+                                .multilineTextAlignment(.leading)
+                                .keyboardType(.decimalPad)
+                                .font(.custom(CustomFontDetailView.defaultFont.rawValue, size: 16, relativeTo: .headline))
+                        }
+                        Picker(selection: $selectedMeasurement, label: Text("")) {
+                            ForEach(0 ..< measurementFound.count) {
+                                Text(self.measurementFound[$0])
+                                    .frame(height: 40)
+                            }
                             .font(.custom(CustomFontDetailView.defaultFont.rawValue, size: 16, relativeTo: .headline))
-                        Spacer()
-                        ///Will display the number of characters already typed and the limit
-                        Text("\(self.notesOnItem.text.count)|40")
-                            .font(.custom(CustomFontDetailView.defaultFont.rawValue, size: 16, relativeTo: .headline))
-                            .foregroundColor(.gray)
+                        }
+                        .pickerStyle(DefaultPickerStyle())
+                        .foregroundColor(.red)
                     }
+                    .padding(2)
+                    
+                    //MARK: - TextEditor (Extra Notes) Section
+                    Section(header: Text("Extra Notes")
+                                .foregroundColor(.yellow)
+                                .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))) {
+                        HStack {
+                            ///I'd ideally love to have this as TextEditor instead to allow more detailed notes but getting the keyboard to hide has been a 'mare
+                            TextField("Type here", text: $notesOnItem.text)
+                                .frame(height: 50)
+                                .multilineTextAlignment(.leading)
+                                .font(.custom(CustomFontDetailView.defaultFont.rawValue, size: 16, relativeTo: .headline))
+                            Spacer()
+                            ///Will display the number of characters already typed and the limit
+                            Text("\(self.notesOnItem.text.count)|40")
+                                .font(.custom(CustomFontDetailView.defaultFont.rawValue, size: 16, relativeTo: .headline))
+                                .foregroundColor(.gray)
+                        }
+                    }
+                    .padding(2)
                 }
-                .padding(5)
-            }
-            ///Getting this to work was a nightmare. Found something useful for a TextField but done sweet FA on a TextEditor
-            ///Uses the AdaptsToKeyboard struct to bump the screen up when the user brings up the keyboard
-            .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
-            .modifier(AdaptsToKeyboard())
-            .alert(isPresented: $showAlert) { () -> Alert in
-                Alert(title: Text("Sorry"),
-                      message: Text("There has to be an item to add"),
-                      dismissButton: .default(Text("👍🏼"))
-                      ///Bit tacky using the thumbs up but with the colour across the app being white with the init, it couldn't be changed here (tried .foregroundColour)
-                )
-            }
-            //MARK: - Button that will save the user's entry - sits at the bottom of the view
-            VStack(alignment: .center, spacing: 10) {
-                Button(action: self.saveNewEntry, label: {
-                    Image(ContentViewImages.plusImage.rawValue)
-                        .resizable()
-                        .frame(width: 70, height: 70)
-                        .cornerRadius(38.5)
-                        .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
-                        .padding(30) ///Pulls it off the bottom - will adjust if more options are added to the Form
-                })
+                ///Getting this to work was a nightmare. Found something useful for a TextField but done sweet FA on a TextEditor
+                ///Uses the AdaptsToKeyboard struct to bump the screen up when the user brings up the keyboard
+                .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+                .modifier(AdaptsToKeyboard())
+                .alert(isPresented: $showAlert) { () -> Alert in
+                    Alert(title: Text("Sorry"),
+                          message: Text("There has to be an item to add"),
+                          dismissButton: .default(Text("👍🏼"))
+                          ///Bit tacky using the thumbs up but with the colour across the app being white with the init, it couldn't be changed here (tried .foregroundColour)
+                    )
+                }
+                //MARK: - Button that will save the user's entry - sits at the bottom of the view
+                VStack(alignment: .center, spacing: 10) {
+                    Button(action: self.saveNewEntry, label: {
+                        Image(ContentViewImages.plusImage.rawValue)
+                            .resizable()
+                            .frame(width: 70, height: 70)
+                            .cornerRadius(38.5)
+                            .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
+                            .padding(.bottom, 15) ///Pulls it off the bottom - will adjust if more options are added to the Form
+                    })
+                    .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+                }
                 .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
             }
             .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
         }
-        .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
     }
-
+    
     //MARK: - Function (saves the user's item [item name, quantity, measurement, and extra notes]
     private func saveNewEntry() {
         DispatchQueue.main.async {
