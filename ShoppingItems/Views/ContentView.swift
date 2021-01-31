@@ -53,9 +53,7 @@ struct ContentView: View {
                 .listStyle(PlainListStyle())
                 ///Ensures that the list is closer to the top of the window
                 .navigationBarTitleDisplayMode(.inline)
-                ///Removes the split view from iPad versions - had to be bumped down
-                .navigationViewStyle(StackNavigationViewStyle())
-                
+    
                 //MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list, the trailing launches MapView
                 .navigationBarItems(leading: EditButton(),
                                     trailing: NavigationLink(destination: NewEntryView()
@@ -74,7 +72,10 @@ struct ContentView: View {
                 .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
             }
             .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+            ///Removes the split view from iPad versions 
+            .navigationViewStyle(StackNavigationViewStyle())
         }
+        .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
     }
     
     //MARK: - Delete Item Function
