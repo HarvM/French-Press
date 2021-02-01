@@ -13,6 +13,7 @@ enum ContentViewImages: String {
 }
 
 struct ContentView: View {
+    
     //MARK: - Properties
     @ObservedObject var listStore: ShoppingItemStore
     let generator = UINotificationFeedbackGenerator()
@@ -20,8 +21,7 @@ struct ContentView: View {
     @Environment (\.presentationMode) var presentationMode
     @Environment (\.colorScheme) var colorScheme
     @FetchRequest(entity: ShoppingItems.entity(), sortDescriptors:
-                    [NSSortDescriptor (keyPath: \ShoppingItems.order, ascending: true)
-                    ])
+                    [NSSortDescriptor (keyPath: \ShoppingItems.order, ascending: true)])
     var shoppingItemEntries: FetchedResults<ShoppingItems>
     
     //MARK: - Body of the view
@@ -125,11 +125,6 @@ struct ContentView: View {
         UIPickerView.appearance().tintColor = UIColor(Color("defaultBackground"))
         //        ///Setting the empty/potential cells to the desired colour
         UITableView.appearance().backgroundColor = UIColor(Color("defaultBackground"))
-        //        UITableView.appearance().separatorInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
-        //        UITableViewCell.appearance().backgroundColor = UIColor(Color("defaultBackground"))
-        //        ///For the unpopulated cells: the separators will be clear
-        //        UITableView.appearance().separatorColor = .clear
-        //        ///The NavigationBar had a white tint over it after moving the title to .inline but below addresses this and keeps the desired blue
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default) ///clears navBar to background colour
         UINavigationBar.appearance().shadowImage = UIImage() ///removes seperator
         UINavigationBar.appearance().isTranslucent = true
