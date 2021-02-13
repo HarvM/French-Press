@@ -15,6 +15,7 @@ enum ContentViewImages: String {
 struct ContentView: View {
     
     //MARK: - Properties
+    @State var isEditing = false
     @ObservedObject var listStore: ShoppingItemStore
     let generator = UINotificationFeedbackGenerator()
     @Environment (\.managedObjectContext) var managedObjectContext
@@ -55,7 +56,10 @@ struct ContentView: View {
                 .navigationBarTitleDisplayMode(.inline)
     
                 //MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list, the trailing launches MapView
-                .navigationBarItems(leading: EditButton(),
+                .navigationBarItems(leading: EditButton()
+                                        .simultaneousGesture(TapGesture().onEnded {
+                                            isEditing = false
+                                        }),
                                     trailing: NavigationLink(destination: NewEntryView()
                                                                 .navigationBarTitle("Add Item")
                                                                 .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
@@ -72,8 +76,9 @@ struct ContentView: View {
                 .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
             }
             .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
-            ///Removes the split view from iPad versions 
-            .navigationViewStyle(StackNavigationViewStyle())
+            ///Removes the split view from iPad versions
+            ///Commenting this out allows the EditButton to function 
+//            .navigationViewStyle(StackNavigationViewStyle())
         }
         .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
     }
@@ -128,7 +133,6 @@ struct ContentView: View {
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default) ///clears navBar to background colour
         UINavigationBar.appearance().shadowImage = UIImage() ///removes seperator
         UINavigationBar.appearance().isTranslucent = true
-        //        UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().backgroundColor = UIColor(Color("defaultBackground"))
         ///Use this if NavigationBarTitle is with Large Font
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
