@@ -120,10 +120,10 @@ struct NewEntryView: View {
                     Button(action: self.saveNewEntry, label: {
                         Image(ContentViewImages.plusImage.rawValue)
                             .resizable()
-                            .frame(width: 70, height: 70)
+                            .frame(width: 45, height: 45)
                             .cornerRadius(38.5)
                             .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
-                            .padding(.bottom, 15) ///Pulls it off the bottom - will adjust if more options are added to the Form
+                            .padding(.bottom, 28) ///Pulls it off the bottom - will adjust if more options are added to the Form
                     })
                     .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
                 }
