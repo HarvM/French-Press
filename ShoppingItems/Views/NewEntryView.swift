@@ -109,9 +109,9 @@ struct NewEntryView: View {
                 .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
                 .modifier(AdaptsToKeyboard())
                 .alert(isPresented: $showAlert) { () -> Alert in
-                    Alert(title: Text("Sorry"),
-                          message: Text("There has to be an item to add"),
-                          dismissButton: .default(Text("👍🏼"))
+                    Alert(title: Text("Hold up"),
+                          message: Text("Make sure you're entering an item - cheers"),
+                          dismissButton: .default(Text("🤙"))
                           ///Bit tacky using the thumbs up but with the colour across the app being white with the init, it couldn't be changed here (tried .foregroundColour)
                     )
                 }
