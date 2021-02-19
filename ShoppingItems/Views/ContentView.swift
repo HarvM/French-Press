@@ -76,9 +76,6 @@ struct ContentView: View {
                 .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
             }
             .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
-            ///Removes the split view from iPad versions
-            ///Commenting this out allows the EditButton to function 
-//            .navigationViewStyle(StackNavigationViewStyle())
         }
         .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
     }

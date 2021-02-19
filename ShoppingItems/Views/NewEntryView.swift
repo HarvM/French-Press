@@ -59,7 +59,7 @@ struct NewEntryView: View {
                                 .foregroundColor(.gray)
                         }
                         .font(.headline)
-                    } //
+                    }
                     .padding(2)
                     
                     //MARK: - Picker Section for quantity & quantity type
