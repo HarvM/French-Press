@@ -47,6 +47,17 @@ struct ContentView: View {
                     }
                     .listStyle(PlainListStyle())
                     .listRowBackground(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+                    
+                    //NEW BUTTON!
+//
+//                    VStack(alignment: .trailing, spacing: 10) {
+//                        Button("Do Something"){
+//
+//                        }
+//                        .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+//                        .padding(.bottom, 20)
+//                    }
+//                    .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
                 }
                 ///Appears to help with the reordering of the List and makes it less laggy when a row is moved
                 .id(UUID())
@@ -74,51 +85,12 @@ struct ContentView: View {
                 .foregroundColor(.white)
                 .padding(.init(top: 5, leading: 5, bottom: 5, trailing: 5))
                 .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+                
             }
             .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
         }
         .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
     }
-    
-    //MARK: - Delete Item Function
-    private func deleteItem(at indexSet: IndexSet) {
-        DispatchQueue.main.async {
-            ///When the user wants to delete a cell, the index of the selected cell is found and then removed
-            let deleteItem = self.shoppingItemEntries[indexSet.first!]
-            self.managedObjectContext.delete(deleteItem)
-            
-            ///Haptic feedback for when the user taps on Delete
-            self.generator.notificationOccurred(.error)
-        }
-    }
-    
-    ///Triggered for when the user is in EditMode and wishes to move an item on the list
-    private func moveItem(from source: IndexSet, to destination: Int) {
-        DispatchQueue.main.async {
-            ///An array of them items from the fetched results
-            var orderedItems: [ShoppingItems] = shoppingItemEntries.map{$0}
-            
-            ///Alter the order of the items in the new array
-            orderedItems.move(fromOffsets: source, toOffset: destination)
-            
-            ///Updates the userOrder to maintain the new order
-            ///Done in reverse to minimise changes to indices of the array
-            for reverseIndex in stride(from: orderedItems.count - 1,
-                                       through: 0,
-                                       by: -1)
-            {
-                orderedItems[reverseIndex].order =
-                    NSNumber(value: Int16(reverseIndex))
-                ///The change in order has to be saved
-                do {
-                    try self.managedObjectContext.save()
-                } catch {
-                    Alert(title: Text("Sorry"), message: Text("Please try again"), dismissButton: .default(Text("Okay")))
-                }
-            }
-        }
-    }
-    
     
     init() {
         ///Below is various attempts at getting the from from the Picker to display a different background colour
@@ -137,13 +109,7 @@ struct ContentView: View {
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
         ///Have to init the listStore with a value
         self.listStore = ShoppingItemStore.init()
-        
-    }
-}
 
-extension View {
-    func endEditing() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 
@@ -164,7 +130,6 @@ struct KeyboardAvoiderDemo: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
-        
+        EmptyView()
     }
 }
