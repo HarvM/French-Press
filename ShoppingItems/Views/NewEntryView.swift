@@ -88,7 +88,8 @@ struct NewEntryView: View {
                     //MARK: - TextEditor (Extra Notes) Section
                     Section(header: Text("Extra Notes")
                                 .foregroundColor(.yellow)
-                                .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))) {
+                                .background(Color("defaultBackground")
+                                .edgesIgnoringSafeArea(.all))) {
                         HStack {
                             ///I'd ideally love to have this as TextEditor instead to allow more detailed notes but getting the keyboard to hide has been a 'mare
                             TextField("Type here", text: $notesOnItem.text)
@@ -109,9 +110,9 @@ struct NewEntryView: View {
                 .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
                 .modifier(AdaptsToKeyboard())
                 .alert(isPresented: $showAlert) { () -> Alert in
-                    Alert(title: Text("Hold up"),
-                          message: Text("Make sure you're entering an item - cheers"),
-                          dismissButton: .default(Text("🤙"))
+                    Alert(title: Text("One moment"),
+                          message: Text("Make sure you're entering an item and a quantity"),
+                          dismissButton: .default(Text("👍🏼"))
                           ///Bit tacky using the thumbs up but with the colour across the app being white with the init, it couldn't be changed here (tried .foregroundColour)
                     )
                 }
@@ -130,48 +131,6 @@ struct NewEntryView: View {
                 .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
             }
             .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
-        }
-    }
-    
-    //MARK: - Function (saves the user's item [item name, quantity, measurement, and extra notes]
-    private func saveNewEntry() {
-        DispatchQueue.main.async {
-            ///Removes the whitespace and newLines from the item as it messes with how the name is displayed on the ContentView
-            let trimmedItem = self.newShoppingItem.text.trimmingCharacters(in: .whitespacesAndNewlines)
-            let trimmedNote = self.notesOnItem.text.trimmingCharacters(in: .whitespacesAndNewlines)
-            let trimmedQuantity = self.quantitySelected.text.trimmingCharacters(in: .whitespacesAndNewlines)
-            let chosenMeasurement = self.measurementFound[self.selectedMeasurement]
-            
-            ///There has to be a value within the "itemsToBeAdded" or else nothing will be saved
-            if self.newShoppingItem.text == "" {
-                self.showAlert = true
-            }
-            else {
-                ///Will get the new item and then place it within the CoreData under the attribute of itemToBeAdded
-                let shoppingItemNew = ShoppingItems(context: self.managedObjectContext)
-                self.managedObjectContext.performAndWait {
-                    shoppingItemNew.itemToBeAdded = trimmedItem
-                    shoppingItemNew.notesOnItem = trimmedNote
-                    shoppingItemNew.quantitySelected = trimmedQuantity
-                    shoppingItemNew.preferredMeasurement = chosenMeasurement
-                    self.isShowingContentView = true
-                    
-                    ///Will save the new entry but if not the user will be notified that there was an issue saving to to the device
-                    do {
-                        try self.managedObjectContext.save()
-                    } catch {
-                        Alert(title: Text("Sorry \(DetailViewImages.sorryShrug.rawValue)"), message: Text("Please try again"), dismissButton: .default(Text("Okay")))
-                    }
-                    
-                    ///Resets the newShoppingItem back to being blank
-                    newShoppingItem.text = ""
-                    notesOnItem.text = ""
-                    
-                    ///Haptic feedback for when the user has tapped on the Add/Plus button
-                    self.generator.notificationOccurred(.success)
-                    self.presentationMode.wrappedValue.dismiss()
-                }
-            }
         }
     }
 }
