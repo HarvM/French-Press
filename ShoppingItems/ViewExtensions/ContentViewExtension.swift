@@ -11,15 +11,6 @@ import SwiftUI
 
 extension ContentView {
     
-    //Test
-    
-    public func placeholderAppear() {
-        if shoppingItemEntries.count == 0 {
-            Image("appHeader")
-                .frame(width: 40, height: 40, alignment: .center)
-        }
-    }
-    
     //MARK: - Delete Item Function
     public func deleteItem(at indexSet: IndexSet) {
         DispatchQueue.main.async {
