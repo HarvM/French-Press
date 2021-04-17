@@ -65,7 +65,8 @@ struct NewEntryView: View {
                     //MARK: - Picker Section for quantity & quantity type
                     Section (header: Text("How Many Would You Like?")
                                 .foregroundColor(.yellow)
-                                .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))) {
+                                .background(Color("defaultBackground")
+                                                .edgesIgnoringSafeArea(.all))) {
                         VStack {
                             TextField("Type quantity here",text: $quantitySelected.text)
                                 .frame (height: 40)
@@ -126,11 +127,14 @@ struct NewEntryView: View {
                             .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
                             .padding(.bottom, 28) ///Pulls it off the bottom - will adjust if more options are added to the Form
                     })
-                    .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+                    .background(Color("defaultBackground")
+                                    .edgesIgnoringSafeArea(.all))
                 }
-                .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+                .background(Color("defaultBackground")
+                                .edgesIgnoringSafeArea(.all))
             }
-            .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+            .background(Color("defaultBackground")
+                            .edgesIgnoringSafeArea(.all))
         }
     }
 }
