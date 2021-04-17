@@ -11,6 +11,8 @@ import SwiftUI
 
 extension ContentView {
     
+    //Test
+    
     public func placeholderAppear() {
         if shoppingItemEntries.count == 0 {
             Image("appHeader")
