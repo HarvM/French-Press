@@ -40,8 +40,9 @@ struct ContentView: View {
     }
     
     var emptyListView: some View {
-        Image("appHeader")
-            .navigationBarItems(leading: EditButton()
+        NavigationView {
+            Image("appHeader")
+                .navigationBarItems(leading: EditButton()
                                     .simultaneousGesture(TapGesture()
                                     .onEnded {
                                         isEditing = false
@@ -61,6 +62,9 @@ struct ContentView: View {
             .padding(.init(top: 5, leading: 5, bottom: 5, trailing: 5))
             .background(Color("defaultBackground")
                             .edgesIgnoringSafeArea(.all))
+        }
+        .background(Color("defaultBackground")
+                        .edgesIgnoringSafeArea(.all))
     }
     
     var populatedView: some View {
