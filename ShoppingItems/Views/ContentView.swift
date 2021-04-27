@@ -26,12 +26,16 @@ struct ContentView: View {
                     [NSSortDescriptor (keyPath: \ShoppingItems.order, ascending: true)])
     var shoppingItemEntries: FetchedResults<ShoppingItems>
     
+    //MARK: Main body of the view
     var body: some View {
         listView
     }
     
+    ///Use of ViewBuilder to differentiate between the populated and unpopulated list
+    ///Using this to display the placeholder screen
     @ViewBuilder
     var listView: some View {
+        ///If no shoppingItemEntries on the list then display the placeholder image
         if shoppingItemEntries.count == 0 {
             emptyListView
         } else {
@@ -40,32 +44,75 @@ struct ContentView: View {
     }
     
     var emptyListView: some View {
-        NavigationView {
-            Image("appHeader")
+        ZStack {
+            Color("defaultBackground")
+                .edgesIgnoringSafeArea(.all)
+            NavigationView {
+                Image("appHeader")
+                .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
                 .navigationBarItems(leading: EditButton()
-                                    .simultaneousGesture(TapGesture()
-                                    .onEnded {
-                                        isEditing = false
-                                    }),
-                                trailing: NavigationLink(destination: NewEntryView()
-                                                            .navigationBarTitle("Add Item")
-                                                            .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
-                                                            .edgesIgnoringSafeArea(.all)
-                                ){
-                                    ///Image of the trailing icon tha leads the user to the map
-                                    Image(ContentViewImages.plusImage.rawValue)
-                                        .frame(width: 35, height: 35)
-                                        .cornerRadius(38.5)
-                                        .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
-                                })
-            .foregroundColor(.white)
-            .padding(.init(top: 5, leading: 5, bottom: 5, trailing: 5))
+                .simultaneousGesture(TapGesture()
+                .onEnded {
+                    isEditing = false }),
+                    trailing: NavigationLink(destination: NewEntryView()
+                    .navigationBarTitle("Add Item")
+                    .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
+                    .edgesIgnoringSafeArea(.all) ){
+                                        ///Image of the trailing icon tha leads the user to the map
+                                        Image(ContentViewImages.plusImage.rawValue)
+                                            .frame(width: 35, height: 35)
+                                            .cornerRadius(38.5)
+                                            .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
+                                    })
+                .foregroundColor(.white)
+                .padding(.init(top: 5, leading: 5, bottom: 5, trailing: 5))
+                .background(Color("defaultBackground")
+                                .edgesIgnoringSafeArea(.all))
+            }
             .background(Color("defaultBackground")
                             .edgesIgnoringSafeArea(.all))
         }
         .background(Color("defaultBackground")
                         .edgesIgnoringSafeArea(.all))
     }
+    
+    //MARK: - emptyListView
+    ///Will be displayed when the user hasn't entered any items onto the shopping list/no items on the model
+//    var emptyListView: some View {
+//        ZStack {
+//            Color("defaultBackground")
+//                .edgesIgnoringSafeArea(.all)
+//            NavigationView {
+//                ///Placeholder image
+//                Image("appHeader")
+//                .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+//                .navigationBarItems(leading: EditButton()
+//                .simultaneousGesture(TapGesture()
+//                .onEnded {
+//                    isEditing = false }),
+//                    trailing: NavigationLink(destination: NewEntryView()
+//                    .navigationBarTitle("Add Item")
+//                    .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
+//                    .edgesIgnoringSafeArea(.all)
+//                                ){
+//                                    ///Image of the trailing icon tha leads the user to the map
+//                                    Image(ContentViewImages.plusImage.rawValue)
+//                                        .frame(width: 35, height: 35)
+//                                        .cornerRadius(38.5)
+//                                        .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
+//                                        .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+//                                })
+//            .foregroundColor(.white)
+//            .padding(.init(top: 5, leading: 5, bottom: 5, trailing: 5))
+//            .background(Color("defaultBackground")
+//                            .edgesIgnoringSafeArea(.all))
+//        }
+//        .background(Color("defaultBackground")
+//                        .edgesIgnoringSafeArea(.all))
+//        }
+//        .background(Color("defaultBackground")
+//                        .edgesIgnoringSafeArea(.all))
+//    }
     
     var populatedView: some View {
         ZStack {
