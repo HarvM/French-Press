@@ -52,5 +52,53 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9FF0B3FF-7F02-4A4B-8B01-C596D6947A81"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShoppingItems/Views/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "emptyListView"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "9FF0B3FF-7F02-4A4B-8B01-C596D6947A81 - be36cfbe98fa92d4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.background&lt;A where A1: SwiftUI.View&gt;(_: A1, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.background&lt;A where A1: SwiftUI.View&gt;(_: A1, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0)&gt; in Yer_Messages.ContentView.emptyListView.getter : some"
+                  moduleName = "Yer Messages"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Marc/Documents/Swift%20New/Yer%20Messages/Yer-Messages/ShoppingItems/Views/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "901">
+               </Location>
+               <Location
+                  uuid = "9FF0B3FF-7F02-4A4B-8B01-C596D6947A81 - 34cfe209d7748953"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.background&lt;A where A1: SwiftUI.View&gt;(_: A1, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.background&lt;A where A1: SwiftUI.View&gt;(_: A1, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.background&lt;A where A1: SwiftUI.View&gt;(_: A1, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0)&gt; in Yer_Messages.ContentView.emptyListView.getter : some"
+                  moduleName = "Yer Messages"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Marc/Documents/Swift%20New/Yer%20Messages/Yer-Messages/ShoppingItems/Views/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "920">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

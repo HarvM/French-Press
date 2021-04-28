@@ -14,7 +14,7 @@ enum ContentViewImages: String {
 }
 
 struct ContentView: View {
-    
+
     //MARK: - Properties
     @State var isEditing = false
     @ObservedObject var listStore: ShoppingItemStore
@@ -39,6 +39,7 @@ struct ContentView: View {
         if shoppingItemEntries.count == 0 {
             emptyListView
         } else {
+            ///Will show the view with the shoppingItems that the user has input
             populatedView
         }
     }
@@ -48,16 +49,21 @@ struct ContentView: View {
             Color("defaultBackground")
                 .edgesIgnoringSafeArea(.all)
             NavigationView {
-                Image("appHeader")
+                HStack {
+                    Image("appHeader")
+                        .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+                }
+                ///Edit here to fill device
+                .frame(width: 500, height: 900, alignment: .center)
+                .listStyle(PlainListStyle())
+                .listRowBackground(Color("defaultBackground")
+                                    .edgesIgnoringSafeArea(.all))
                 .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
-                .navigationBarItems(leading: EditButton()
-                .simultaneousGesture(TapGesture()
-                .onEnded {
-                    isEditing = false }),
-                    trailing: NavigationLink(destination: NewEntryView()
-                    .navigationBarTitle("Add Item")
-                    .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
-                    .edgesIgnoringSafeArea(.all) ){
+                .navigationBarItems( trailing: NavigationLink(destination: NewEntryView()
+                                                                .navigationBarTitle("Add Item")
+                                                                .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
+                                                                .edgesIgnoringSafeArea(.all)
+                                    ){
                                         ///Image of the trailing icon tha leads the user to the map
                                         Image(ContentViewImages.plusImage.rawValue)
                                             .frame(width: 35, height: 35)
@@ -76,44 +82,8 @@ struct ContentView: View {
                         .edgesIgnoringSafeArea(.all))
     }
     
-    //MARK: - emptyListView
-    ///Will be displayed when the user hasn't entered any items onto the shopping list/no items on the model
-//    var emptyListView: some View {
-//        ZStack {
-//            Color("defaultBackground")
-//                .edgesIgnoringSafeArea(.all)
-//            NavigationView {
-//                ///Placeholder image
-//                Image("appHeader")
-//                .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
-//                .navigationBarItems(leading: EditButton()
-//                .simultaneousGesture(TapGesture()
-//                .onEnded {
-//                    isEditing = false }),
-//                    trailing: NavigationLink(destination: NewEntryView()
-//                    .navigationBarTitle("Add Item")
-//                    .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
-//                    .edgesIgnoringSafeArea(.all)
-//                                ){
-//                                    ///Image of the trailing icon tha leads the user to the map
-//                                    Image(ContentViewImages.plusImage.rawValue)
-//                                        .frame(width: 35, height: 35)
-//                                        .cornerRadius(38.5)
-//                                        .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
-//                                        .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
-//                                })
-//            .foregroundColor(.white)
-//            .padding(.init(top: 5, leading: 5, bottom: 5, trailing: 5))
-//            .background(Color("defaultBackground")
-//                            .edgesIgnoringSafeArea(.all))
-//        }
-//        .background(Color("defaultBackground")
-//                        .edgesIgnoringSafeArea(.all))
-//        }
-//        .background(Color("defaultBackground")
-//                        .edgesIgnoringSafeArea(.all))
-//    }
-    
+    //MARK: - PopulatedView
+    ///This view will hold the List that displays the items that the user has input and kept in CoreData
     var populatedView: some View {
         ZStack {
             Color("defaultBackground")
@@ -136,17 +106,6 @@ struct ContentView: View {
                     .listStyle(PlainListStyle())
                     .listRowBackground(Color("defaultBackground")
                                         .edgesIgnoringSafeArea(.all))
-                    
-                    //NEW BUTTON!
-//
-//                    VStack(alignment: .trailing, spacing: 10) {
-//                        Button("Do Something"){
-//
-//                        }
-//                        .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
-//                        .padding(.bottom, 20)
-//                    }
-//                    .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
                 }
                 ///Appears to help with the reordering of the List and makes it less laggy when a row is moved
                 .id(UUID())
@@ -154,13 +113,13 @@ struct ContentView: View {
                 .listStyle(PlainListStyle())
                 ///Ensures that the list is closer to the top of the window
                 .navigationBarTitleDisplayMode(.inline)
-    
+                
                 //MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list, the trailing launches MapView
                 .navigationBarItems(leading: EditButton()
                                         .simultaneousGesture(TapGesture()
-                                        .onEnded {
-                                            isEditing = false
-                                        }),
+                                                                .onEnded {
+                                                                    isEditing = false
+                                                                }),
                                     trailing: NavigationLink(destination: NewEntryView()
                                                                 .navigationBarTitle("Add Item")
                                                                 .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
@@ -176,15 +135,12 @@ struct ContentView: View {
                 .padding(.init(top: 5, leading: 5, bottom: 5, trailing: 5))
                 .background(Color("defaultBackground")
                                 .edgesIgnoringSafeArea(.all))
-                
             }
             .background(Color("defaultBackground")
-                            .edgesIgnoringSafeArea(.all)
-            )
+                            .edgesIgnoringSafeArea(.all))
         }
         .background(Color("defaultBackground")
-                        .edgesIgnoringSafeArea(.all)
-        )
+                        .edgesIgnoringSafeArea(.all))
     }
     
     init() {
@@ -204,119 +160,24 @@ struct ContentView: View {
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
         ///Have to init the listStore with a value
         self.listStore = ShoppingItemStore.init()
+        
+    }
+}
 
+struct KeyboardAvoiderDemo: View {
+    @State var text = ""
+    var body: some View {
+        VStack {
+            TextField("Demo", text: self.$text)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .contentShape(Rectangle())
+        .onTapGesture {}
+        .onLongPressGesture(
+            pressing: { isPressed in if isPressed { self.endEditing() } },
+            perform: {})
     }
-    }
-//
-//    //MARK: - Body of the view
-//    var body: some View {
-//        ZStack {
-//            Color("defaultBackground")
-//                .edgesIgnoringSafeArea(.all)
-//            NavigationView {
-//                List {
-//                    //MARK: - HStack: how the cells are displayed and populated
-//                    Section() {
-//                        ForEach(shoppingItemEntries, id: \.self) {
-//                            shoppingItemNew in
-//                            HStack {
-//                                CellView(itemToBeAdded: shoppingItemNew.itemToBeAdded, quantitySelected: shoppingItemNew.quantitySelected,
-//                                         preferredMeasurement: shoppingItemNew.preferredMeasurement)
-//                                NavigationLink("", destination: DetailView (itemToBeDisplayed: shoppingItemNew))
-//                            }
-//                        }
-//                        .onDelete(perform: self.deleteItem)
-//                        .onMove(perform: moveItem)
-//                    }
-//                    .listStyle(PlainListStyle())
-//                    .listRowBackground(Color("defaultBackground")
-//                                        .edgesIgnoringSafeArea(.all))
-//
-//                    //NEW BUTTON!
-////
-////                    VStack(alignment: .trailing, spacing: 10) {
-////                        Button("Do Something"){
-////
-////                        }
-////                        .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
-////                        .padding(.bottom, 20)
-////                    }
-////                    .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
-//                }
-//                ///Appears to help with the reordering of the List and makes it less laggy when a row is moved
-//                .id(UUID())
-//                ///Removes the header and the wee arrow that hides/shows the cells
-//                .listStyle(PlainListStyle())
-//                ///Ensures that the list is closer to the top of the window
-//                .navigationBarTitleDisplayMode(.inline)
-//
-//                //MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list, the trailing launches MapView
-//                .navigationBarItems(leading: EditButton()
-//                                        .simultaneousGesture(TapGesture()
-//                                        .onEnded {
-//                                            isEditing = false
-//                                        }),
-//                                    trailing: NavigationLink(destination: NewEntryView()
-//                                                                .navigationBarTitle("Add Item")
-//                                                                .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
-//                                                                .edgesIgnoringSafeArea(.all)
-//                                    ){
-//                                        ///Image of the trailing icon tha leads the user to the map
-//                                        Image(ContentViewImages.plusImage.rawValue)
-//                                            .frame(width: 35, height: 35)
-//                                            .cornerRadius(38.5)
-//                                            .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
-//                                    })
-//                .foregroundColor(.white)
-//                .padding(.init(top: 5, leading: 5, bottom: 5, trailing: 5))
-//                .background(Color("defaultBackground")
-//                                .edgesIgnoringSafeArea(.all))
-//
-//            }
-//            .background(Color("defaultBackground")
-//                            .edgesIgnoringSafeArea(.all)
-//            )
-//        }
-//        .background(Color("defaultBackground")
-//                        .edgesIgnoringSafeArea(.all)
-//        )
-//    }
-//
-//    init() {
-//        ///Below is various attempts at getting the from from the Picker to display a different background colour
-//        UIListContentView.appearance().backgroundColor = UIColor(Color("defaultBackground"))
-//        UIPickerView.appearance().backgroundColor = UIColor(Color("defaultBackground"))
-//        UIPickerView.appearance().tintColor = UIColor(Color("defaultBackground"))
-//        ///Setting the empty/potential cells to the desired colour
-//        UITableView.appearance().backgroundColor = UIColor(Color("defaultBackground"))
-//        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default) ///clears navBar to background colour
-//        UINavigationBar.appearance().shadowImage = UIImage() ///removes seperator
-//        UINavigationBar.appearance().isTranslucent = true
-//        UINavigationBar.appearance().backgroundColor = UIColor(Color("defaultBackground"))
-//        ///Use this if NavigationBarTitle is with Large Font
-//        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-//        ///Use this if NavigationBarTitle is with displayMode = .inline
-//        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
-//        ///Have to init the listStore with a value
-//        self.listStore = ShoppingItemStore.init()
-//
-//    }
-//}
-//
-//struct KeyboardAvoiderDemo: View {
-//    @State var text = ""
-//    var body: some View {
-//        VStack {
-//            TextField("Demo", text: self.$text)
-//        }
-//        .frame(maxWidth: .infinity, maxHeight: .infinity)
-//        .contentShape(Rectangle())
-//        .onTapGesture {}
-//        .onLongPressGesture(
-//            pressing: { isPressed in if isPressed { self.endEditing() } },
-//            perform: {})
-//    }
-//}
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
