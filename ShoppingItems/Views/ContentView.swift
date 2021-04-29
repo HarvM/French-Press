@@ -120,6 +120,7 @@ struct ContentView: View {
                 .listStyle(PlainListStyle())
                 ///Ensures that the list is closer to the top of the window
                 .navigationBarTitleDisplayMode(.inline)
+                ///Define background colour
                 .background(Color("defaultBackground")
                                 .edgesIgnoringSafeArea(.all))
                 
