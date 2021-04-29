@@ -53,7 +53,6 @@ struct ContentView: View {
                     Image("appHeader")
                         .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
                 }
-                ///Edit here to fill device
                 .frame(width: 500, height: 900, alignment: .center)
                 .listStyle(PlainListStyle())
                 .listRowBackground(Color("defaultBackground")
@@ -97,8 +96,14 @@ struct ContentView: View {
                             HStack {
                                 CellView(itemToBeAdded: shoppingItemNew.itemToBeAdded, quantitySelected: shoppingItemNew.quantitySelected,
                                          preferredMeasurement: shoppingItemNew.preferredMeasurement)
+                                    .background(Color("defaultBackground")
+                                                    .edgesIgnoringSafeArea(.all))
                                 NavigationLink("", destination: DetailView (itemToBeDisplayed: shoppingItemNew))
+                                    .background(Color("defaultBackground")
+                                                    .edgesIgnoringSafeArea(.all))
                             }
+                            .background(Color("defaultBackground")
+                                            .edgesIgnoringSafeArea(.all))
                         }
                         .onDelete(perform: self.deleteItem)
                         .onMove(perform: moveItem)
@@ -106,6 +111,8 @@ struct ContentView: View {
                     .listStyle(PlainListStyle())
                     .listRowBackground(Color("defaultBackground")
                                         .edgesIgnoringSafeArea(.all))
+                    .background(Color("defaultBackground")
+                                    .edgesIgnoringSafeArea(.all))
                 }
                 ///Appears to help with the reordering of the List and makes it less laggy when a row is moved
                 .id(UUID())
@@ -113,6 +120,8 @@ struct ContentView: View {
                 .listStyle(PlainListStyle())
                 ///Ensures that the list is closer to the top of the window
                 .navigationBarTitleDisplayMode(.inline)
+                .background(Color("defaultBackground")
+                                .edgesIgnoringSafeArea(.all))
                 
                 //MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list, the trailing launches MapView
                 .navigationBarItems(leading: EditButton()
