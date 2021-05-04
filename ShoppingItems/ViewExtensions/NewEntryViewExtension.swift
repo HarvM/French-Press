@@ -17,12 +17,10 @@ extension NewEntryView {
             ///Removes the whitespace and newLines from the item as it messes with how the name is displayed on the ContentView
             let trimmedItem = self.newShoppingItem.text.trimmingCharacters(in: .whitespacesAndNewlines)
             let trimmedNote = self.notesOnItem.text.trimmingCharacters(in: .whitespacesAndNewlines)
-            let trimmedQuantity = self.quantitySelected.text.trimmingCharacters(in: .whitespacesAndNewlines)
+            var trimmedQuantity = self.quantitySelected.text.trimmingCharacters(in: .whitespacesAndNewlines)
             let chosenMeasurement = self.measurementFound[self.selectedMeasurement]
             
             ///There has to be a value within the "itemsToBeAdded" or else nothing will be saved
-//            if self.newShoppingItem.text.isEmpty && self.quantitySelected.text.isEmpty {
-//                self.showAlert = true
             if trimmedItem.isEmpty {
                 self.showAlert = true
             } 
@@ -41,6 +39,11 @@ extension NewEntryView {
                         try self.managedObjectContext.save()
                     } catch {
                         Alert(title: Text("Sorry \(ContentViewImages.sorryShrug.rawValue)"), message: Text("Please try again"), dismissButton: .default(Text("")))
+                    }
+                    
+                    ///Logic to ensure that there is a quantity of some sort by default even if the user doesn't explicity define an amount
+                    if trimmedQuantity.isEmpty {
+                        shoppingItemNew.quantitySelected = "1"
                     }
                     
                     ///Resets the newShoppingItem back to being blank

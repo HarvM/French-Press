@@ -118,7 +118,7 @@ struct NewEntryView: View {
                                     .edgesIgnoringSafeArea(.all))
                     .alert(isPresented: $showAlert) { () -> Alert in
                         Alert(title: Text("One moment"),
-                              message: Text("Make sure you're entering an item and a quantity"),
+                              message: Text("Make sure you're entering an item"),
                               dismissButton: .default(Text(ContentViewImages.thumbsUp.rawValue))
                               ///Bit tacky using the thumbs up but with the colour across the app being white with the init, it couldn't be changed here (tried .foregroundColour)
                         )
