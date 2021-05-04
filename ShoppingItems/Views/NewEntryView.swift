@@ -62,7 +62,7 @@ struct NewEntryView: View {
                                 .background(Color("defaultBackground")
                                                 .edgesIgnoringSafeArea(.all))) {
                         VStack {
-                            TextField("Type quantity here",text: $quantitySelected.text)
+                            TextField("Type quantity here", text: $quantitySelected.text)
                                 .frame (height: 40)
                                 .multilineTextAlignment(.leading)
                                 .keyboardType(.decimalPad)

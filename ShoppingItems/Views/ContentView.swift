@@ -58,7 +58,7 @@ struct ContentView: View {
                 .edgesIgnoringSafeArea(.all)
             NavigationView {
                 HStack {
-                    Image("appHeader")
+                    Image(ContentViewImages.appIcon.rawValue)
                         .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
                 }
                 .frame(width: 500, height: 900, alignment: .center)
@@ -67,7 +67,7 @@ struct ContentView: View {
                                     .edgesIgnoringSafeArea(.all))
                 .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
                 .navigationBarItems( trailing: NavigationLink(destination: NewEntryView()
-                                                                .navigationBarTitle("Add Item")
+                                                                .navigationTitle("Add Item")
                                                                 .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
                                                                 .edgesIgnoringSafeArea(.all)
                                     ){
@@ -141,7 +141,7 @@ struct ContentView: View {
                                                                     isEditing = false
                                                                 }),
                                     trailing: NavigationLink(destination: NewEntryView()
-                                                                .navigationBarTitle("Add Item")
+                                                                .navigationTitle("Add Item")
                                                                 .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
                                                                 .edgesIgnoringSafeArea(.all)
                                     ){
