@@ -25,7 +25,6 @@ I've also returned from the shops more times than I care to remember missing an 
 ## Future Features
 * Allow users across a defined group share their shopping lists (Family Sharing)
 * Create a Favourites list to allow easy addition to the list for items that are frequently bought (Machine Learning opportunity?)
-* Let the users define items by categories like "Fruit and veg", "Household Products", etc
 * Use of VNRecognizeTextRequest to allow the user to "scan in" any hand written shopping lists
 
 ## Inspiration
