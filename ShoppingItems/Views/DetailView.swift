@@ -11,11 +11,6 @@ import SpriteKit
 
 struct DetailView: View {
     
-    ///Futura font 
-    enum CustomFont: String {
-        case defaultFont = "SF Pro"
-    }
-    
     //MARK: - Properties
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode
@@ -31,7 +26,7 @@ struct DetailView: View {
                 VStack {
                     Section {
                         Text ("\(itemToBeDisplayed.itemToBeAdded)")
-                            .font(.custom(CustomFont.defaultFont.rawValue, size: 35, relativeTo: .headline))
+                            .font(.custom(DefaultFont.defaultFont.rawValue, size: 35, relativeTo: .headline))
                             .lineLimit(3)
                             .foregroundColor(.yellow)
                             .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
@@ -41,7 +36,7 @@ struct DetailView: View {
                     Section {
                         Text("\(itemToBeDisplayed.notesOnItem)")
                             .foregroundColor(.white)
-                            .font(.custom(CustomFont.defaultFont.rawValue, size: 25, relativeTo: .headline))
+                            .font(.custom(DefaultFont.defaultFont.rawValue, size: 25, relativeTo: .headline))
                             .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
                         
                     }

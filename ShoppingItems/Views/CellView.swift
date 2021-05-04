@@ -30,12 +30,12 @@ struct CellView: View {
                 VStack (alignment: .leading, spacing: 2) {
                     ///Header: name of the item the user has selected
                     Text("\(itemToBeAdded)")
-                        .font(.custom("SF Pro", size: 24, relativeTo: .title))
+                        .font(.custom(DefaultFont.defaultFont.rawValue, size: 24, relativeTo: .title))
                         .allowsTightening(true)
                         .clipped()
                     ///Notes on the item that has been selected
                     Text("\(quantitySelected) \(preferredMeasurement)\(finalOutput)")
-                        .font(.custom("SF Pro", size: 18, relativeTo: .title))
+                        .font(.custom(DefaultFont.defaultFont.rawValue, size: 18, relativeTo: .title))
                         .lineLimit(1)
                         .textCase(.lowercase)
                 }
@@ -49,17 +49,5 @@ struct CellView: View {
             .toggleStyle(CheckboxStyle())
         }
         .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
-    }
-    
-    //MARK: - Func for single/multiple items
-     private func singleOrMultiple() {
-        ///I feel like there's a better way to do this but this is how I got it working
-        ///Will look into changing the quantity at the NewEntryView to a float to allow a range between 0 and 1.9 instead
-        ///Finally seen that it was worth using a @State instead for the finalOutput
-        if quantitySelected == "1" {
-            return
-        } else {
-            finalOutput = self.multipleItems
-        }
     }
 }

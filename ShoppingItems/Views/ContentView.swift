@@ -8,13 +8,20 @@
 import SwiftUI
 import Foundation
 
-///Images used across the ContentView
+///Images used across the app
 enum ContentViewImages: String {
-    case plusImage = "plusIcon" ///On the textEntry field and will let the user add an item
+    case plusImage = "plusIcon"
+    case thumbsUp = "👍"
+    case sorryShrug = "🤷🏻‍♂️"
+    case checkmarkFill = "checkmark.circle.fill"
+    case checkmarkEmpty = "circle"
+}
+///Font used across the app
+enum DefaultFont: String {
+    case defaultFont = "SF Pro"
 }
 
 struct ContentView: View {
-
     //MARK: - Properties
     @State var isEditing = false
     @ObservedObject var listStore: ShoppingItemStore
@@ -107,6 +114,8 @@ struct ContentView: View {
                         }
                         .onDelete(perform: self.deleteItem)
                         .onMove(perform: moveItem)
+                        .background(Color("defaultBackground")
+                                        .edgesIgnoringSafeArea(.all))
                     }
                     .listStyle(PlainListStyle())
                     .listRowBackground(Color("defaultBackground")

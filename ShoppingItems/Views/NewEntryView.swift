@@ -9,16 +9,10 @@
 import SwiftUI
 import CoreData
 
-///Image that is used for the floating save button
-enum DetailViewImages: String {
-    case saveButtonImage = "plusIcon" ///Will take user to the ContentView
-    case sorryShrug = "🤷🏻‍♂️"
-}
-
 /// Futura font
-enum CustomFontDetailView: String {
-    case defaultFont = "SF Pro"
-}
+//enum CustomFontDetailView: String {
+//    case defaultFont = "SF Pro"
+//}
 
 ///View that will let the user select the amount of the item they want and also add any notes that they need
 struct NewEntryView: View {
@@ -52,10 +46,10 @@ struct NewEntryView: View {
                             TextField("Type the item here", text: $newShoppingItem.text)
                                 .frame (height: 40)
                                 .multilineTextAlignment(.leading)
-                                .font(.custom(CustomFontDetailView.defaultFont.rawValue, size: 16, relativeTo: .headline))
+                                .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
                             ///Will display the number of characters already typed and the limit
                             Text("\(self.newShoppingItem.text.count)|30")
-                                .font(.custom(CustomFontDetailView.defaultFont.rawValue, size: 16, relativeTo: .headline))
+                                .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
                                 .foregroundColor(.gray)
                         }
                         .font(.headline)
@@ -72,14 +66,14 @@ struct NewEntryView: View {
                                 .frame (height: 40)
                                 .multilineTextAlignment(.leading)
                                 .keyboardType(.decimalPad)
-                                .font(.custom(CustomFontDetailView.defaultFont.rawValue, size: 16, relativeTo: .headline))
+                                .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
                         }
                         Picker(selection: $selectedMeasurement, label: Text("")) {
                             ForEach(0 ..< measurementFound.count) {
                                 Text(self.measurementFound[$0])
                                     .frame(height: 40)
                             }
-                            .font(.custom(CustomFontDetailView.defaultFont.rawValue, size: 16, relativeTo: .headline))
+                            .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
                         }
                         .pickerStyle(DefaultPickerStyle())
                         .foregroundColor(.red)
@@ -90,17 +84,17 @@ struct NewEntryView: View {
                     Section(header: Text("Extra Notes")
                                 .foregroundColor(.yellow)
                                 .background(Color("defaultBackground")
-                                .edgesIgnoringSafeArea(.all))) {
+                                                .edgesIgnoringSafeArea(.all))) {
                         HStack {
                             ///I'd ideally love to have this as TextEditor instead to allow more detailed notes but getting the keyboard to hide has been a 'mare
                             TextField("Type here", text: $notesOnItem.text)
                                 .frame(height: 50)
                                 .multilineTextAlignment(.leading)
-                                .font(.custom(CustomFontDetailView.defaultFont.rawValue, size: 16, relativeTo: .headline))
+                                .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
                             Spacer()
                             ///Will display the number of characters already typed and the limit
                             Text("\(self.notesOnItem.text.count)|40")
-                                .font(.custom(CustomFontDetailView.defaultFont.rawValue, size: 16, relativeTo: .headline))
+                                .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
                                 .foregroundColor(.gray)
                         }
                     }
@@ -110,13 +104,6 @@ struct NewEntryView: View {
                 ///Uses the AdaptsToKeyboard struct to bump the screen up when the user brings up the keyboard
                 .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
                 .modifier(AdaptsToKeyboard())
-                .alert(isPresented: $showAlert) { () -> Alert in
-                    Alert(title: Text("One moment"),
-                          message: Text("Make sure you're entering an item and a quantity"),
-                          dismissButton: .default(Text("👍🏼"))
-                          ///Bit tacky using the thumbs up but with the colour across the app being white with the init, it couldn't be changed here (tried .foregroundColour)
-                    )
-                }
                 //MARK: - Button that will save the user's entry - sits at the bottom of the view
                 VStack(alignment: .center, spacing: 10) {
                     Button(action: self.saveNewEntry, label: {
@@ -129,6 +116,13 @@ struct NewEntryView: View {
                     })
                     .background(Color("defaultBackground")
                                     .edgesIgnoringSafeArea(.all))
+                    .alert(isPresented: $showAlert) { () -> Alert in
+                        Alert(title: Text("One moment"),
+                              message: Text("Make sure you're entering an item and a quantity"),
+                              dismissButton: .default(Text(ContentViewImages.thumbsUp.rawValue))
+                              ///Bit tacky using the thumbs up but with the colour across the app being white with the init, it couldn't be changed here (tried .foregroundColour)
+                        )
+                    }
                 }
                 .background(Color("defaultBackground")
                                 .edgesIgnoringSafeArea(.all))

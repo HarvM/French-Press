@@ -13,6 +13,7 @@ extension NewEntryView {
     //MARK: - Function (saves the user's item [item name, quantity, measurement, and extra notes]
     public func saveNewEntry() {
         DispatchQueue.main.async {
+            print("Checking input")
             ///Removes the whitespace and newLines from the item as it messes with how the name is displayed on the ContentView
             let trimmedItem = self.newShoppingItem.text.trimmingCharacters(in: .whitespacesAndNewlines)
             let trimmedNote = self.notesOnItem.text.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -20,9 +21,11 @@ extension NewEntryView {
             let chosenMeasurement = self.measurementFound[self.selectedMeasurement]
             
             ///There has to be a value within the "itemsToBeAdded" or else nothing will be saved
-            if self.newShoppingItem.text == "" || self.quantitySelected.text == "" {
+//            if self.newShoppingItem.text.isEmpty && self.quantitySelected.text.isEmpty {
+//                self.showAlert = true
+            if trimmedItem.isEmpty {
                 self.showAlert = true
-            }
+            } 
             else {
                 ///Will get the new item and then place it within the CoreData under the attribute of itemToBeAdded
                 let shoppingItemNew = ShoppingItems(context: self.managedObjectContext)
@@ -37,7 +40,7 @@ extension NewEntryView {
                     do {
                         try self.managedObjectContext.save()
                     } catch {
-                        Alert(title: Text("Sorry \(DetailViewImages.sorryShrug.rawValue)"), message: Text("Please try again"), dismissButton: .default(Text("Okay")))
+                        Alert(title: Text("Sorry \(ContentViewImages.sorryShrug.rawValue)"), message: Text("Please try again"), dismissButton: .default(Text("")))
                     }
                     
                     ///Resets the newShoppingItem back to being blank
