@@ -34,11 +34,14 @@ struct DetailView: View {
                     .frame(minWidth: 200, idealWidth: 350, maxWidth: 400, minHeight: 80, idealHeight: 100, maxHeight: 120, alignment: .top)
                     .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
                     Section {
+                        if itemToBeDisplayed.notesOnItem.isEmpty {
+                            Image(ContentViewImages.appIcon.rawValue)
+                        } else {
                         Text("\(itemToBeDisplayed.notesOnItem)")
                             .foregroundColor(.white)
                             .font(.custom(DefaultFont.defaultFont.rawValue, size: 25, relativeTo: .headline))
                             .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
-                        
+                        }
                     }
                     .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
                     

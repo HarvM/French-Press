@@ -15,6 +15,7 @@ enum ContentViewImages: String {
     case sorryShrug = "🤷🏻‍♂️"
     case checkmarkFill = "checkmark.circle.fill"
     case checkmarkEmpty = "circle"
+    case appIcon = "appHeader"
 }
 ///Font used across the app
 enum DefaultFont: String {
