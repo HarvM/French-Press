@@ -36,7 +36,11 @@ struct ContentView: View {
     
     //MARK: Main body of the view
     var body: some View {
-        listView
+        ZStack {
+            Color("defaultBackground").edgesIgnoringSafeArea(.all)
+            listView
+        }
+        .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
     }
     
     ///Use of ViewBuilder to differentiate between the populated and unpopulated list
@@ -54,48 +58,41 @@ struct ContentView: View {
     
     var emptyListView: some View {
         ZStack {
-            Color("defaultBackground")
-                .edgesIgnoringSafeArea(.all)
+            Color("defaultBackground").edgesIgnoringSafeArea(.all)
             NavigationView {
                 HStack {
                     Image(ContentViewImages.appIcon.rawValue)
-                        .background(Color("defaultBackground")
-                                        .edgesIgnoringSafeArea(.all))
+                        .background(Color("defaultBackground") .edgesIgnoringSafeArea(.all))
                 }
                 .frame(width: 500, height: 900, alignment: .center)
                 .listStyle(PlainListStyle())
-                .listRowBackground(Color("defaultBackground")
-                                    .edgesIgnoringSafeArea(.all))
+                .listRowBackground(Color("defaultBackground").edgesIgnoringSafeArea(.all))
                 .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
                 .navigationBarItems(trailing: NavigationLink(destination: NewEntryView()
                                                                 .navigationTitle("Add Item")
                                                                 .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity,     minHeight: 0, idealHeight: 0, maxHeight:            .infinity, alignment:.center)
                                                                 .edgesIgnoringSafeArea(.all)
-                                    ){
+                                                             ){
                                         ///Image of the trailing icon tha leads the user to the map
                                         Image(ContentViewImages.plusImage.rawValue)
                                             .frame(width: 35, height: 35)
                                             .cornerRadius(38.5)
                                             .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
-                                    })
+                                             })
                 .foregroundColor(.white)
                 .padding(.init(top: 5, leading: 5, bottom: 5, trailing: 5))
-                .background(Color("defaultBackground")
-                                .edgesIgnoringSafeArea(.all))
+                .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
             }
-            .background(Color("defaultBackground")
-                            .edgesIgnoringSafeArea(.all))
+            .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
         }
-        .background(Color("defaultBackground")
-                        .edgesIgnoringSafeArea(.all))
+        .background(Color("defaultBackground") .edgesIgnoringSafeArea(.all))
     }
     
     //MARK: - PopulatedView
     ///This view will hold the List that displays the items that the user has input and kept in CoreData
     var populatedView: some View {
         ZStack {
-            Color("defaultBackground")
-                .edgesIgnoringSafeArea(.all)
+            Color("defaultBackground").edgesIgnoringSafeArea(.all)
             NavigationView {
                 List {
                     //MARK: - HStack: how the cells are displayed and populated
@@ -106,25 +103,18 @@ struct ContentView: View {
                                 CellView(itemToBeAdded: shoppingItemNew.itemToBeAdded,
                                          quantitySelected: shoppingItemNew.quantitySelected,
                                          preferredMeasurement: shoppingItemNew.preferredMeasurement)
-                                        .background(Color("defaultBackground")
-                                                    .edgesIgnoringSafeArea(.all))
+                                        .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
                                 NavigationLink("", destination: DetailView (itemToBeDisplayed: shoppingItemNew))
-                                    .background(Color("defaultBackground")
-                                                    .edgesIgnoringSafeArea(.all))
+                                    .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
                             }
-                            .background(Color("defaultBackground")
-                                            .edgesIgnoringSafeArea(.all))
+                            .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
                         }
                         .onDelete(perform: self.deleteItem)
                         .onMove(perform: moveItem)
-                        .background(Color("defaultBackground")
-                                        .edgesIgnoringSafeArea(.all))
                     }
                     .listStyle(PlainListStyle())
-                    .listRowBackground(Color("defaultBackground")
-                                        .edgesIgnoringSafeArea(.all))
-                    .background(Color("defaultBackground")
-                                    .edgesIgnoringSafeArea(.all))
+                    .listRowBackground(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+                    .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
                 }
                 ///Appears to help with the reordering of the List and makes it less laggy when a row is moved
                 .id(UUID())
@@ -133,19 +123,18 @@ struct ContentView: View {
                 ///Ensures that the list is closer to the top of the window
                 .navigationBarTitleDisplayMode(.inline)
                 ///Define background colour uuasdca
-                .background(Color("defaultBackground")
-                                .edgesIgnoringSafeArea(.all))
+                .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
                 
                 //MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list, the trailing launches MapView
                 .navigationBarItems(leading: EditButton()
                                         .simultaneousGesture(TapGesture()
-                                                                .onEnded {
-                                                                    isEditing = false
-                                                                }),
+                                        .onEnded {
+                                            isEditing = false
+                                                  }),
                                     trailing: NavigationLink(destination: NewEntryView()
-                                                                .navigationTitle("Add Item")
-                                                                .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
-                                                                .edgesIgnoringSafeArea(.all)
+                                         .navigationTitle("Add Item")
+                                         .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
+                                         .edgesIgnoringSafeArea(.all)
                                     ){
                                         ///Image of the trailing icon tha leads the user to the map
                                         Image(ContentViewImages.plusImage.rawValue)
@@ -155,14 +144,11 @@ struct ContentView: View {
                                     })
                 .foregroundColor(.white)
                 .padding(.init(top: 5, leading: 5, bottom: 5, trailing: 5))
-                .background(Color("defaultBackground")
-                                .edgesIgnoringSafeArea(.all))
+                .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
             }
-            .background(Color("defaultBackground")
-                            .edgesIgnoringSafeArea(.all))
+            .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
         }
-        .background(Color("defaultBackground")
-                        .edgesIgnoringSafeArea(.all))
+        .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
     }
     
     init() {
