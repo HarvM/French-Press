@@ -29,7 +29,8 @@ struct DetailView: View {
                             .font(.custom(DefaultFont.defaultFont.rawValue, size: 35, relativeTo: .headline))
                             .lineLimit(3)
                             .foregroundColor(.yellow)
-                            .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+                            .background(Color("defaultBackground")
+                                            .edgesIgnoringSafeArea(.all))
                     }
                     .frame(minWidth: 200, idealWidth: 350, maxWidth: 400, minHeight: 80, idealHeight: 100, maxHeight: 120, alignment: .top)
                     .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
@@ -43,20 +44,23 @@ struct DetailView: View {
                             .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
                         }
                     }
-                    .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
-                    
+                    .background(Color("defaultBackground")
+                                    .edgesIgnoringSafeArea(.all))
                 }
                 .frame(minWidth: 200, idealWidth: 350, maxWidth: 400, minHeight: 400, idealHeight: 700, maxHeight: 800, alignment: .top)
-                .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
-                
+                .background(Color("defaultBackground")
+                                .edgesIgnoringSafeArea(.all))
             }
-            .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+            .background(Color("defaultBackground")
+                            .edgesIgnoringSafeArea(.all))
             .multilineTextAlignment(.center)
             .allowsTightening(true)
             .minimumScaleFactor(0.9)
             .navigationViewStyle(StackNavigationViewStyle()) ///removes iPad split screen
         }
-    }    
+        .background(Color("defaultBackground")
+                        .edgesIgnoringSafeArea(.all))
+    }
 }
 
 struct DetailView_Previews: PreviewProvider {

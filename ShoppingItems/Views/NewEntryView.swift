@@ -40,7 +40,8 @@ struct NewEntryView: View {
                     Section (header: Text("What would you like?")
                                 .foregroundColor(.yellow)
                                 .truncationMode(.head)
-                                .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))) {
+                                .background(Color("defaultBackground")
+                                                .edgesIgnoringSafeArea(.all))) {
                         HStack {
                             ///$newShoppingItem to get the binding to the state newShoppingItem
                             TextField("Type the item here", text: $newShoppingItem.text)
@@ -132,6 +133,7 @@ struct NewEntryView: View {
         }
         .background(Color("defaultBackground")
                         .edgesIgnoringSafeArea(.all))
+        ///Needed as the navBar title was cycling between inline and then within/just above the form
         .navigationBarTitleDisplayMode(.inline)
     }
 }

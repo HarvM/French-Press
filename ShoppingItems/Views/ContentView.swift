@@ -59,16 +59,17 @@ struct ContentView: View {
             NavigationView {
                 HStack {
                     Image(ContentViewImages.appIcon.rawValue)
-                        .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+                        .background(Color("defaultBackground")
+                                        .edgesIgnoringSafeArea(.all))
                 }
                 .frame(width: 500, height: 900, alignment: .center)
                 .listStyle(PlainListStyle())
                 .listRowBackground(Color("defaultBackground")
                                     .edgesIgnoringSafeArea(.all))
                 .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
-                .navigationBarItems( trailing: NavigationLink(destination: NewEntryView()
+                .navigationBarItems(trailing: NavigationLink(destination: NewEntryView()
                                                                 .navigationTitle("Add Item")
-                                                                .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
+                                                                .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity,     minHeight: 0, idealHeight: 0, maxHeight:            .infinity, alignment:.center)
                                                                 .edgesIgnoringSafeArea(.all)
                                     ){
                                         ///Image of the trailing icon tha leads the user to the map
@@ -102,9 +103,10 @@ struct ContentView: View {
                         ForEach(shoppingItemEntries, id: \.self) {
                             shoppingItemNew in
                             HStack {
-                                CellView(itemToBeAdded: shoppingItemNew.itemToBeAdded, quantitySelected: shoppingItemNew.quantitySelected,
+                                CellView(itemToBeAdded: shoppingItemNew.itemToBeAdded,
+                                         quantitySelected: shoppingItemNew.quantitySelected,
                                          preferredMeasurement: shoppingItemNew.preferredMeasurement)
-                                    .background(Color("defaultBackground")
+                                        .background(Color("defaultBackground")
                                                     .edgesIgnoringSafeArea(.all))
                                 NavigationLink("", destination: DetailView (itemToBeDisplayed: shoppingItemNew))
                                     .background(Color("defaultBackground")
