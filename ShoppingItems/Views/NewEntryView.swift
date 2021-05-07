@@ -119,6 +119,8 @@ struct NewEntryView: View {
             }
             .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
         }
+        .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

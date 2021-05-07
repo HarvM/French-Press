@@ -20,8 +20,7 @@ struct DetailView: View {
     //MARK: - Body of the view
     var body: some View {
         ZStack {
-            Color("defaultBackground")
-                .edgesIgnoringSafeArea(.all)
+            Color("defaultBackground").edgesIgnoringSafeArea(.all)
             NavigationView {
                 VStack {
                     Section {
@@ -29,32 +28,29 @@ struct DetailView: View {
                             .font(.custom(DefaultFont.defaultFont.rawValue, size: 35, relativeTo: .headline))
                             .lineLimit(3)
                             .foregroundColor(.yellow)
-                            .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
                     }
                     .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
                     .frame(minWidth: 200, idealWidth: 350, maxWidth: 400, minHeight: 80, idealHeight: 100, maxHeight: 120, alignment: .top)
                     Section {
                         if itemToBeDisplayed.notesOnItem.isEmpty {
                             Image(ContentViewImages.appIcon.rawValue)
+                                .padding(.top, 70)
                         } else {
                         Text("\(itemToBeDisplayed.notesOnItem)")
                             .foregroundColor(.white)
                             .font(.custom(DefaultFont.defaultFont.rawValue, size: 25, relativeTo: .headline))
-                            .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
                         }
                     }
                     .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
                 }
+                .frame(minWidth: 200, idealWidth: 350, maxWidth: 400, minHeight: 400,       idealHeight: 700, maxHeight: 800, alignment: .top)
                 .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
-                .frame(minWidth: 200, idealWidth: 350, maxWidth: 400, minHeight: 400, idealHeight: 700, maxHeight: 800, alignment: .top)
             }
-            .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
             .multilineTextAlignment(.center)
             .allowsTightening(true)
             .minimumScaleFactor(0.9)
             .navigationViewStyle(StackNavigationViewStyle()) ///removes iPad split screen
         }
-        .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
     }
 }
 
