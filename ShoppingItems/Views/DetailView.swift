@@ -24,6 +24,7 @@ struct DetailView: View {
                 ZStack {
                     Color("defaultBackground").edgesIgnoringSafeArea(.all)
                 VStack {
+                    ///Section that displays the items name
                     Section {
                         Text ("\(itemToBeDisplayed.itemToBeAdded)")
                             .font(.custom(DefaultFont.defaultFont.rawValue, size: 35, relativeTo: .headline))
@@ -31,6 +32,7 @@ struct DetailView: View {
                             .foregroundColor(.yellow)
                     }
                     .frame(minWidth: 200, idealWidth: 350, maxWidth: 400, minHeight: 80, idealHeight: 100, maxHeight: 120, alignment: .top)
+                    ///Section that will hold either any extra notes or a placeholder if no extra notes exist
                     Section {
                         if itemToBeDisplayed.notesOnItem.isEmpty {
                             Image(ContentViewImages.appIcon.rawValue)

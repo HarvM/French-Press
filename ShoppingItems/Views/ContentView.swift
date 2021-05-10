@@ -141,7 +141,6 @@ struct ContentView: View {
     
     init() {
         ///Below is various attempts at getting the from from the Picker to display a different background colour
-        //        UIListContentView.appearance().backgroundColor = UIColor(Color("defaultBackground"))
         UIPickerView.appearance().backgroundColor = UIColor(Color("defaultBackground"))
         UIPickerView.appearance().tintColor = UIColor(Color("defaultBackground"))
         ///Setting the empty/potential cells to the desired colour

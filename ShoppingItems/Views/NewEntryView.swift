@@ -9,7 +9,7 @@
 import SwiftUI
 import CoreData
 
-///View that will let the user select the amount of the item they want and also add any notes that they need
+//View that will let the user select the amount of the item they want and also add any notes that they need
 struct NewEntryView: View {
     
     //MARK: - Properties
@@ -92,9 +92,11 @@ struct NewEntryView: View {
                     }
                     .padding(2)
                 }
+                .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
                 ///Getting this to work was a nightmare. Found something useful for a TextField but done sweet FA on a TextEditor
                 ///Uses the AdaptsToKeyboard struct to bump the screen up when the user brings up the keyboard
                 .modifier(AdaptsToKeyboard())
+                
                 //MARK: - Button that will save the user's entry - sits at the bottom of the view
                 VStack(alignment: .center, spacing: 10) {
                     Button(action: self.saveNewEntry, label: {
@@ -114,9 +116,11 @@ struct NewEntryView: View {
                         )
                     }
                 }
+                .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
             }
             .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
         }
+        .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
         .navigationBarTitleDisplayMode(.inline)
     }
 }
