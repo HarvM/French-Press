@@ -94,7 +94,6 @@ struct NewEntryView: View {
                 }
                 ///Getting this to work was a nightmare. Found something useful for a TextField but done sweet FA on a TextEditor
                 ///Uses the AdaptsToKeyboard struct to bump the screen up when the user brings up the keyboard
-                .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
                 .modifier(AdaptsToKeyboard())
                 //MARK: - Button that will save the user's entry - sits at the bottom of the view
                 VStack(alignment: .center, spacing: 10) {
@@ -115,11 +114,9 @@ struct NewEntryView: View {
                         )
                     }
                 }
-                .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
             }
             .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
         }
-        .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
         .navigationBarTitleDisplayMode(.inline)
     }
 }

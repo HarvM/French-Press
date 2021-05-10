@@ -57,43 +57,39 @@ struct ContentView: View {
     }
     
     var emptyListView: some View {
-        ZStack {
-            Color("defaultBackground").edgesIgnoringSafeArea(.all)
-            NavigationView {
+        NavigationView {
+            ZStack {
+                Color("defaultBackground").edgesIgnoringSafeArea(.all)
                 HStack {
                     Image(ContentViewImages.appIcon.rawValue)
-                        .background(Color("defaultBackground") .edgesIgnoringSafeArea(.all))
                 }
                 .frame(width: 500, height: 900, alignment: .center)
                 .listStyle(PlainListStyle())
                 .listRowBackground(Color("defaultBackground").edgesIgnoringSafeArea(.all))
-                .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
                 .navigationBarItems(trailing: NavigationLink(destination: NewEntryView()
                                                                 .navigationTitle("Add Item")
                                                                 .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity,     minHeight: 0, idealHeight: 0, maxHeight:            .infinity, alignment:.center)
                                                                 .edgesIgnoringSafeArea(.all)
-                                                             ){
-                                        ///Image of the trailing icon tha leads the user to the map
-                                        Image(ContentViewImages.plusImage.rawValue)
-                                            .frame(width: 35, height: 35)
-                                            .cornerRadius(38.5)
-                                            .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
-                                             })
+                ){
+                    ///Image of the trailing icon tha leads the user to the map
+                    Image(ContentViewImages.plusImage.rawValue)
+                        .frame(width: 35, height: 35)
+                        .cornerRadius(38.5)
+                        .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
+                })
                 .foregroundColor(.white)
                 .padding(.init(top: 5, leading: 5, bottom: 5, trailing: 5))
-                .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
             }
-            .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
         }
-        .background(Color("defaultBackground") .edgesIgnoringSafeArea(.all))
+        .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
     }
     
     //MARK: - PopulatedView
     ///This view will hold the List that displays the items that the user has input and kept in CoreData
     var populatedView: some View {
-        ZStack {
-            Color("defaultBackground").edgesIgnoringSafeArea(.all)
             NavigationView {
+                ZStack {
+                    Color("defaultBackground").edgesIgnoringSafeArea(.all)
                 List {
                     //MARK: - HStack: how the cells are displayed and populated
                     Section() {
@@ -122,13 +118,13 @@ struct ContentView: View {
                 //MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list, the trailing launches MapView
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
-                    EditButton()
+                        EditButton()
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink(destination: NewEntryView()
-                             .navigationTitle("Add Item")
-                             .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
-                             .edgesIgnoringSafeArea(.all)
+                                        .navigationTitle("Add Item")
+                                        .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
+                                        .edgesIgnoringSafeArea(.all)
                         ){
                             ///Image of the trailing icon tha leads the user to the map
                             Image(ContentViewImages.plusImage.rawValue)
@@ -138,32 +134,14 @@ struct ContentView: View {
                         }
                     }
                 }
-//                .navigationBarItems(leading: EditButton()
-//                                        .simultaneousGesture(TapGesture()
-//                                        .onEnded {
-//                                            isEditing = false
-//                                                  }),
-//                                    trailing: NavigationLink(destination: NewEntryView()
-//                                         .navigationTitle("Add Item")
-//                                         .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
-//                                         .edgesIgnoringSafeArea(.all)
-//                                    ){
-//                                        ///Image of the trailing icon tha leads the user to the map
-//                                        Image(ContentViewImages.plusImage.rawValue)
-//                                            .frame(width: 35, height: 35)
-//                                            .cornerRadius(38.5)
-//                                            .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
-//                                    })
-//                .foregroundColor(.white)
-//                .padding(.init(top: 5, leading: 5, bottom: 5, trailing: 5))
-//                .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
             }
         }
+            .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
     }
     
     init() {
         ///Below is various attempts at getting the from from the Picker to display a different background colour
-//        UIListContentView.appearance().backgroundColor = UIColor(Color("defaultBackground"))
+        //        UIListContentView.appearance().backgroundColor = UIColor(Color("defaultBackground"))
         UIPickerView.appearance().backgroundColor = UIColor(Color("defaultBackground"))
         UIPickerView.appearance().tintColor = UIColor(Color("defaultBackground"))
         ///Setting the empty/potential cells to the desired colour
