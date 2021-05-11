@@ -60,6 +60,7 @@ struct NewEntryView: View {
                                 .multilineTextAlignment(.leading)
                                 .keyboardType(.decimalPad)
                                 .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
+                                .ignoresSafeArea(.keyboard, edges: .bottom)
                         }
                         Picker(selection: $selectedMeasurement, label: Text("")) {
                             ForEach(0 ..< measurementFound.count) {
@@ -83,6 +84,7 @@ struct NewEntryView: View {
                                 .frame(height: 50)
                                 .multilineTextAlignment(.leading)
                                 .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
+                                .ignoresSafeArea(.keyboard, edges: .bottom)
                             Spacer()
                             ///Will display the number of characters already typed and the limit
                             Text("\(self.notesOnItem.text.count)|40")
