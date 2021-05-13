@@ -10,9 +10,29 @@ import SwiftUI
 
 extension NewEntryView {
     
+    //This func will take a random entry and then put it into the CoreData model and then display it on the user's list
     public func weeTreat() {
         
-        print("Hey")
+        ///Dictionary of all the options that a user could end up having thrown onto their list should they click the
+        let treatItems = ["Chocolate bar": "That one bar that just goes perfectly with                 anything",
+                          "That magazine": "The wanna you wanna read but forget to",
+                          "Fizzy juice": "There is an orange coloured one that's pretty decent",
+                          "Celebratory drink": "You nailed it - whatever it was...",
+                          "Fruit": "I would say mango but anything you like",
+                          "Crisps": "Eating your own body weight in this is not a crime...",
+                          "Ice cream": "Not much else to add here",
+                          "Cake": "Have it and eat it",
+                          "Dips": "Guac owns my soul but whatever you want",
+                          "Haggis": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+                          "Popcorn": "For the next movie night",
+                          "Smoothie": "We can all be innocent sometimes"]
+        
+        //TODO: 1: Get random entry from dictionary above
+       
+        //TODO: 2: Throw in the Dict entry into the CoreData model
+        
+        
+        print(treatItems)
     }
     
     //MARK: - Function (saves the user's item [item name, quantity, measurement, and extra notes]
