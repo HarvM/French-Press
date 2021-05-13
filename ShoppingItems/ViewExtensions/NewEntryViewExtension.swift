@@ -10,6 +10,11 @@ import SwiftUI
 
 extension NewEntryView {
     
+    public func weeTreat() {
+        
+        print("Hey")
+    }
+    
     //MARK: - Function (saves the user's item [item name, quantity, measurement, and extra notes]
     public func saveNewEntry() {
         DispatchQueue.main.async {

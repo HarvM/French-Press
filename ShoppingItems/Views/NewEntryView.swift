@@ -47,7 +47,7 @@ struct NewEntryView: View {
                                 .foregroundColor(.gray)
                         }
                         .font(.headline)
-                    }
+                    } ///End of Section
                     .padding(5)
                     
                     //MARK: - Picker Section for quantity & quantity type
@@ -71,7 +71,7 @@ struct NewEntryView: View {
                         }
                         .pickerStyle(DefaultPickerStyle())
                         .foregroundColor(.red)
-                    }
+                    }/// End of Section
                     .padding(2)
                     
                     //MARK: - TextEditor (Extra Notes) Section
@@ -91,16 +91,16 @@ struct NewEntryView: View {
                                 .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
                                 .foregroundColor(.gray)
                         }
-                    }
+                    } ///End of section
                     .padding(2)
-                }
+                } ///End of Form
                 .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
                 ///Getting this to work was a nightmare. Found something useful for a TextField but done sweet FA on a TextEditor
                 ///Uses the AdaptsToKeyboard struct to bump the screen up when the user brings up the keyboard
                 .modifier(AdaptsToKeyboard())
                 
                 //MARK: - Button that will save the user's entry - sits at the bottom of the view
-                VStack(alignment: .center, spacing: 10) {
+                HStack(alignment: .center, spacing: 10) {
                     Button(action: self.saveNewEntry, label: {
                         Image(ContentViewImages.plusImage.rawValue)
                             .resizable()
@@ -117,15 +117,22 @@ struct NewEntryView: View {
                               ///Bit tacky using the thumbs up but with the colour across the app being white with the init, it couldn't be changed here (tried .foregroundColour)
                         )
                     }
-                }
+                }///End of HStack
                 .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
-            }
+            }///End of VStack
+            .toolbar { ///Using toolbar to place in the Treat button
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: self.weeTreat, label:  {
+                        Text("🎁")
+                    })
+                }
+            } //End of toolbar
             .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
-        }
+        } // End of ZStack
         .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
         .navigationBarTitleDisplayMode(.inline)
-    }
-}
+    } //End of body
+} //End of View
 
 
 struct NewEntryView_Previews: PreviewProvider {
