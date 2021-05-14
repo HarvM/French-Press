@@ -66,17 +66,23 @@ struct ContentView: View {
                 .frame(width: 500, height: 900, alignment: .center)
                 .listStyle(PlainListStyle())
                 .listRowBackground(Color("defaultBackground").edgesIgnoringSafeArea(.all))
-                .navigationBarItems(trailing: NavigationLink(destination: NewEntryView()
-                                                                .navigationTitle("Add Item")
-                                                                .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity,     minHeight: 0, idealHeight: 0, maxHeight:            .infinity, alignment:.center)
-                                                                .edgesIgnoringSafeArea(.all)
-                ){
-                    ///Image of the trailing icon tha leads the user to the map
-                    Image(ContentViewImages.plusImage.rawValue)
-                        .frame(width: 35, height: 35)
-                        .cornerRadius(38.5)
-                        .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
-                })
+                
+                //MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list, the trailing launches MapView
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink(destination: NewEntryView()
+                                        .navigationTitle("Add Item")
+                                        .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
+                                        .edgesIgnoringSafeArea(.all)
+                        ){
+                            ///Image of the trailing icon tha leads the user to the map
+                            Image(ContentViewImages.plusImage.rawValue)
+                                .frame(width: 35, height: 35)
+                                .cornerRadius(38.5)
+                                .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
+                        }
+                    }
+                }
                 .foregroundColor(.white)
                 .padding(.init(top: 5, leading: 5, bottom: 5, trailing: 5))
             }

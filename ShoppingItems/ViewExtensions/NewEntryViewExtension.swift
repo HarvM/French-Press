@@ -26,7 +26,7 @@ extension NewEntryView {
                           "Popcorn": "For the next movie night",
                           "Smoothie": "We can all be innocent sometimes",
                           "Pizza": "A slice/with pineapple/frozen - they're all beautiful",
-                          "Dog treat": "A snack waiting to be explored if you don't have a dog...",
+                          "Dog treat": "A snack waiting to be tried if you don't have a dog...",
         ]
         
         ///Gets a random element from the dictionary above
@@ -36,7 +36,7 @@ extension NewEntryView {
         self.managedObjectContext.performAndWait {
             randomItemToBeSaved.itemToBeAdded = randomTreat.key
             randomItemToBeSaved.notesOnItem = randomTreat.value
-            randomItemToBeSaved.quantitySelected = "😉"
+            randomItemToBeSaved.preferredMeasurement = "🎁"
             self.isShowingContentView = true
         }
         do {
@@ -44,6 +44,8 @@ extension NewEntryView {
         } catch {
             Alert(title: Text("Sorry \(ContentViewImages.sorryShrug.rawValue)"), message: Text("Please try again"), dismissButton: .default(Text("")))
         }
+        ///Partners with "isShowingContentView" to ensure that the user is kicked back to the ContentView
+        self.presentationMode.wrappedValue.dismiss()
     }
     
     //MARK: - Function (saves the user's item [item name, quantity, measurement, and extra notes]
@@ -92,5 +94,9 @@ extension NewEntryView {
                 }
             }
         }
+    }
+    
+    public func saveEntryToCoreModel() {
+        ///Refactor the saving the to the CoreData model here
     }
 }
