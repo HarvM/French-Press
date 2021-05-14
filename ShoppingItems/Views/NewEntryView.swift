@@ -22,6 +22,7 @@ struct NewEntryView: View {
     @State var isShowingContentView = false
     @State var showAlert = false
     @State var selectedMeasurement = 0
+    @State var areTreatsAllowed = true
     let measurementFound = ["pack", "litre", "pint", "gram", "kilogram", "millilitre", "ounce", "pound", "wee bag", "big bag", "bar", "tin", "bottle", "jar", "crate", "multipack", "keg", "tub", "roll", "tube", "punnet", "book", "magazine", "thingy"]
     
     //MARK: - Body the UI that will have a Form (Item Entry, Stepper, and Notes) and a Save Button (bottom of view)

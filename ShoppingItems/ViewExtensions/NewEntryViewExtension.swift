@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+
 extension NewEntryView {
     
     ///This func will take a random entry and then put it into the CoreData model and then display it on the user's list
@@ -27,8 +28,9 @@ extension NewEntryView {
                           "Smoothie": "We can all be innocent sometimes",
                           "Pizza": "A slice/with pineapple/frozen - they're all beautiful",
                           "Dog treat": "A snack waiting to be tried if you don't have a dog...",
+                          "Apple": "The product placement Apple didn't know they need...",
+                          "Comfort food": "We all have that one meal that just puts things right"
         ]
-        
         ///Gets a random element from the dictionary above
         let randomTreat = treatItems.randomElement()!
         
@@ -39,9 +41,11 @@ extension NewEntryView {
             randomItemToBeSaved.preferredMeasurement = "🎁"
             self.isShowingContentView = true
         }
+        ///Will make an attempt to save the data to the CoreData model
         do {
             try self.managedObjectContext.save()
         } catch {
+            ///Will throw an alert to the user should an issue occur
             Alert(title: Text("Sorry \(ContentViewImages.sorryShrug.rawValue)"), message: Text("Please try again"), dismissButton: .default(Text("")))
         }
         ///Partners with "isShowingContentView" to ensure that the user is kicked back to the ContentView
