@@ -68,23 +68,17 @@ struct ContentView: View {
             ZStack {
                 Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
                 VStack {
-                    HStack {
-                        Image(ContentViewImages.appIcon.rawValue)
-                    }
-                    .padding(.bottom, 100)
+                    Image(ContentViewImages.appIcon.rawValue)
+                        .padding(.top, 150)
+                    Spacer()
                     Button(action: self.readPhysicalList, label: {
                         Image(ContentViewImages.cameraButtonIcon.rawValue)
                             .resizable()
                             .background(Color.yellow)
                             .frame(width: 50, height: 50)
                             .cornerRadius(30)
-                            .padding(.bottom, 28)
                     })
                 }
-                .frame(width: 500, height: 900, alignment: .center)
-                .listStyle(PlainListStyle())
-                .listRowBackground(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
-                
                 //MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list, the trailing launches MapView
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
