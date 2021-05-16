@@ -28,14 +28,14 @@ struct NewEntryView: View {
     //MARK: - Body the UI that will have a Form (Item Entry, Stepper, and Notes) and a Save Button (bottom of view)
     var body: some View {
         ZStack {
-            Color("defaultBackground").edgesIgnoringSafeArea(.all)
+            Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
             VStack {
                 Form {
                     //MARK: - TextEditor - Item entry (Main) section
                     Section (header: Text("What would you like?")
                                 .foregroundColor(.yellow)
                                 .truncationMode(.head)
-                                .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))) {
+                                .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
                         HStack {
                             ///$newShoppingItem to get the binding to the state newShoppingItem
                             TextField("Type the item here", text: $newShoppingItem.text)
@@ -54,7 +54,7 @@ struct NewEntryView: View {
                     //MARK: - Picker Section for quantity & quantity type
                     Section (header: Text("How Many Would You Like?")
                                 .foregroundColor(.yellow)
-                                .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))) {
+                                .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
                         VStack {
                             TextField("Type quantity here", text: $quantitySelected.text)
                                 .frame (height: 40)
@@ -78,7 +78,7 @@ struct NewEntryView: View {
                     //MARK: - TextEditor (Extra Notes) Section
                     Section(header: Text("Extra Notes")
                                 .foregroundColor(.yellow)
-                                .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))) {
+                                .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
                         HStack {
                             ///I'd ideally love to have this as TextEditor instead to allow more detailed notes but getting the keyboard to hide has been a 'mare
                             TextField("Type here", text: $notesOnItem.text)
@@ -95,7 +95,7 @@ struct NewEntryView: View {
                     } ///End of section
                     .padding(2)
                 } ///End of Form
-                .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+                .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
                 ///Getting this to work was a nightmare. Found something useful for a TextField but done sweet FA on a TextEditor
                 ///Uses the AdaptsToKeyboard struct to bump the screen up when the user brings up the keyboard
                 .modifier(AdaptsToKeyboard())
@@ -110,7 +110,7 @@ struct NewEntryView: View {
                             .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
                             .padding(.bottom, 28) ///Pulls it off the bottom - will adjust if more options are added to the Form
                     })
-                    .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+                    .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
                     .alert(isPresented: $showAlert) { () -> Alert in
                         Alert(title: Text("One moment"),
                               message: Text("Make sure you're entering an item"),
@@ -119,7 +119,7 @@ struct NewEntryView: View {
                         )
                     }
                 }///End of HStack
-                .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+                .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
             }///End of VStack
             .toolbar { ///Using toolbar to place in the Treat button
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -128,9 +128,9 @@ struct NewEntryView: View {
                     })
                 }
             } //End of toolbar
-            .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+            .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
         } // End of ZStack
-        .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+        .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
         .navigationBarTitleDisplayMode(.inline)
     } //End of body
 } //End of View

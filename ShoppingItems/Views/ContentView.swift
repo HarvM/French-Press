@@ -16,10 +16,17 @@ enum ContentViewImages: String {
     case checkmarkFill = "checkmark.circle.fill"
     case checkmarkEmpty = "circle"
     case appIcon = "appHeader"
+    case cameraButtonIcon = "cameraIcon"
 }
 ///Font used across the app
 enum DefaultFont: String {
     case defaultFont = "SF Pro"
+}
+
+///Background colours
+enum BackgroundColours: String {
+    case defaultBackground = "defaultBackground"
+    //TODO: Add in other colours to let user change their theme
 }
 
 struct ContentView: View {
@@ -37,10 +44,10 @@ struct ContentView: View {
     //MARK: Main body of the view
     var body: some View {
         ZStack {
-            Color("defaultBackground").edgesIgnoringSafeArea(.all)
+            Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
             listView
         }
-        .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+        .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
     }
     
     ///Use of ViewBuilder to differentiate between the populated and unpopulated list
@@ -59,13 +66,24 @@ struct ContentView: View {
     var emptyListView: some View {
         NavigationView {
             ZStack {
-                Color("defaultBackground").edgesIgnoringSafeArea(.all)
-                HStack {
-                    Image(ContentViewImages.appIcon.rawValue)
+                Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
+                VStack {
+                    HStack {
+                        Image(ContentViewImages.appIcon.rawValue)
+                    }
+                    .padding(.bottom, 100)
+                    Button(action: self.readPhysicalList, label: {
+                        Image(ContentViewImages.cameraButtonIcon.rawValue)
+                            .resizable()
+                            .background(Color.yellow)
+                            .frame(width: 50, height: 50)
+                            .cornerRadius(30)
+                            .padding(.bottom, 28)
+                    })
                 }
                 .frame(width: 500, height: 900, alignment: .center)
                 .listStyle(PlainListStyle())
-                .listRowBackground(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+                .listRowBackground(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
                 
                 //MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list, the trailing launches MapView
                 .toolbar {
@@ -87,33 +105,44 @@ struct ContentView: View {
                 .padding(.init(top: 5, leading: 5, bottom: 5, trailing: 5))
             }
         }
-        .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+        .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
     }
     
     //MARK: - PopulatedView
     ///This view will hold the List that displays the items that the user has input and kept in CoreData
     var populatedView: some View {
-            NavigationView {
-                ZStack {
-                    Color("defaultBackground").edgesIgnoringSafeArea(.all)
-                List {
-                    //MARK: - HStack: how the cells are displayed and populated
-                    Section() {
-                        ForEach(shoppingItemEntries, id: \.self) {
-                            shoppingItemNew in
-                            HStack {
-                                CellView(itemToBeAdded: shoppingItemNew.itemToBeAdded,
-                                         quantitySelected: shoppingItemNew.quantitySelected,
-                                         preferredMeasurement: shoppingItemNew.preferredMeasurement)
-                                NavigationLink("", destination: DetailView (itemToBeDisplayed: shoppingItemNew))
-                            }
-                        }
-                        .onDelete(perform: self.deleteItem)
-                        .onMove(perform: moveItem)
-                    }
-                    .listStyle(PlainListStyle())
-                    .listRowBackground(Color("defaultBackground").edgesIgnoringSafeArea(.all))
-                }
+        NavigationView {
+            ZStack {
+                Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
+                VStack {
+                    List {
+                        //MARK: - HStack: how the cells are displayed and populated
+                        Section() {
+                            ForEach(shoppingItemEntries, id: \.self) {
+                                shoppingItemNew in
+                                HStack {
+                                    CellView(itemToBeAdded: shoppingItemNew.itemToBeAdded,
+                                             quantitySelected: shoppingItemNew.quantitySelected,
+                                             preferredMeasurement: shoppingItemNew.preferredMeasurement)
+                                    NavigationLink("", destination: DetailView (itemToBeDisplayed: shoppingItemNew))
+                                } ///End of HStack
+                            } //End of ForEach loop
+                            .onDelete(perform: self.deleteItem)
+                            .onMove(perform: moveItem)
+                        } ///End of Section
+                        .listStyle(PlainListStyle())
+                        .listRowBackground(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
+                    } ///End of List
+                    //MARK: -  Button that launches the camera to read written shopping list
+                    Button(action: self.readPhysicalList, label: {
+                        Image(ContentViewImages.cameraButtonIcon.rawValue)
+                            .resizable()
+                            .background(Color.yellow)
+                            .frame(width: 50, height: 50)
+                            .cornerRadius(30)
+                            .padding(.bottom, 28)
+                    })
+                } ///End VStack
                 ///Appears to help with the reordering of the List and makes it less laggy when a row is moved
                 .id(UUID())
                 ///Removes the header and the wee arrow that hides/shows the cells
@@ -142,19 +171,19 @@ struct ContentView: View {
                 }
             }
         }
-            .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+        .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
     }
     
     init() {
         ///Below is various attempts at getting the from from the Picker to display a different background colour
-        UIPickerView.appearance().backgroundColor = UIColor(Color("defaultBackground"))
-        UIPickerView.appearance().tintColor = UIColor(Color("defaultBackground"))
+        UIPickerView.appearance().backgroundColor = UIColor(Color(BackgroundColours.defaultBackground.rawValue))
+        UIPickerView.appearance().tintColor = UIColor(Color(BackgroundColours.defaultBackground.rawValue))
         ///Setting the empty/potential cells to the desired colour
-        UITableView.appearance().backgroundColor = UIColor(Color("defaultBackground"))
+        UITableView.appearance().backgroundColor = UIColor(Color(BackgroundColours.defaultBackground.rawValue))
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default) ///clears navBar to background colour
         UINavigationBar.appearance().shadowImage = UIImage() ///removes seperator
         UINavigationBar.appearance().isTranslucent = true
-        UINavigationBar.appearance().backgroundColor = UIColor(Color("defaultBackground"))
+        UINavigationBar.appearance().backgroundColor = UIColor(Color(BackgroundColours.defaultBackground.rawValue))
         ///Use this if NavigationBarTitle is with Large Font
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         ///Use this if NavigationBarTitle is with displayMode = .inline

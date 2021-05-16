@@ -16,13 +16,12 @@ struct DetailView: View {
     @Environment(\.presentationMode) var presentationMode
     let itemToBeDisplayed: ShoppingItems
     @State private var hasData = false
-    let backgroundColour = UIColor(named: "defaultBackground")
     
     //MARK: - Body of the view
     var body: some View {
             NavigationView {
                 ZStack {
-                    Color("defaultBackground").edgesIgnoringSafeArea(.all)
+                    Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
                 VStack {
                     ///Section that displays the items name
                     Section {
@@ -46,7 +45,7 @@ struct DetailView: View {
                 }
                 .frame(minWidth: 200, idealWidth: 350, maxWidth: 400, minHeight: 400,       idealHeight: 700, maxHeight: 800, alignment: .top)
             }
-            .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+            .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
             .multilineTextAlignment(.center)
             .allowsTightening(true)
             .minimumScaleFactor(0.9)

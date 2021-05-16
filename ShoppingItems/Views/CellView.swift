@@ -39,15 +39,15 @@ struct CellView: View {
                         .lineLimit(1)
                         .textCase(.lowercase)
                 }
-                .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+                .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
                 .foregroundColor(.yellow)
                 .frame(minWidth: 300, idealWidth: 400, maxWidth: 450, minHeight: 80, idealHeight: 85, maxHeight: 95, alignment: .leading)
                 .padding(15)
                 .onAppear(perform: singleOrMultiple)
             }
-            .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+            .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
             .toggleStyle(CheckboxStyle())
         }
-        .background(Color("defaultBackground").edgesIgnoringSafeArea(.all))
+        .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
     }
 }

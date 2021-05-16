@@ -23,6 +23,10 @@ extension ContentView {
         }
     }
     
+    public func readPhysicalList() {
+        print("Hey, trying to print the list")
+    }
+    
     ///Triggered for when the user is in EditMode and wishes to move an item on the list
     public func moveItem(from source: IndexSet, to destination: Int) {
         DispatchQueue.main.async {
