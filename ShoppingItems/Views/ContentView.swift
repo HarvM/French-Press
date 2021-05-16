@@ -8,27 +8,6 @@
 import SwiftUI
 import Foundation
 
-///Images used across the app
-enum ContentViewImages: String {
-    case plusImage = "plusIcon"
-    case thumbsUp = "👍"
-    case sorryShrug = "🤷🏻‍♂️"
-    case checkmarkFill = "checkmark.circle.fill"
-    case checkmarkEmpty = "circle"
-    case appIcon = "appHeader"
-    case cameraButtonIcon = "cameraIcon"
-}
-///Font used across the app
-enum DefaultFont: String {
-    case defaultFont = "SF Pro"
-}
-
-///Background colours
-enum BackgroundColours: String {
-    case defaultBackground = "defaultBackground"
-    //TODO: Add in other colours to let user change their theme
-}
-
 struct ContentView: View {
     //MARK: - Properties
     @State var isEditing = false
