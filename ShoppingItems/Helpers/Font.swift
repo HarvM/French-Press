@@ -6,10 +6,7 @@
 //  Copyright © 2021 Marc Harvey. All rights reserved.
 //
 
-
-import SwiftUI
 import Foundation
-
 
 ///Font used across the app
 enum DefaultFont: String {

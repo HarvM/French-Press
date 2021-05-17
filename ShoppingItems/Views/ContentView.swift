@@ -29,8 +29,7 @@ struct ContentView: View {
         .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
     }
     
-    ///Use of ViewBuilder to differentiate between the populated and unpopulated list
-    ///Using this to display the placeholder screen
+    //MARK: - ViewBuilder - Logic to decide which view to use
     @ViewBuilder
     var listView: some View {
         ///If no shoppingItemEntries on the list then display the placeholder image
@@ -42,14 +41,18 @@ struct ContentView: View {
         }
     }
     
+    //MARK:- EmptyListView - used upon initial launch and should the user have no items
     var emptyListView: some View {
         NavigationView {
             ZStack {
                 Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
-                VStack {
+                GeometryReader { geometry in
+                    VStack (alignment: .trailing) {
                     Image(ContentViewImages.appIcon.rawValue)
-                        .padding(.top, 150)
+                        .padding(.top, geometry.size.height/2)
+                        .padding(.leading, geometry.size.width/2)
                     Spacer()
+                    HStack(alignment: .bottom, spacing: 10) {
                     Button(action: self.readPhysicalList, label: {
                         Image(ContentViewImages.cameraButtonIcon.rawValue)
                             .resizable()
@@ -57,6 +60,8 @@ struct ContentView: View {
                             .frame(width: 50, height: 50)
                             .cornerRadius(30)
                     })
+                    }
+                }
                 }
                 //MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list, the trailing launches MapView
                 .toolbar {
