@@ -47,22 +47,21 @@ struct ContentView: View {
             ZStack {
                 Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
                 GeometryReader { geometry in
-                    VStack (alignment: .trailing) {
-                    Image(ContentViewImages.appIcon.rawValue)
-                        .padding(.top, geometry.size.height/2)
-                        .padding(.leading, geometry.size.width/2)
-                    Spacer()
-                    HStack(alignment: .bottom, spacing: 10) {
-                    Button(action: self.readPhysicalList, label: {
-                        Image(ContentViewImages.cameraButtonIcon.rawValue)
-                            .resizable()
-                            .background(Color.yellow)
-                            .frame(width: 50, height: 50)
-                            .cornerRadius(30)
-                    })
-                    }
+                VStack {
+                        Image(ContentViewImages.appIcon.rawValue)
+                            .padding(.top, geometry.size.height/2)
+                        Spacer()
+                        Button(action: self.readPhysicalList, label: {
+                            Image(ContentViewImages.cameraButtonIcon.rawValue)
+                                .resizable()
+                                .background(Color.yellow)
+                                .frame(width: 50, height: 50)
+                                .cornerRadius(30)
+                        })
                 }
+                .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
                 }
+                
                 //MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list, the trailing launches MapView
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
