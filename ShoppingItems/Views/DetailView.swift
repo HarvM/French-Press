@@ -30,7 +30,7 @@ struct DetailView: View {
                                 .font(.custom(DefaultFont.defaultFont.rawValue, size: 35, relativeTo: .headline))
                                 .lineLimit(3)
                                 .foregroundColor(.yellow)
-                        }
+                        } ///End of Section
                         Spacer()
                         ///Section that will hold either any extra notes or a placeholder if no extra notes exist
                         Section {
@@ -42,19 +42,19 @@ struct DetailView: View {
                                     .foregroundColor(.white)
                                     .font(.custom(DefaultFont.defaultFont.rawValue, size: 25, relativeTo: .headline))
                             }
-                        }
+                        } ///End of Section
                         .padding(.bottom, geometry.size.height/2)
-                    }
+                    } ///End of VStack
                     .frame(width: geometry.size.width-10, height: geometry.size.height, alignment: .center)
-                }
-            }
+                } ///End of GeometryReader
+            } //End of ZStack
             .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
             .multilineTextAlignment(.center)
             .allowsTightening(true)
             .minimumScaleFactor(0.9)
             .navigationViewStyle(StackNavigationViewStyle()) ///removes iPad split screen
-        }
-    }
+        } ///End of NavigationView
+    } ///End of body
 }
 
 struct DetailView_Previews: PreviewProvider {
