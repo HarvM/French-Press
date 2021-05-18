@@ -19,31 +19,34 @@ struct DetailView: View {
     
     //MARK: - Body of the view
     var body: some View {
-            NavigationView {
-                ZStack {
-                    Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
-                VStack {
-                    ///Section that displays the items name
-                    Section {
-                        Text ("\(itemToBeDisplayed.itemToBeAdded)")
-                            .font(.custom(DefaultFont.defaultFont.rawValue, size: 35, relativeTo: .headline))
-                            .lineLimit(3)
-                            .foregroundColor(.yellow)
-                    }
-                    .frame(minWidth: 200, idealWidth: 350, maxWidth: 400, minHeight: 80, idealHeight: 100, maxHeight: 120, alignment: .top)
-                    ///Section that will hold either any extra notes or a placeholder if no extra notes exist
-                    Section {
-                        if itemToBeDisplayed.notesOnItem.isEmpty {
-                            Image(ContentViewImages.appIcon.rawValue)
-                                .padding(.top, 70)
-                        } else {
-                        Text("\(itemToBeDisplayed.notesOnItem)")
-                            .foregroundColor(.white)
-                            .font(.custom(DefaultFont.defaultFont.rawValue, size: 25, relativeTo: .headline))
+        NavigationView {
+            ZStack {
+                Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
+                GeometryReader { geometry in
+                    VStack {
+                        ///Section that displays the items name
+                        Section {
+                            Text ("\(itemToBeDisplayed.itemToBeAdded)")
+                                .font(.custom(DefaultFont.defaultFont.rawValue, size: 35, relativeTo: .headline))
+                                .lineLimit(3)
+                                .foregroundColor(.yellow)
                         }
+                        Spacer()
+                        ///Section that will hold either any extra notes or a placeholder if no extra notes exist
+                        Section {
+                            if itemToBeDisplayed.notesOnItem.isEmpty {
+                                Image(ContentViewImages.appIcon.rawValue)
+                                    .padding(.top, 70)
+                            } else {
+                                Text("\(itemToBeDisplayed.notesOnItem)")
+                                    .foregroundColor(.white)
+                                    .font(.custom(DefaultFont.defaultFont.rawValue, size: 25, relativeTo: .headline))
+                            }
+                        }
+                        .padding(.bottom, geometry.size.height/2)
                     }
+                    .frame(width: geometry.size.width-10, height: geometry.size.height, alignment: .center)
                 }
-                .frame(minWidth: 200, idealWidth: 350, maxWidth: 400, minHeight: 400,       idealHeight: 700, maxHeight: 800, alignment: .top)
             }
             .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
             .multilineTextAlignment(.center)
