@@ -38,14 +38,17 @@ struct CellView: View {
                         .font(.custom(DefaultFont.defaultFont.rawValue, size: 18, relativeTo: .title))
                         .lineLimit(1)
                         .textCase(.lowercase)
-                }
+                } ///End of VStack
                 .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
                 .foregroundColor(.yellow)
+                ///Looked into using GeometryReader but having a range of frame sizes looks best on the UI as far as I'm concerned
                 .frame(minWidth: 300, idealWidth: 400, maxWidth: 450, minHeight: 80, idealHeight: 85, maxHeight: 95, alignment: .leading)
                 .padding(15)
+                ///Call of the singleOrMultiple function in the Extension
                 .onAppear(perform: singleOrMultiple)
             }
             .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
+            ///Call of the CheckBoxStyle View that deals with the checkboc that leads the cell
             .toggleStyle(CheckboxStyle())
         }
         .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))

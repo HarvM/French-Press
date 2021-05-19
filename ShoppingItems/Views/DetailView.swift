@@ -47,7 +47,7 @@ struct DetailView: View {
                     } ///End of VStack
                     .frame(width: geometry.size.width-10, height: geometry.size.height, alignment: .center)
                 } ///End of GeometryReader
-            } //End of ZStack
+            } ///End of ZStack
             .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
             .multilineTextAlignment(.center)
             .allowsTightening(true)

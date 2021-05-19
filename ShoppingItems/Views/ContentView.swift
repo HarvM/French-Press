@@ -11,6 +11,7 @@ import Foundation
 struct ContentView: View {
     //MARK: - Properties
     @State var isEditing = false
+    @State var showHamburgerMenu = false
     @ObservedObject var listStore: ShoppingItemStore
     let generator = UINotificationFeedbackGenerator()
     @Environment (\.managedObjectContext) var managedObjectContext
@@ -24,28 +25,36 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
-            listView
+            ListView
         }
         .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
     }
     
     //MARK: - ViewBuilder - Logic to decide which view to use
     @ViewBuilder
-    var listView: some View {
+    var ListView: some View {
         ///If no shoppingItemEntries on the list then display the placeholder image
         if shoppingItemEntries.count == 0 {
-            emptyListView
+            EmptyListView
         } else {
             ///Will show the view with the shoppingItems that the user has input
-            populatedView
+            PopulatedView
         }
     }
     
     //MARK:- EmptyListView - used upon initial launch and should the user have no items
-    var emptyListView: some View {
+    var EmptyListView: some View {
         NavigationView {
             ZStack {
                 Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
+                if !self.showHamburgerMenu {
+                    Button(action: {
+                        self.openMenu()
+                    }, label: {
+                        Text("Open")
+                    })
+                }
+                HamburgerMenu(width: 270, isOpen: self.showHamburgerMenu, menuClose: self.openMenu)
                 GeometryReader { geometry in
                 VStack {
                         Image(ContentViewImages.appIcon.rawValue)
@@ -60,7 +69,7 @@ struct ContentView: View {
                                 .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
                                 .padding(.leading, geometry.size.width - 50)
                         })
-                }
+                } ///End of VStack
                 .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
                 }
                 
@@ -79,17 +88,17 @@ struct ContentView: View {
                                 .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
                         }
                     }
-                }
+                } ///End of toolbar
                 .foregroundColor(.white)
                 .padding(.init(top: 5, leading: 5, bottom: 5, trailing: 5))
-            }
-        }
+            } ///End of ZStack
+        } ///End of NavigationView
         .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
     }
     
     //MARK: - PopulatedView
     ///This view will hold the List that displays the items that the user has input and kept in CoreData
-    var populatedView: some View {
+    var PopulatedView: some View {
         NavigationView {
             ZStack {
                 Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
@@ -105,7 +114,7 @@ struct ContentView: View {
                                              preferredMeasurement: shoppingItemNew.preferredMeasurement)
                                     NavigationLink("", destination: DetailView (itemToBeDisplayed: shoppingItemNew))
                                 } ///End of HStack
-                            } //End of ForEach loop
+                            } /// End of ForEach loop
                             .onDelete(perform: self.deleteItem)
                             .onMove(perform: moveItem)
                         } ///End of Section
@@ -147,11 +156,11 @@ struct ContentView: View {
                                 .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
                         }
                     }
-                }
-            }
-        }
+                } ///End of toolbar
+            } ///End of ZStack
+        } ///End of NavigationView
         .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
-    }
+    } ///End of populatedView
     
     init() {
         ///Below is various attempts at getting the from from the Picker to display a different background colour
