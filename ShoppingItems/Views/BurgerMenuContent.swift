@@ -27,17 +27,17 @@ struct BurgerMenuContent: View {
                     .font(.headline)
             }
             .padding(.top, 30)
+            Spacer() ///Kicks the v number to the bottom
             HStack{
                 Text("v. 2.2.3") //TODO: Sort to release version number when time comes
                     .font(.headline)
             }
             .padding(.top, 120)
-            Spacer()
         } ///End of VStack
         .padding()
-//        .frame(maxWidth: .infinity, alignment: .leading)
-//        .background(Color(red: 32/255, green: 32/255, blue: 32/255))
-//                   .edgesIgnoringSafeArea(.all)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color(red: 32/255, green: 32/255, blue: 32/255))
+                   .edgesIgnoringSafeArea(.all)
     } ///End of View
 }
 

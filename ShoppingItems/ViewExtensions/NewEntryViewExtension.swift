@@ -13,34 +13,36 @@ extension NewEntryView {
     ///Func that will pass through either of the save points that the user could use to save an entry
     public func saveEntryToCoreModel(itemToBeAdded: String, notesOnItem: String, quantitySelected: String, preferredMeasurement: String) {
         
-        ///Refactor the saving the to the CoreData model here
-        let itemToBeSaved = ShoppingItems(context: self.managedObjectContext)
-        
-        self.managedObjectContext.performAndWait {
-            itemToBeSaved.itemToBeAdded = itemToBeAdded.self
-            itemToBeSaved.notesOnItem = notesOnItem.self
-            itemToBeSaved.quantitySelected = quantitySelected.self
-            itemToBeSaved.preferredMeasurement = preferredMeasurement.self
-            self.isShowingContentView = true
+        DispatchQueue.main.async {
+            ///Refactor the saving the to the CoreData model here
+            let itemToBeSaved = ShoppingItems(context: self.managedObjectContext)
+            
+            self.managedObjectContext.performAndWait {
+                itemToBeSaved.itemToBeAdded = itemToBeAdded.self
+                itemToBeSaved.notesOnItem = notesOnItem.self
+                itemToBeSaved.quantitySelected = quantitySelected.self
+                itemToBeSaved.preferredMeasurement = preferredMeasurement.self
+                self.isShowingContentView = true
+            }
+            
+            ///Will make an attempt to save the data to the CoreData model
+            do {
+                try self.managedObjectContext.save()
+            } catch {
+                ///Will throw an alert to the user should an issue occur
+                Alert(title: Text("Sorry \(ContentViewImages.sorryShrug.rawValue)"), message: Text("Please try again"), dismissButton: .default(Text("")))
+            }
+            
+            ///Logic to ensure that there is a quantity of some sort by default even if the user doesn't explicity define an amount
+            if quantitySelected.isEmpty && quantitySelected != "🎁" {
+                itemToBeSaved.quantitySelected = "1"
+            }
+            
+            ///Partners with "isShowingContentView" to ensure that the user is kicked back to the ContentView
+            self.presentationMode.wrappedValue.dismiss()
+            ///Haptic feedback for when an item has been added
+            self.generator.notificationOccurred(.success)
         }
-        
-        ///Will make an attempt to save the data to the CoreData model
-        do {
-            try self.managedObjectContext.save()
-        } catch {
-            ///Will throw an alert to the user should an issue occur
-            Alert(title: Text("Sorry \(ContentViewImages.sorryShrug.rawValue)"), message: Text("Please try again"), dismissButton: .default(Text("")))
-        }
-        
-        ///Logic to ensure that there is a quantity of some sort by default even if the user doesn't explicity define an amount
-        if quantitySelected.isEmpty && quantitySelected != "🎁" {
-            itemToBeSaved.quantitySelected = "1"
-        }
-        
-        ///Partners with "isShowingContentView" to ensure that the user is kicked back to the ContentView
-        self.presentationMode.wrappedValue.dismiss()
-        ///Haptic feedback for when an item has been added
-        self.generator.notificationOccurred(.success)
     }
     
     

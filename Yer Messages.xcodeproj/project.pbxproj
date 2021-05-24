@@ -204,9 +204,9 @@
 				491D795823C11D1700B537EB /* ContentView.swift */,
 				493B3A95253BD31200CAF0F9 /* NewEntryView.swift */,
 				499C66A8256743AE00EDD614 /* DetailView.swift */,
-				D2D9BED2265545BB005529EF /* Subviews */,
 				D2D9BED3265545EC005529EF /* BurgerMenuContent.swift */,
 				D2D9BED5265559FC005529EF /* HamburgerMenu.swift */,
+				D2D9BED2265545BB005529EF /* Subviews */,
 			);
 			path = Views;
 			sourceTree = "<group>";

@@ -47,14 +47,9 @@ struct ContentView: View {
         NavigationView {
             ZStack {
                 Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
-                if !self.showHamburgerMenu {
-                    Button(action: {
-                        self.openMenu()
-                    }, label: {
-                        Text("Open")
-                    })
-                }
-                HamburgerMenu(width: 270, isOpen: self.showHamburgerMenu, menuClose: self.openMenu)
+                HamburgerMenu(width: 270,
+                              isOpen: self.showHamburgerMenu,
+                              menuClose: self.openMenu)
                 GeometryReader { geometry in
                 VStack {
                         Image(ContentViewImages.appIcon.rawValue)
@@ -73,8 +68,17 @@ struct ContentView: View {
                 .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
                 }
                 
-                //MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list, the trailing launches MapView
+                //MARK: - NavigationBarItems: Leading item will be the HamburgerMenu button that lets the user access the settings, the trailing item: let's the user add a new item to the CoreData/list
                 .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        if !self.showHamburgerMenu {
+                            Button(action: {
+                                self.openMenu()
+                            }, label: {
+                                Image(systemName: "line.horizontal.3")
+                            })
+                        }
+                    }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink(destination: NewEntryView()
                                         .navigationTitle("Add Item")

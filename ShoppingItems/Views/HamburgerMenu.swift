@@ -12,6 +12,8 @@ struct HamburgerMenu: View {
     let width: CGFloat
     let isOpen: Bool
     let menuClose: () -> Void
+    
+    //MARK: Body
         var body: some View {
             ZStack {
                 GeometryReader { _ in
@@ -25,12 +27,12 @@ struct HamburgerMenu: View {
                 }
                 
                 HStack {
+                    ///Places the content inside this view
                     BurgerMenuContent()
                         .frame(width: self.width)
                         .background(Color.white)
                         .offset(x: self.isOpen ? 0 : -self.width)
-                        .animation(.default)
-                    
+                        .animation(.easeIn)
                     Spacer()
                 }
             }
