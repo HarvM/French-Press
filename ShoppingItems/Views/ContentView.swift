@@ -36,6 +36,9 @@ struct ContentView: View {
         ///If no shoppingItemEntries on the list then display the placeholder image
         if shoppingItemEntries.count == 0 {
             EmptyListView
+            HamburgerMenu(width: 270,
+                          isOpen: self.showHamburgerMenu,
+                          menuClose: self.openMenu)
         } else {
             ///Will show the view with the shoppingItems that the user has input
             PopulatedView
@@ -47,9 +50,6 @@ struct ContentView: View {
         NavigationView {
             ZStack {
                 Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
-                HamburgerMenu(width: 270,
-                              isOpen: self.showHamburgerMenu,
-                              menuClose: self.openMenu)
                 GeometryReader { geometry in
                 VStack {
                         Image(ContentViewImages.appIcon.rawValue)
@@ -76,6 +76,7 @@ struct ContentView: View {
                                 self.openMenu()
                             }, label: {
                                 Image(systemName: "line.horizontal.3")
+                                    .imageScale(.large)
                             })
                         }
                     }
