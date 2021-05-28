@@ -19,18 +19,16 @@ struct HamburgerMenu: View {
                 GeometryReader { _ in
                     EmptyView()
                 }
-                .background(Color.black.opacity(0.3).edgesIgnoringSafeArea(.all))
+                .background(Color.black.opacity(0.1).edgesIgnoringSafeArea(.all))
                 .opacity(self.isOpen ? 1.0 : 0.0)
                 .animation(Animation.easeIn.delay(0.25))
                 .onTapGesture {
                     self.menuClose()
                 }
-                
                 HStack {
                     ///Places the content inside this view
                     BurgerMenuContent()
                         .frame(width: self.width)
-                        .background(Color.white)
                         .offset(x: self.isOpen ? 0 : -self.width)
                         .animation(.easeIn)
                     Spacer()
