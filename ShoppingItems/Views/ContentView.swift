@@ -59,7 +59,7 @@ struct ContentView: View {
                             Image(ContentViewImages.cameraButtonIcon.rawValue)
                                 .resizable()
                                 .background(Color.yellow)
-                                .frame(width: 30, height: 30)
+                                .frame(width: 50, height: 50)
                                 .cornerRadius(30)
                                 .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
                                 .padding(.leading, geometry.size.width - 50)
