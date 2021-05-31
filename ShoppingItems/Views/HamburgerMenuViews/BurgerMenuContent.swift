@@ -10,7 +10,9 @@ import SwiftUI
 
 ///View that will handle how the hamburger menu is displayed
 struct BurgerMenuContent: View {
-    @State private var isPresented = false
+    @State private var isAboutPresented = false
+    @State private var isThemesPresented = false
+    @State private var isSupportPresented = false
     var body: some View {
         NavigationView {
         ZStack {
@@ -20,32 +22,28 @@ struct BurgerMenuContent: View {
                         Image(ContentViewImages.appIcon.rawValue)
                     }
                     HStack {
-                        Button("Present!") {
-                                   isPresented.toggle()
+                        Button("About") {
+                            isAboutPresented.toggle()
                                }
-                               .fullScreenCover(isPresented: $isPresented, content: FullscreenView.init)
+                        .font(.title2)
+                               .fullScreenCover(isPresented: $isAboutPresented, content: AboutView.init)
                     }
                     .background(Color(BackgroundColours.burgerBackground.rawValue).edgesIgnoringSafeArea(.all))
                     .padding(.top, 30)
                     HStack {
-                        NavigationLink (destination: AboutView()) {
-                            Text("About")
-                                .font(.title2)
-                        }
-                    }
-                    .padding(.top, 80) ///Kicks the first bit off the top
-                    HStack {
-                        NavigationLink (destination: ThemesView()) {
-                            Text("Themes")
-                                .font(.title2)
-                        }
+                        Button("Themes") {
+                                   isThemesPresented.toggle()
+                               }
+                        .font(.title2)
+                               .fullScreenCover(isPresented: $isThemesPresented, content: ThemesView.init)
                     }
                     .padding(.top, 30)
                     HStack {
-                        NavigationLink (destination: SupportView()) {
-                            Text("Support")
-                                .font(.title2)
-                        }
+                        Button("Support") {
+                                   isSupportPresented.toggle()
+                               }
+                        .font(.title2)
+                               .fullScreenCover(isPresented: $isSupportPresented, content: SupportView.init)
                     }
                     .padding(.top, 30)
                     Spacer() ///Kicks the v number to the bottom

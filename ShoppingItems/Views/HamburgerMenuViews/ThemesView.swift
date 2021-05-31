@@ -9,8 +9,14 @@
 import SwiftUI
 
 struct ThemesView: View {
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
         Text("Come see my themes")
+        Button("Dismiss Modal"){
+            presentationMode.wrappedValue.dismiss()
+    }
+        .foregroundColor(.black)
     }
 }
 

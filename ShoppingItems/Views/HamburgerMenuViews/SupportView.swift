@@ -9,8 +9,14 @@
 import SwiftUI
 
 struct SupportView: View {
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
         Text("Need some help. Here's the support")
+        Button("Dismiss Modal"){
+            presentationMode.wrappedValue.dismiss()
+        }
+        .foregroundColor(.black)
     }
 }
 

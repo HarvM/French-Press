@@ -10,10 +10,14 @@ import SwiftUI
 
 struct AboutView: View {
     
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
-        NavigationView {
             Text("Welcome to About")
+            Button("Dismiss Modal"){
+                presentationMode.wrappedValue.dismiss()
         }
+            .foregroundColor(.black)
     }
 }
 //
