@@ -10,13 +10,20 @@ import SwiftUI
 
 ///View that will handle how the hamburger menu is displayed
 struct BurgerMenuContent: View {
+    @State private var isPresented = false
     var body: some View {
         NavigationView {
-            ZStack {
+        ZStack {
                 Color(BackgroundColours.burgerBackground.rawValue).edgesIgnoringSafeArea(.all)
                 VStack(alignment: .leading) {
                     HStack {
                         Image(ContentViewImages.appIcon.rawValue)
+                    }
+                    HStack {
+                        Button("Present!") {
+                                   isPresented.toggle()
+                               }
+                               .fullScreenCover(isPresented: $isPresented, content: FullscreenView.init)
                     }
                     .background(Color(BackgroundColours.burgerBackground.rawValue).edgesIgnoringSafeArea(.all))
                     .padding(.top, 30)
@@ -48,16 +55,11 @@ struct BurgerMenuContent: View {
                             .padding(.leading, 10)
                     }
                     .padding(.top, 120)
-                } ///End of VStack
-                .foregroundColor(.yellow)
-                .padding()
+                }
                 .frame(maxWidth: .infinity, alignment: .leading)
-//                .background(Color(BackgroundColours.burgerBackground.rawValue))
-//                .edgesIgnoringSafeArea(.all)
-            } ///End of View
-            .background(Color(BackgroundColours.burgerBackground.rawValue))
+                .padding(.leading, 20)
         }
-        .background(Color(BackgroundColours.burgerBackground.rawValue))
+        }
     }
     
     public func moveToSomewhere() {
