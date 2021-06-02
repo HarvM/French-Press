@@ -13,11 +13,25 @@ struct AboutView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-            Text("Welcome to About")
-            Button("Dismiss Modal"){
-                presentationMode.wrappedValue.dismiss()
+        NavigationView {
+            ZStack {
+                Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
+                VStack {
+                    //TODO: Enter in content here
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Done") {
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                    .foregroundColor(.black)
+                }
+            }
+            .navigationBarTitle("About")
+            .foregroundColor(.yellow)
+            .navigationBarTitleDisplayMode(.inline)
         }
-            .foregroundColor(.black)
     }
 }
 //

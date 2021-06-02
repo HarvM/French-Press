@@ -10,17 +10,21 @@ import SwiftUI
 
 ///View that will handle how the hamburger menu is displayed
 struct BurgerMenuContent: View {
+    
     @State private var isAboutPresented = false
     @State private var isThemesPresented = false
-    @State private var isSupportPresented = false
+    
+    //MARK: - Body of the View
     var body: some View {
         NavigationView {
         ZStack {
                 Color(BackgroundColours.burgerBackground.rawValue).edgesIgnoringSafeArea(.all)
                 VStack(alignment: .leading) {
+                    ///App icon that starts the menu
                     HStack {
                         Image(ContentViewImages.appIcon.rawValue)
                     }
+                    //"About" section that will give some more details about the app and where support can be found
                     HStack {
                         Button("About") {
                             isAboutPresented.toggle()
@@ -30,20 +34,13 @@ struct BurgerMenuContent: View {
                     }
                     .background(Color(BackgroundColours.burgerBackground.rawValue).edgesIgnoringSafeArea(.all))
                     .padding(.top, 30)
+                    ///M
                     HStack {
                         Button("Themes") {
                                    isThemesPresented.toggle()
                                }
                         .font(.title2)
                                .fullScreenCover(isPresented: $isThemesPresented, content: ThemesView.init)
-                    }
-                    .padding(.top, 30)
-                    HStack {
-                        Button("Support") {
-                                   isSupportPresented.toggle()
-                               }
-                        .font(.title2)
-                               .fullScreenCover(isPresented: $isSupportPresented, content: SupportView.init)
                     }
                     .padding(.top, 30)
                     Spacer() ///Kicks the v number to the bottom

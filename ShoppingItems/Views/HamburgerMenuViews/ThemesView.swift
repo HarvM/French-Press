@@ -12,11 +12,25 @@ struct ThemesView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        Text("Come see my themes")
-        Button("Dismiss Modal"){
-            presentationMode.wrappedValue.dismiss()
-    }
-        .foregroundColor(.black)
+        NavigationView {
+            ZStack {
+                Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
+                VStack {
+                    //TODO: Enter in content here
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Done") {
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                    .foregroundColor(.black)
+                }
+            }
+            .navigationBarTitle("Themes")
+            .foregroundColor(.yellow)
+            .navigationBarTitleDisplayMode(.inline)
+        }
     }
 }
 
