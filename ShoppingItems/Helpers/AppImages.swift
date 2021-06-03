@@ -17,4 +17,6 @@ enum ContentViewImages: String {
     case checkmarkEmpty = "circle"
     case appIcon = "appHeader"
     case cameraButtonIcon = "cameraIcon"
+    case twitterIcon = "twitter"
+    case emailIcon = "email"
 }

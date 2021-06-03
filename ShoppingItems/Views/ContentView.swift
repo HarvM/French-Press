@@ -55,15 +55,6 @@ struct ContentView: View {
                         Image(ContentViewImages.appIcon.rawValue)
                             .padding(.top, geometry.size.height/2)
                         Spacer()
-                        Button(action: self.readPhysicalList, label: {
-                            Image(ContentViewImages.cameraButtonIcon.rawValue)
-                                .resizable()
-                                .background(Color.yellow)
-                                .frame(width: 50, height: 50)
-                                .cornerRadius(30)
-                                .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
-                                .padding(.leading, geometry.size.width - 50)
-                        })
                 } ///End of VStack
                 .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
                 }
@@ -126,15 +117,6 @@ struct ContentView: View {
                         .listStyle(PlainListStyle())
                         .listRowBackground(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
                     } ///End of List
-                    //MARK: -  Button that launches the camera to read written shopping list
-                    Button(action: self.readPhysicalList, label: {
-                        Image(ContentViewImages.cameraButtonIcon.rawValue)
-                            .resizable()
-                            .background(Color.yellow)
-                            .frame(width: 50, height: 50)
-                            .cornerRadius(30)
-                            .padding(.bottom, 28)
-                    })
                 } ///End VStack
                 ///Appears to help with the reordering of the List and makes it less laggy when a row is moved
                 .id(UUID())
