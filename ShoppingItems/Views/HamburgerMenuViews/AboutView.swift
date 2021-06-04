@@ -22,21 +22,24 @@ struct AboutView: View {
                 Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
                 //MARK: - Main
                 VStack {
-                    //TODO: A brief about
+                    //MARK: - About
                     HStack {
                         Text("Thanks for giving this a try and I hope it makes your shopping a little easier.")
                     }
                     .padding()
+                    //MARK: - Feedback text
                     HStack {
                         Text("If you have suggestions or want to give some feedback then please feel free to contact me on Twitter.")
                     }
                     .padding()
+                    //MARK: - Button to take user to Twitter account
                     Button(action: {
                         openURL(URL(string: "https://twitter.com/MessagesYer")!)
                     }) {
                         Image(ContentViewImages.twitterIcon.rawValue)
                     }
-                } ///End of VStack
+                }
+                .padding(20)///End of VStack
             } ///End of ZStack
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {

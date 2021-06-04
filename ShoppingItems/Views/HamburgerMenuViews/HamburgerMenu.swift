@@ -19,7 +19,7 @@ struct HamburgerMenu: View {
                 GeometryReader { _ in
                     EmptyView()
                 }
-                .background(Color.black.opacity(0.1).edgesIgnoringSafeArea(.all))
+                .background(Color.white.opacity(0.1).edgesIgnoringSafeArea(.all))
                 .opacity(self.isOpen ? 1.0 : 0.0)
                 .animation(Animation.easeIn.delay(0.25))
                 .onTapGesture {

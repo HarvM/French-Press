@@ -165,7 +165,6 @@ struct ContentView: View {
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
         ///Have to init the listStore with a value
         self.listStore = ShoppingItemStore.init()
-        
     }
 }
 

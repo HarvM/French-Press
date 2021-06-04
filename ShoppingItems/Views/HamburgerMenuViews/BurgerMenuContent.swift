@@ -14,16 +14,21 @@ struct BurgerMenuContent: View {
     @State private var isAboutPresented = false
     @State private var isThemesPresented = false
     
+    ///Changes the navigationBar background colour to what I want
+    init() {
+//    UINavigationBar.appearance().backgroundColor = UIColor(Color(BackgroundColours.burgerBackground.rawValue))
+    }
+    
     //MARK: - Body of the View
     var body: some View {
         NavigationView {
             ZStack {
-                Color(BackgroundColours.burgerBackground.rawValue).edgesIgnoringSafeArea(.all)
+                Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
                 VStack(alignment: .leading) {
                     ///App icon that starts the menu
-                    HStack {
-                        Image(ContentViewImages.appIcon.rawValue)
-                    } ///End of HStack
+//                    HStack {
+//                        Image(ContentViewImages.appIcon.rawValue)
+//                    } ///End of HStack
                     //MARK: -  "About" section that will give some more details about the app and where support can be found
                     HStack {
                         Button("About") {
@@ -32,7 +37,6 @@ struct BurgerMenuContent: View {
                         .font(.title2)
                         .fullScreenCover(isPresented: $isAboutPresented, content: AboutView.init)
                     } ///End of HStack
-                    .background(Color(BackgroundColours.burgerBackground.rawValue).edgesIgnoringSafeArea(.all))
                     .padding(.top, 30)
                     //MARK:  - "Themes" section
                     HStack {
@@ -54,6 +58,11 @@ struct BurgerMenuContent: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading, 20)
             } ///End of VStack
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Image(ContentViewImages.appIcon.rawValue)
+                }
+            } ///End of toolbar
         }
     }
 }
