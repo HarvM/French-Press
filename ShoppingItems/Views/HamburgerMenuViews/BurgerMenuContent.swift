@@ -26,9 +26,10 @@ struct BurgerMenuContent: View {
                 Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
                 VStack(alignment: .leading) {
                     ///App icon that starts the menu
-//                    HStack {
-//                        Image(ContentViewImages.appIcon.rawValue)
-//                    } ///End of HStack
+                    HStack {
+                        Image(ContentViewImages.appIcon.rawValue)
+                    } ///End of HStack
+                    .padding()
                     //MARK: -  "About" section that will give some more details about the app and where support can be found
                     HStack {
                         Button("About") {
@@ -37,7 +38,7 @@ struct BurgerMenuContent: View {
                         .font(.title2)
                         .fullScreenCover(isPresented: $isAboutPresented, content: AboutView.init)
                     } ///End of HStack
-                    .padding(.top, 30)
+                    .padding()
                     //MARK:  - "Themes" section
                     HStack {
                         Button("Themes") {
@@ -46,23 +47,18 @@ struct BurgerMenuContent: View {
                         .font(.title2)
                         .fullScreenCover(isPresented: $isThemesPresented, content: ThemesView.init)
                     } ///End of HStack
-                    .padding(.top, 30)
+                    .padding()
                     Spacer() ///Kicks the v number to the bottom
                     HStack{
                         Text("v. 2.2.3") //TODO: Sort to release version number when time comes
                             .font(.footnote)
-                            .padding(.leading, 10)
+                            .foregroundColor(.yellow)
                     } ///End of HStack
-                    .padding(.top, 120)
+                    .padding()
                 } ///End of VStack
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading, 20)
             } ///End of VStack
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Image(ContentViewImages.appIcon.rawValue)
-                }
-            } ///End of toolbar
         }
     }
 }
