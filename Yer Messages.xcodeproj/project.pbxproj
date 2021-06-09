@@ -38,6 +38,7 @@
 		D283573126516893009165DF /* BackgroundColours.swift in Sources */ = {isa = PBXBuildFile; fileRef = D283573026516893009165DF /* BackgroundColours.swift */; };
 		D2D9BED4265545EC005529EF /* BurgerMenuContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D9BED3265545EC005529EF /* BurgerMenuContent.swift */; };
 		D2D9BED6265559FC005529EF /* HamburgerMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D9BED5265559FC005529EF /* HamburgerMenu.swift */; };
+		D2EE5802267125910061CF38 /* ThemesViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EE5801267125910061CF38 /* ThemesViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		D283573026516893009165DF /* BackgroundColours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColours.swift; sourceTree = "<group>"; };
 		D2D9BED3265545EC005529EF /* BurgerMenuContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BurgerMenuContent.swift; sourceTree = "<group>"; };
 		D2D9BED5265559FC005529EF /* HamburgerMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HamburgerMenu.swift; sourceTree = "<group>"; };
+		D2EE5801267125910061CF38 /* ThemesViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +231,7 @@
 				49C61F712623939A00EBB1C3 /* ContentViewExtension.swift */,
 				49C61F7B262393F200EBB1C3 /* NewEntryViewExtension.swift */,
 				49FA4C3A26415CF100111D9C /* CellViewExtension.swift */,
+				D2EE5801267125910061CF38 /* ThemesViewExtension.swift */,
 			);
 			path = ViewExtensions;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 				49C85B60254780E400A9C901 /* TextLimit.swift in Sources */,
 				49ED956325B1CE9F005EF305 /* ShoppingItems.swift in Sources */,
 				491D795423C11D1700B537EB /* SceneDelegate.swift in Sources */,
+				D2EE5802267125910061CF38 /* ThemesViewExtension.swift in Sources */,
 				D2D9BED4265545EC005529EF /* BurgerMenuContent.swift in Sources */,
 				494682DE256B46CE0088BC51 /* ColourExtension.swift in Sources */,
 				49FA4C3B26415CF100111D9C /* CellViewExtension.swift in Sources */,
