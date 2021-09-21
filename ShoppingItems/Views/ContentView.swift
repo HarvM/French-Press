@@ -55,6 +55,7 @@ struct ContentView: View {
                         Image(ContentViewImages.appIcon.rawValue)
                             .padding(.top, geometry.size.height/2)
                         Spacer()
+                  }
                 } ///End of VStack
                 .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
                 }
@@ -117,7 +118,7 @@ struct ContentView: View {
                         .listStyle(PlainListStyle())
                         .listRowBackground(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
                     } ///End of List
-                    .padding(.top)
+                    .padding(.top) ///Prevents List showing below statusBar
                 } ///End VStack
                 ///Appears to help with the reordering of the List and makes it less laggy when a row is moved
                 .id(UUID())

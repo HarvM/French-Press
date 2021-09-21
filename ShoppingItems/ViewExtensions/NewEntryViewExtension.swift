@@ -81,7 +81,7 @@ extension NewEntryView {
             ///Removes the whitespace and newLines from the item as it messes with how the name is displayed on the ContentView
             let trimmedItem = self.newShoppingItem.text.trimmingCharacters(in: .whitespacesAndNewlines)
             let trimmedNote = self.notesOnItem.text.trimmingCharacters(in: .whitespacesAndNewlines)
-            var trimmedQuantity = self.quantitySelected.text.trimmingCharacters(in: .whitespacesAndNewlines)
+            let trimmedQuantity = self.quantitySelected.text.trimmingCharacters(in: .whitespacesAndNewlines)
             let chosenMeasurement = self.measurementFound[self.selectedMeasurement]
             
             ///There has to be a value within the "itemsToBeAdded" or else nothing will be saved
