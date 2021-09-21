@@ -564,12 +564,12 @@
 				DEVELOPMENT_TEAM = YU65V62LAA;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ShoppingItems/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.8;
+				MARKETING_VERSION = 2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.YerMessages;
 				PRODUCT_NAME = "Yer Messages";
 				SWIFT_VERSION = 5.0;
@@ -587,12 +587,12 @@
 				DEVELOPMENT_TEAM = YU65V62LAA;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ShoppingItems/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2.8;
+				MARKETING_VERSION = 2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.YerMessages;
 				PRODUCT_NAME = "Yer Messages";
 				SWIFT_VERSION = 5.0;
