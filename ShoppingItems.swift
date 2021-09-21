@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 //The objects that are saved to the CoreData model
-public class ShoppingItems: NSManagedObject, Identifiable {
+final public class ShoppingItems: NSManagedObject, Identifiable {
     @NSManaged public var itemToBeAdded: String
     @NSManaged public var quantitySelected: String
     @NSManaged public var notesOnItem: String

@@ -36,9 +36,9 @@ struct ContentView: View {
         ///If no shoppingItemEntries on the list then display the placeholder image
         if shoppingItemEntries.count == 0 {
             EmptyListView
-            HamburgerMenu(width: 270,
-                          isOpen: self.showHamburgerMenu,
-                          menuClose: self.openMenu)
+//            HamburgerMenu(width: 270,
+//                          isOpen: self.showHamburgerMenu,
+//                          menuClose: self.openMenu)
         } else {
             ///Will show the view with the shoppingItems that the user has input
             PopulatedView
