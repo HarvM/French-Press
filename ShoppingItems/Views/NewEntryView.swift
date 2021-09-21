@@ -32,24 +32,28 @@ struct NewEntryView: View {
             VStack {
                 Form {
                     //MARK: - TextEditor - Item entry (Main) section
+                    
                     Section (header: Text("What would you like?")
                                 .foregroundColor(.yellow)
                                 .truncationMode(.head)
                                 .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
-                        HStack {
-                            ///$newShoppingItem to get the binding to the state newShoppingItem
-                            TextField("Type the item here", text: $newShoppingItem.text)
-                                .frame (height: 40)
-                                .multilineTextAlignment(.leading)
-                                .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
-                            ///Will display the number of characters already typed and the limit
-                            Text("\(self.newShoppingItem.text.count)|30")
-                                .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
-                                .foregroundColor(.gray)
-                        }
-                        .font(.headline)
-                    } ///End of Section
-                    .padding(5)
+                        VStack {
+                            HStack {
+                                ///$newShoppingItem to get the binding to the state newShoppingItem
+                                TextField("Type the item here", text: $newShoppingItem.text)
+                                    .frame (height: 40)
+                                    .multilineTextAlignment(.leading)
+                                    .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
+                                ///Will display the number of characters already typed and the limit
+                                Text("\(self.newShoppingItem.text.count)|30")
+                                    .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
+                                    .foregroundColor(.gray)
+                            }
+                            .font(.headline)
+                        } ///End of Section
+                        .padding(5)
+                    }
+                    
                     
                     //MARK: - Picker Section for quantity & quantity type
                     Section (header: Text("How Many Would You Like?")
@@ -73,7 +77,7 @@ struct NewEntryView: View {
                         .pickerStyle(DefaultPickerStyle())
                         .foregroundColor(.red)
                     }/// End of Section
-                    .padding(2)
+                                .padding(2)
                     
                     //MARK: - TextEditor (Extra Notes) Section
                     Section(header: Text("Extra Notes")
@@ -93,7 +97,7 @@ struct NewEntryView: View {
                                 .foregroundColor(.gray)
                         }
                     } ///End of section
-                    .padding(2)
+                                .padding(2)
                 } ///End of Form
                 .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
                 ///Getting this to work was a nightmare. Found something useful for a TextField but done sweet FA on a TextEditor
@@ -110,14 +114,14 @@ struct NewEntryView: View {
                             .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
                             .padding(.bottom, 28) ///Pulls it off the bottom - will adjust if more options are added to the Form
                     })
-                    .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
-                    .alert(isPresented: $showAlert) { () -> Alert in
-                        Alert(title: Text("One moment"),
-                              message: Text("Make sure you're entering an item"),
-                              dismissButton: .default(Text(ContentViewImages.thumbsUp.rawValue))
-                              ///Bit tacky using the thumbs up but with the colour across the app being white with the init, it couldn't be changed here (tried .foregroundColour)
-                        )
-                    }
+                        .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
+                        .alert(isPresented: $showAlert) { () -> Alert in
+                            Alert(title: Text("One moment"),
+                                  message: Text("Make sure you're entering an item"),
+                                  dismissButton: .default(Text(ContentViewImages.thumbsUp.rawValue))
+                                  ///Bit tacky using the thumbs up but with the colour across the app being white with the init, it couldn't be changed here (tried .foregroundColour)
+                            )
+                        }
                 }///End of HStack
                 .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
             }///End of VStack

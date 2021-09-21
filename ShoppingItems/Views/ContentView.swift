@@ -118,6 +118,7 @@ struct ContentView: View {
                         .listRowBackground(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
                     } ///End of List
                     .padding(.top) ///Prevents List showing below statusBar
+                    .listRowSeparator(.hidden)
                 } ///End VStack
                 ///Appears to help with the reordering of the List and makes it less laggy when a row is moved
                 .id(UUID())
