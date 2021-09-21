@@ -55,7 +55,6 @@ struct ContentView: View {
                         Image(ContentViewImages.appIcon.rawValue)
                             .padding(.top, geometry.size.height/2)
                         Spacer()
-                  }
                 } ///End of VStack
                 .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
                 }
