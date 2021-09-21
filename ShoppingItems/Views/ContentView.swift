@@ -11,6 +11,7 @@ import Foundation
 struct ContentView: View {
     //MARK: - Properties
     @State var isEditing = false
+    @State var showHamburgerMenu = false
     @ObservedObject var listStore: ShoppingItemStore
     let generator = UINotificationFeedbackGenerator()
     @Environment (\.managedObjectContext) var managedObjectContext
@@ -24,25 +25,28 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
-            listView
+            ListView
         }
         .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
     }
     
     //MARK: - ViewBuilder - Logic to decide which view to use
     @ViewBuilder
-    var listView: some View {
+    var ListView: some View {
         ///If no shoppingItemEntries on the list then display the placeholder image
         if shoppingItemEntries.count == 0 {
-            emptyListView
+            EmptyListView
+            HamburgerMenu(width: 270,
+                          isOpen: self.showHamburgerMenu,
+                          menuClose: self.openMenu)
         } else {
             ///Will show the view with the shoppingItems that the user has input
-            populatedView
+            PopulatedView
         }
     }
     
     //MARK:- EmptyListView - used upon initial launch and should the user have no items
-    var emptyListView: some View {
+    var EmptyListView: some View {
         NavigationView {
             ZStack {
                 Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
@@ -51,12 +55,23 @@ struct ContentView: View {
                         Image(ContentViewImages.appIcon.rawValue)
                             .padding(.top, geometry.size.height/2)
                         Spacer()
-                }
+                  }
+                } ///End of VStack
                 .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
                 }
                 
-                //MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list, the trailing launches MapView
+                //MARK: - NavigationBarItems: Leading item will be the HamburgerMenu button that lets the user access the settings, the trailing item: let's the user add a new item to the CoreData/list
                 .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        if !self.showHamburgerMenu {
+                            Button(action: {
+                                self.openMenu()
+                            }, label: {
+                                Image(systemName: "line.horizontal.3")
+                                    .imageScale(.large)
+                            })
+                        }
+                    }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink(destination: NewEntryView()
                                         .navigationTitle("Add Item")
@@ -70,17 +85,17 @@ struct ContentView: View {
                                 .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
                         }
                     }
-                }
+                } ///End of toolbar
                 .foregroundColor(.white)
                 .padding(.init(top: 5, leading: 5, bottom: 5, trailing: 5))
-            }
-        }
+            } ///End of ZStack
+        } ///End of NavigationView
         .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
     }
     
     //MARK: - PopulatedView
     ///This view will hold the List that displays the items that the user has input and kept in CoreData
-    var populatedView: some View {
+    var PopulatedView: some View {
         NavigationView {
             ZStack {
                 Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
@@ -96,7 +111,7 @@ struct ContentView: View {
                                              preferredMeasurement: shoppingItemNew.preferredMeasurement)
                                     NavigationLink("", destination: DetailView (itemToBeDisplayed: shoppingItemNew))
                                 } ///End of HStack
-                            } //End of ForEach loop
+                            } /// End of ForEach loop
                             .onDelete(perform: self.deleteItem)
                             .onMove(perform: moveItem)
                         } ///End of Section
@@ -130,11 +145,11 @@ struct ContentView: View {
                                 .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
                         }
                     }
-                }
-            }
-        }
+                } ///End of toolbar
+            } ///End of ZStack
+        } ///End of NavigationView
         .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
-    }
+    } ///End of populatedView
     
     init() {
         ///Below is various attempts at getting the from from the Picker to display a different background colour
@@ -152,7 +167,6 @@ struct ContentView: View {
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
         ///Have to init the listStore with a value
         self.listStore = ShoppingItemStore.init()
-        
     }
 }
 
