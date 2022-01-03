@@ -30,6 +30,7 @@ struct NewEntryView: View {
         ZStack {
             Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
             VStack {
+                Spacer().frame(height: 45)
                 Form {
                     //MARK: - TextEditor - Item entry (Main) section
                     
@@ -95,8 +96,10 @@ struct NewEntryView: View {
                                 .foregroundColor(.gray)
                         }
                     } ///End of section
-                                .padding(2)
+                    .padding(2)
                 } ///End of Form
+                .clipped()
+                .padding(.top)
                 .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
                 ///Uses the AdaptsToKeyboard struct to bump the screen up when the user brings up the keyboard
                 .modifier(AdaptsToKeyboard())
@@ -121,6 +124,7 @@ struct NewEntryView: View {
                 }///End of HStack
                 .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
             }///End of VStack
+            .padding(.top)
             .toolbar { ///Using toolbar to place in the Treat button
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: self.weeTreat, label:  {
