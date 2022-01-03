@@ -61,16 +61,16 @@ struct ContentView: View {
                 
                 //MARK: - NavigationBarItems: Leading item will be the HamburgerMenu button that lets the user access the settings, the trailing item: let's the user add a new item to the CoreData/list
                 .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        if !self.showHamburgerMenu {
-                            Button(action: {
-                                self.openMenu()
-                            }, label: {
-                                Image(systemName: "line.horizontal.3")
-                                    .imageScale(.large)
-                            })
-                        }
-                    }
+//                    ToolbarItem(placement: .navigationBarLeading) {
+//                        if !self.showHamburgerMenu {
+//                            Button(action: {
+//                                self.openMenu()
+//                            }, label: {
+//                                Image(systemName: "line.horizontal.3")
+//                                    .imageScale(.large)
+//                            })
+//                        }
+//                    }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink(destination: NewEntryView()
                                         .navigationTitle("Add Item")
@@ -120,12 +120,9 @@ struct ContentView: View {
                     .padding(.top) ///Prevents List showing below statusBar
                     .listRowSeparator(.hidden)
                 } ///End VStack
-                ///Appears to help with the reordering of the List and makes it less laggy when a row is moved
-                .id(UUID())
-                ///Removes the header and the wee arrow that hides/shows the cells
-                .listStyle(PlainListStyle())
-                ///Ensures that the list is closer to the top of the window
-                .navigationBarTitleDisplayMode(.inline)
+                .id(UUID()) ///Appears to help with the reordering of the List and makes it less laggy when a row is moved
+                .listStyle(PlainListStyle()) ///Removes the header and the wee arrow that hides/shows the cells
+                .navigationBarTitleDisplayMode(.inline) ///Ensures that the list is closer to the top of the window
                 
                 //MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list, the trailing launches MapView
                 .toolbar {

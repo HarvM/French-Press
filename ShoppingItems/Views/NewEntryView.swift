@@ -54,7 +54,6 @@ struct NewEntryView: View {
                         .padding(5)
                     }
                     
-                    
                     //MARK: - Picker Section for quantity & quantity type
                     Section (header: Text("How Many Would You Like?")
                                 .foregroundColor(.yellow)
@@ -84,7 +83,6 @@ struct NewEntryView: View {
                                 .foregroundColor(.yellow)
                                 .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
                         HStack {
-                            ///I'd ideally love to have this as TextEditor instead to allow more detailed notes but getting the keyboard to hide has been a 'mare
                             TextField("Type here", text: $notesOnItem.text)
                                 .frame(height: 50)
                                 .multilineTextAlignment(.leading)
@@ -100,7 +98,6 @@ struct NewEntryView: View {
                                 .padding(2)
                 } ///End of Form
                 .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
-                ///Getting this to work was a nightmare. Found something useful for a TextField but done sweet FA on a TextEditor
                 ///Uses the AdaptsToKeyboard struct to bump the screen up when the user brings up the keyboard
                 .modifier(AdaptsToKeyboard())
                 
@@ -112,14 +109,13 @@ struct NewEntryView: View {
                             .frame(width: 45, height: 45)
                             .cornerRadius(38.5)
                             .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
-                            .padding(.bottom, 28) ///Pulls it off the bottom - will adjust if more options are added to the Form
+                            .padding(.bottom, 28)
                     })
                         .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
                         .alert(isPresented: $showAlert) { () -> Alert in
                             Alert(title: Text("One moment"),
                                   message: Text("Make sure you're entering an item"),
                                   dismissButton: .default(Text(ContentViewImages.thumbsUp.rawValue))
-                                  ///Bit tacky using the thumbs up but with the colour across the app being white with the init, it couldn't be changed here (tried .foregroundColour)
                             )
                         }
                 }///End of HStack
@@ -131,12 +127,12 @@ struct NewEntryView: View {
                         Text("🎁")
                     })
                 }
-            } //End of toolbar
+            } ///End of toolbar
             .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
-        } // End of ZStack
+        } ///End of ZStack
         .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
         .navigationBarTitleDisplayMode(.inline)
-    } //End of body
+    } ///End of body
 } //End of View
 
 
