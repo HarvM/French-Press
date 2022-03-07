@@ -110,8 +110,7 @@ struct NewEntryView: View {
                         Image(ContentViewImages.plusImage.rawValue)
                             .resizable()
                             .frame(width: 45, height: 45)
-                            .cornerRadius(38.5)
-                            .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
+                            .cornerRadius(.infinity)
                             .padding(.bottom, 28)
                     })
                         .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
@@ -134,6 +133,7 @@ struct NewEntryView: View {
             } ///End of toolbar
             .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
         } ///End of ZStack
+        .edgesIgnoringSafeArea(.all)
         .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
         .navigationBarTitleDisplayMode(.inline)
     } ///End of body

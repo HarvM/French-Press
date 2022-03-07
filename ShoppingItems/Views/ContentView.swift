@@ -80,8 +80,7 @@ struct ContentView: View {
                             ///Image of the trailing icon tha leads the user to the map
                             Image(ContentViewImages.plusImage.rawValue)
                                 .frame(width: 35, height: 35)
-                                .cornerRadius(38.5)
-                                .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
+                                .cornerRadius(.infinity)
                         }
                     }
                 } ///End of toolbar
@@ -135,11 +134,10 @@ struct ContentView: View {
                                         .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
                                         .edgesIgnoringSafeArea(.all)
                         ){
-                            ///Image of the trailing icon tha leads the user to the map
+                            ///Image of the trailing icon that leads the user to the map
                             Image(ContentViewImages.plusImage.rawValue)
                                 .frame(width: 35, height: 35)
                                 .cornerRadius(38.5)
-                                .shadow(color: Color.black.opacity(0.3), radius: 3, x: 3, y: 3)
                         }
                     }
                 } ///End of toolbar
