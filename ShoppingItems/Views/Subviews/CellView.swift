@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-//This class deals with the cell creation that will be inserted into the stack in the ContentView class
+///This class deals with the cell creation that will be inserted into the stack in the ContentView class
 struct CellView: View {
     
     //MARK: - Properties

@@ -23,7 +23,8 @@ struct NewEntryView: View {
     @State var showAlert = false
     @State var selectedMeasurement = 0
     @State var areTreatsAllowed = true
-    let measurementFound = ["pack", "litre", "pint", "gram", "kilogram", "millilitre", "ounce", "pound", "wee bag", "big bag", "bar", "tin", "bottle", "jar", "crate", "multipack", "keg", "tub", "roll", "tube", "punnet", "book", "magazine", "thingy"]
+    let stringStore = StringStore()
+    let itemSizeMax: Int = 30
     
     //MARK: - Body the UI that will have a Form (Item Entry, Stepper, and Notes) and a Save Button (bottom of view)
     var body: some View {
@@ -34,14 +35,14 @@ struct NewEntryView: View {
                 Form {
                     //MARK: - TextEditor - Item entry (Main) section
                     
-                    Section (header: Text("What would you like?")
+                    Section (header: Text(stringStore.whatWouldYouLike)
                                 .foregroundColor(.yellow)
                                 .truncationMode(.head)
                                 .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
                         VStack {
                             HStack {
                                 ///$newShoppingItem to get the binding to the state newShoppingItem
-                                TextField("Type the item here", text: $newShoppingItem.text)
+                                TextField(stringStore.typeTheItemHere, text: $newShoppingItem.text)
                                     .frame (height: 40)
                                     .multilineTextAlignment(.leading)
                                     .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
@@ -56,11 +57,11 @@ struct NewEntryView: View {
                     }
                     
                     //MARK: - Picker Section for quantity & quantity type
-                    Section (header: Text("How Many Would You Like?")
+                    Section (header: Text(stringStore.howManyWouldYouLike)
                                 .foregroundColor(.yellow)
                                 .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
                         VStack {
-                            TextField("Type quantity here", text: $quantitySelected.text)
+                            TextField(stringStore.typeQuantityHere, text: $quantitySelected.text)
                                 .frame (height: 40)
                                 .multilineTextAlignment(.leading)
                                 .keyboardType(.decimalPad)
@@ -68,8 +69,8 @@ struct NewEntryView: View {
                                 .ignoresSafeArea(.keyboard, edges: .bottom)
                         }
                         Picker(selection: $selectedMeasurement, label: Text("")) {
-                            ForEach(0 ..< measurementFound.count) {
-                                Text(self.measurementFound[$0])
+                            ForEach(0 ..< stringStore.measurementFound.count) {
+                                Text(self.stringStore.measurementFound[$0])
                                     .frame(height: 40)
                             }
                             .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
@@ -80,11 +81,11 @@ struct NewEntryView: View {
                                 .padding(2)
                     
                     //MARK: - TextEditor (Extra Notes) Section
-                    Section(header: Text("Extra Notes")
+                    Section(header: Text(stringStore.extraNotes)
                                 .foregroundColor(.yellow)
                                 .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
                         HStack {
-                            TextField("Type here", text: $notesOnItem.text)
+                            TextField(stringStore.typeHere, text: $notesOnItem.text)
                                 .frame(height: 50)
                                 .multilineTextAlignment(.leading)
                                 .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
@@ -115,8 +116,8 @@ struct NewEntryView: View {
                     })
                         .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
                         .alert(isPresented: $showAlert) { () -> Alert in
-                            Alert(title: Text("One moment"),
-                                  message: Text("Make sure you're entering an item"),
+                            Alert(title: Text(stringStore.oneMoment),
+                                  message: Text(stringStore.makeSure),
                                   dismissButton: .default(Text(ContentViewImages.thumbsUp.rawValue))
                             )
                         }
@@ -137,7 +138,7 @@ struct NewEntryView: View {
         .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
         .navigationBarTitleDisplayMode(.inline)
     } ///End of body
-} //End of View
+} ///End of View
 
 
 struct NewEntryView_Previews: PreviewProvider {

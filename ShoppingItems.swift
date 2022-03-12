@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-//The objects that are saved to the CoreData model
+///The objects that are saved to the CoreData model
 final public class ShoppingItems: NSManagedObject, Identifiable {
     @NSManaged public var itemToBeAdded: String
     @NSManaged public var quantitySelected: String
@@ -18,12 +18,12 @@ final public class ShoppingItems: NSManagedObject, Identifiable {
     @NSManaged public var preferredMeasurement: String
     @NSManaged public var order: NSNumber
     
-    ///Used in UnitTests
+    ////Used in UnitTests
     var context : NSManagedObjectContext? = nil
 }
 
 extension ShoppingItems {
-    ///Will initially sort the items in the order that they appear
+    ////Will initially sort the items in the order that they appear
     static func getListItemFetchRequest() -> NSFetchRequest<ShoppingItems>{
         let request = ShoppingItems.fetchRequest() as! NSFetchRequest<ShoppingItems>
         request.sortDescriptors = [NSSortDescriptor(key: "order", ascending: true)]

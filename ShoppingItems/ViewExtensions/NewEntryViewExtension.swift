@@ -10,6 +10,7 @@ import SwiftUI
 
 extension NewEntryView {
     
+    
     ///Func that will pass through either of the save points that the user could use to save an entry
     public func saveEntryToCoreModel(itemToBeAdded: String, notesOnItem: String, quantitySelected: String, preferredMeasurement: String) {
         
@@ -49,26 +50,8 @@ extension NewEntryView {
     ///This func will take a random entry and then put it into the CoreData model and then display it on the user's list
     public func weeTreat() {
         DispatchQueue.main.async {
-            ///Dictionary of all the options that a user could end up having thrown onto their list should they click the
-            let treatItems = ["Chocolate bar": "Just think of this and tea",
-                              "That magazine": "One step closer to that subscription",
-                              "Fizzy juice": "There is an orange coloured one that's pretty decent",
-                              "Celebratory drink": "You nailed it - whatever it was",
-                              "Fruit": "There's mango and all of the lesser fruits",
-                              "Crisps": "Eating your own body weight in this is not a crime",
-                              "Ice cream": "Not much else to be said here",
-                              "Cake": "Have it and eat it",
-                              "Dips": "Guacamole owns my soul but whatever you want",
-                              "Popcorn": "For the next movie night",
-                              "Smoothie": "We can all be innocent sometimes",
-                              "Pizza": "A slice/with pineapple/frozen - they're all beautiful",
-                              "Dog treat": "A snack waiting to be tried if you don't have a dog...",
-                              "Apple": "The product placement Apple didn't know they need...",
-                              "Comfort food": "We all have that one meal that just puts things right"
-            ]
-            
             ///Gets a random element from the dictionary above
-            let randomTreat = treatItems.randomElement()!
+            let randomTreat = stringStore.treatItems.randomElement()!
             
             ///Call of the func that will save the entry to the CoreDate model
             saveEntryToCoreModel(itemToBeAdded: randomTreat.key, notesOnItem: randomTreat.value, quantitySelected: "🎁", preferredMeasurement: "🎁")
@@ -82,7 +65,7 @@ extension NewEntryView {
             let trimmedItem = self.newShoppingItem.text.trimmingCharacters(in: .whitespacesAndNewlines)
             let trimmedNote = self.notesOnItem.text.trimmingCharacters(in: .whitespacesAndNewlines)
             let trimmedQuantity = self.quantitySelected.text.trimmingCharacters(in: .whitespacesAndNewlines)
-            let chosenMeasurement = self.measurementFound[self.selectedMeasurement]
+            let chosenMeasurement = self.stringStore.measurementFound[self.selectedMeasurement]
             
             ///There has to be a value within the "itemsToBeAdded" or else nothing will be saved
             if trimmedItem.isEmpty {

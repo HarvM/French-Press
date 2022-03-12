@@ -9,11 +9,13 @@ import SwiftUI
 import Foundation
 
 struct ContentView: View {
+    
     //MARK: - Properties
     @State var isEditing = false
     @State var showHamburgerMenu = false
     @ObservedObject var listStore: ShoppingItemStore
     let generator = UINotificationFeedbackGenerator()
+    let stringStore = StringStore()
     @Environment (\.managedObjectContext) var managedObjectContext
     @Environment (\.presentationMode) var presentationMode
     @Environment (\.colorScheme) var colorScheme
@@ -36,9 +38,9 @@ struct ContentView: View {
         ///If no shoppingItemEntries on the list then display the placeholder image
         if shoppingItemEntries.count == 0 {
             EmptyListView
-//            HamburgerMenu(width: 270,
-//                          isOpen: self.showHamburgerMenu,
-//                          menuClose: self.openMenu)
+            //            HamburgerMenu(width: 270,
+            //                          isOpen: self.showHamburgerMenu,
+            //                          menuClose: self.openMenu)
         } else {
             ///Will show the view with the shoppingItems that the user has input
             PopulatedView
@@ -51,33 +53,33 @@ struct ContentView: View {
             ZStack {
                 Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
                 GeometryReader { geometry in
-                VStack {
+                    VStack {
                         Image(ContentViewImages.appIcon.rawValue)
                             .padding(.top, geometry.size.height/2)
                         Spacer()
-                } ///End of VStack
-                .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+                    } ///End of VStack
+                    .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
                 }
                 
                 //MARK: - NavigationBarItems: Leading item will be the HamburgerMenu button that lets the user access the settings, the trailing item: let's the user add a new item to the CoreData/list
                 .toolbar {
-//                    ToolbarItem(placement: .navigationBarLeading) {
-//                        if !self.showHamburgerMenu {
-//                            Button(action: {
-//                                self.openMenu()
-//                            }, label: {
-//                                Image(systemName: "line.horizontal.3")
-//                                    .imageScale(.large)
-//                            })
-//                        }
-//                    }
+                    //                    ToolbarItem(placement: .navigationBarLeading) {
+                    //                        if !self.showHamburgerMenu {
+                    //                            Button(action: {
+                    //                                self.openMenu()
+                    //                            }, label: {
+                    //                                Image(systemName: "line.horizontal.3")
+                    //                                    .imageScale(.large)
+                    //                            })
+                    //                        }
+                    //                    }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink(destination: NewEntryView()
-                                        .navigationTitle("Add Item")
+                                        .navigationTitle(stringStore.addItem)
                                         .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
                                         .edgesIgnoringSafeArea(.all)
                         ){
-                            ///Image of the trailing icon tha leads the user to the map
+                            ///Will lead use to the NewEntryView
                             Image(ContentViewImages.plusImage.rawValue)
                                 .frame(width: 35, height: 35)
                                 .cornerRadius(.infinity)
@@ -92,6 +94,7 @@ struct ContentView: View {
     }
     
     //MARK: - PopulatedView
+    
     ///This view will hold the List that displays the items that the user has input and kept in CoreData
     var PopulatedView: some View {
         NavigationView {
@@ -130,7 +133,7 @@ struct ContentView: View {
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink(destination: NewEntryView()
-                                        .navigationTitle("Add Item")
+                                        .navigationTitle(stringStore.addItem)
                                         .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
                                         .edgesIgnoringSafeArea(.all)
                         ){
@@ -153,7 +156,7 @@ struct ContentView: View {
         ///Setting the empty/potential cells to the desired colour
         UITableView.appearance().backgroundColor = UIColor(Color(BackgroundColours.defaultBackground.rawValue))
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default) ///clears navBar to background colour
-        UINavigationBar.appearance().shadowImage = UIImage() ///removes seperator
+        UINavigationBar.appearance().shadowImage = UIImage() ///removes separator
         UINavigationBar.appearance().isTranslucent = true
         UINavigationBar.appearance().backgroundColor = UIColor(Color(BackgroundColours.defaultBackground.rawValue))
         ///Use this if NavigationBarTitle is with Large Font
