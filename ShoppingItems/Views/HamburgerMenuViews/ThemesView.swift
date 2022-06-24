@@ -25,13 +25,13 @@ struct ThemesView: View {
                         VStack {
                             LazyVGrid(columns: oneColumnGrid) {
                                 ForEach((0...3), id: \.self) {
-                                    ///Theme Name
+                                    /// Theme Name
                                     Text("Theme name: \(themeNames[$0 % themeNames.count])")
                                         .font(.callout)
-                                    ///Extra Info
+                                    /// Extra Info
                                     Text("Extra information: \(themeDetails[$0 % themeDetails.count])")
                                         .font(.footnote)
-                                    ///Image of the theme (placeholder for now)
+                                    /// Image of the theme (placeholder for now)
                                     Image("\(imagesForGrid[$0 % imagesForGrid.count])")
                                         .frame(width: 50, height: 50, alignment: .center)
                                     Button(action: self.buyNewTheme, label: {
@@ -39,7 +39,7 @@ struct ThemesView: View {
                                             .font(.footnote)
                                     })
                                 }
-                                ///Sorts the frame of all of the LazyVGrid
+                                /// Sorts the frame of all of the LazyVGrid
                                 .frame(width: geometry.size.width, height: geometry.size.height/9, alignment: .center)
                             }
                         }

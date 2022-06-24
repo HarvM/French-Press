@@ -8,7 +8,7 @@
 
 import Foundation
 
-///Font used across the app
+/// Font used across the app
 enum DefaultFont: String {
     case defaultFont = "SF Pro"
 }

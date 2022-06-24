@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-///View that handles how the "+" button is displayed for the user
+/// View that handles how the "+" button is displayed for the user
 struct SaveButtonView: View {
     
     let frameWidth: CGFloat = 45

@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-///This class deals with the cell creation that will be inserted into the stack in the ContentView class
+/// This class deals with the cell creation that will be inserted into the stack in the ContentView class
 struct CellView: View {
     
     //MARK: - Properties
@@ -34,35 +34,35 @@ struct CellView: View {
     let notesLineLimit: Int = 1
     let stringStore = StringStore()
     
-    //MARK: - View
+    // MARK: - View
     var body: some View {
         VStack {
             HStack {
-                ///Toggle here followed by the item that the user desires
+                /// Toggle here followed by the item that the user desires
                 Toggle("", isOn: $isChecked).labelsHidden()
                     .padding(togglePadding)
                 VStack (alignment: .leading, spacing: spacingVStack) {
-                    ///Header: name of the item the user has selected
+                    /// Header: name of the item the user has selected
                     Text("\(itemToBeAdded)")
                         .font(.custom(DefaultFont.defaultFont.rawValue, size: itemFontSize, relativeTo: .title))
                         .allowsTightening(true)
                         .clipped()
-                    ///Notes on the item that has been selected
+                    /// Notes on the item that has been selected
                     Text("\(quantitySelected) \(preferredMeasurement)\(finalOutput)")
                         .font(.custom(DefaultFont.defaultFont.rawValue, size: noteFontSize, relativeTo: .title))
                         .lineLimit(notesLineLimit)
                         .textCase(.lowercase)
-                } ///End of VStack
+                } /// End of VStack
                 .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
                 .foregroundColor(textColour)
-                ///Looked into using GeometryReader but having a range of frame sizes looks best on the UI as far as I'm concerned
+                /// Looked into using GeometryReader but having a range of frame sizes looks best on the UI as far as I'm concerned
                 .frame(minWidth: minWidth, idealWidth: idealWidth, maxWidth: maxWidth, minHeight: minHeight, idealHeight: idealHeight, maxHeight: maxHeight, alignment: .leading)
                 .padding(stackPadding)
-                ///Call of the singleOrMultiple function in the Extension
+                /// Call of the singleOrMultiple function in the Extension
                 .onAppear(perform: singleOrMultiple)
             }
             .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
-            ///Call of the CheckBoxStyle View that deals with the checkbox that leads the cell
+            /// Call of the CheckBoxStyle View that deals with the checkbox that leads the cell
             .toggleStyle(CheckboxStyle())
         }
         .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))

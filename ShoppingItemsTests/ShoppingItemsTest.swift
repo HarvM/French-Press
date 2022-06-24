@@ -28,13 +28,13 @@ class ShoppingItemsTest: XCTestCase {
         super.tearDown()
     }
 
-    //Simple test to ensure that the model is in place
+    // Simple test to ensure that the model is in place
     func testModel() {
         let modelExist = coreData.context
         XCTAssert((modelExist != nil))
     }
     
-    //Test to ensure that initally there are no items in the model
+    // Test to ensure that initally there are no items in the model
        func testEmptyFetch() {
            let fetchRequest = ShoppingItems.fetchRequest() as
                NSFetchRequest<ShoppingItems>
@@ -46,7 +46,7 @@ class ShoppingItemsTest: XCTestCase {
            }
        }
     
-    //Test to ensure that all objects are removed from the model and that nothing should be fetched after
+    // Test to ensure that all objects are removed from the model and that nothing should be fetched after
     func testEnsureEmpty() {
         let fetchRequest = ShoppingItems.fetchRequest() as
             NSFetchRequest<ShoppingItems>

@@ -10,11 +10,11 @@ import SwiftUI
 
 extension NewEntryView {
     
-    ///Func that will pass through either of the save points that the user could use to save an entry
+    /// Func that will pass through either of the save points that the user could use to save an entry
     public func saveEntryToCoreModel(itemToBeAdded: String, notesOnItem: String, quantitySelected: String, preferredMeasurement: String) {
         
         DispatchQueue.main.async {
-            ///Refactor the saving the to the CoreData model here
+            /// Refactor the saving the to the CoreData model here
             let itemToBeSaved = ShoppingItems(context: self.managedObjectContext)
             
             self.managedObjectContext.performAndWait {
@@ -25,57 +25,57 @@ extension NewEntryView {
                 self.isShowingContentView = true
             }
             
-            ///Will make an attempt to save the data to the CoreData model
+            /// Will make an attempt to save the data to the CoreData model
             do {
                 try self.managedObjectContext.save()
             } catch {
-                ///Will throw an alert to the user should an issue occur
+                /// Will throw an alert to the user should an issue occur
                 Alert(title: Text("\(stringStore.sorry + ContentViewImages.sorryShrug.rawValue)"), message: Text(stringStore.pleaseTryAgain), dismissButton: .default(Text("")))
             }
             
-            ///Logic to ensure that there is a quantity of some sort by default even if the user doesn't explicity define an amount
+            /// Logic to ensure that there is a quantity of some sort by default even if the user doesn't explicity define an amount
             if quantitySelected.isEmpty && quantitySelected != "\(stringStore.treatEmoji)" {
                 itemToBeSaved.quantitySelected = "1"
             }
             
-            ///Partners with "isShowingContentView" to ensure that the user is kicked back to the ContentView
+            /// Partners with "isShowingContentView" to ensure that the user is kicked back to the ContentView
             self.presentationMode.wrappedValue.dismiss()
-            ///Haptic feedback for when an item has been added
+            /// Haptic feedback for when an item has been added
             self.generator.notificationOccurred(.success)
         }
     }
     
     
-    ///This func will take a random entry and then put it into the CoreData model and then display it on the user's list
+    /// This func will take a random entry and then put it into the CoreData model and then display it on the user's list
     public func weeTreat() {
         DispatchQueue.main.async {
-            ///Gets a random element from the dictionary above
+            /// Gets a random element from the dictionary above
             let randomTreat = stringStore.treatItems.randomElement()!
             
-            ///Call of the func that will save the entry to the CoreDate model
+            /// Call of the func that will save the entry to the CoreDate model
             saveEntryToCoreModel(itemToBeAdded: randomTreat.key, notesOnItem: randomTreat.value, quantitySelected: "\(stringStore.treatEmoji)", preferredMeasurement: "\(stringStore.treatEmoji)")
         }
     }
     
-    ///Function (saves the user's item [item name, quantity, measurement, and extra notes]
+    /// Function (saves the user's item [item name, quantity, measurement, and extra notes]
     public func saveNewEntry() {
         DispatchQueue.main.async {
-            ///Removes the whitespace and newLines from the item as it messes with how the name is displayed on the ContentView
+            /// Removes the whitespace and newLines from the item as it messes with how the name is displayed on the ContentView
             let trimmedItem = self.newShoppingItem.text.trimmingCharacters(in: .whitespacesAndNewlines)
             let trimmedNote = self.notesOnItem.text.trimmingCharacters(in: .whitespacesAndNewlines)
             let trimmedQuantity = self.quantitySelected.text.trimmingCharacters(in: .whitespacesAndNewlines)
             let chosenMeasurement = self.stringStore.measurementFound[self.selectedMeasurement]
             
-            ///There has to be a value within the "itemsToBeAdded" or else nothing will be saved
+            /// There has to be a value within the "itemsToBeAdded" or else nothing will be saved
             if trimmedItem.isEmpty {
                 self.showAlert = true
             } 
             else {
-                ///Call of the func that will save the entry to the CoreDate model
-                ///Moves the trimmed items into the func
+                /// Call of the func that will save the entry to the CoreDate model
+                /// Moves the trimmed items into the func
                 saveEntryToCoreModel(itemToBeAdded: trimmedItem, notesOnItem: trimmedNote, quantitySelected: trimmedQuantity, preferredMeasurement: chosenMeasurement)
                 
-                ///Resets the newShoppingItem back to being blank
+                /// Resets the newShoppingItem back to being blank
                 newShoppingItem.text = ""
                 notesOnItem.text = ""
             }

@@ -25,24 +25,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             
-            //Different in SwiftUI
-            //Puts the obejcts into the stack
+            // Different in SwiftUI
+            // Puts the obejcts into the stack
             let managedObject = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
             
-            //Will set the content view that becomes the rootView below into
-            //Takes the managedObject from above and then passes it into the ContentView
+            // Will set the content view that becomes the rootView below into
+            // Takes the managedObject from above and then passes it into the ContentView
             let contentView =  ContentView().environment(\.managedObjectContext, managedObject)
             
-            //Removes the selected cell being highlighted after the DetailView has been accessed and then returned from
+            // Removes the selected cell being highlighted after the DetailView has been accessed and then returned from
             UITableView.appearance().allowsSelection = false
             UITableViewCell.appearance().selectionStyle = .none
             UIPickerView.appearance().backgroundColor = UIColor(Color("defaultBackground"))
             
-            //NOTE: May have to change contentView here later
+            // NOTE: May have to change contentView here later
             window.rootViewController = UIHostingController(rootView: contentView)
             self.window = window
             
-            ///Changes the navigationBarItem on the DetailView and NewEntryView to white
+            /// Changes the navigationBarItem on the DetailView and NewEntryView to white
             window.tintColor = .white
             window.makeKeyAndVisible()
             
@@ -52,8 +52,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
         }
         
-        //This ensure that any touch outside of the textField will hide the keyboard
-        //Initally had an issue with the placement but sorted that by placing it below the above where it addresses the window
+        // This ensure that any touch outside of the textField will hide the keyboard
+        // Initally had an issue with the placement but sorted that by placing it below the above where it addresses the window
         let tapGesture = MultiGestureRecogniser(target: window, action:#selector(UIView.endEditing))
         tapGesture.requiresExclusiveTouchType = false
         tapGesture.cancelsTouchesInView = false

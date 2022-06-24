@@ -10,7 +10,7 @@ import Foundation
 
 struct ContentView: View {
     
-    //MARK: - Properties
+    // MARK: - Properties
     @State var isEditing = false
     @State var showHamburgerMenu = false
     @ObservedObject var listStore: ShoppingItemStore
@@ -35,14 +35,14 @@ struct ContentView: View {
     // MARK: - ViewBuilder - Logic to decide which view to use
     @ViewBuilder
     var ListView: some View {
-        ///If no shoppingItemEntries on the list then display the placeholder image
+        /// If no shoppingItemEntries on the list then display the placeholder image
         if shoppingItemEntries.count == 0 {
             EmptyListView
             //            HamburgerMenu(width: 270,
             //                          isOpen: self.showHamburgerMenu,
             //                          menuClose: self.openMenu)
         } else {
-            ///Will show the view with the shoppingItems that the user has input
+            /// Will show the view with the shoppingItems that the user has input
             PopulatedView
         }
     }
@@ -57,7 +57,7 @@ struct ContentView: View {
                         Image(ContentViewImages.appIcon.rawValue)
                             .padding(.top, geometry.size.height/2)
                         Spacer()
-                    } ///End of VStack
+                    } /// End of VStack
                     .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
                 }
                 
@@ -79,13 +79,13 @@ struct ContentView: View {
                                         .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
                                         .edgesIgnoringSafeArea(.all)
                         ){
-                            ///Will lead use to the NewEntryView
+                            /// Will lead use to the NewEntryView
                             Image(ContentViewImages.plusImage.rawValue)
                                 .frame(width: 35, height: 35)
                                 .cornerRadius(.infinity)
                         }
                     }
-                } ///End of toolbar
+                } /// End of toolbar
                 .foregroundColor(.white)
                 .padding(.init(top: 5, leading: 5, bottom: 5, trailing: 5))
             } /// End of ZStack
@@ -102,7 +102,7 @@ struct ContentView: View {
                 Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
                 VStack {
                     List {
-                        //MARK: - HStack: how the cells are displayed and populated
+                        // MARK: - HStack: how the cells are displayed and populated
                         Section() {
                             ForEach(shoppingItemEntries, id: \.self) {
                                 shoppingItemNew in
@@ -111,17 +111,17 @@ struct ContentView: View {
                                              quantitySelected: shoppingItemNew.quantitySelected,
                                              preferredMeasurement: shoppingItemNew.preferredMeasurement)
                                     NavigationLink("", destination: DetailView (itemToBeDisplayed: shoppingItemNew))
-                                } ///End of HStack
+                                } /// End of HStack
                             } /// End of ForEach loop
                             .onDelete(perform: self.deleteItem)
                             .onMove(perform: moveItem)
-                        } ///End of Section
+                        } /// End of Section
                         .listStyle(PlainListStyle())
                         .listRowBackground(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
-                    } ///End of List
-                    .padding(.top) ///Prevents List showing below statusBar
+                    } /// End of List
+                    .padding(.top) /// Prevents List showing below statusBar
                     .listRowSeparator(.hidden)
-                } ///End VStack
+                } /// End VStack
                 .id(UUID()) /// Appears to help with the reordering of the List and makes it less laggy when a row is moved
                 .listStyle(PlainListStyle()) /// Removes the header and the wee arrow that hides/shows the cells
                 .navigationBarTitleDisplayMode(.inline) /// Ensures that the list is closer to the top of the window

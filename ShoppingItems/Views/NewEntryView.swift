@@ -9,10 +9,10 @@
 import SwiftUI
 import CoreData
 
-//View that will let the user select the amount of the item they want and also add any notes that they need
+// View that will let the user select the amount of the item they want and also add any notes that they need
 struct NewEntryView: View {
     
-    //MARK: - Properties
+    // MARK: - Properties
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode
     let generator = UINotificationFeedbackGenerator()
@@ -26,14 +26,14 @@ struct NewEntryView: View {
     let stringStore = StringStore()
     let itemSizeMax: Int = 30
     
-    //MARK: - Body the UI that will have a Form (Item Entry, Stepper, and Notes) and a Save Button (bottom of view)
+    // MARK: - Body the UI that will have a Form (Item Entry, Stepper, and Notes) and a Save Button (bottom of view)
     var body: some View {
         ZStack {
             Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
             VStack {
                 Spacer().frame(height: 45)
                 Form {
-                    //MARK: - TextEditor - Item entry (Main) section
+                    // MARK: - TextEditor - Item entry (Main) section
                     
                     Section (header: Text(stringStore.whatWouldYouLike)
                                 .foregroundColor(.yellow)
@@ -41,22 +41,22 @@ struct NewEntryView: View {
                                 .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
                         VStack {
                             HStack {
-                                ///$newShoppingItem to get the binding to the state newShoppingItem
+                                /// $newShoppingItem to get the binding to the state newShoppingItem
                                 TextField(stringStore.typeTheItemHere, text: $newShoppingItem.text)
                                     .frame (height: 40)
                                     .multilineTextAlignment(.leading)
                                     .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
-                                ///Will display the number of characters already typed and the limit
+                                /// Will display the number of characters already typed and the limit
                                 Text("\(self.newShoppingItem.text.count)|30")
                                     .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
                                     .foregroundColor(.gray)
                             }
                             .font(.headline)
-                        } ///End of Section
+                        } /// End of Section
                         .padding(5)
                     }
                     
-                    //MARK: - Picker Section for quantity & quantity type
+                    // MARK: - Picker Section for quantity & quantity type
                     Section (header: Text(stringStore.howManyWouldYouLike)
                                 .foregroundColor(.yellow)
                                 .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
@@ -80,7 +80,7 @@ struct NewEntryView: View {
                     }/// End of Section
                                 .padding(2)
                     
-                    //MARK: - TextEditor (Extra Notes) Section
+                    // MARK: - TextEditor (Extra Notes) Section
                     Section(header: Text(stringStore.extraNotes)
                                 .foregroundColor(.yellow)
                                 .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
@@ -91,21 +91,21 @@ struct NewEntryView: View {
                                 .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
                                 .ignoresSafeArea(.keyboard, edges: .bottom)
                             Spacer()
-                            ///Will display the number of characters already typed and the limit
+                            /// Will display the number of characters already typed and the limit
                             Text("\(self.notesOnItem.text.count)|40")
                                 .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
                                 .foregroundColor(.gray)
                         }
-                    } ///End of section
+                    } /// End of section
                     .padding(2)
                 } ///End of Form
                 .clipped()
                 .padding(.top)
                 .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
-                ///Uses the AdaptsToKeyboard struct to bump the screen up when the user brings up the keyboard
+                /// Uses the AdaptsToKeyboard struct to bump the screen up when the user brings up the keyboard
                 .modifier(AdaptsToKeyboard())
                 
-                //MARK: - Button that will save the user's entry - sits at the bottom of the view
+                // MARK: - Button that will save the user's entry - sits at the bottom of the view
                 HStack(alignment: .center, spacing: 10) {
                     Button(action: self.saveNewEntry, label: {
                         Image(ContentViewImages.plusImage.rawValue)
@@ -121,24 +121,24 @@ struct NewEntryView: View {
                                   dismissButton: .default(Text(ContentViewImages.thumbsUp.rawValue))
                             )
                         }
-                }///End of HStack
+                }/// End of HStack
                 .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
-            }///End of VStack
+            }/// End of VStack
             .padding(.top)
-            .toolbar { ///Using toolbar to place in the Treat button
+            .toolbar { /// Using toolbar to place in the Treat button
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: self.weeTreat, label:  {
                         Text("🎁")
                     })
                 }
-            } ///End of toolbar
+            } /// End of toolbar
             .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
         } ///End of ZStack
         .edgesIgnoringSafeArea(.all)
         .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
         .navigationBarTitleDisplayMode(.inline)
-    } ///End of body
-} ///End of View
+    } /// End of body
+} /// End of View
 
 
 struct NewEntryView_Previews: PreviewProvider {

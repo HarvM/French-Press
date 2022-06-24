@@ -10,11 +10,11 @@ import XCTest
 
 class ShoppingItemsUITests: XCTestCase {
     
-    //Property for this app
+    // Property for this app
     var app: XCUIApplication!
     
     override func setUp() {
-        //Loads in the object of the app that will allow us to run the UITests
+        // Loads in the object of the app that will allow us to run the UITests
         app = XCUIApplication()
         app.launch()
         
@@ -28,8 +28,8 @@ class ShoppingItemsUITests: XCTestCase {
     }
     
     
-    //Looked into UITesting for SwiftUI and it appears to be fairly similar to some of the tests that I've tried previously
-    //Noticed that there's currently still a bug with "SwiftUI.AccessibilityNode doesn't exist" and that there doesn't appear to be a workaround currently (https://stackoverflow.com/questions/58449530/catalyst-swiftui-accessibilitynode-is-not-a-known-serializable-element)
+    // Looked into UITesting for SwiftUI and it appears to be fairly similar to some of the tests that I've tried previously
+    // Noticed that there's currently still a bug with "SwiftUI.AccessibilityNode doesn't exist" and that there doesn't appear to be a workaround currently (https://stackoverflow.com/questions/58449530/catalyst-swiftui-accessibilitynode-is-not-a-known-serializable-element)
     //
     func testButtons () {
         
@@ -39,15 +39,15 @@ class ShoppingItemsUITests: XCTestCase {
         let deleteButton = app.buttons["Delete"]
         
         
-        //Test to ensure that with the "Hello, testing" input that the textField will still exist later and also display the input
+        // Test to ensure that with the "Hello, testing" input that the textField will still exist later and also display the input
         XCTAssert(app.textFields["Type here"].exists, "Doesn't exist")
         typeHere.tap()
         typeHere.typeText("Hello, testing")
         XCTAssertTrue(typeHere.exists, "It exists")
         XCTAssertEqual(typeHere.value as! String, "Hello, testing", "This textField has the right value")
         
-        //Three checks on each of the buttons available to the user
-        //Firstly ensure that every button is able to be selected and then ensures that with a tap, the button exists
+        // Three checks on each of the buttons available to the user
+        // Firstly ensure that every button is able to be selected and then ensures that with a tap, the button exists
         if addNewEntry.isSelected {
             XCTAssert(true, "The button can be pressed and the new entry should appear")
             

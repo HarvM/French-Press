@@ -11,7 +11,7 @@ import SpriteKit
 
 struct DetailView: View {
     
-    //MARK: - Properties
+    // MARK: - Properties
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode
     let itemToBeDisplayed: ShoppingItems
@@ -23,22 +23,22 @@ struct DetailView: View {
     let fontSizeNotes: CGFloat = 35
     let lineLimit: Int =  3
     
-    //MARK: - Body of the view
+    // MARK: - Body of the view
     var body: some View {
         NavigationView {
             ZStack {
                 Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
                 GeometryReader { geometry in
                     VStack {
-                        ///Section that displays the items name
+                        /// Section that displays the items name
                         Section {
                             Text ("\(itemToBeDisplayed.itemToBeAdded)")
                                 .font(.custom(DefaultFont.defaultFont.rawValue, size: fontSizeItemToBeDisplayed, relativeTo: .headline))
                                 .lineLimit(lineLimit)
                                 .foregroundColor(foregroundColourYellow)
-                        } ///End of Section
+                        } /// End of Section
                         Spacer()
-                        ///Section that will hold either any extra notes or a placeholder if no extra notes exist
+                        /// Section that will hold either any extra notes or a placeholder if no extra notes exist
                         Section {
                             if itemToBeDisplayed.notesOnItem.isEmpty {
                                 Image(ContentViewImages.appIcon.rawValue)
@@ -48,19 +48,19 @@ struct DetailView: View {
                                     .foregroundColor(.white)
                                     .font(.custom(DefaultFont.defaultFont.rawValue, size: fontSizeNotes, relativeTo: .headline))
                             }
-                        } ///End of Section
+                        } /// End of Section
                         .padding(.bottom, geometry.size.height/2)
-                    } ///End of VStack
+                    } /// End of VStack
                     .frame(width: geometry.size.width-10, height: geometry.size.height, alignment: .center)
-                } ///End of GeometryReader
-            } ///End of ZStack
+                } /// End of GeometryReader
+            } /// End of ZStack
             .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
             .multilineTextAlignment(.center)
             .allowsTightening(true)
             .minimumScaleFactor(maximumScaleFactor)
-            .navigationViewStyle(StackNavigationViewStyle()) ///removes iPad split screen
-        } ///End of NavigationView
-    } ///End of body
+            .navigationViewStyle(StackNavigationViewStyle())/// removes iPad split screen
+        } /// End of NavigationView
+    } /// End of body
 }
 
 struct DetailView_Previews: PreviewProvider {

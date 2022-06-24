@@ -8,7 +8,7 @@
 
 import Foundation
 
-///Images used across the app
+/// Images used across the app
 enum ContentViewImages: String {
     case plusImage = "plusIcon"
     case thumbsUp = "👍"

@@ -13,7 +13,7 @@ struct HamburgerMenu: View {
     let isOpen: Bool
     let menuClose: () -> Void
     
-    //MARK: Body
+    // MARK: - Body
         var body: some View {
             ZStack {
                 GeometryReader { _ in
@@ -26,7 +26,7 @@ struct HamburgerMenu: View {
                     self.menuClose()
                 }
                 HStack {
-                    ///Places the content inside this view
+                    /// Places the content inside this view
                     BurgerMenuContent()
                         .frame(width: self.width)
                         .offset(x: self.isOpen ? 0 : -self.width)

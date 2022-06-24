@@ -8,7 +8,7 @@
 
 import Foundation
 
-///Background colours
+/// Background colours
 enum BackgroundColours: String {
     case defaultBackground = "defaultBackground"
     case burgerBackground = "burgerBackground"

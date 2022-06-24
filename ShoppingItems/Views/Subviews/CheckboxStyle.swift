@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-///Takes the Toggle and fashions it into a check/uncheck mark rather than the default toggle
+/// Takes the Toggle and fashions it into a check/uncheck mark rather than the default toggle
 struct CheckboxStyle: ToggleStyle {
     
     let frameHeight: CGFloat = 26
@@ -17,7 +17,7 @@ struct CheckboxStyle: ToggleStyle {
     let foregroundColourYellow: Color = Color.yellow
     let foregroundColourWhite: Color = Color.white
     
-    ///Used in the .toggleStyle in the ShoppingItemNewView to edit the appearance of the toggle
+    /// Used in the .toggleStyle in the ShoppingItemNewView to edit the appearance of the toggle
     func makeBody(configuration: Self.Configuration) -> some View {
         return HStack {
             configuration.label
