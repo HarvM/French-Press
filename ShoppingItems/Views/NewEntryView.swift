@@ -25,9 +25,6 @@ struct NewEntryView: View {
     @State var areTreatsAllowed = true
     let stringStore = StringStore()
     let itemSizeMax: Int = 30
-    let noteSizeMax: Int = 40
-    let foregroundColourYellow = Color.yellow
-    let foreGroundColourGrey = Color.gray
     
     //MARK: - Body the UI that will have a Form (Item Entry, Stepper, and Notes) and a Save Button (bottom of view)
     var body: some View {
@@ -39,12 +36,20 @@ struct NewEntryView: View {
                     //MARK: - TextEditor - Item entry (Main) section
                     
                     Section (header: Text(stringStore.whatWouldYouLike)
-                                .foregroundColor(foregroundColourYellow)
+                                .foregroundColor(.yellow)
                                 .truncationMode(.head)
                                 .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
                         VStack {
                             HStack {
-                                EnterItemView()
+                                ///$newShoppingItem to get the binding to the state newShoppingItem
+                                TextField(stringStore.typeTheItemHere, text: $newShoppingItem.text)
+                                    .frame (height: 40)
+                                    .multilineTextAlignment(.leading)
+                                    .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
+                                ///Will display the number of characters already typed and the limit
+                                Text("\(self.newShoppingItem.text.count)|30")
+                                    .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
+                                    .foregroundColor(.gray)
                             }
                             .font(.headline)
                         } ///End of Section
@@ -53,18 +58,31 @@ struct NewEntryView: View {
                     
                     //MARK: - Picker Section for quantity & quantity type
                     Section (header: Text(stringStore.howManyWouldYouLike)
-                                .foregroundColor(foregroundColourYellow)
+                                .foregroundColor(.yellow)
                                 .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
                         VStack {
-                            QuantityView()
+                            TextField(stringStore.typeQuantityHere, text: $quantitySelected.text)
+                                .frame (height: 40)
+                                .multilineTextAlignment(.leading)
+                                .keyboardType(.decimalPad)
+                                .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
+                                .ignoresSafeArea(.keyboard, edges: .bottom)
                         }
-                        PickerView()
+                        Picker(selection: $selectedMeasurement, label: Text("")) {
+                            ForEach(0 ..< stringStore.measurementFound.count) {
+                                Text(self.stringStore.measurementFound[$0])
+                                    .frame(height: 40)
+                            }
+                            .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
+                        }
+                        .pickerStyle(DefaultPickerStyle())
+                        .foregroundColor(.red)
                     }/// End of Section
                                 .padding(2)
                     
                     //MARK: - TextEditor (Extra Notes) Section
                     Section(header: Text(stringStore.extraNotes)
-                                .foregroundColor(foregroundColourYellow)
+                                .foregroundColor(.yellow)
                                 .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
                         HStack {
                             TextField(stringStore.typeHere, text: $notesOnItem.text)
@@ -74,12 +92,12 @@ struct NewEntryView: View {
                                 .ignoresSafeArea(.keyboard, edges: .bottom)
                             Spacer()
                             ///Will display the number of characters already typed and the limit
-                            Text("\(self.notesOnItem.text.count)|\(noteSizeMax)")
+                            Text("\(self.notesOnItem.text.count)|40")
                                 .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
-                                .foregroundColor(foreGroundColourGrey)
+                                .foregroundColor(.gray)
                         }
                     } ///End of section
-                                .padding(2)
+                    .padding(2)
                 } ///End of Form
                 .clipped()
                 .padding(.top)
@@ -90,7 +108,11 @@ struct NewEntryView: View {
                 //MARK: - Button that will save the user's entry - sits at the bottom of the view
                 HStack(alignment: .center, spacing: 10) {
                     Button(action: self.saveNewEntry, label: {
-                        SaveButtonView()
+                        Image(ContentViewImages.plusImage.rawValue)
+                            .resizable()
+                            .frame(width: 45, height: 45)
+                            .cornerRadius(.infinity)
+                            .padding(.bottom, 28)
                     })
                         .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
                         .alert(isPresented: $showAlert) { () -> Alert in
@@ -102,10 +124,11 @@ struct NewEntryView: View {
                 }///End of HStack
                 .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
             }///End of VStack
+            .padding(.top)
             .toolbar { ///Using toolbar to place in the Treat button
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: self.weeTreat, label: {
-                        Text("\(stringStore.treatEmoji)")
+                    Button(action: self.weeTreat, label:  {
+                        Text("🎁")
                     })
                 }
             } ///End of toolbar

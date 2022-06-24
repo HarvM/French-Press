@@ -34,9 +34,6 @@
 		D2027AB7266120E2002E3BC6 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2027AB6266120E2002E3BC6 /* AboutView.swift */; };
 		D2027AB92661214B002E3BC6 /* ThemesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2027AB82661214B002E3BC6 /* ThemesView.swift */; };
 		D20C755927DD51E700990522 /* SaveButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20C755827DD51E700990522 /* SaveButtonView.swift */; };
-		D20C755C27DD542700990522 /* EnterItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20C755B27DD542700990522 /* EnterItemView.swift */; };
-		D20C755E27DD553200990522 /* QuantityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20C755D27DD553200990522 /* QuantityView.swift */; };
-		D20C756027DD55F000990522 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20C755F27DD55F000990522 /* PickerView.swift */; };
 		D244FC1C27DD0AD900BEAD25 /* StringStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D244FC1B27DD0AD900BEAD25 /* StringStore.swift */; };
 		D283572D2651682D009165DF /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = D283572C2651682D009165DF /* Font.swift */; };
 		D283572F2651686F009165DF /* AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = D283572E2651686F009165DF /* AppImages.swift */; };
@@ -110,9 +107,6 @@
 		D2027AB6266120E2002E3BC6 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		D2027AB82661214B002E3BC6 /* ThemesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesView.swift; sourceTree = "<group>"; };
 		D20C755827DD51E700990522 /* SaveButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButtonView.swift; sourceTree = "<group>"; };
-		D20C755B27DD542700990522 /* EnterItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterItemView.swift; sourceTree = "<group>"; };
-		D20C755D27DD553200990522 /* QuantityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityView.swift; sourceTree = "<group>"; };
-		D20C755F27DD55F000990522 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		D244FC1B27DD0AD900BEAD25 /* StringStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringStore.swift; sourceTree = "<group>"; };
 		D283572C2651682D009165DF /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		D283572E2651686F009165DF /* AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppImages.swift; sourceTree = "<group>"; };
@@ -220,7 +214,6 @@
 				491D795823C11D1700B537EB /* ContentView.swift */,
 				493B3A95253BD31200CAF0F9 /* NewEntryView.swift */,
 				499C66A8256743AE00EDD614 /* DetailView.swift */,
-				D20C755A27DD53FC00990522 /* NewEntryViewSubViews */,
 				D2027AB5266120C1002E3BC6 /* HamburgerMenuViews */,
 				D2D9BED2265545BB005529EF /* Subviews */,
 			);
@@ -270,16 +263,6 @@
 				D2027AB82661214B002E3BC6 /* ThemesView.swift */,
 			);
 			path = HamburgerMenuViews;
-			sourceTree = "<group>";
-		};
-		D20C755A27DD53FC00990522 /* NewEntryViewSubViews */ = {
-			isa = PBXGroup;
-			children = (
-				D20C755B27DD542700990522 /* EnterItemView.swift */,
-				D20C755D27DD553200990522 /* QuantityView.swift */,
-				D20C755F27DD55F000990522 /* PickerView.swift */,
-			);
-			path = NewEntryViewSubViews;
 			sourceTree = "<group>";
 		};
 		D2D9BED2265545BB005529EF /* Subviews */ = {
@@ -431,7 +414,6 @@
 				49F146CF244623870053A5A0 /* MultiGestureRecogniser.swift in Sources */,
 				D20C755927DD51E700990522 /* SaveButtonView.swift in Sources */,
 				D2027AB92661214B002E3BC6 /* ThemesView.swift in Sources */,
-				D20C755C27DD542700990522 /* EnterItemView.swift in Sources */,
 				D244FC1C27DD0AD900BEAD25 /* StringStore.swift in Sources */,
 				491D795223C11D1700B537EB /* AppDelegate.swift in Sources */,
 				49C61F77262393C800EBB1C3 /* ViewExtension.swift in Sources */,
@@ -439,7 +421,6 @@
 				49C85B60254780E400A9C901 /* TextLimit.swift in Sources */,
 				49ED956325B1CE9F005EF305 /* ShoppingItems.swift in Sources */,
 				491D795423C11D1700B537EB /* SceneDelegate.swift in Sources */,
-				D20C756027DD55F000990522 /* PickerView.swift in Sources */,
 				D2EE5802267125910061CF38 /* ThemesViewExtension.swift in Sources */,
 				D2D9BED4265545EC005529EF /* BurgerMenuContent.swift in Sources */,
 				494682DE256B46CE0088BC51 /* ColourExtension.swift in Sources */,
@@ -454,7 +435,6 @@
 				492F956325A9E48F00F56126 /* ShoppingItemsStore.swift in Sources */,
 				D283572D2651682D009165DF /* Font.swift in Sources */,
 				D2D9BED6265559FC005529EF /* HamburgerMenu.swift in Sources */,
-				D20C755E27DD553200990522 /* QuantityView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
