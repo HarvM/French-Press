@@ -23,7 +23,7 @@ struct ContentView: View {
                     [NSSortDescriptor (keyPath: \ShoppingItems.order, ascending: true)])
     var shoppingItemEntries: FetchedResults<ShoppingItems>
     
-    //MARK: Main body of the view
+    // MARK: Main body of the view
     var body: some View {
         ZStack {
             Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
@@ -32,7 +32,7 @@ struct ContentView: View {
         .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
     }
     
-    //MARK: - ViewBuilder - Logic to decide which view to use
+    // MARK: - ViewBuilder - Logic to decide which view to use
     @ViewBuilder
     var ListView: some View {
         ///If no shoppingItemEntries on the list then display the placeholder image
@@ -47,7 +47,7 @@ struct ContentView: View {
         }
     }
     
-    //MARK:- EmptyListView - used upon initial launch and should the user have no items
+    // MARK: - EmptyListView - used upon initial launch and should the user have no items
     var EmptyListView: some View {
         NavigationView {
             ZStack {
@@ -61,7 +61,7 @@ struct ContentView: View {
                     .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
                 }
                 
-                //MARK: - NavigationBarItems: Leading item will be the HamburgerMenu button that lets the user access the settings, the trailing item: let's the user add a new item to the CoreData/list
+                // MARK: - NavigationBarItems: Leading item will be the HamburgerMenu button that lets the user access the settings, the trailing item: let's the user add a new item to the CoreData/list
                 .toolbar {
                     //                    ToolbarItem(placement: .navigationBarLeading) {
                     //                        if !self.showHamburgerMenu {
@@ -88,14 +88,14 @@ struct ContentView: View {
                 } ///End of toolbar
                 .foregroundColor(.white)
                 .padding(.init(top: 5, leading: 5, bottom: 5, trailing: 5))
-            } ///End of ZStack
-        } ///End of NavigationView
+            } /// End of ZStack
+        } /// End of NavigationView
         .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
     }
     
-    //MARK: - PopulatedView
+    // MARK: - PopulatedView
     
-    ///This view will hold the List that displays the items that the user has input and kept in CoreData
+    /// This view will hold the List that displays the items that the user has input and kept in CoreData
     var PopulatedView: some View {
         NavigationView {
             ZStack {
@@ -122,11 +122,11 @@ struct ContentView: View {
                     .padding(.top) ///Prevents List showing below statusBar
                     .listRowSeparator(.hidden)
                 } ///End VStack
-                .id(UUID()) ///Appears to help with the reordering of the List and makes it less laggy when a row is moved
-                .listStyle(PlainListStyle()) ///Removes the header and the wee arrow that hides/shows the cells
-                .navigationBarTitleDisplayMode(.inline) ///Ensures that the list is closer to the top of the window
+                .id(UUID()) /// Appears to help with the reordering of the List and makes it less laggy when a row is moved
+                .listStyle(PlainListStyle()) /// Removes the header and the wee arrow that hides/shows the cells
+                .navigationBarTitleDisplayMode(.inline) /// Ensures that the list is closer to the top of the window
                 
-                //MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list, the trailing launches MapView
+                // MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list, the trailing launches MapView
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         EditButton()
@@ -137,33 +137,33 @@ struct ContentView: View {
                                         .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
                                         .edgesIgnoringSafeArea(.all)
                         ){
-                            ///Image of the trailing icon that leads the user to the map
+                            /// Image of the trailing icon that leads the user to the map
                             Image(ContentViewImages.plusImage.rawValue)
                                 .frame(width: 35, height: 35)
                                 .cornerRadius(38.5)
                         }
                     }
-                } ///End of toolbar
-            } ///End of ZStack
-        } ///End of NavigationView
+                } /// End of toolbar
+            } /// End of ZStack
+        } /// End of NavigationView
         .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
-    } ///End of populatedView
+    } /// End of populatedView
     
     init() {
-        ///Below is various attempts at getting the from from the Picker to display a different background colour
+        /// Below is various attempts at getting the from from the Picker to display a different background colour
         UIPickerView.appearance().backgroundColor = UIColor(Color(BackgroundColours.defaultBackground.rawValue))
         UIPickerView.appearance().tintColor = UIColor(Color(BackgroundColours.defaultBackground.rawValue))
-        ///Setting the empty/potential cells to the desired colour
+        /// Setting the empty/potential cells to the desired colour
         UITableView.appearance().backgroundColor = UIColor(Color(BackgroundColours.defaultBackground.rawValue))
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default) ///clears navBar to background colour
-        UINavigationBar.appearance().shadowImage = UIImage() ///removes separator
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default) /// clears navBar to background colour
+        UINavigationBar.appearance().shadowImage = UIImage() /// removes separator
         UINavigationBar.appearance().isTranslucent = true
         UINavigationBar.appearance().backgroundColor = UIColor(Color(BackgroundColours.defaultBackground.rawValue))
-        ///Use this if NavigationBarTitle is with Large Font
+        /// Use this if NavigationBarTitle is with Large Font
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        ///Use this if NavigationBarTitle is with displayMode = .inline
+        /// Use this if NavigationBarTitle is with displayMode = .inline
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
-        ///Have to init the listStore with a value
+        /// Have to init the listStore with a value
         self.listStore = ShoppingItemStore.init()
     }
 }

@@ -16,6 +16,12 @@ struct DetailView: View {
     @Environment(\.presentationMode) var presentationMode
     let itemToBeDisplayed: ShoppingItems
     @State private var hasData = false
+    let foregroundColourYellow: Color = Color.yellow
+    let maximumScaleFactor: Double = 0.9
+    let topPadding: CGFloat = 70
+    let fontSizeItemToBeDisplayed: CGFloat = 35
+    let fontSizeNotes: CGFloat = 35
+    let lineLimit: Int =  3
     
     //MARK: - Body of the view
     var body: some View {
@@ -27,20 +33,20 @@ struct DetailView: View {
                         ///Section that displays the items name
                         Section {
                             Text ("\(itemToBeDisplayed.itemToBeAdded)")
-                                .font(.custom(DefaultFont.defaultFont.rawValue, size: 35, relativeTo: .headline))
-                                .lineLimit(3)
-                                .foregroundColor(.yellow)
+                                .font(.custom(DefaultFont.defaultFont.rawValue, size: fontSizeItemToBeDisplayed, relativeTo: .headline))
+                                .lineLimit(lineLimit)
+                                .foregroundColor(foregroundColourYellow)
                         } ///End of Section
                         Spacer()
                         ///Section that will hold either any extra notes or a placeholder if no extra notes exist
                         Section {
                             if itemToBeDisplayed.notesOnItem.isEmpty {
                                 Image(ContentViewImages.appIcon.rawValue)
-                                    .padding(.top, 70)
+                                    .padding(.top, topPadding)
                             } else {
                                 Text("\(itemToBeDisplayed.notesOnItem)")
                                     .foregroundColor(.white)
-                                    .font(.custom(DefaultFont.defaultFont.rawValue, size: 25, relativeTo: .headline))
+                                    .font(.custom(DefaultFont.defaultFont.rawValue, size: fontSizeNotes, relativeTo: .headline))
                             }
                         } ///End of Section
                         .padding(.bottom, geometry.size.height/2)
@@ -51,7 +57,7 @@ struct DetailView: View {
             .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
             .multilineTextAlignment(.center)
             .allowsTightening(true)
-            .minimumScaleFactor(0.9)
+            .minimumScaleFactor(maximumScaleFactor)
             .navigationViewStyle(StackNavigationViewStyle()) ///removes iPad split screen
         } ///End of NavigationView
     } ///End of body

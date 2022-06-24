@@ -12,12 +12,13 @@ import Combine
 struct AdaptsToKeyboard: ViewModifier {
     
     @State var currentHeight: CGFloat = 0
+    let animationDuration: Double = 0.4
     
     func body(content: Content) -> some View {
         GeometryReader { geometry in
             content
                 .padding(.bottom, self.currentHeight)
-                .animation(.easeOut(duration: 0.6))
+                .animation(.easeOut(duration: animationDuration))
                 .onAppear(perform: {
                     NotificationCenter.Publisher(center: NotificationCenter.default, name: UIResponder.keyboardWillShowNotification)
                         .merge(with: NotificationCenter.Publisher(center: NotificationCenter.default, name: UIResponder.keyboardWillChangeFrameNotification))

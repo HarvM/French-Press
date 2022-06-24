@@ -49,7 +49,7 @@ extension ContentView {
                 do {
                     try self.managedObjectContext.save()
                 } catch {
-                    Alert(title: Text("Sorry"), message: Text("Please try again"), dismissButton: .default(Text("Okay")))
+                    Alert(title: Text(stringStore.sorry), message: Text(stringStore.pleaseTryAgain), dismissButton: .default(Text(stringStore.okay)))
                 }
             }
         }

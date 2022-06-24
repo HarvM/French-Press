@@ -35,4 +35,9 @@ struct StringStore {
                       "Apple": "The product placement Apple didn't know they need...",
                       "Comfort food": "We all have that one meal that just puts things right"
     ]
+    let treatEmoji = "🎁"
+    let pleaseTryAgain = "Please try again"
+    let sorry = "Sorry"
+    let okay = "Okay"
+    let one = "1"
 }

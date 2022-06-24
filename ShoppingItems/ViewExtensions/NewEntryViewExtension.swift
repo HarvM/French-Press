@@ -10,7 +10,6 @@ import SwiftUI
 
 extension NewEntryView {
     
-    
     ///Func that will pass through either of the save points that the user could use to save an entry
     public func saveEntryToCoreModel(itemToBeAdded: String, notesOnItem: String, quantitySelected: String, preferredMeasurement: String) {
         
@@ -31,11 +30,11 @@ extension NewEntryView {
                 try self.managedObjectContext.save()
             } catch {
                 ///Will throw an alert to the user should an issue occur
-                Alert(title: Text("Sorry \(ContentViewImages.sorryShrug.rawValue)"), message: Text("Please try again"), dismissButton: .default(Text("")))
+                Alert(title: Text("\(stringStore.sorry + ContentViewImages.sorryShrug.rawValue)"), message: Text(stringStore.pleaseTryAgain), dismissButton: .default(Text("")))
             }
             
             ///Logic to ensure that there is a quantity of some sort by default even if the user doesn't explicity define an amount
-            if quantitySelected.isEmpty && quantitySelected != "🎁" {
+            if quantitySelected.isEmpty && quantitySelected != "\(stringStore.treatEmoji)" {
                 itemToBeSaved.quantitySelected = "1"
             }
             
@@ -54,7 +53,7 @@ extension NewEntryView {
             let randomTreat = stringStore.treatItems.randomElement()!
             
             ///Call of the func that will save the entry to the CoreDate model
-            saveEntryToCoreModel(itemToBeAdded: randomTreat.key, notesOnItem: randomTreat.value, quantitySelected: "🎁", preferredMeasurement: "🎁")
+            saveEntryToCoreModel(itemToBeAdded: randomTreat.key, notesOnItem: randomTreat.value, quantitySelected: "\(stringStore.treatEmoji)", preferredMeasurement: "\(stringStore.treatEmoji)")
         }
     }
     
