@@ -28,7 +28,7 @@ I've also returned from the shops more times than I care to remember missing an 
 * Use of VNRecognizeTextRequest to allow the user to "scan in" any hand written shopping lists
 
 ## Inspiration
-The Bear application is a beauty and the world does need more list applications...
+The Bear application is a beauty
 
 ## Contact
 Created by [Marc Harvey](https://www.linkedin.com/in/marc-harvey-lru/) - feel free to contact me!
