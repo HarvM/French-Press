@@ -38,9 +38,9 @@ struct ContentView: View {
         /// If no shoppingItemEntries on the list then display the placeholder image
         if shoppingItemEntries.count == 0 {
             EmptyListView
-            //            HamburgerMenu(width: 270,
-            //                          isOpen: self.showHamburgerMenu,
-            //                          menuClose: self.openMenu)
+                        HamburgerMenu(width: 270,
+                                      isOpen: self.showHamburgerMenu,
+                                      menuClose: self.openMenu)
         } else {
             /// Will show the view with the shoppingItems that the user has input
             PopulatedView
@@ -63,16 +63,16 @@ struct ContentView: View {
                 
                 // MARK: - NavigationBarItems: Leading item will be the HamburgerMenu button that lets the user access the settings, the trailing item: let's the user add a new item to the CoreData/list
                 .toolbar {
-                    //                    ToolbarItem(placement: .navigationBarLeading) {
-                    //                        if !self.showHamburgerMenu {
-                    //                            Button(action: {
-                    //                                self.openMenu()
-                    //                            }, label: {
-                    //                                Image(systemName: "line.horizontal.3")
-                    //                                    .imageScale(.large)
-                    //                            })
-                    //                        }
-                    //                    }
+                                        ToolbarItem(placement: .navigationBarLeading) {
+                                            if !self.showHamburgerMenu {
+                                                Button(action: {
+                                                    self.openMenu()
+                                                }, label: {
+                                                    Image(systemName: "line.horizontal.3")
+                                                        .imageScale(.large)
+                                                })
+                                            }
+                                        }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink(destination: NewEntryView()
                                         .navigationTitle(stringStore.addItem)
