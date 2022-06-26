@@ -42,7 +42,7 @@ extension ContentView {
                                        through: 0,
                                        by: -1) {
                 orderedItems[reverseIndex].order =
-                    NSNumber(value: Int16(reverseIndex))
+                NSNumber(value: Int16(reverseIndex))
                 
                 /// The change in order has to be saved
                 do {

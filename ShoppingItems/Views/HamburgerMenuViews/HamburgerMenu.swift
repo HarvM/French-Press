@@ -12,6 +12,7 @@ struct HamburgerMenu: View {
     let width: CGFloat
     let isOpen: Bool
     let menuClose: () -> Void
+    let animationTime: Double = 0.25
     
     // MARK: - Body
         var body: some View {
@@ -21,7 +22,7 @@ struct HamburgerMenu: View {
                 }
                 .background(Color.white.opacity(0.1).edgesIgnoringSafeArea(.all))
                 .opacity(self.isOpen ? 1.0 : 0.0)
-                .animation(Animation.easeIn.delay(0.25))
+                .animation(.easeIn, value: animationTime)
                 .onTapGesture {
                     self.menuClose()
                 }
@@ -30,7 +31,7 @@ struct HamburgerMenu: View {
                     BurgerMenuContent()
                         .frame(width: self.width)
                         .offset(x: self.isOpen ? 0 : -self.width)
-                        .animation(.easeIn)
+                        .animation(.easeIn, value: animationTime)
                     Spacer()
                 }
             }

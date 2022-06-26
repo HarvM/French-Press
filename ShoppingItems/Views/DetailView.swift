@@ -58,7 +58,8 @@ struct DetailView: View {
             .multilineTextAlignment(.center)
             .allowsTightening(true)
             .minimumScaleFactor(maximumScaleFactor)
-            .navigationViewStyle(StackNavigationViewStyle())/// removes iPad split screen
+            /// removes iPad split screen
+            .navigationViewStyle(StackNavigationViewStyle())
         } /// End of NavigationView
     } /// End of body
 }

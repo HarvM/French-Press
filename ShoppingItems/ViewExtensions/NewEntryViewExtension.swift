@@ -60,10 +60,9 @@ extension NewEntryView {
     /// Function (saves the user's item [item name, quantity, measurement, and extra notes]
     public func saveNewEntry() {
         DispatchQueue.main.async {
-            /// Removes the whitespace and newLines from the item as it messes with how the name is displayed on the ContentView
-            let trimmedItem = self.newShoppingItem.text.trimmingCharacters(in: .whitespacesAndNewlines)
-            let trimmedNote = self.notesOnItem.text.trimmingCharacters(in: .whitespacesAndNewlines)
-            let trimmedQuantity = self.quantitySelected.text.trimmingCharacters(in: .whitespacesAndNewlines)
+            let trimmedItem = newShoppingItem.newItem.text.trimmingCharacters(in: .whitespacesAndNewlines)
+            let trimmedNote = notesOnItem.notesOnItem.text.trimmingCharacters(in: .whitespacesAndNewlines)
+            let trimmedQuantity = quantitySelected.newItemQuantity.text.trimmingCharacters(in: .whitespacesAndNewlines)
             let chosenMeasurement = self.stringStore.measurementFound[self.selectedMeasurement]
             
             /// There has to be a value within the "itemsToBeAdded" or else nothing will be saved
@@ -76,8 +75,8 @@ extension NewEntryView {
                 saveEntryToCoreModel(itemToBeAdded: trimmedItem, notesOnItem: trimmedNote, quantitySelected: trimmedQuantity, preferredMeasurement: chosenMeasurement)
                 
                 /// Resets the newShoppingItem back to being blank
-                newShoppingItem.text = ""
-                notesOnItem.text = ""
+                newShoppingItem.newItem.text = ""
+                notesOnItem.notesOnItem.text = ""
             }
         }
     }

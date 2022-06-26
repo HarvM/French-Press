@@ -16,9 +16,9 @@ struct NewEntryView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode
     let generator = UINotificationFeedbackGenerator()
-    @ObservedObject var newShoppingItem = TextLimit(limit: 30)
-    @ObservedObject var notesOnItem = TextLimit(limit: 40)
-    @ObservedObject var quantitySelected = TextLimit(limit: 6)
+    @StateObject var newShoppingItem = NewItem()
+    @StateObject var notesOnItem = ItemNote()
+    @StateObject var quantitySelected = ItemQuantity()
     @State var isShowingContentView = false
     @State var showAlert = false
     @State var selectedMeasurement = 0
@@ -36,68 +36,46 @@ struct NewEntryView: View {
                     // MARK: - TextEditor - Item entry (Main) section
                     
                     Section (header: Text(stringStore.whatWouldYouLike)
-                                .foregroundColor(.yellow)
-                                .truncationMode(.head)
-                                .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
-                        VStack {
-                            HStack {
-                                /// $newShoppingItem to get the binding to the state newShoppingItem
-                                TextField(stringStore.typeTheItemHere, text: $newShoppingItem.text)
-                                    .frame (height: 40)
-                                    .multilineTextAlignment(.leading)
-                                    .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
-                                /// Will display the number of characters already typed and the limit
-                                Text("\(self.newShoppingItem.text.count)|30")
-                                    .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
-                                    .foregroundColor(.gray)
-                            }
-                            .font(.headline)
-                        } /// End of Section
-                        .padding(5)
-                    }
+                        .foregroundColor(.yellow)
+                        .truncationMode(.head)
+                        .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
+                            VStack {
+                                HStack {
+                                    NewShoppingItemSectionView(newShoppingItem: newShoppingItem)
+                                }
+                                .font(.headline)
+                            } /// End of Section
+                            .padding(5)
+                        }
                     
                     // MARK: - Picker Section for quantity & quantity type
                     Section (header: Text(stringStore.howManyWouldYouLike)
-                                .foregroundColor(.yellow)
-                                .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
-                        VStack {
-                            TextField(stringStore.typeQuantityHere, text: $quantitySelected.text)
-                                .frame (height: 40)
-                                .multilineTextAlignment(.leading)
-                                .keyboardType(.decimalPad)
-                                .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
-                                .ignoresSafeArea(.keyboard, edges: .bottom)
-                        }
-                        Picker(selection: $selectedMeasurement, label: Text("")) {
-                            ForEach(0 ..< stringStore.measurementFound.count) {
-                                Text(self.stringStore.measurementFound[$0])
-                                    .frame(height: 40)
+                        .foregroundColor(.yellow)
+                        .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
+                            VStack {
+                                NewShoppingItemQuantityView(newShoppingItemQuantity: quantitySelected)
                             }
-                            .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
-                        }
-                        .pickerStyle(DefaultPickerStyle())
-                        .foregroundColor(.red)
-                    }/// End of Section
-                                .padding(2)
+                            Picker(selection: $selectedMeasurement, label: Text("")) {
+                                ForEach(0 ..< stringStore.measurementFound.count) {
+                                    Text(self.stringStore.measurementFound[$0])
+                                        .frame(height: 40)
+                                }
+                                .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
+                            }
+                            .pickerStyle(DefaultPickerStyle())
+                            .foregroundColor(.red)
+                        }/// End of Section
+                        .padding(2)
                     
                     // MARK: - TextEditor (Extra Notes) Section
                     Section(header: Text(stringStore.extraNotes)
-                                .foregroundColor(.yellow)
-                                .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
-                        HStack {
-                            TextField(stringStore.typeHere, text: $notesOnItem.text)
-                                .frame(height: 50)
-                                .multilineTextAlignment(.leading)
-                                .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
-                                .ignoresSafeArea(.keyboard, edges: .bottom)
-                            Spacer()
-                            /// Will display the number of characters already typed and the limit
-                            Text("\(self.notesOnItem.text.count)|40")
-                                .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
-                                .foregroundColor(.gray)
-                        }
-                    } /// End of section
-                    .padding(2)
+                        .foregroundColor(.yellow)
+                        .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
+                            HStack {
+                                NewShoppingItemNotesView(newShoppingItemNote: notesOnItem)
+                            }
+                        } /// End of section
+                        .padding(2)
                 } ///End of Form
                 .clipped()
                 .padding(.top)
@@ -114,13 +92,13 @@ struct NewEntryView: View {
                             .cornerRadius(.infinity)
                             .padding(.bottom, 28)
                     })
-                        .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
-                        .alert(isPresented: $showAlert) { () -> Alert in
-                            Alert(title: Text(stringStore.oneMoment),
-                                  message: Text(stringStore.makeSure),
-                                  dismissButton: .default(Text(ContentViewImages.thumbsUp.rawValue))
-                            )
-                        }
+                    .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
+                    .alert(isPresented: $showAlert) { () -> Alert in
+                        Alert(title: Text(stringStore.oneMoment),
+                              message: Text(stringStore.makeSure),
+                              dismissButton: .default(Text(ContentViewImages.thumbsUp.rawValue))
+                        )
+                    }
                 }/// End of HStack
                 .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
             }/// End of VStack

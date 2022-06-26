@@ -38,9 +38,6 @@ struct ContentView: View {
         /// If no shoppingItemEntries on the list then display the placeholder image
         if shoppingItemEntries.count == 0 {
             EmptyListView
-            //            HamburgerMenu(width: 270,
-            //                          isOpen: self.showHamburgerMenu,
-            //                          menuClose: self.openMenu)
         } else {
             /// Will show the view with the shoppingItems that the user has input
             PopulatedView
@@ -63,21 +60,11 @@ struct ContentView: View {
                 
                 // MARK: - NavigationBarItems: Leading item will be the HamburgerMenu button that lets the user access the settings, the trailing item: let's the user add a new item to the CoreData/list
                 .toolbar {
-                    //                    ToolbarItem(placement: .navigationBarLeading) {
-                    //                        if !self.showHamburgerMenu {
-                    //                            Button(action: {
-                    //                                self.openMenu()
-                    //                            }, label: {
-                    //                                Image(systemName: "line.horizontal.3")
-                    //                                    .imageScale(.large)
-                    //                            })
-                    //                        }
-                    //                    }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink(destination: NewEntryView()
-                                        .navigationTitle(stringStore.addItem)
-                                        .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
-                                        .edgesIgnoringSafeArea(.all)
+                            .navigationTitle(stringStore.addItem)
+                            .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
+                            .edgesIgnoringSafeArea(.all)
                         ){
                             /// Will lead use to the NewEntryView
                             Image(ContentViewImages.plusImage.rawValue)
@@ -122,9 +109,12 @@ struct ContentView: View {
                     .padding(.top) /// Prevents List showing below statusBar
                     .listRowSeparator(.hidden)
                 } /// End VStack
-                .id(UUID()) /// Appears to help with the reordering of the List and makes it less laggy when a row is moved
-                .listStyle(PlainListStyle()) /// Removes the header and the wee arrow that hides/shows the cells
-                .navigationBarTitleDisplayMode(.inline) /// Ensures that the list is closer to the top of the window
+                /// Appears to help with the reordering of the List and makes it less laggy when a row is moved
+                .id(UUID())
+                /// Removes the header and the wee arrow that hides/shows the cells
+                .listStyle(PlainListStyle())
+                /// Ensures that the list is closer to the top of the window
+                .navigationBarTitleDisplayMode(.inline)
                 
                 // MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list, the trailing launches MapView
                 .toolbar {
@@ -133,9 +123,9 @@ struct ContentView: View {
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink(destination: NewEntryView()
-                                        .navigationTitle(stringStore.addItem)
-                                        .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
-                                        .edgesIgnoringSafeArea(.all)
+                            .navigationTitle(stringStore.addItem)
+                            .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
+                            .edgesIgnoringSafeArea(.all)
                         ){
                             /// Image of the trailing icon that leads the user to the map
                             Image(ContentViewImages.plusImage.rawValue)
@@ -155,8 +145,10 @@ struct ContentView: View {
         UIPickerView.appearance().tintColor = UIColor(Color(BackgroundColours.defaultBackground.rawValue))
         /// Setting the empty/potential cells to the desired colour
         UITableView.appearance().backgroundColor = UIColor(Color(BackgroundColours.defaultBackground.rawValue))
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default) /// clears navBar to background colour
-        UINavigationBar.appearance().shadowImage = UIImage() /// removes separator
+        /// clears navBar to background colour
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        /// removes separator
+        UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().isTranslucent = true
         UINavigationBar.appearance().backgroundColor = UIColor(Color(BackgroundColours.defaultBackground.rawValue))
         /// Use this if NavigationBarTitle is with Large Font
