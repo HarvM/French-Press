@@ -34,7 +34,6 @@ struct NewEntryView: View {
                 Spacer().frame(height: 45)
                 Form {
                     // MARK: - TextEditor - Item entry (Main) section
-                    
                     Section (header: Text(stringStore.whatWouldYouLike)
                         .foregroundColor(.yellow)
                         .truncationMode(.head)
@@ -99,9 +98,9 @@ struct NewEntryView: View {
                               dismissButton: .default(Text(ContentViewImages.thumbsUp.rawValue))
                         )
                     }
-                }/// End of HStack
+                } /// End of HStack
                 .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
-            }/// End of VStack
+            } /// End of VStack
             .padding(.top)
             .toolbar { /// Using toolbar to place in the Treat button
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -111,7 +110,7 @@ struct NewEntryView: View {
                 }
             } /// End of toolbar
             .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
-        } ///End of ZStack
+        } /// End of ZStack
         .edgesIgnoringSafeArea(.all)
         .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
         .navigationBarTitleDisplayMode(.inline)
