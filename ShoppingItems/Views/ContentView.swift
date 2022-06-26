@@ -81,7 +81,6 @@ struct ContentView: View {
     }
     
     // MARK: - PopulatedView
-    
     /// This view will hold the List that displays the items that the user has input and kept in CoreData
     var PopulatedView: some View {
         NavigationView {
@@ -162,6 +161,7 @@ struct ContentView: View {
 
 struct KeyboardAvoiderDemo: View {
     @State var text = ""
+    
     var body: some View {
         VStack {
             TextField("Demo", text: self.$text)
