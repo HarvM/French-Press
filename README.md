@@ -22,9 +22,8 @@ I've also returned from the shops more times than I care to remember missing an 
 * Items can be rearranged on the list when the user clicks on "Edit"
 
 ## Future Features
-* Allow users across a defined group share their shopping lists (Family Sharing)
-* Create a Favourites list to allow easy addition to the list for items that are frequently bought (Machine Learning opportunity?)
-* Use of VNRecognizeTextRequest to allow the user to "scan in" any hand written shopping lists
+* Addition of a hamburger menu
+* From hamburger menu: being able to purchase themes
 
 ## Inspiration
 The Bear application is a beauty
