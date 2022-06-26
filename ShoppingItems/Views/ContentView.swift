@@ -157,7 +157,7 @@ struct ContentView: View {
                                    alignment:.center)
                             .edgesIgnoringSafeArea(.all)
                         ){
-                            /// Image of the trailing icon that leads the user to the map
+                            /// Image of the trailing icon that leads the user to the NewEntryView
                             Image(ContentViewImages.plusImage.rawValue)
                                 .frame(width: 35,
                                        height: 35)
