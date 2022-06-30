@@ -19,9 +19,9 @@ struct NewEntryView: View {
     @StateObject var newShoppingItem = NewItem()
     @StateObject var notesOnItem = ItemNote()
     @StateObject var quantitySelected = ItemQuantity()
+    @StateObject var selectedMeasurement = ItemMeasurement()
     @State var isShowingContentView = false
     @State var showAlert = false
-    @State var selectedMeasurement = 0
     @State var areTreatsAllowed = true
     let stringStore = StringStore()
     let itemSizeMax: Int = 30
@@ -54,15 +54,7 @@ struct NewEntryView: View {
                             VStack {
                                 NewShoppingItemQuantityView(newShoppingItemQuantity: quantitySelected)
                             }
-                            Picker(selection: $selectedMeasurement, label: Text("")) {
-                                ForEach(0 ..< stringStore.measurementFound.count) {
-                                    Text(self.stringStore.measurementFound[$0])
-                                        .frame(height: 40)
-                                }
-                                .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
-                            }
-                            .pickerStyle(DefaultPickerStyle())
-                            .foregroundColor(.red)
+                            NewEntryPickerView(newSelectedMeasurement: selectedMeasurement)
                         }/// End of Section
                         .padding(2)
                     

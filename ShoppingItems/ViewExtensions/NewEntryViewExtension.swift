@@ -63,7 +63,7 @@ extension NewEntryView {
             let trimmedItem = newShoppingItem.newItem.text.trimmingCharacters(in: .whitespacesAndNewlines)
             let trimmedNote = notesOnItem.notesOnItem.text.trimmingCharacters(in: .whitespacesAndNewlines)
             let trimmedQuantity = quantitySelected.newItemQuantity.text.trimmingCharacters(in: .whitespacesAndNewlines)
-            let chosenMeasurement = self.stringStore.measurementFound[self.selectedMeasurement]
+            let chosenMeasurement = self.stringStore.measurementFound[selectedMeasurement.newItemMeasurement]
             
             /// There has to be a value within the "itemsToBeAdded" or else nothing will be saved
             if trimmedItem.isEmpty {

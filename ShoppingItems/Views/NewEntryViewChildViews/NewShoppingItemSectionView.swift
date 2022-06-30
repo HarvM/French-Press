@@ -24,6 +24,7 @@ struct NewShoppingItemSectionView: View {
             .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
             .foregroundColor(.gray)
     }
+    
 }
 //
 //struct NewShoppingItemSectionView_Previews: PreviewProvider {
