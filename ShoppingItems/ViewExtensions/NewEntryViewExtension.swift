@@ -60,6 +60,7 @@ extension NewEntryView {
     /// Function (saves the user's item [item name, quantity, measurement, and extra notes]
     public func saveNewEntry() {
         DispatchQueue.main.async {
+            self.isRotated.toggle()
             let trimmedItem = newShoppingItem.newItem.text.trimmingCharacters(in: .whitespacesAndNewlines)
             let trimmedNote = notesOnItem.notesOnItem.text.trimmingCharacters(in: .whitespacesAndNewlines)
             let trimmedQuantity = quantitySelected.newItemQuantity.text.trimmingCharacters(in: .whitespacesAndNewlines)

@@ -25,6 +25,12 @@ struct NewEntryView: View {
     @State var areTreatsAllowed = true
     let stringStore = StringStore()
     let itemSizeMax: Int = 30
+    @State public var isRotated = false
+    var animation: Animation {
+        Animation.linear(duration: 0.2)
+            .repeatCount(1)
+    }
+    
     
     // MARK: - Body the UI that will have a Form (Item Entry, Stepper, and Notes) and a Save Button (bottom of view)
     var body: some View {
@@ -82,6 +88,8 @@ struct NewEntryView: View {
                             .frame(width: 45, height: 45)
                             .cornerRadius(.infinity)
                             .padding(.bottom, 28)
+                            .rotationEffect(Angle.degrees(isRotated ? 360 : 0))
+                            .animation(animation)
                     })
                     .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
                     .alert(isPresented: $showAlert) { () -> Alert in
