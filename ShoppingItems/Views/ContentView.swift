@@ -87,26 +87,50 @@ struct ContentView: View {
             ZStack {
                 Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
                 VStack {
-                    List {
-                        // MARK: - HStack: how the cells are displayed and populated
-                        Section() {
-                            ForEach(shoppingItemEntries, id: \.self) {
-                                shoppingItemNew in
-                                HStack {
-                                    CellView(itemToBeAdded: shoppingItemNew.itemToBeAdded,
-                                             quantitySelected: shoppingItemNew.quantitySelected,
-                                             preferredMeasurement: shoppingItemNew.preferredMeasurement)
-                                    NavigationLink("", destination: DetailView (itemToBeDisplayed: shoppingItemNew))
-                                } /// End of HStack
-                            } /// End of ForEach loop
-                            .onDelete(perform: self.deleteItem)
-                            .onMove(perform: moveItem)
-                        } /// End of Section
-                        .listStyle(PlainListStyle())
-                        .listRowBackground(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
-                    } /// End of List
-                    .padding(.top) /// Prevents List showing below statusBar
-                    .listRowSeparator(.hidden)
+                    if #available(iOS 16.0, *) {
+                        List {
+                            // MARK: - HStack: how the cells are displayed and populated
+                            Section() {
+                                ForEach(shoppingItemEntries, id: \.self) {
+                                    shoppingItemNew in
+                                    HStack {
+                                        CellView(itemToBeAdded: shoppingItemNew.itemToBeAdded,
+                                                 quantitySelected: shoppingItemNew.quantitySelected,
+                                                 preferredMeasurement: shoppingItemNew.preferredMeasurement)
+                                        NavigationLink("", destination: DetailView (itemToBeDisplayed: shoppingItemNew))
+                                    } /// End of HStack
+                                } /// End of ForEach loop
+                                .onDelete(perform: self.deleteItem)
+                                .onMove(perform: moveItem)
+                            } /// End of Section
+                            .listStyle(PlainListStyle())
+                            .listRowBackground(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
+                        } /// End of List
+                        .padding(.top) /// Prevents List showing below statusBar
+                        .listRowSeparator(.hidden)
+                        .scrollContentBackground(.hidden)
+                    } else {
+                        List {
+                            // MARK: - HStack: how the cells are displayed and populated
+                            Section() {
+                                ForEach(shoppingItemEntries, id: \.self) {
+                                    shoppingItemNew in
+                                    HStack {
+                                        CellView(itemToBeAdded: shoppingItemNew.itemToBeAdded,
+                                                 quantitySelected: shoppingItemNew.quantitySelected,
+                                                 preferredMeasurement: shoppingItemNew.preferredMeasurement)
+                                        NavigationLink("", destination: DetailView (itemToBeDisplayed: shoppingItemNew))
+                                    } /// End of HStack
+                                } /// End of ForEach loop
+                                .onDelete(perform: self.deleteItem)
+                                .onMove(perform: moveItem)
+                            } /// End of Section
+                            .listStyle(PlainListStyle())
+                            .listRowBackground(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
+                        } /// End of List
+                        .padding(.top) /// Prevents List showing below statusBar
+                        .listRowSeparator(.hidden)
+                    }
                 } /// End VStack
                 /// Appears to help with the reordering of the List and makes it less laggy when a row is moved
                 .id(UUID())
@@ -156,6 +180,7 @@ struct ContentView: View {
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
         /// Have to init the listStore with a value
         self.listStore = ShoppingItemStore.init()
+        UICollectionView.appearance().backgroundColor = UIColor(Color(BackgroundColours.defaultBackground.rawValue))
     }
 }
 

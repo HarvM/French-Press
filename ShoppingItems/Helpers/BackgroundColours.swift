@@ -12,5 +12,4 @@ import Foundation
 enum BackgroundColours: String {
     case defaultBackground = "defaultBackground"
     case burgerBackground = "burgerBackground"
-    //TODO: Add in other colours to let user change their theme
 }

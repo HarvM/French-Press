@@ -25,12 +25,6 @@ struct NewEntryView: View {
     @State var areTreatsAllowed = true
     let stringStore = StringStore()
     let itemSizeMax: Int = 30
-    @State public var isRotated = false
-    var animation: Animation {
-        Animation.linear(duration: 0.2)
-            .repeatCount(1)
-    }
-    
     
     // MARK: - Body the UI that will have a Form (Item Entry, Stepper, and Notes) and a Save Button (bottom of view)
     var body: some View {
@@ -38,47 +32,92 @@ struct NewEntryView: View {
             Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
             VStack {
                 Spacer().frame(height: 45)
-                Form {
-                    // MARK: - TextEditor - Item entry (Main) section
-                    Section (header: Text(stringStore.whatWouldYouLike)
-                        .foregroundColor(.yellow)
-                        .truncationMode(.head)
-                        .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
-                            VStack {
-                                HStack {
-                                    NewShoppingItemSectionView(newShoppingItem: newShoppingItem)
+                if #available(iOS 16.0, *) {
+                    Form {
+                        // MARK: - TextEditor - Item entry (Main) section
+                        Section (header: Text(stringStore.whatWouldYouLike)
+                            .foregroundColor(.yellow)
+                            .truncationMode(.head)
+                            .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
+                                VStack {
+                                    HStack {
+                                        NewShoppingItemSectionView(newShoppingItem: newShoppingItem)
+                                    }
+                                    .font(.headline)
+                                } /// End of Section
+                                .padding(5)
+                            }
+                        
+                        // MARK: - Picker Section for quantity & quantity type
+                        Section (header: Text(stringStore.howManyWouldYouLike)
+                            .foregroundColor(.yellow)
+                            .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
+                                VStack {
+                                    NewShoppingItemQuantityView(newShoppingItemQuantity: quantitySelected)
                                 }
-                                .font(.headline)
-                            } /// End of Section
-                            .padding(5)
-                        }
-                    
-                    // MARK: - Picker Section for quantity & quantity type
-                    Section (header: Text(stringStore.howManyWouldYouLike)
-                        .foregroundColor(.yellow)
-                        .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
-                            VStack {
-                                NewShoppingItemQuantityView(newShoppingItemQuantity: quantitySelected)
+                                NewEntryPickerView(newSelectedMeasurement: selectedMeasurement)
+                            }/// End of Section
+                            .padding(2)
+                        
+                        // MARK: - TextEditor (Extra Notes) Section
+                        Section(header: Text(stringStore.extraNotes)
+                            .foregroundColor(.yellow)
+                            .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
+                                HStack {
+                                    NewShoppingItemNotesView(newShoppingItemNote: notesOnItem)
+                                }
+                            } /// End of section
+                            .padding(2)
+                    } ///End of Form
+                    .clipped()
+                    .padding(.top)
+                    .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
+                    /// Uses the AdaptsToKeyboard struct to bump the screen up when the user brings up the keyboard
+                    .modifier(AdaptsToKeyboard())
+                    .scrollContentBackground(.hidden)
+                } else {
+                    Form {
+                        // MARK: - TextEditor - Item entry (Main) section
+                        Section (header: Text(stringStore.whatWouldYouLike)
+                            .foregroundColor(.yellow)
+                            .truncationMode(.head)
+                            .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
+                                VStack {
+                                    HStack {
+                                        NewShoppingItemSectionView(newShoppingItem: newShoppingItem)
+                                    }
+                                    .font(.headline)
+                                } /// End of Section
+                                .padding(5)
                             }
-                            NewEntryPickerView(newSelectedMeasurement: selectedMeasurement)
-                        }/// End of Section
-                        .padding(2)
-                    
-                    // MARK: - TextEditor (Extra Notes) Section
-                    Section(header: Text(stringStore.extraNotes)
-                        .foregroundColor(.yellow)
-                        .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
-                            HStack {
-                                NewShoppingItemNotesView(newShoppingItemNote: notesOnItem)
-                            }
-                        } /// End of section
-                        .padding(2)
-                } ///End of Form
-                .clipped()
-                .padding(.top)
-                .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
-                /// Uses the AdaptsToKeyboard struct to bump the screen up when the user brings up the keyboard
-                .modifier(AdaptsToKeyboard())
+                        
+                        // MARK: - Picker Section for quantity & quantity type
+                        Section (header: Text(stringStore.howManyWouldYouLike)
+                            .foregroundColor(.yellow)
+                            .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
+                                VStack {
+                                    NewShoppingItemQuantityView(newShoppingItemQuantity: quantitySelected)
+                                }
+                                NewEntryPickerView(newSelectedMeasurement: selectedMeasurement)
+                            }/// End of Section
+                            .padding(2)
+                        
+                        // MARK: - TextEditor (Extra Notes) Section
+                        Section(header: Text(stringStore.extraNotes)
+                            .foregroundColor(.yellow)
+                            .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
+                                HStack {
+                                    NewShoppingItemNotesView(newShoppingItemNote: notesOnItem)
+                                }
+                            } /// End of section
+                            .padding(2)
+                    } ///End of Form
+                    .clipped()
+                    .padding(.top)
+                    .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
+                    /// Uses the AdaptsToKeyboard struct to bump the screen up when the user brings up the keyboard
+                    .modifier(AdaptsToKeyboard())
+                }
                 
                 // MARK: - Button that will save the user's entry - sits at the bottom of the view
                 HStack(alignment: .center, spacing: 10) {
@@ -88,8 +127,6 @@ struct NewEntryView: View {
                             .frame(width: 45, height: 45)
                             .cornerRadius(.infinity)
                             .padding(.bottom, 28)
-                            .rotationEffect(Angle.degrees(isRotated ? 360 : 0))
-                            .animation(animation)
                     })
                     .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
                     .alert(isPresented: $showAlert) { () -> Alert in
@@ -101,7 +138,7 @@ struct NewEntryView: View {
                 } /// End of HStack
                 .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
             } /// End of VStack
-            .padding(.top)
+            .padding(.top, 40)
             .toolbar { /// Using toolbar to place in the Treat button
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: self.weeTreat, label:  {
@@ -123,5 +160,3 @@ struct NewEntryView_Previews: PreviewProvider {
         NewEntryView()
     }
 }
-
-
