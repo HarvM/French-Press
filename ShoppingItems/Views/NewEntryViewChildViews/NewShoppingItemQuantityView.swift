@@ -14,7 +14,8 @@ struct NewShoppingItemQuantityView: View {
     @ObservedObject var newShoppingItemQuantity: ItemQuantity
     
     var body: some View {
-        TextField(stringStore.typeQuantityHere, text: $newShoppingItemQuantity.newItemQuantity.text)
+        TextField(stringStore.typeQuantityHere,
+                  text: $newShoppingItemQuantity.newItemQuantity.text)
             .frame (height: 40)
             .multilineTextAlignment(.leading)
             .keyboardType(.decimalPad)

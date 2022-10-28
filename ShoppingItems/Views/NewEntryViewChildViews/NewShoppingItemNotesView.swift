@@ -14,15 +14,21 @@ struct NewShoppingItemNotesView: View {
     @ObservedObject var newShoppingItemNote: ItemNote
     
     var body: some View {
-        TextField(stringStore.typeHere, text: $newShoppingItemNote.notesOnItem.text)
+        TextField(stringStore.typeHere,
+                  text: $newShoppingItemNote.notesOnItem.text)
             .frame(height: 50)
             .multilineTextAlignment(.leading)
-            .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
-            .ignoresSafeArea(.keyboard, edges: .bottom)
+            .font(.custom(DefaultFont.defaultFont.rawValue,
+                          size: 16,
+                          relativeTo: .headline))
+            .ignoresSafeArea(.keyboard,
+                             edges: .bottom)
         Spacer()
         /// Will display the number of characters already typed and the limit
         Text("\(newShoppingItemNote.notesOnItem.text.count)|40")
-            .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
+            .font(.custom(DefaultFont.defaultFont.rawValue,
+                          size: 16,
+                          relativeTo: .headline))
             .foregroundColor(.gray)
     }
 }
