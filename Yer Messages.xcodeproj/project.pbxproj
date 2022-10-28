@@ -219,10 +219,10 @@
 		4983E8B624660808005E9063 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CB474BC5286DD02B00FBD2C0 /* NewEntryViewChildViews */,
 				491D795823C11D1700B537EB /* ContentView.swift */,
 				493B3A95253BD31200CAF0F9 /* NewEntryView.swift */,
 				499C66A8256743AE00EDD614 /* DetailView.swift */,
+				CB474BC5286DD02B00FBD2C0 /* NewEntryViewChildViews */,
 				D2027AB5266120C1002E3BC6 /* HamburgerMenuViews */,
 				D2D9BED2265545BB005529EF /* Subviews */,
 			);

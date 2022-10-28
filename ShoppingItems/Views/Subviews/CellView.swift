@@ -39,7 +39,8 @@ struct CellView: View {
         VStack {
             HStack {
                 /// Toggle here followed by the item that the user desires
-                Toggle("", isOn: $isChecked).labelsHidden()
+                Toggle("", isOn: $isChecked)
+                    .labelsHidden()
                     .padding(togglePadding)
                 VStack (alignment: .leading, spacing: spacingVStack) {
                     /// Header: name of the item the user has selected

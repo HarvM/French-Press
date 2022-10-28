@@ -34,7 +34,8 @@ extension ContentView {
             var orderedItems: [ShoppingItems] = shoppingItemEntries.map{$0}
             
             /// Alter the order of the items in the new array
-            orderedItems.move(fromOffsets: source, toOffset: destination)
+            orderedItems.move(fromOffsets: source,
+                              toOffset: destination)
             
             /// Updates the userOrder to maintain the new order
             /// Done in reverse to minimise changes to indices of the array
@@ -48,7 +49,8 @@ extension ContentView {
                 do {
                     try self.managedObjectContext.save()
                 } catch {
-                    Alert(title: Text(stringStore.sorry), message: Text(stringStore.pleaseTryAgain),
+                    Alert(title: Text(stringStore.sorry),
+                          message: Text(stringStore.pleaseTryAgain),
                           dismissButton: .default(Text(stringStore.okay)))
                 }
             }

@@ -125,8 +125,10 @@ struct ContentView: View {
                                 .onDelete(perform: self.deleteItem)
                                 .onMove(perform: moveItem)
                             } /// End of Section
+                            .frame(alignment: .leading)
                             .listStyle(PlainListStyle())
-                            .listRowBackground(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
+                            .listRowBackground(Color(BackgroundColours.defaultBackground.rawValue)
+                                .edgesIgnoringSafeArea(.all))
                         } /// End of List
                         .padding(.top) /// Prevents List showing below statusBar
                         .listRowSeparator(.hidden)
@@ -139,7 +141,7 @@ struct ContentView: View {
                 /// Ensures that the list is closer to the top of the window
                 .navigationBarTitleDisplayMode(.inline)
                 
-                // MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list, the trailing launches MapView
+                // MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         EditButton()

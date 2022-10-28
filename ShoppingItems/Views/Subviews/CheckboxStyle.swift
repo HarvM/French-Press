@@ -32,6 +32,7 @@ struct CheckboxStyle: ToggleStyle {
                 .onTapGesture {
                     configuration.isOn.toggle()
                 }
+                .padding(.leading, 60)
         }
     }
 }
