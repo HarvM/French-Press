@@ -19,7 +19,8 @@ struct SaveButtonView: View {
     var body: some View{
         Image(ContentViewImages.plusImage.rawValue)
             .resizable()
-            .frame(width: frameWidth, height: frameHeight)
+            .frame(width: frameWidth,
+                   height: frameHeight)
             .cornerRadius(.infinity)
             .padding(.bottom, bottomPadding)
     }

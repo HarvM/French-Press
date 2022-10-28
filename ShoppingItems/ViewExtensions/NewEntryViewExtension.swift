@@ -11,7 +11,10 @@ import SwiftUI
 extension NewEntryView {
     
     /// Func that will pass through either of the save points that the user could use to save an entry
-    public func saveEntryToCoreModel(itemToBeAdded: String, notesOnItem: String, quantitySelected: String, preferredMeasurement: String) {
+    public func saveEntryToCoreModel(itemToBeAdded: String,
+                                     notesOnItem: String,
+                                     quantitySelected: String,
+                                     preferredMeasurement: String) {
         
         DispatchQueue.main.async {
             /// Refactor the saving the to the CoreData model here
@@ -30,10 +33,12 @@ extension NewEntryView {
                 try self.managedObjectContext.save()
             } catch {
                 /// Will throw an alert to the user should an issue occur
-                Alert(title: Text("\(stringStore.sorry + ContentViewImages.sorryShrug.rawValue)"), message: Text(stringStore.pleaseTryAgain), dismissButton: .default(Text("")))
+                Alert(title: Text("\(stringStore.sorry + ContentViewImages.sorryShrug.rawValue)"),
+                      message: Text(stringStore.pleaseTryAgain),
+                      dismissButton: .default(Text("")))
             }
             
-            /// Logic to ensure that there is a quantity of some sort by default even if the user doesn't explicity define an amount
+            /// Logic to ensure that there is a quantity of some sort by default even if the user doesn't explicitly defines an amount
             if quantitySelected.isEmpty && quantitySelected != "\(stringStore.treatEmoji)" {
                 itemToBeSaved.quantitySelected = "1"
             }
@@ -53,7 +58,10 @@ extension NewEntryView {
             let randomTreat = stringStore.treatItems.randomElement()!
             
             /// Call of the func that will save the entry to the CoreDate model
-            saveEntryToCoreModel(itemToBeAdded: randomTreat.key, notesOnItem: randomTreat.value, quantitySelected: "\(stringStore.treatEmoji)", preferredMeasurement: "\(stringStore.treatEmoji)")
+            saveEntryToCoreModel(itemToBeAdded: randomTreat.key,
+                                 notesOnItem: randomTreat.value,
+                                 quantitySelected: "\(stringStore.treatEmoji)",
+                                 preferredMeasurement: "\(stringStore.treatEmoji)")
         }
     }
     
@@ -66,13 +74,16 @@ extension NewEntryView {
             let chosenMeasurement = self.stringStore.measurementFound[selectedMeasurement.newItemMeasurement]
             
             /// There has to be a value within the "itemsToBeAdded" or else nothing will be saved
-            if trimmedItem.isEmpty {
+            if trimmedItem.isEmpty{
                 self.showAlert = true
             } 
             else {
                 /// Call of the func that will save the entry to the CoreDate model
                 /// Moves the trimmed items into the func
-                saveEntryToCoreModel(itemToBeAdded: trimmedItem, notesOnItem: trimmedNote, quantitySelected: trimmedQuantity, preferredMeasurement: chosenMeasurement)
+                saveEntryToCoreModel(itemToBeAdded: trimmedItem,
+                                     notesOnItem: trimmedNote,
+                                     quantitySelected: trimmedQuantity,
+                                     preferredMeasurement: chosenMeasurement)
                 
                 /// Resets the newShoppingItem back to being blank
                 newShoppingItem.newItem.text = ""

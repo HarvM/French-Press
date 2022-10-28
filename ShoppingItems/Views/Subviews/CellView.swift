@@ -44,19 +44,29 @@ struct CellView: View {
                 VStack (alignment: .leading, spacing: spacingVStack) {
                     /// Header: name of the item the user has selected
                     Text("\(itemToBeAdded)")
-                        .font(.custom(DefaultFont.defaultFont.rawValue, size: itemFontSize, relativeTo: .title))
+                        .font(.custom(DefaultFont.defaultFont.rawValue,
+                                      size: itemFontSize,
+                                      relativeTo: .title))
                         .allowsTightening(true)
                         .clipped()
                     /// Notes on the item that has been selected
                     Text("\(quantitySelected) \(preferredMeasurement)\(finalOutput)")
-                        .font(.custom(DefaultFont.defaultFont.rawValue, size: noteFontSize, relativeTo: .title))
+                        .font(.custom(DefaultFont.defaultFont.rawValue,
+                                      size: noteFontSize,
+                                      relativeTo: .title))
                         .lineLimit(notesLineLimit)
                         .textCase(.lowercase)
                 } /// End of VStack
                 .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
                 .foregroundColor(textColour)
                 /// Looked into using GeometryReader but having a range of frame sizes looks best on the UI as far as I'm concerned
-                .frame(minWidth: minWidth, idealWidth: idealWidth, maxWidth: maxWidth, minHeight: minHeight, idealHeight: idealHeight, maxHeight: maxHeight, alignment: .leading)
+                .frame(minWidth: minWidth,
+                       idealWidth: idealWidth,
+                       maxWidth: maxWidth,
+                       minHeight: minHeight,
+                       idealHeight: idealHeight,
+                       maxHeight: maxHeight,
+                       alignment: .leading)
                 .padding(stackPadding)
                 /// Call of the singleOrMultiple function in the Extension
                 .onAppear(perform: singleOrMultiple)

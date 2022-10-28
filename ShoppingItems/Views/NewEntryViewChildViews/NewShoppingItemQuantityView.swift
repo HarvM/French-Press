@@ -18,8 +18,11 @@ struct NewShoppingItemQuantityView: View {
             .frame (height: 40)
             .multilineTextAlignment(.leading)
             .keyboardType(.decimalPad)
-            .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
-            .ignoresSafeArea(.keyboard, edges: .bottom)
+            .font(.custom(DefaultFont.defaultFont.rawValue,
+                          size: 16,
+                          relativeTo: .headline))
+            .ignoresSafeArea(.keyboard,
+                             edges: .bottom)
     }
 }
 

@@ -36,7 +36,8 @@ struct BurgerMenuContent: View {
                             isAboutPresented.toggle()
                         }
                         .font(.title2)
-                        .fullScreenCover(isPresented: $isAboutPresented, content: AboutView.init)
+                        .fullScreenCover(isPresented: $isAboutPresented,
+                                         content: AboutView.init)
                     } /// End of HStack
                     .padding()
                     // MARK:  - "Themes" section
@@ -45,7 +46,8 @@ struct BurgerMenuContent: View {
                             isThemesPresented.toggle()
                         }
                         .font(.title2)
-                        .fullScreenCover(isPresented: $isThemesPresented, content: ThemesView.init)
+                        .fullScreenCover(isPresented: $isThemesPresented,
+                                         content: ThemesView.init)
                     } /// End of HStack
                     .padding()
                     Spacer() /// Kicks the v number to the bottom

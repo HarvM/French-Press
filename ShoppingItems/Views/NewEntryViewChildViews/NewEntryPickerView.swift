@@ -19,7 +19,9 @@ struct NewEntryPickerView: View {
                 Text(self.stringStore.measurementFound[$0])
                     .frame(height: 40)
             }
-            .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
+            .font(.custom(DefaultFont.defaultFont.rawValue,
+                          size: 16,
+                          relativeTo: .headline))
         }
         .pickerStyle(DefaultPickerStyle())
         .foregroundColor(.red)

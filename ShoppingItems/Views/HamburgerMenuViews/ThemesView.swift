@@ -40,7 +40,9 @@ struct ThemesView: View {
                                     })
                                 }
                                 /// Sorts the frame of all of the LazyVGrid
-                                .frame(width: geometry.size.width, height: geometry.size.height/9, alignment: .center)
+                                .frame(width: geometry.size.width,
+                                       height: geometry.size.height/9,
+                                       alignment: .center)
                             }
                         }
                     }

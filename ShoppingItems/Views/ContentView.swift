@@ -147,12 +147,18 @@ struct ContentView: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink(destination: NewEntryView()
                             .navigationTitle(stringStore.addItem)
-                            .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
+                            .frame(minWidth: 0, idealWidth: 0,
+                                   maxWidth: .infinity,
+                                   minHeight: 0,
+                                   idealHeight: 0,
+                                   maxHeight: .infinity,
+                                   alignment:.center)
                             .edgesIgnoringSafeArea(.all)
                         ){
                             /// Image of the trailing icon that leads the user to the map
                             Image(ContentViewImages.plusImage.rawValue)
-                                .frame(width: 35, height: 35)
+                                .frame(width: 35,
+                                       height: 35)
                                 .cornerRadius(38.5)
                         }
                     }

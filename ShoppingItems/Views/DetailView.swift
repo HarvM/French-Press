@@ -33,7 +33,9 @@ struct DetailView: View {
                         /// Section that displays the items name
                         Section {
                             Text ("\(itemToBeDisplayed.itemToBeAdded)")
-                                .font(.custom(DefaultFont.defaultFont.rawValue, size: fontSizeItemToBeDisplayed, relativeTo: .headline))
+                                .font(.custom(DefaultFont.defaultFont.rawValue,
+                                              size: fontSizeItemToBeDisplayed,
+                                              relativeTo: .headline))
                                 .lineLimit(lineLimit)
                                 .foregroundColor(foregroundColourYellow)
                         } /// End of Section
@@ -46,12 +48,16 @@ struct DetailView: View {
                             } else {
                                 Text("\(itemToBeDisplayed.notesOnItem)")
                                     .foregroundColor(.white)
-                                    .font(.custom(DefaultFont.defaultFont.rawValue, size: fontSizeNotes, relativeTo: .headline))
+                                    .font(.custom(DefaultFont.defaultFont.rawValue,
+                                                  size: fontSizeNotes,
+                                                  relativeTo: .headline))
                             }
                         } /// End of Section
                         .padding(.bottom, geometry.size.height/2)
                     } /// End of VStack
-                    .frame(width: geometry.size.width-10, height: geometry.size.height, alignment: .center)
+                    .frame(width: geometry.size.width-10,
+                           height: geometry.size.height,
+                           alignment: .center)
                 } /// End of GeometryReader
             } /// End of ZStack
             .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
