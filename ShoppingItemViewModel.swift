@@ -12,7 +12,7 @@ import CoreData
 
 class ShoppingItemViewModel: ObservableObject {
     
-    let container: NSPersistentContainer
+    var container: NSPersistentContainer
     
     @Published var shoppingItems: [ShoppingItems] = []
     

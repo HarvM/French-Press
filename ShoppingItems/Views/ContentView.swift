@@ -13,17 +13,13 @@ struct ContentView: View {
     // MARK: - Properties
     @State var isEditing = false
     @State var showHamburgerMenu = false
-//    @ObservedObject var listStore: ShoppingItemStore
     @ObservedObject var viewModel: ShoppingItemViewModel
     let generator = UINotificationFeedbackGenerator()
     let stringStore = StringStore()
     @Environment (\.managedObjectContext) var managedObjectContext
     @Environment (\.presentationMode) var presentationMode
     @Environment (\.colorScheme) var colorScheme
-//    @FetchRequest(entity: ShoppingItems.entity(), sortDescriptors:
-//                    [NSSortDescriptor (keyPath: \ShoppingItems.order, ascending: true)])
-//    var shoppingItemEntries: FetchedResults<ShoppingItems>
-    
+
     // MARK: Main body of the view
     var body: some View {
         ZStack {
