@@ -13,15 +13,16 @@ struct ContentView: View {
     // MARK: - Properties
     @State var isEditing = false
     @State var showHamburgerMenu = false
-    @ObservedObject var listStore: ShoppingItemStore
+//    @ObservedObject var listStore: ShoppingItemStore
+    @ObservedObject var viewModel: ShoppingItemViewModel
     let generator = UINotificationFeedbackGenerator()
     let stringStore = StringStore()
     @Environment (\.managedObjectContext) var managedObjectContext
     @Environment (\.presentationMode) var presentationMode
     @Environment (\.colorScheme) var colorScheme
-    @FetchRequest(entity: ShoppingItems.entity(), sortDescriptors:
-                    [NSSortDescriptor (keyPath: \ShoppingItems.order, ascending: true)])
-    var shoppingItemEntries: FetchedResults<ShoppingItems>
+//    @FetchRequest(entity: ShoppingItems.entity(), sortDescriptors:
+//                    [NSSortDescriptor (keyPath: \ShoppingItems.order, ascending: true)])
+//    var shoppingItemEntries: FetchedResults<ShoppingItems>
     
     // MARK: Main body of the view
     var body: some View {
@@ -36,7 +37,7 @@ struct ContentView: View {
     @ViewBuilder
     var ListView: some View {
         /// If no shoppingItemEntries on the list then display the placeholder image
-        if shoppingItemEntries.count == 0 {
+        if viewModel.shoppingItems.count == 0 {
             EmptyListView
         } else {
             /// Will show the view with the shoppingItems that the user has input
@@ -61,7 +62,7 @@ struct ContentView: View {
                 // MARK: - NavigationBarItems: Leading item will be the HamburgerMenu button that lets the user access the settings, the trailing item: let's the user add a new item to the CoreData/list
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink(destination: NewEntryView()
+                        NavigationLink(destination: NewEntryView(viewModel: viewModel)
                             .navigationTitle(stringStore.addItem)
                             .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
                             .edgesIgnoringSafeArea(.all)
@@ -91,7 +92,7 @@ struct ContentView: View {
                         List {
                             // MARK: - HStack: how the cells are displayed and populated
                             Section() {
-                                ForEach(shoppingItemEntries, id: \.self) {
+                                ForEach(viewModel.shoppingItems, id: \.self) {
                                     shoppingItemNew in
                                     HStack {
                                         CellView(itemToBeAdded: shoppingItemNew.itemToBeAdded,
@@ -113,7 +114,7 @@ struct ContentView: View {
                         List {
                             // MARK: - HStack: how the cells are displayed and populated
                             Section() {
-                                ForEach(shoppingItemEntries, id: \.self) {
+                                ForEach(viewModel.shoppingItems, id: \.self) {
                                     shoppingItemNew in
                                     HStack {
                                         CellView(itemToBeAdded: shoppingItemNew.itemToBeAdded,
@@ -147,7 +148,7 @@ struct ContentView: View {
                         EditButton()
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink(destination: NewEntryView()
+                        NavigationLink(destination: NewEntryView(viewModel: viewModel)
                             .navigationTitle(stringStore.addItem)
                             .frame(minWidth: 0, idealWidth: 0,
                                    maxWidth: .infinity,
@@ -170,7 +171,7 @@ struct ContentView: View {
         .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
     } /// End of populatedView
     
-    init() {
+    init(viewModel: ShoppingItemViewModel) {
         /// Below is various attempts at getting the from from the Picker to display a different background colour
         UIPickerView.appearance().backgroundColor = UIColor(Color(BackgroundColours.defaultBackground.rawValue))
         UIPickerView.appearance().tintColor = UIColor(Color(BackgroundColours.defaultBackground.rawValue))
@@ -187,8 +188,8 @@ struct ContentView: View {
         /// Use this if NavigationBarTitle is with displayMode = .inline
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
         /// Have to init the listStore with a value
-        self.listStore = ShoppingItemStore.init()
         UICollectionView.appearance().backgroundColor = UIColor(Color(BackgroundColours.defaultBackground.rawValue))
+        self.viewModel = viewModel
     }
 }
 

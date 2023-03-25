@@ -15,6 +15,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        
+        let viewModel = ShoppingItemViewModel()
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
@@ -31,7 +33,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
             // Will set the content view that becomes the rootView below into
             // Takes the managedObject from above and then passes it into the ContentView
-            let contentView =  ContentView().environment(\.managedObjectContext, managedObject)
+            let contentView =  ContentView(viewModel: viewModel).environment(\.managedObjectContext, managedObject)
             
             // Removes the selected cell being highlighted after the DetailView has been accessed and then returned from
             UITableView.appearance().allowsSelection = false

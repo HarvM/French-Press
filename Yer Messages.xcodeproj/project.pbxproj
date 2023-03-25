@@ -15,7 +15,7 @@
 		491D796123C11D1800B537EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 491D795F23C11D1800B537EB /* LaunchScreen.storyboard */; };
 		491D797723C11D1800B537EB /* ShoppingItemsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D797623C11D1800B537EB /* ShoppingItemsUITests.swift */; };
 		491D798723C1EAA800B537EB /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D798623C1EAA800B537EB /* CellView.swift */; };
-		492F956325A9E48F00F56126 /* ShoppingItemsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F956225A9E48F00F56126 /* ShoppingItemsStore.swift */; };
+		492F956325A9E48F00F56126 /* ShoppingItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F956225A9E48F00F56126 /* ShoppingItemViewModel.swift */; };
 		493B3A96253BD31200CAF0F9 /* NewEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493B3A95253BD31200CAF0F9 /* NewEntryView.swift */; };
 		494682DE256B46CE0088BC51 /* ColourExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494682DD256B46CE0088BC51 /* ColourExtension.swift */; };
 		49768FC225730BCF00B93AC1 /* AdaptsToKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49768FC125730BCF00B93AC1 /* AdaptsToKeyboard.swift */; };
@@ -92,7 +92,7 @@
 		491D797623C11D1800B537EB /* ShoppingItemsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemsUITests.swift; sourceTree = "<group>"; };
 		491D797823C11D1800B537EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		491D798623C1EAA800B537EB /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
-		492F956225A9E48F00F56126 /* ShoppingItemsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemsStore.swift; sourceTree = "<group>"; };
+		492F956225A9E48F00F56126 /* ShoppingItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemViewModel.swift; sourceTree = "<group>"; };
 		493B3A95253BD31200CAF0F9 /* NewEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryView.swift; sourceTree = "<group>"; };
 		494682DD256B46CE0088BC51 /* ColourExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourExtension.swift; sourceTree = "<group>"; };
 		49768FC125730BCF00B93AC1 /* AdaptsToKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptsToKeyboard.swift; sourceTree = "<group>"; };
@@ -153,7 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				49ED956225B1CE9F005EF305 /* ShoppingItems.swift */,
-				492F956225A9E48F00F56126 /* ShoppingItemsStore.swift */,
+				492F956225A9E48F00F56126 /* ShoppingItemViewModel.swift */,
 				491D795023C11D1700B537EB /* ShoppingItems */,
 				491D796A23C11D1800B537EB /* ShoppingItemsTests */,
 				491D797523C11D1800B537EB /* ShoppingItemsUITests */,
@@ -456,7 +456,7 @@
 				49C61F722623939A00EBB1C3 /* ContentViewExtension.swift in Sources */,
 				493B3A96253BD31200CAF0F9 /* NewEntryView.swift in Sources */,
 				D283573126516893009165DF /* BackgroundColours.swift in Sources */,
-				492F956325A9E48F00F56126 /* ShoppingItemsStore.swift in Sources */,
+				492F956325A9E48F00F56126 /* ShoppingItemViewModel.swift in Sources */,
 				D283572D2651682D009165DF /* Font.swift in Sources */,
 				D2D9BED6265559FC005529EF /* HamburgerMenu.swift in Sources */,
 			);
@@ -557,7 +557,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -612,7 +612,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -632,7 +632,7 @@
 				DEVELOPMENT_TEAM = YU65V62LAA;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ShoppingItems/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -655,7 +655,7 @@
 				DEVELOPMENT_TEAM = YU65V62LAA;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ShoppingItems/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
