@@ -20,7 +20,7 @@ extension ContentView {
     public func deleteItem(at indexSet: IndexSet) {
         DispatchQueue.main.async {
             /// When the user wants to delete a cell, the index of the selected cell is found and then removed
-            let deleteItem = self.shoppingItemEntries[indexSet.first!]
+            let deleteItem = self.viewModel.shoppingItems[indexSet.first!]
             self.managedObjectContext.delete(deleteItem)
             
             self.generator.notificationOccurred(.error)
@@ -31,7 +31,7 @@ extension ContentView {
     public func moveItem(from source: IndexSet, to destination: Int) {
         DispatchQueue.main.async {
             /// An array of them items from the fetched results
-            var orderedItems: [ShoppingItems] = shoppingItemEntries.map{$0}
+            var orderedItems: [ShoppingItems] = viewModel.shoppingItems.map{$0}
             
             /// Alter the order of the items in the new array
             orderedItems.move(fromOffsets: source,

@@ -21,13 +21,3 @@ final public class ShoppingItems: NSManagedObject, Identifiable {
     /// Used in UnitTests
     var context : NSManagedObjectContext? = nil
 }
-
-extension ShoppingItems {
-    ////Will initially sort the items in the order that they appear
-    static func getListItemFetchRequest() -> NSFetchRequest<ShoppingItems>{
-        let request = ShoppingItems.fetchRequest() as! NSFetchRequest<ShoppingItems>
-        request.sortDescriptors = [NSSortDescriptor(key: "order",
-                                                    ascending: true)]
-        return request
-    }
-}
