@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19F6B07229F2CB0600ADD14E /* ShoppingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F6B07129F2CB0600ADD14E /* ShoppingListViewModel.swift */; };
+		19F6B07429F2D06A00ADD14E /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F6B07329F2D06A00ADD14E /* PersistenceController.swift */; };
 		491D795223C11D1700B537EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D795123C11D1700B537EB /* AppDelegate.swift */; };
 		491D795423C11D1700B537EB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D795323C11D1700B537EB /* SceneDelegate.swift */; };
 		491D795923C11D1700B537EB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D795823C11D1700B537EB /* ContentView.swift */; };
@@ -78,6 +80,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		19F6B07129F2CB0600ADD14E /* ShoppingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewModel.swift; sourceTree = "<group>"; };
+		19F6B07329F2D06A00ADD14E /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		491D794E23C11D1700B537EB /* Yer Messages.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yer Messages.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		491D795123C11D1700B537EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		491D795323C11D1700B537EB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -149,9 +153,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		19F6B07029F2CAF100ADD14E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				19F6B07129F2CB0600ADD14E /* ShoppingListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		491D794523C11D1700B537EB = {
 			isa = PBXGroup;
 			children = (
+				19F6B07329F2D06A00ADD14E /* PersistenceController.swift */,
 				49ED956225B1CE9F005EF305 /* ShoppingItems.swift */,
 				492F956225A9E48F00F56126 /* ShoppingItemsStore.swift */,
 				491D795023C11D1700B537EB /* ShoppingItems */,
@@ -174,6 +187,7 @@
 		491D795023C11D1700B537EB /* ShoppingItems */ = {
 			isa = PBXGroup;
 			children = (
+				19F6B07029F2CAF100ADD14E /* ViewModel */,
 				4983E8B624660808005E9063 /* Views */,
 				49C61F6D2623932E00EBB1C3 /* ViewExtensions */,
 				49FF1F0C255C852500C1BBAF /* Helpers */,
@@ -443,6 +457,7 @@
 				49C85B60254780E400A9C901 /* TextLimit.swift in Sources */,
 				CBFAE7072868E11900DFB86C /* NewShoppingItemNotesView.swift in Sources */,
 				49ED956325B1CE9F005EF305 /* ShoppingItems.swift in Sources */,
+				19F6B07229F2CB0600ADD14E /* ShoppingListViewModel.swift in Sources */,
 				491D795423C11D1700B537EB /* SceneDelegate.swift in Sources */,
 				D2EE5802267125910061CF38 /* ThemesViewExtension.swift in Sources */,
 				D2D9BED4265545EC005529EF /* BurgerMenuContent.swift in Sources */,
@@ -453,6 +468,7 @@
 				CBFAE7052868DF0800DFB86C /* NewShoppingItemQuantityView.swift in Sources */,
 				D2027AB7266120E2002E3BC6 /* AboutView.swift in Sources */,
 				49C61F7C262393F200EBB1C3 /* NewEntryViewExtension.swift in Sources */,
+				19F6B07429F2D06A00ADD14E /* PersistenceController.swift in Sources */,
 				49C61F722623939A00EBB1C3 /* ContentViewExtension.swift in Sources */,
 				493B3A96253BD31200CAF0F9 /* NewEntryView.swift in Sources */,
 				D283573126516893009165DF /* BackgroundColours.swift in Sources */,

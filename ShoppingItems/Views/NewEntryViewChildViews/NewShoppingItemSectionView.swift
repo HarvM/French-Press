@@ -26,7 +26,7 @@ struct NewShoppingItemSectionView: View {
     }
     
 }
-//
+
 //struct NewShoppingItemSectionView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        NewShoppingItemSectionView()
