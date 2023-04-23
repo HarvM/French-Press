@@ -25,7 +25,6 @@ struct NewEntryView: View {
     @State var areTreatsAllowed = true
     let stringStore = StringStore()
     let itemSizeMax: Int = 30
-    let viewModel = ShoppingListViewModel()
     
     // MARK: - Body the UI that will have a Form (Item Entry, Stepper, and Notes) and a Save Button (bottom of view)
     var body: some View {
@@ -142,7 +141,7 @@ struct NewEntryView: View {
             .padding(.top, 40)
             .toolbar { /// Using toolbar to place in the Treat button
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: self.saveTreatItem, label:  {
+                    Button(action: self.weeTreat, label:  {
                         Text("🎁")
                     })
                 }
