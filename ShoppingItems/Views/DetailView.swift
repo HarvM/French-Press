@@ -9,10 +9,11 @@
 import SwiftUI
 import SpriteKit
 
+@available(iOS 17.0, *)
 struct DetailView: View {
     
     // MARK: - Properties
-    @Environment(\.managedObjectContext) var managedObjectContext
+    @Environment (\.modelContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode
     let itemToBeDisplayed: ShoppingItems
     @State private var hasData = false

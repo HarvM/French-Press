@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+@available(iOS 17.0, *)
 extension NewEntryView {
     
     /// Func that will pass through either of the save points that the user could use to save an entry
