@@ -13,7 +13,7 @@ import SpriteKit
 struct DetailView: View {
     
     // MARK: - Properties
-    @Environment (\.modelContext) var managedObjectContext
+    @Environment (\.modelContext) var modelContext
     @Environment(\.presentationMode) var presentationMode
     let itemToBeDisplayed: ShoppingItems
     @State private var hasData = false

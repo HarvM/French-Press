@@ -25,7 +25,7 @@ extension ContentView {
             let deleteItem = self.shoppingItemEntries[indexSet.first!]
 
             // This tiny line now deals with deleting an item from the model
-            self.context.delete(deleteItem)
+            self.modelContext.delete(deleteItem)
             // Old way
             // self.managedObjectContext.delete(deleteItem)
 

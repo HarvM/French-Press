@@ -13,7 +13,7 @@ import SwiftData
 // Auto generated too - click on existing Model -> Editor -> Create SwiftDataCode
 // Super simple
 @Model public class ShoppingItems {
-    var id: UUID?
+    public var id: UUID?
     var itemToBeAdded: String
     var notesOnItem: String
     var order: Int16 = 0
