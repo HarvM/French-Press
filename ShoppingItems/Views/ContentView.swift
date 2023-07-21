@@ -18,17 +18,11 @@ struct ContentView: View {
     let generator = UINotificationFeedbackGenerator()
     let stringStore = StringStore()
     @Environment (\.presentationMode) var presentationMode
-    @Environment (\.modelContext) var context
+    @Environment (\.modelContext) var modelContext
     @Environment (\.colorScheme) var colorScheme
 
     // This does the fetching of the data
     @Query var shoppingItemEntries: [ShoppingItems]
-    // Replaces the following
-    /*
-    @FetchRequest(entity: ShoppingItems.entity(), sortDescriptors:
-                    [NSSortDescriptor (keyPath: \ShoppingItems.order, ascending: true)])
-    var shoppingItemEntries: FetchedResults<ShoppingItems>
-    */
 
     // MARK: Main body of the view
     var body: some View {
@@ -98,12 +92,12 @@ struct ContentView: View {
                             // MARK: - HStack: how the cells are displayed and populated
                             Section() {
                                 ForEach(shoppingItemEntries, id: \.self) {
-                                    shoppingItemNew in
+                                    shoppingItem in
                                     HStack {
-                                        CellView(itemToBeAdded: shoppingItemNew.itemToBeAdded,
-                                                 quantitySelected: shoppingItemNew.quantitySelected,
-                                                 preferredMeasurement: shoppingItemNew.preferredMeasurement)
-                                        NavigationLink("", destination: DetailView (itemToBeDisplayed: shoppingItemNew))
+                                        CellView(itemToBeAdded: shoppingItem.itemToBeAdded,
+                                                 quantitySelected: shoppingItem.quantitySelected,
+                                                 preferredMeasurement: shoppingItem.preferredMeasurement)
+                                        NavigationLink("", destination: DetailView (itemToBeDisplayed: shoppingItem))
                                     } /// End of HStack
                                 } /// End of ForEach loop
                                 .onDelete(perform: self.deleteItem)

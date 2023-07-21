@@ -13,10 +13,11 @@ import CoreData
 struct NewEntryView: View {
     
     // MARK: - Properties
-    @Environment (\.modelContext) var managedObjectContext
+    @Environment (\.modelContext) var modelContext
     @Environment(\.presentationMode) var presentationMode
     let generator = UINotificationFeedbackGenerator()
-    @StateObject var newShoppingItem = NewItem()
+//    @State var newShoppingItem = NewItem()
+    @State var itemTitle = ""
     @StateObject var notesOnItem = ItemNote()
     @StateObject var quantitySelected = ItemQuantity()
     @StateObject var selectedMeasurement = ItemMeasurement()
@@ -40,7 +41,7 @@ struct NewEntryView: View {
                             .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
                                 VStack {
                                     HStack {
-                                        NewShoppingItemSectionView(newShoppingItem: newShoppingItem)
+                                        NewShoppingItemSectionView(itemTitle: itemTitle)
                                     }
                                     .font(.headline)
                                 } /// End of Section
@@ -76,7 +77,7 @@ struct NewEntryView: View {
                     .scrollContentBackground(.hidden)
                 // MARK: - Button that will save the user's entry - sits at the bottom of the view
                 HStack(alignment: .center, spacing: 10) {
-                    Button(action: self.saveNewEntry, label: {
+                    Button(action: {self.saveEntry(itemToBeAdded: $itemTitle.wrappedValue, notesOnItem: "2", quantitySelected: "23", preferredMeasurement: "something")} , label: {
                         Image(ContentViewImages.plusImage.rawValue)
                             .resizable()
                             .frame(width: 45, height: 45)
@@ -84,12 +85,12 @@ struct NewEntryView: View {
                             .padding(.bottom, 28)
                     })
                     .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
-                    .alert(isPresented: $showAlert) { () -> Alert in
-                        Alert(title: Text(stringStore.oneMoment),
-                              message: Text(stringStore.makeSure),
-                              dismissButton: .default(Text(ContentViewImages.thumbsUp.rawValue))
-                        )
-                    }
+//                    .alert(isPresented: $showAlert) { () -> Alert in
+//                        Alert(title: Text(stringStore.oneMoment),
+//                              message: Text(stringStore.makeSure),
+//                              dismissButton: .default(Text(ContentViewImages.thumbsUp.rawValue))
+//                        )
+//                    }
                 } /// End of HStack
                 .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
             } /// End of VStack
