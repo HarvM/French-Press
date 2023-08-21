@@ -109,6 +109,7 @@ struct ContentView: View {
                                 .edgesIgnoringSafeArea(.all))
                         } /// End of List
                         .padding(.top) /// Prevents List showing below statusBar
+                        .padding(.leading, 20)
                         .listRowSeparator(.hidden)
                 } /// End VStack
                 /// Appears to help with the reordering of the List and makes it less laggy when a row is moved
