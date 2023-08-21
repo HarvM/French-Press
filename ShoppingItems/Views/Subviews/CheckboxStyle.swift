@@ -33,5 +33,6 @@ struct CheckboxStyle: ToggleStyle {
                     configuration.isOn.toggle()
                 }
         }
+        .padding(.leading, 10)
     }
 }

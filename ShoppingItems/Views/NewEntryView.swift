@@ -13,11 +13,9 @@ import CoreData
 struct NewEntryView: View {
     
     // MARK: - Properties
-    @Environment (\.modelContext) var modelContext
     @Environment(\.presentationMode) var presentationMode
     let generator = UINotificationFeedbackGenerator()
-//    @State var newShoppingItem = NewItem()
-    @State var itemTitle = ""
+    @StateObject var itemToBeAdded = ShoppingItem()
     @StateObject var notesOnItem = ItemNote()
     @StateObject var quantitySelected = ItemQuantity()
     @StateObject var selectedMeasurement = ItemMeasurement()
@@ -26,7 +24,8 @@ struct NewEntryView: View {
     @State var areTreatsAllowed = true
     let stringStore = StringStore()
     let itemSizeMax: Int = 30
-    
+    @Environment(\.modelContext) var context
+
     // MARK: - Body the UI that will have a Form (Item Entry, Stepper, and Notes) and a Save Button (bottom of view)
     var body: some View {
         ZStack {
@@ -41,7 +40,7 @@ struct NewEntryView: View {
                             .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
                                 VStack {
                                     HStack {
-                                        NewShoppingItemSectionView(itemTitle: itemTitle)
+                                        NewShoppingItemSectionView(newShoppingItem: itemToBeAdded)
                                     }
                                     .font(.headline)
                                 } /// End of Section
@@ -77,7 +76,7 @@ struct NewEntryView: View {
                     .scrollContentBackground(.hidden)
                 // MARK: - Button that will save the user's entry - sits at the bottom of the view
                 HStack(alignment: .center, spacing: 10) {
-                    Button(action: {self.saveEntry(itemToBeAdded: $itemTitle.wrappedValue, notesOnItem: "2", quantitySelected: "23", preferredMeasurement: "something")} , label: {
+                    Button(action: {self.saveItem(itemToBeAdded: itemToBeAdded, notesOnItem: "2", quantitySelected: "23", preferredMeasurement: "something") } , label: {
                         Image(ContentViewImages.plusImage.rawValue)
                             .resizable()
                             .frame(width: 45, height: 45)
