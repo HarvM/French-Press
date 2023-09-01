@@ -16,12 +16,12 @@ import SwiftData
     public var id: UUID?
     var itemToBeAdded: String
     var notesOnItem: String
-    var order: Int16 = 0
+    var order: Int16?
     var preferredMeasurement: String
     var quantitySelected: String
 
     // Auto generated - sweet
-    init(id: UUID? = nil, itemToBeAdded: String, notesOnItem: String, order: Int16, preferredMeasurement: String, quantitySelected: String) {
+    init(id: UUID? = nil, itemToBeAdded: String, notesOnItem: String, order: Int16? = nil, preferredMeasurement: String, quantitySelected: String) {
         self.id = id
         self.itemToBeAdded = itemToBeAdded
         self.notesOnItem = notesOnItem

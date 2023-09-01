@@ -7,13 +7,11 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct NewShoppingItemSectionView: View {
     
     let stringStore = StringStore()
-    // Change back to do the TextLimit later
-//    @State var shoppingItemTitle: ShoppingItem
-
     @ObservedObject var newShoppingItem: ShoppingItem
     @Environment(\.modelContext) private var context
 
@@ -31,7 +29,10 @@ struct NewShoppingItemSectionView: View {
 }
 
 class ShoppingItem: ObservableObject {
-    @Published var itemTitleWithTextLimit = TextLimit(limit: 40)
+    init(itemTitleWithTextLimit: TextLimit = TextLimit(limit: 40)) {
+        self.itemTitleWithTextLimit = itemTitleWithTextLimit
+    }
+    var itemTitleWithTextLimit = TextLimit(limit: 40)
 }
 
 //
