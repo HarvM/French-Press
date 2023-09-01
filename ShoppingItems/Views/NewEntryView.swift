@@ -15,10 +15,10 @@ struct NewEntryView: View {
     // MARK: - Properties
     @Environment(\.presentationMode) var presentationMode
     let generator = UINotificationFeedbackGenerator()
-    @StateObject var itemToBeAdded = ShoppingItem()
-    @StateObject var notesOnItem = ItemNote()
-    @StateObject var quantitySelected = ItemQuantity()
-    @StateObject var selectedMeasurement = ItemMeasurement()
+    @State var itemToBeAdded = ShoppingItem()
+    @State var notesOnItem = ItemNote()
+    @State var quantitySelected = ItemQuantity()
+    @State var newSelectedMeasurement = ItemMeasurement()
     @State var isShowingContentView = false
     @State var showAlert = false
     @State var areTreatsAllowed = true
@@ -54,7 +54,7 @@ struct NewEntryView: View {
                                 VStack {
                                     NewShoppingItemQuantityView(newShoppingItemQuantity: quantitySelected)
                                 }
-                                NewEntryPickerView(newSelectedMeasurement: selectedMeasurement)
+                                NewEntryPickerView(newSelectedMeasurement: newSelectedMeasurement)
                             }/// End of Section
                             .padding(2)
                         
@@ -76,7 +76,11 @@ struct NewEntryView: View {
                     .scrollContentBackground(.hidden)
                 // MARK: - Button that will save the user's entry - sits at the bottom of the view
                 HStack(alignment: .center, spacing: 10) {
-                    Button(action: {self.saveItem(itemToBeAdded: itemToBeAdded, notesOnItem: "2", quantitySelected: "23", preferredMeasurement: "something") } , label: {
+                    Button(action: { self.saveSwiftDataItem(itemToBeAdded: itemToBeAdded.itemTitleWithTextLimit.text,
+                                                            notesOnItem: notesOnItem.notesOnItem.text,
+                                                            quantitySelected: quantitySelected.newItemQuantity.text,
+                                                            preferredMeasurement: String(self.stringStore.measurementFound[newSelectedMeasurement.newItemMeasurement]))},
+                           label: {
                         Image(ContentViewImages.plusImage.rawValue)
                             .resizable()
                             .frame(width: 45, height: 45)

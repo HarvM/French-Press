@@ -45,11 +45,11 @@ extension ContentView {
             
             /// Updates the userOrder to maintain the new order
             /// Done in reverse to minimise changes to indices of the array
-            for reverseIndex in stride(from: orderedItems.count - 1,
-                                       through: 0,
-                                       by: -1) {
-                orderedItems[reverseIndex].order =
-                Int16(truncating: NSNumber(value: Int16(reverseIndex)))
+//            for reverseIndex in stride(from: orderedItems.count - 1,
+//                                       through: 0,
+//                                       by: -1) {
+//                orderedItems[reverseIndex].order =
+//                Int16(truncating: NSNumber(value: Int16(reverseIndex)))
 
                 // Saving done in the background now so can stop the use of the below
                 /// The change in order has to be saved
@@ -62,5 +62,4 @@ extension ContentView {
 //                }
             }
         }
-    }
 }

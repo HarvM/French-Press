@@ -10,16 +10,14 @@ import SwiftUI
 
 @available(iOS 17.0, *)
 extension NewEntryView {
-
-
-    public func saveItem(itemToBeAdded: String,
-                         notesOnItem: String,
-                         quantitySelected: String,
-                         preferredMeasurement: String) {
+    public func saveSwiftDataItem(itemToBeAdded: String,
+                                  notesOnItem: String,
+                                  quantitySelected: String,
+                                  preferredMeasurement: String) {
         let shoppingItems = ShoppingItems(itemToBeAdded: itemToBeAdded,
-                                          notesOnItem: "notesOnItem",
-                                          order: 2, preferredMeasurement: "bags",
-                                          quantitySelected: "2")
+                                          notesOnItem: notesOnItem,
+                                          preferredMeasurement: preferredMeasurement,
+                                          quantitySelected: quantitySelected)
         context.insert(shoppingItems)
         do {
             try context.save()
@@ -76,7 +74,7 @@ extension NewEntryView {
             let randomTreat = stringStore.treatItems.randomElement()!
 
             /// Call of the func that will save the entry to the CoreDate model
-            saveItem(itemToBeAdded: randomTreat.key,
+            saveSwiftDataItem(itemToBeAdded: randomTreat.key,
                       notesOnItem: randomTreat.value,
                       quantitySelected: "\(stringStore.treatEmoji)",
                       preferredMeasurement: "\(stringStore.treatEmoji)")

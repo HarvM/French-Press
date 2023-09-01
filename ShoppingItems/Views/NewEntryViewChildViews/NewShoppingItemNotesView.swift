@@ -12,7 +12,8 @@ struct NewShoppingItemNotesView: View {
     
     let stringStore = StringStore()
     @ObservedObject var newShoppingItemNote: ItemNote
-    
+    @Environment(\.modelContext) private var context
+
     var body: some View {
         TextField(stringStore.typeHere,
                   text: $newShoppingItemNote.notesOnItem.text)
@@ -33,12 +34,15 @@ struct NewShoppingItemNotesView: View {
     }
 }
 
+class ItemNote: ObservableObject {
+    init(notesOnItem: TextLimit = TextLimit(limit: 40)) {
+        self.notesOnItem = notesOnItem
+    }
+    @Published var notesOnItem = TextLimit(limit: 40)
+}
+
 //struct NewShoppingItemNotesView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        NewShoppingItemNotesView()
 //    }
 //}
-
-class ItemNote: ObservableObject {
-    @Published var notesOnItem = TextLimit(limit: 40)
-}
