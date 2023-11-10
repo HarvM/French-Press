@@ -10,61 +10,65 @@ import SwiftUI
 
 @available(iOS 17.0, *)
 extension NewEntryView {
+//    public func saveSwiftDataItem(itemToBeAdded: String,
+//                                  notesOnItem: String,
+//                                  quantitySelected: String,
+//                                  preferredMeasurement: String) {
+//
+//        let shoppingItems = ShoppingItems(itemToBeAdded: itemToBeAdded,
+//                                          notesOnItem: notesOnItem,
+//                                          preferredMeasurement: preferredMeasurement,
+//                                          quantitySelected: quantitySelected)
+//        context.insert(shoppingItems)
+//        do {
+//            try context.save()
+//        } catch {
+//            print(error.localizedDescription)
+//        }
+//        presentationMode.wrappedValue.dismiss()
+//    }
+
+    /// Func that will pass through either of the save points that the user could use to save an entry
     public func saveSwiftDataItem(itemToBeAdded: String,
                                   notesOnItem: String,
                                   quantitySelected: String,
                                   preferredMeasurement: String) {
-        let shoppingItems = ShoppingItems(itemToBeAdded: itemToBeAdded,
-                                          notesOnItem: notesOnItem,
-                                          preferredMeasurement: preferredMeasurement,
-                                          quantitySelected: quantitySelected)
-        context.insert(shoppingItems)
-        do {
-            try context.save()
-        } catch {
-            print(error.localizedDescription)
+
+
+        let shoppingItems = ShoppingItems(itemToBeAdded: itemToBeAdded.trimmingCharacters(in: .whitespacesAndNewlines),
+                                          notesOnItem: notesOnItem.trimmingCharacters(in: .whitespacesAndNewlines),
+                                          preferredMeasurement: quantitySelected.trimmingCharacters(in: .whitespacesAndNewlines),
+                                          quantitySelected: self.stringStore.measurementFound[selectedMeasurement.newItemMeasurement])
+
+       // Logic to ensure that there is a quantity of some sort by default even if the user doesn't explicitly defines an amount
+        if shoppingItems.quantitySelected.isEmpty && shoppingItems.quantitySelected != "\(stringStore.treatEmoji)" {
+            shoppingItems.quantitySelected = "1"
         }
-        presentationMode.wrappedValue.dismiss()
+
+        if shoppingItems.itemToBeAdded.isEmpty {
+            // Jumps into here and then doesn't show the Alert to tell the user that they need to enter a value for the initial
+            // shopoping item
+            self.showAlert = true
+        } else {
+            context.insert(shoppingItems)
+            do {
+                try self.context.save()
+            } catch {
+                Alert(title: Text("\(stringStore.sorry + ContentViewImages.sorryShrug.rawValue)"),
+                      message: Text(stringStore.pleaseTryAgain),
+                      dismissButton: .default(Text("")))
+            }
+            self.presentationMode.wrappedValue.dismiss()
+            self.generator.notificationOccurred(.success)
+        }
+
+        // Partners with "isShowingContentView" to ensure that the user is kicked back to the ContentView
+
+        /// Resets the newShoppingItem back to being blank - check with SwiftData does with fields when dismissing views
+//        shoppingItems.itemToBeAdded = ""
+//        shoppingItems.notesOnItem = ""
+
     }
-
-    /// Func that will pass through either of the save points that the user could use to save an entry
-//    public func saveEntry(itemToBeAdded: String,
-//                          notesOnItem: String,
-//                          quantitySelected: String,
-//                          preferredMeasurement: String) {
-//        let trimmedItem = itemToBeAdded.trimmingCharacters(in: .whitespacesAndNewlines)
-//        let trimmedNote = notesOnItem.trimmingCharacters(in: .whitespacesAndNewlines)
-//        let trimmedQuantity = quantitySelected.trimmingCharacters(in: .whitespacesAndNewlines)
-//        let chosenMeasurement = self.stringStore.measurementFound[selectedMeasurement.newItemMeasurement]
-
-//        let items = ShoppingItems(itemToBeAdded: "Apples", notesOnItem: "notesOnItem", order: .min, preferredMeasurement: "Bags", quantitySelected: "2")
-//        context.insert(items)
-        /// There has to be a value within the "itemsToBeAdded" or else nothing will be saved
-//        if trimmedItem.isEmpty{
-//            self.showAlert = true
-//        }
-
-        /// Will make an attempt to save the data to the CoreData model
-//        do {
-//            try self.context.save()
-//            return 
-//        } catch {
-            /// Will throw an alert to the user should an issue occur
-//            Alert(title: Text("\(stringStore.sorry + ContentViewImages.sorryShrug.rawValue)"),
-//                  message: Text(stringStore.pleaseTryAgain),
-//                  dismissButton: .default(Text("")))
-//        }
-//
-//        // Partners with "isShowingContentView" to ensure that the user is kicked back to the ContentView
-//        self.presentationMode.wrappedValue.dismiss()
-//        // Haptic feedback for when an item has been added
-//        self.generator.notificationOccurred(.success)
-//
-//        /// Resets the newShoppingItem back to being blank - check with SwiftData does with fields when dismissing views
-//        //                newShoppingItem.newItem.text = ""
-//        //                notesOnItem.notesOnItem.text = ""
-//
-//    }
 
 
     /// This func will take a random entry and then put it into the CoreData model and then display it on the user's list
