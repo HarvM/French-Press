@@ -1,11 +1,3 @@
-//
-//  YerMessagesApp.swift
-//  Yer Messages
-//
-//  Created by Marc Harvey on 07/07/2023.
-//  Copyright © 2023 Marc Harvey. All rights reserved.
-//
-
 import SwiftUI
 import SwiftData
 

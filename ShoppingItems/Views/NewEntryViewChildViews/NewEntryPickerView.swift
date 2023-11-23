@@ -1,11 +1,3 @@
-//
-//  NewEntryPickerView.swift
-//  Yer Messages
-//
-//  Created by Marc Harvey on 30/06/2022.
-//  Copyright © 2022 Marc Harvey. All rights reserved.
-//
-
 import SwiftUI
 
 struct NewEntryPickerView: View {

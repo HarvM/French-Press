@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let window = UIWindow(windowScene: windowScene)
 
             // Different in SwiftUI
-            // Puts the obejcts into the stack
+            // Puts the objects into the stack
             let managedObject = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
             // Focused on iOS 17 at the moment to avoid if iOSx { whatever} else { }

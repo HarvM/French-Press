@@ -1,11 +1,3 @@
-//
-//  CellView.swift
-//  ShoppingItems
-//
-//  Created by Marc Harvey on 05/01/2020.
-//  Copyright © 2020 Marc Harvey. All rights reserved.
-//
-
 import SwiftUI
 
 /// This class deals with the cell creation that will be inserted into the stack in the ContentView class
@@ -38,7 +30,6 @@ struct CellView: View {
     var body: some View {
         VStack {
             HStack {
-                /// Toggle here followed by the item that the user desires
                 Toggle("", isOn: $isChecked)
                     .labelsHidden()
                     .padding(togglePadding)
@@ -60,7 +51,6 @@ struct CellView: View {
                 } /// End of VStack
                 .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
                 .foregroundColor(textColour)
-                /// Looked into using GeometryReader but having a range of frame sizes looks best on the UI as far as I'm concerned
                 .frame(minWidth: minWidth,
                        idealWidth: idealWidth,
                        maxWidth: maxWidth,
@@ -69,11 +59,9 @@ struct CellView: View {
                        maxHeight: maxHeight,
                        alignment: .leading)
                 .padding(stackPadding)
-                /// Call of the singleOrMultiple function in the Extension
                 .onAppear(perform: singleOrMultiple)
             }
             .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
-            /// Call of the CheckBoxStyle View that deals with the checkbox that leads the cell
             .toggleStyle(CheckboxStyle())
         }
         .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))

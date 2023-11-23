@@ -1,11 +1,3 @@
-//
-//  SaveButtonView.swift
-//  Yer Messages
-//
-//  Created by Marc Harvey on 12/03/2022.
-//  Copyright © 2022 Marc Harvey. All rights reserved.
-//
-
 import Foundation
 import SwiftUI
 

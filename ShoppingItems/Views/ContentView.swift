@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  ShoppingItems
-//
-//  Created by Marc Harvey on 05/01/2020.
-//  Copyright © 2020 Marc Harvey. All rights reserved.
-//
 import SwiftUI
 import Foundation
 import SwiftData
@@ -20,8 +13,6 @@ struct ContentView: View {
     @Environment (\.presentationMode) var presentationMode
     @Environment (\.modelContext) var modelContext
     @Environment (\.colorScheme) var colorScheme
-
-    // This does the fetching of the data
     @Query var shoppingItemEntries: [ShoppingItems]
 
     // MARK: Main body of the view
@@ -40,7 +31,6 @@ struct ContentView: View {
         if shoppingItemEntries.count == 0 {
             EmptyListView
         } else {
-            /// Will show the view with the shoppingItems that the user has input
             PopulatedView
         }
     }
@@ -67,7 +57,6 @@ struct ContentView: View {
                             .frame(minWidth: 0, idealWidth: 0, maxWidth: .infinity, minHeight: 0, idealHeight: 0, maxHeight: .infinity, alignment:.center)
                             .edgesIgnoringSafeArea(.all)
                         ){
-                            /// Will lead use to the NewEntryView
                             Image(ContentViewImages.plusImage.rawValue)
                                 .frame(width: 35, height: 35)
                                 .cornerRadius(.infinity)
@@ -82,7 +71,7 @@ struct ContentView: View {
     }
     
     // MARK: - PopulatedView
-    /// This view will hold the List that displays the items that the user has input and kept in CoreData
+    /// This view will hold the List that displays the items that the user has input and kept in SwiftData
     var PopulatedView: some View {
         NavigationView {
             ZStack {
@@ -99,7 +88,7 @@ struct ContentView: View {
                                                  preferredMeasurement: shoppingItem.preferredMeasurement)
                                         NavigationLink("", destination: DetailView (itemToBeDisplayed: shoppingItem))
                                     } /// End of HStack
-                                } /// End of ForEach loop
+                                }
                                 .onDelete(perform: self.deleteItem)
                                 .onMove(perform: moveItem)
                             } /// End of Section
@@ -108,15 +97,12 @@ struct ContentView: View {
                             .listRowBackground(Color(BackgroundColours.defaultBackground.rawValue)
                                 .edgesIgnoringSafeArea(.all))
                         } /// End of List
-                        .padding(.top) /// Prevents List showing below statusBar
+                        .padding(.top)
                         .padding(.leading, 20)
                         .listRowSeparator(.hidden)
                 } /// End VStack
-                /// Appears to help with the reordering of the List and makes it less laggy when a row is moved
                 .id(UUID())
-                /// Removes the header and the wee arrow that hides/shows the cells
                 .listStyle(PlainListStyle())
-                /// Ensures that the list is closer to the top of the window
                 .navigationBarTitleDisplayMode(.inline)
                 
                 // MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list
@@ -135,7 +121,6 @@ struct ContentView: View {
                                    alignment:.center)
                             .edgesIgnoringSafeArea(.all)
                         ){
-                            /// Image of the trailing icon that leads the user to the NewEntryView
                             Image(ContentViewImages.plusImage.rawValue)
                                 .frame(width: 35,
                                        height: 35)
@@ -149,22 +134,15 @@ struct ContentView: View {
     } /// End of populatedView
     
     init() {
-        /// Below is various attempts at getting the from from the Picker to display a different background colour
         UIPickerView.appearance().backgroundColor = UIColor(Color(BackgroundColours.defaultBackground.rawValue))
         UIPickerView.appearance().tintColor = UIColor(Color(BackgroundColours.defaultBackground.rawValue))
-        /// Setting the empty/potential cells to the desired colour
         UITableView.appearance().backgroundColor = UIColor(Color(BackgroundColours.defaultBackground.rawValue))
-        /// clears navBar to background colour
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        /// removes separator
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().isTranslucent = true
         UINavigationBar.appearance().backgroundColor = UIColor(Color(BackgroundColours.defaultBackground.rawValue))
-        /// Use this if NavigationBarTitle is with Large Font
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        /// Use this if NavigationBarTitle is with displayMode = .inline
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
-        /// Have to init the listStore with a value
         UICollectionView.appearance().backgroundColor = UIColor(Color(BackgroundColours.defaultBackground.rawValue))
     }
 }

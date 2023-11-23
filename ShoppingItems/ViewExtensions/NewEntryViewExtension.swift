@@ -1,11 +1,3 @@
-//
-//  NewEntryViewExtension.swift
-//  Yer Messages
-//
-//  Created by Marc Harvey on 11/04/2021.
-//  Copyright © 2021 Marc Harvey. All rights reserved.
-//
-
 import SwiftUI
 
 @available(iOS 17.0, *)

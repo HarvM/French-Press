@@ -1,11 +1,3 @@
-//
-//  DetailView.swift
-//  ShoppingItems
-//
-//  Created by Marc Harvey on 11/11/2020.
-//  Copyright © 2020 Marc Harvey. All rights reserved.
-//
-
 import SwiftUI
 import SpriteKit
 

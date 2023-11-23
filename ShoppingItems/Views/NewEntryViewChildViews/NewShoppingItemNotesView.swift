@@ -1,11 +1,3 @@
-//
-//  NewShoppingItemNotesView.swift
-//  Yer Messages
-//
-//  Created by Marc Harvey on 26/06/2022.
-//  Copyright © 2022 Marc Harvey. All rights reserved.
-//
-
 import SwiftUI
 
 struct NewShoppingItemNotesView: View {

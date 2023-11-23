@@ -1,11 +1,3 @@
-//
-//  DetailView.swift
-//  ShoppingItems
-//
-//  Created by Marc Harvey on 18/10/2020.
-//  Copyright © 2020 Marc Harvey. All rights reserved.
-//
-
 import SwiftUI
 import CoreData
 
@@ -71,7 +63,6 @@ struct NewEntryView: View {
                     .clipped()
                     .padding(.top)
                     .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
-                    /// Uses the AdaptsToKeyboard struct to bump the screen up when the user brings up the keyboard
                     .modifier(AdaptsToKeyboard())
                     .scrollContentBackground(.hidden)
                 // MARK: - Button that will save the user's entry - sits at the bottom of the view
