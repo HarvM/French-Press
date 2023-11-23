@@ -27,12 +27,16 @@ struct NewShoppingItemQuantityView: View {
     }
 }
 
+class ItemQuantity: ObservableObject {
+    init(newItemQuantity: TextLimit = TextLimit(limit: 6)) {
+        self.newItemQuantity = newItemQuantity
+    }
+    @Published var newItemQuantity = TextLimit(limit: 6)
+}
+
 //struct NewShoppingItemQuantityView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        NewShoppingItemQuantityView(newShoppingItemQuantity: self.newShoppingItemQuantity.newItemQuantity.text)
 //    }
 //}
 
-class ItemQuantity: ObservableObject {
-    @Published var newItemQuantity = TextLimit(limit: 6)
-}

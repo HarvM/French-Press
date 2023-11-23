@@ -7,22 +7,23 @@
 //
 import SwiftUI
 import Foundation
+import SwiftData
 
+@available(iOS 17.0, *)
 struct ContentView: View {
     
     // MARK: - Properties
     @State var isEditing = false
     @State var showHamburgerMenu = false
-    @ObservedObject var listStore: ShoppingItemStore
     let generator = UINotificationFeedbackGenerator()
     let stringStore = StringStore()
-    @Environment (\.managedObjectContext) var managedObjectContext
     @Environment (\.presentationMode) var presentationMode
+    @Environment (\.modelContext) var modelContext
     @Environment (\.colorScheme) var colorScheme
-    @FetchRequest(entity: ShoppingItems.entity(), sortDescriptors:
-                    [NSSortDescriptor (keyPath: \ShoppingItems.order, ascending: true)])
-    var shoppingItemEntries: FetchedResults<ShoppingItems>
-    
+
+    // This does the fetching of the data
+    @Query var shoppingItemEntries: [ShoppingItems]
+
     // MARK: Main body of the view
     var body: some View {
         ZStack {
@@ -87,39 +88,16 @@ struct ContentView: View {
             ZStack {
                 Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
                 VStack {
-                    if #available(iOS 16.0, *) {
                         List {
                             // MARK: - HStack: how the cells are displayed and populated
                             Section() {
                                 ForEach(shoppingItemEntries, id: \.self) {
-                                    shoppingItemNew in
+                                    shoppingItem in
                                     HStack {
-                                        CellView(itemToBeAdded: shoppingItemNew.itemToBeAdded,
-                                                 quantitySelected: shoppingItemNew.quantitySelected,
-                                                 preferredMeasurement: shoppingItemNew.preferredMeasurement)
-                                        NavigationLink("", destination: DetailView (itemToBeDisplayed: shoppingItemNew))
-                                    } /// End of HStack
-                                } /// End of ForEach loop
-                                .onDelete(perform: self.deleteItem)
-                                .onMove(perform: moveItem)
-                            } /// End of Section
-                            .listStyle(PlainListStyle())
-                            .listRowBackground(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
-                        } /// End of List
-                        .padding(.top) /// Prevents List showing below statusBar
-                        .listRowSeparator(.hidden)
-                        .scrollContentBackground(.hidden)
-                    } else {
-                        List {
-                            // MARK: - HStack: how the cells are displayed and populated
-                            Section() {
-                                ForEach(shoppingItemEntries, id: \.self) {
-                                    shoppingItemNew in
-                                    HStack {
-                                        CellView(itemToBeAdded: shoppingItemNew.itemToBeAdded,
-                                                 quantitySelected: shoppingItemNew.quantitySelected,
-                                                 preferredMeasurement: shoppingItemNew.preferredMeasurement)
-                                        NavigationLink("", destination: DetailView (itemToBeDisplayed: shoppingItemNew))
+                                        CellView(itemToBeAdded: shoppingItem.itemToBeAdded,
+                                                 quantitySelected: shoppingItem.quantitySelected,
+                                                 preferredMeasurement: shoppingItem.preferredMeasurement)
+                                        NavigationLink("", destination: DetailView (itemToBeDisplayed: shoppingItem))
                                     } /// End of HStack
                                 } /// End of ForEach loop
                                 .onDelete(perform: self.deleteItem)
@@ -131,8 +109,8 @@ struct ContentView: View {
                                 .edgesIgnoringSafeArea(.all))
                         } /// End of List
                         .padding(.top) /// Prevents List showing below statusBar
+                        .padding(.leading, 20)
                         .listRowSeparator(.hidden)
-                    }
                 } /// End VStack
                 /// Appears to help with the reordering of the List and makes it less laggy when a row is moved
                 .id(UUID())
@@ -187,7 +165,6 @@ struct ContentView: View {
         /// Use this if NavigationBarTitle is with displayMode = .inline
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
         /// Have to init the listStore with a value
-        self.listStore = ShoppingItemStore.init()
         UICollectionView.appearance().backgroundColor = UIColor(Color(BackgroundColours.defaultBackground.rawValue))
     }
 }
