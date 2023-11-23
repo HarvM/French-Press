@@ -18,7 +18,7 @@ struct NewEntryView: View {
     @State var itemToBeAdded = ShoppingItem()
     @State var notesOnItem = ItemNote()
     @State var quantitySelected = ItemQuantity()
-    @State var newSelectedMeasurement = ItemMeasurement()
+    @State var selectedMeasurement = ItemMeasurement()
     @State var isShowingContentView = false
     @State var showAlert = false
     @State var areTreatsAllowed = true
@@ -54,7 +54,7 @@ struct NewEntryView: View {
                                 VStack {
                                     NewShoppingItemQuantityView(newShoppingItemQuantity: quantitySelected)
                                 }
-                                NewEntryPickerView(newSelectedMeasurement: newSelectedMeasurement)
+                                NewEntryPickerView(newSelectedMeasurement: selectedMeasurement)
                             }/// End of Section
                             .padding(2)
                         
@@ -79,7 +79,7 @@ struct NewEntryView: View {
                     Button(action: { self.saveSwiftDataItem(itemToBeAdded: itemToBeAdded.itemTitleWithTextLimit.text,
                                                             notesOnItem: notesOnItem.notesOnItem.text,
                                                             quantitySelected: quantitySelected.newItemQuantity.text,
-                                                            preferredMeasurement: String(self.stringStore.measurementFound[newSelectedMeasurement.newItemMeasurement]))},
+                                                            preferredMeasurement: String(self.stringStore.measurementFound[selectedMeasurement.newItemMeasurement]))},
                            label: {
                         Image(ContentViewImages.plusImage.rawValue)
                             .resizable()
@@ -88,12 +88,12 @@ struct NewEntryView: View {
                             .padding(.bottom, 28)
                     })
                     .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
-//                    .alert(isPresented: $showAlert) { () -> Alert in
-//                        Alert(title: Text(stringStore.oneMoment),
-//                              message: Text(stringStore.makeSure),
-//                              dismissButton: .default(Text(ContentViewImages.thumbsUp.rawValue))
-//                        )
-//                    }
+                    .alert(isPresented: $showAlert) { () -> Alert in
+                        Alert(title: Text(stringStore.oneMoment),
+                              message: Text(stringStore.makeSure),
+                              dismissButton: .default(Text(ContentViewImages.thumbsUp.rawValue))
+                        )
+                    }
                 } /// End of HStack
                 .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
             } /// End of VStack
