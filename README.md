@@ -17,9 +17,8 @@ I've also returned from the shops more times than I care to remember missing an 
 * The user can specify the quantity and add any extra notes too
 * With the quantity: the user can say if it's a pack/bag/tin etc from a Picker
 * A DetailView that will show both the item and any of the notes that the user has input
-* All entries on the model are stored in CoreData
-* Easily remove any items with the stand left swipe or by using the 'Edit' function and then selecting the item to be removed
-* Items can be rearranged on the list when the user clicks on "Edit"
+* All entries on the model are stored in SwiftData
+* Easily remove any items with the standard left swipe
 
 ## Future Features
 * Addition of a hamburger menu
