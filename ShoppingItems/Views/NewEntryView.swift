@@ -12,7 +12,7 @@ struct NewEntryView: View {
     @State var quantitySelected = ItemQuantity()
     @State var selectedMeasurement = ItemMeasurement()
     @State var isShowingContentView = false
-    @State var showAlert = false
+    @State var showingAlert = false
     @State var areTreatsAllowed = true
     let stringStore = StringStore()
     let itemSizeMax: Int = 30
@@ -67,7 +67,7 @@ struct NewEntryView: View {
                     .scrollContentBackground(.hidden)
                 // MARK: - Button that will save the user's entry - sits at the bottom of the view
                 HStack(alignment: .center, spacing: 10) {
-                    Button(action: { self.saveSwiftDataItem(itemToBeAdded: itemToBeAdded.itemTitleWithTextLimit.text,
+                    Button(action: { self.saveShoppingitem(itemToBeAdded: itemToBeAdded.itemTitleWithTextLimit.text,
                                                             notesOnItem: notesOnItem.notesOnItem.text,
                                                             quantitySelected: quantitySelected.newItemQuantity.text,
                                                             preferredMeasurement: String(self.stringStore.measurementFound[selectedMeasurement.newItemMeasurement]))},
@@ -79,7 +79,7 @@ struct NewEntryView: View {
                             .padding(.bottom, 28)
                     })
                     .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
-                    .alert(isPresented: $showAlert) { () -> Alert in
+                    .alert(isPresented: $showingAlert) { () -> Alert in
                         Alert(title: Text(stringStore.oneMoment),
                               message: Text(stringStore.makeSure),
                               dismissButton: .default(Text(ContentViewImages.thumbsUp.rawValue))
