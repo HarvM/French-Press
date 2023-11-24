@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		195FB8B52B11666B00412375 /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195FB8B42B11666B00412375 /* EmptyListView.swift */; };
+		195FB8B72B1166EE00412375 /* PopulatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195FB8B62B1166EE00412375 /* PopulatedView.swift */; };
 		19ED178E2A582CD8001BF709 /* ShoppingItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19ED178D2A582CD8001BF709 /* ShoppingItems.swift */; };
 		19ED17902A584ABD001BF709 /* YerMessagesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19ED178F2A584ABD001BF709 /* YerMessagesApp.swift */; };
 		491D795223C11D1700B537EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D795123C11D1700B537EB /* AppDelegate.swift */; };
@@ -79,6 +81,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		195FB8B42B11666B00412375 /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
+		195FB8B62B1166EE00412375 /* PopulatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulatedView.swift; sourceTree = "<group>"; };
 		19ED178D2A582CD8001BF709 /* ShoppingItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShoppingItems.swift; path = ShoppingItems/SwiftDataNew/ShoppingItems.swift; sourceTree = "<group>"; };
 		19ED178F2A584ABD001BF709 /* YerMessagesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YerMessagesApp.swift; sourceTree = "<group>"; };
 		491D794E23C11D1700B537EB /* Yer Messages.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yer Messages.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,6 +159,8 @@
 			isa = PBXGroup;
 			children = (
 				491D795823C11D1700B537EB /* ContentView.swift */,
+				195FB8B62B1166EE00412375 /* PopulatedView.swift */,
+				195FB8B42B11666B00412375 /* EmptyListView.swift */,
 			);
 			path = ContentView;
 			sourceTree = "<group>";
@@ -473,11 +479,13 @@
 				CB474BC7286DD1E000FBD2C0 /* ItemPickerSectionView.swift in Sources */,
 				D244FC1C27DD0AD900BEAD25 /* StringStore.swift in Sources */,
 				491D795223C11D1700B537EB /* AppDelegate.swift in Sources */,
+				195FB8B72B1166EE00412375 /* PopulatedView.swift in Sources */,
 				49C61F77262393C800EBB1C3 /* ViewExtension.swift in Sources */,
 				491D795923C11D1700B537EB /* ContentView.swift in Sources */,
 				49C85B60254780E400A9C901 /* TextLimit.swift in Sources */,
 				CBFAE7072868E11900DFB86C /* ItemNotesSectionView.swift in Sources */,
 				491D795423C11D1700B537EB /* SceneDelegate.swift in Sources */,
+				195FB8B52B11666B00412375 /* EmptyListView.swift in Sources */,
 				D2EE5802267125910061CF38 /* ThemesViewExtension.swift in Sources */,
 				D2D9BED4265545EC005529EF /* BurgerMenuContent.swift in Sources */,
 				494682DE256B46CE0088BC51 /* ColourExtension.swift in Sources */,

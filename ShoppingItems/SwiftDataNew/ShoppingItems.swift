@@ -1,12 +1,3 @@
-//
-//  ShoppingItems.swift
-//  Yer Messages
-//
-//  Created by Marc Harvey on 07/07/2023.
-//  Copyright © 2023 Marc Harvey. All rights reserved.
-//
-//
-
 import Foundation
 import SwiftData
 
@@ -29,7 +20,4 @@ import SwiftData
         self.preferredMeasurement = preferredMeasurement
         self.quantitySelected = quantitySelected
     }
-
-
-
 }

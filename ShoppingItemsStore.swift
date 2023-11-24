@@ -8,10 +8,10 @@
 
 import SwiftUI
 
-final class ShoppingItemStore: ObservableObject {
-    @Published var shoppingItems: [ShoppingItems]
-    
-    init(shoppingItems: [ShoppingItems] = []) {
-        self.shoppingItems = shoppingItems
-    }
-}
+//final class ShoppingItemStore: ObservableObject {
+//    @Published var shoppingItems: [ShoppingItems]
+//    
+//    init(shoppingItems: [ShoppingItems] = []) {
+//        self.shoppingItems = shoppingItems
+//    }
+//}

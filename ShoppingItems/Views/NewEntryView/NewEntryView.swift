@@ -6,17 +6,15 @@ struct NewEntryView: View {
     
     // MARK: - Properties
     @Environment(\.presentationMode) var presentationMode
-    let generator = UINotificationFeedbackGenerator()
     @State var itemToBeAdded = ShoppingItem()
     @State var notesOnItem = ItemNote()
     @State var quantitySelected = ItemQuantity()
     @State var selectedMeasurement = ItemMeasurement()
     @State var isShowingContentView = false
     @State var showingAlert = false
-    @State var areTreatsAllowed = true
-    let stringStore = StringStore()
-    let itemSizeMax: Int = 30
     @Environment(\.modelContext) var context
+    let stringStore = StringStore()
+    let generator = UINotificationFeedbackGenerator()
 
     // MARK: - Body the UI that will have a Form (Item Entry, Stepper, and Notes) and a Save Button (bottom of view)
     var body: some View {
@@ -46,7 +44,7 @@ struct NewEntryView: View {
                                 VStack {
                                     ItemQuantitySectionView(newShoppingItemQuantity: quantitySelected)
                                 }
-                                ItemPickerSectionView(newSelectedMeasurement: selectedMeasurement)
+                                ItemPickerSectionView(selectedMeasurement: selectedMeasurement)
                             }/// End of Section
                             .padding(2)
                         
@@ -70,7 +68,7 @@ struct NewEntryView: View {
                     Button(action: { self.saveShoppingitem(itemToBeAdded: itemToBeAdded.itemTitleWithTextLimit.text,
                                                             notesOnItem: notesOnItem.notesOnItem.text,
                                                             quantitySelected: quantitySelected.newItemQuantity.text,
-                                                            preferredMeasurement: String(self.stringStore.measurementFound[selectedMeasurement.newItemMeasurement]))},
+                                                            preferredMeasurement: String(self.stringStore.measurementFound[selectedMeasurement.userSelectedMeasurement]))},
                            label: {
                         Image(ContentViewImages.plusImage.rawValue)
                             .resizable()
@@ -89,13 +87,6 @@ struct NewEntryView: View {
                 .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
             } /// End of VStack
             .padding(.top, 40)
-            .toolbar { /// Using toolbar to place in the Treat button
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: self.weeTreat, label:  {
-                        Text("🎁")
-                    })
-                }
-            } /// End of toolbar
             .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
         } /// End of ZStack
         .edgesIgnoringSafeArea(.all)

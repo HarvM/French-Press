@@ -2,15 +2,14 @@ import SwiftUI
 
 @available(iOS 17.0, *)
 extension NewEntryView {
-    func saveShoppingitem(itemToBeAdded: String,
-                          notesOnItem: String,
-                          quantitySelected: String,
-                          preferredMeasurement: String) {
-
-        let trimmedItem = itemToBeAdded.trimmingCharacters(in: .whitespacesAndNewlines)
-        let trimmedNote = notesOnItem.trimmingCharacters(in: .whitespacesAndNewlines)
-        let chosenMeasurement = self.stringStore.measurementFound[selectedMeasurement.newItemMeasurement]
+    @MainActor func saveShoppingitem(itemToBeAdded: String,
+                                     notesOnItem: String,
+                                     quantitySelected: String,
+                                     preferredMeasurement: String) {
+        var trimmedItem = itemToBeAdded.trimmingCharacters(in: .whitespacesAndNewlines)
+        var trimmedNote = notesOnItem.trimmingCharacters(in: .whitespacesAndNewlines)
         var trimmedQuantity = quantitySelected.trimmingCharacters(in: .whitespacesAndNewlines)
+        let chosenMeasurement = self.stringStore.measurementFound[selectedMeasurement.userSelectedMeasurement]
 
         if trimmedQuantity.isEmpty  {
             trimmedQuantity = "1"
@@ -24,32 +23,21 @@ extension NewEntryView {
                                              preferredMeasurement: chosenMeasurement,
                                              quantitySelected: trimmedQuantity)
             save(shoppingItem: shoppingItem)
+            trimmedItem = ""
+            trimmedNote = ""
+            trimmedQuantity = ""
         }
     }
 
-    /// Will take a random "treatItems" and then put it into the SwiftData model and then display it on the user's list
-    func weeTreat() {
-        DispatchQueue.main.async {
-            let randomTreat = stringStore.treatItems.randomElement()!
-            let treatEmoji = "🎁"
-            let treatItem = ShoppingItems(itemToBeAdded: randomTreat.key,
-                                          notesOnItem: randomTreat.value,
-                                          preferredMeasurement: treatEmoji,
-                                          quantitySelected: treatEmoji)
-            save(shoppingItem: treatItem)
-        }
-    }
-
-
-    private func save(shoppingItem: ShoppingItems) {
+    @MainActor private func save(shoppingItem: ShoppingItems) {
         context.insert(shoppingItem)
         do {
-          try context.save()
+            try context.save()
         } catch {
-          print(error.localizedDescription)
+            print(error.localizedDescription)
         }
 
         self.generator.notificationOccurred(.success)
         self.presentationMode.wrappedValue.dismiss()
-      }
+    }
 }

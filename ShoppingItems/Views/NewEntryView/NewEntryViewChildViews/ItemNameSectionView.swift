@@ -10,7 +10,7 @@ struct ItemNameSectionView: View {
     var body: some View {
         TextField(stringStore.typeTheItemHere, 
                   text: $newShoppingItem.itemTitleWithTextLimit.text)
-            .frame (height: 50)
+            .frame (height: 40)
             .multilineTextAlignment(.leading)
             .font(.custom(DefaultFont.defaultFont.rawValue, 
                           size: 16,
