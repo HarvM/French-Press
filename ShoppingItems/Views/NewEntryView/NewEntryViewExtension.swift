@@ -12,7 +12,7 @@ extension NewEntryView {
         let chosenMeasurement = self.stringStore.measurementFound[selectedMeasurement.newItemMeasurement]
         var trimmedQuantity = quantitySelected.trimmingCharacters(in: .whitespacesAndNewlines)
 
-        if trimmedQuantity.isEmpty {
+        if trimmedQuantity.isEmpty  {
             trimmedQuantity = "1"
         }
 
