@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct NewShoppingItemNotesView: View {
+struct ItemNotesSectionView: View {
     
     let stringStore = StringStore()
     @ObservedObject var newShoppingItemNote: ItemNote

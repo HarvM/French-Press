@@ -32,7 +32,7 @@ struct NewEntryView: View {
                             .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
                                 VStack {
                                     HStack {
-                                        NewShoppingItemSectionView(newShoppingItem: itemToBeAdded)
+                                        ItemNameSectionView(newShoppingItem: itemToBeAdded)
                                     }
                                     .font(.headline)
                                 } /// End of Section
@@ -44,9 +44,9 @@ struct NewEntryView: View {
                             .foregroundColor(.yellow)
                             .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
                                 VStack {
-                                    NewShoppingItemQuantityView(newShoppingItemQuantity: quantitySelected)
+                                    ItemQuantitySectionView(newShoppingItemQuantity: quantitySelected)
                                 }
-                                NewEntryPickerView(newSelectedMeasurement: selectedMeasurement)
+                                ItemPickerSectionView(newSelectedMeasurement: selectedMeasurement)
                             }/// End of Section
                             .padding(2)
                         
@@ -55,7 +55,7 @@ struct NewEntryView: View {
                             .foregroundColor(.yellow)
                             .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
                                 HStack {
-                                    NewShoppingItemNotesView(newShoppingItemNote: notesOnItem)
+                                    ItemNotesSectionView(newShoppingItemNote: notesOnItem)
                                 }
                             } /// End of section
                             .padding(2)

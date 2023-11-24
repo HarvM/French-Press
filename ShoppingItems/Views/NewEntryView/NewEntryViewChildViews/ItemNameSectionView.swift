@@ -1,29 +1,34 @@
 import SwiftUI
 import SwiftData
 
-struct NewShoppingItemSectionView: View {
+struct ItemNameSectionView: View {
     
     let stringStore = StringStore()
     @ObservedObject var newShoppingItem: ShoppingItem
     @Environment(\.modelContext) private var context
 
     var body: some View {
-        TextField(stringStore.typeTheItemHere, text: $newShoppingItem.itemTitleWithTextLimit.text)
-            .frame (height: 40)
+        TextField(stringStore.typeTheItemHere, 
+                  text: $newShoppingItem.itemTitleWithTextLimit.text)
+            .frame (height: 50)
             .multilineTextAlignment(.leading)
-            .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
+            .font(.custom(DefaultFont.defaultFont.rawValue, 
+                          size: 16,
+                          relativeTo: .headline))
         /// Will display the number of characters already typed and the limit
         Text("\(newShoppingItem.itemTitleWithTextLimit.text.count)|30")
-            .font(.custom(DefaultFont.defaultFont.rawValue, size: 16, relativeTo: .headline))
+            .font(.custom(DefaultFont.defaultFont.rawValue, 
+                          size: 16,
+                          relativeTo: .headline))
             .foregroundColor(.gray)
     }
 }
 
 class ShoppingItem: ObservableObject {
-    init(itemTitleWithTextLimit: TextLimit = TextLimit(limit: 40)) {
+    init(itemTitleWithTextLimit: TextLimit = TextLimit(limit: 30)) {
         self.itemTitleWithTextLimit = itemTitleWithTextLimit
     }
-    var itemTitleWithTextLimit = TextLimit(limit: 40)
+    @Published var itemTitleWithTextLimit = TextLimit(limit: 30)
 }
 
 //

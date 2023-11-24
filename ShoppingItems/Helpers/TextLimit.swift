@@ -18,7 +18,7 @@ final class TextLimit: ObservableObject {
         }
     }
     let characterLimit: Int
-    init(limit: Int = 100){
+    init(limit: Int = 40){
         characterLimit = limit
     }
 }

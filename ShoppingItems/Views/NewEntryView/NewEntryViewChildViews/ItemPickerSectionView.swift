@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct NewEntryPickerView: View {
+struct ItemPickerSectionView: View {
     
     let stringStore = StringStore()
     @ObservedObject var newSelectedMeasurement: ItemMeasurement
