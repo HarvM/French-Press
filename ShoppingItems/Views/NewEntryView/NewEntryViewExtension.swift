@@ -23,27 +23,33 @@ extension NewEntryView {
                                              notesOnItem: trimmedNote,
                                              preferredMeasurement: chosenMeasurement,
                                              quantitySelected: trimmedQuantity)
-            context.insert(shoppingItem)
-            do {
-                try context.save()
-            } catch {
-                print(error.localizedDescription)
-            }
-
-            self.generator.notificationOccurred(.success)
-            self.presentationMode.wrappedValue.dismiss()
+            save(shoppingItem: shoppingItem)
         }
     }
 
     /// Will take a random "treatItems" and then put it into the SwiftData model and then display it on the user's list
-    public func weeTreat() {
+    func weeTreat() {
         DispatchQueue.main.async {
             let randomTreat = stringStore.treatItems.randomElement()!
-
-            saveShoppingitem(itemToBeAdded: randomTreat.key,
-                             notesOnItem: randomTreat.value,
-                             quantitySelected: "\(stringStore.treatEmoji)",
-                             preferredMeasurement: "\(stringStore.treatEmoji)")
+            let treatEmoji = "🎁"
+            let treatItem = ShoppingItems(itemToBeAdded: randomTreat.key,
+                                          notesOnItem: randomTreat.value,
+                                          preferredMeasurement: treatEmoji,
+                                          quantitySelected: treatEmoji)
+            save(shoppingItem: treatItem)
         }
     }
+
+
+    private func save(shoppingItem: ShoppingItems) {
+        context.insert(shoppingItem)
+        do {
+          try context.save()
+        } catch {
+          print(error.localizedDescription)
+        }
+
+        self.generator.notificationOccurred(.success)
+        self.presentationMode.wrappedValue.dismiss()
+      }
 }
