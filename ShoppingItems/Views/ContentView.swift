@@ -107,9 +107,9 @@ struct ContentView: View {
                 
                 // MARK: - NavigationBarItems: Leading item will be the EditButton that lets the user edit the list
                 .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        EditButton()
-                    }
+//                    ToolbarItem(placement: .navigationBarLeading) {
+//                        EditButton()
+//                    }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink(destination: NewEntryView()
                             .navigationTitle(stringStore.addItem)
