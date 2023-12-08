@@ -20,9 +20,7 @@ struct PopulatedView: View {
                             ForEach(shoppingItemEntries, id: \.self) {
                                 shoppingItem in
                                 HStack {
-                                    CellView(itemToBeAdded: shoppingItem.itemToBeAdded,
-                                             quantitySelected: shoppingItem.quantitySelected,
-                                             preferredMeasurement: shoppingItem.preferredMeasurement)
+                                    CellView(preferredMeasurement: shoppingItem.preferredMeasurement, quantitySelected: shoppingItem.quantitySelected, itemToBeAdded: shoppingItem.itemToBeAdded)
                                     NavigationLink("", destination: DetailView (itemToBeDisplayed: shoppingItem))
                                 } /// End of HStack
                             }
