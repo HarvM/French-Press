@@ -24,9 +24,10 @@ class ItemMeasurement: ObservableObject {
     @Published var userSelectedMeasurement = 0
 }
 
-//struct NewEntryPickerView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NewEntryPickerView()
-//    }
-//}
+struct NewEntryPickerView_Previews: PreviewProvider {
+    static var previews: some View {
+        let mockShoppingItemMeasurement = ItemMeasurement()
+        ItemPickerSectionView(selectedMeasurement: mockShoppingItemMeasurement)
+    }
+}
 

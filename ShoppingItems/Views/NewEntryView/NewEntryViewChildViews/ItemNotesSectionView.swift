@@ -3,12 +3,12 @@ import SwiftUI
 struct ItemNotesSectionView: View {
     
     let stringStore = StringStore()
-    @ObservedObject var newShoppingItemNote: ItemNote
+    @ObservedObject var noteOnShoppingItem: ItemNote
     @Environment(\.modelContext) private var context
 
     var body: some View {
         TextField(stringStore.typeHere,
-                  text: $newShoppingItemNote.notesOnItem.text)
+                  text: $noteOnShoppingItem.notesOnItem.text)
             .frame(height: 50)
             .multilineTextAlignment(.leading)
             .font(.custom(DefaultFont.defaultFont.rawValue,
@@ -18,7 +18,7 @@ struct ItemNotesSectionView: View {
                              edges: .bottom)
         Spacer()
         /// Will display the number of characters already typed and the limit
-        Text("\(newShoppingItemNote.notesOnItem.text.count)|40")
+        Text("\(noteOnShoppingItem.notesOnItem.text.count)|40")
             .font(.custom(DefaultFont.defaultFont.rawValue,
                           size: 16,
                           relativeTo: .headline))
@@ -33,8 +33,9 @@ class ItemNote: ObservableObject {
     @Published var notesOnItem = TextLimit(limit: 40)
 }
 
-//struct NewShoppingItemNotesView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NewShoppingItemNotesView()
-//    }
-//}
+struct NewShoppingItemNotesView_Previews: PreviewProvider {
+    static var previews: some View {
+        let mockShoppingItemNote = ItemNote(notesOnItem: TextLimit(limit: 40))
+        ItemNotesSectionView(noteOnShoppingItem: mockShoppingItemNote)
+    }
+}

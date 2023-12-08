@@ -28,7 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
             // Different in SwiftUI
             // Puts the objects into the stack
-            let managedObject = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            _ = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
             // Focused on iOS 17 at the moment to avoid if iOSx { whatever} else { }
             let contentView = ContentView().modelContainer(for: ShoppingItems.self)

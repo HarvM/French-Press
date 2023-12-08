@@ -30,7 +30,7 @@ struct NewEntryView: View {
                             .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
                                 VStack {
                                     HStack {
-                                        ItemNameSectionView(newShoppingItem: itemToBeAdded)
+                                        ItemNameSectionView(selectedShoppingItem: itemToBeAdded)
                                     }
                                     .font(.headline)
                                 } /// End of Section
@@ -42,7 +42,7 @@ struct NewEntryView: View {
                             .foregroundColor(.yellow)
                             .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
                                 VStack {
-                                    ItemQuantitySectionView(newShoppingItemQuantity: quantitySelected)
+                                    ItemQuantitySectionView(quantityOfShoppingItem: quantitySelected)
                                 }
                                 ItemPickerSectionView(selectedMeasurement: selectedMeasurement)
                             }/// End of Section
@@ -53,7 +53,7 @@ struct NewEntryView: View {
                             .foregroundColor(.yellow)
                             .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
                                 HStack {
-                                    ItemNotesSectionView(newShoppingItemNote: notesOnItem)
+                                    ItemNotesSectionView(noteOnShoppingItem: notesOnItem)
                                 }
                             } /// End of section
                             .padding(2)
@@ -96,8 +96,8 @@ struct NewEntryView: View {
 } /// End of View
 
 
-//struct NewEntryView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NewEntryView()
-//    }
-//}
+struct NewEntryView_Previews: PreviewProvider {
+    static var previews: some View {
+        NewEntryView()
+    }
+}

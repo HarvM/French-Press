@@ -4,19 +4,19 @@ import SwiftData
 struct ItemNameSectionView: View {
     
     let stringStore = StringStore()
-    @ObservedObject var newShoppingItem: ShoppingItem
+    @ObservedObject var selectedShoppingItem: ShoppingItem
     @Environment(\.modelContext) private var context
 
     var body: some View {
         TextField(stringStore.typeTheItemHere, 
-                  text: $newShoppingItem.itemTitleWithTextLimit.text)
+                  text: $selectedShoppingItem.itemTitleWithTextLimit.text)
             .frame (height: 40)
             .multilineTextAlignment(.leading)
             .font(.custom(DefaultFont.defaultFont.rawValue, 
                           size: 16,
                           relativeTo: .headline))
         /// Will display the number of characters already typed and the limit
-        Text("\(newShoppingItem.itemTitleWithTextLimit.text.count)|30")
+        Text("\(selectedShoppingItem.itemTitleWithTextLimit.text.count)|30")
             .font(.custom(DefaultFont.defaultFont.rawValue, 
                           size: 16,
                           relativeTo: .headline))
@@ -31,9 +31,9 @@ class ShoppingItem: ObservableObject {
     @Published var itemTitleWithTextLimit = TextLimit(limit: 30)
 }
 
-//
-//struct NewShoppingItemSectionView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NewShoppingItemSectionView()
-//    }
-//}
+struct NewShoppingItemSectionView_Previews: PreviewProvider {
+    static var previews: some View {
+        @State var itemToBeAdded = ShoppingItem()
+        ItemNameSectionView(selectedShoppingItem: itemToBeAdded)
+    }
+}

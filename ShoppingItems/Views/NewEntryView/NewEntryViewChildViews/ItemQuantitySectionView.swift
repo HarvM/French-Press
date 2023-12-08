@@ -3,11 +3,11 @@ import SwiftUI
 struct ItemQuantitySectionView: View {
     
     let stringStore = StringStore()
-    @ObservedObject var newShoppingItemQuantity: ItemQuantity
+    @ObservedObject var quantityOfShoppingItem: ItemQuantity
     
     var body: some View {
         TextField(stringStore.typeQuantityHere,
-                  text: $newShoppingItemQuantity.newItemQuantity.text)
+                  text: $quantityOfShoppingItem.newItemQuantity.text)
             .frame (height: 40)
             .multilineTextAlignment(.leading)
             .keyboardType(.decimalPad)
