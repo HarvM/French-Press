@@ -22,7 +22,7 @@ struct PopulatedView: View {
                                 HStack {
                                     CellView(itemToBeAdded: shoppingItem.itemToBeAdded,
                                              quantitySelected: shoppingItem.quantitySelected,
-                                             preferredMeasurement: shoppingItem.preferredMeasurement ?? "pack")
+                                             preferredMeasurement: shoppingItem.preferredMeasurement)
                                     NavigationLink("", destination: DetailView (itemToBeDisplayed: shoppingItem))
                                 } /// End of HStack
                             }

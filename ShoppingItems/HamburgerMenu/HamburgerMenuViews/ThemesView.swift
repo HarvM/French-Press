@@ -1,11 +1,3 @@
-//
-//  ThemesView.swift
-//  Yer Messages
-//
-//  Created by Marc Harvey on 28/05/2021.
-//  Copyright © 2021 Marc Harvey. All rights reserved.
-//
-
 import SwiftUI
 
 struct ThemesView: View {

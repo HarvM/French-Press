@@ -19,7 +19,6 @@
 		491D796123C11D1800B537EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 491D795F23C11D1800B537EB /* LaunchScreen.storyboard */; };
 		491D797723C11D1800B537EB /* ShoppingItemsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D797623C11D1800B537EB /* ShoppingItemsUITests.swift */; };
 		491D798723C1EAA800B537EB /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D798623C1EAA800B537EB /* CellView.swift */; };
-		492F956325A9E48F00F56126 /* ShoppingItemsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492F956225A9E48F00F56126 /* ShoppingItemsStore.swift */; };
 		493B3A96253BD31200CAF0F9 /* NewEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493B3A95253BD31200CAF0F9 /* NewEntryView.swift */; };
 		494682DE256B46CE0088BC51 /* ColourExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494682DD256B46CE0088BC51 /* ColourExtension.swift */; };
 		49768FC225730BCF00B93AC1 /* AdaptsToKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49768FC125730BCF00B93AC1 /* AdaptsToKeyboard.swift */; };
@@ -99,7 +98,6 @@
 		491D797623C11D1800B537EB /* ShoppingItemsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemsUITests.swift; sourceTree = "<group>"; };
 		491D797823C11D1800B537EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		491D798623C1EAA800B537EB /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
-		492F956225A9E48F00F56126 /* ShoppingItemsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingItemsStore.swift; sourceTree = "<group>"; };
 		493B3A95253BD31200CAF0F9 /* NewEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryView.swift; sourceTree = "<group>"; };
 		494682DD256B46CE0088BC51 /* ColourExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourExtension.swift; sourceTree = "<group>"; };
 		49768FC125730BCF00B93AC1 /* AdaptsToKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptsToKeyboard.swift; sourceTree = "<group>"; };
@@ -161,6 +159,7 @@
 				491D795823C11D1700B537EB /* ContentView.swift */,
 				195FB8B62B1166EE00412375 /* PopulatedView.swift */,
 				195FB8B42B11666B00412375 /* EmptyListView.swift */,
+				19C820E72B233AFB007708A0 /* Extensions */,
 			);
 			path = ContentView;
 			sourceTree = "<group>";
@@ -169,7 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				493B3A95253BD31200CAF0F9 /* NewEntryView.swift */,
-				49C61F7B262393F200EBB1C3 /* NewEntryViewExtension.swift */,
+				19C820E82B233B20007708A0 /* Extension */,
 				CB474BC5286DD02B00FBD2C0 /* NewEntryViewChildViews */,
 			);
 			path = NewEntryView;
@@ -201,11 +200,26 @@
 			path = Subviews;
 			sourceTree = "<group>";
 		};
+		19C820E72B233AFB007708A0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				49C61F712623939A00EBB1C3 /* ContentViewExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		19C820E82B233B20007708A0 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				49C61F7B262393F200EBB1C3 /* NewEntryViewExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		491D794523C11D1700B537EB = {
 			isa = PBXGroup;
 			children = (
 				19ED178D2A582CD8001BF709 /* ShoppingItems.swift */,
-				492F956225A9E48F00F56126 /* ShoppingItemsStore.swift */,
 				491D795023C11D1700B537EB /* ShoppingItems */,
 				491D796A23C11D1800B537EB /* ShoppingItemsTests */,
 				491D797523C11D1800B537EB /* ShoppingItemsUITests */,
@@ -293,7 +307,6 @@
 			isa = PBXGroup;
 			children = (
 				49C61F76262393C800EBB1C3 /* ViewExtension.swift */,
-				49C61F712623939A00EBB1C3 /* ContentViewExtension.swift */,
 				49FA4C3A26415CF100111D9C /* CellViewExtension.swift */,
 				D2EE5801267125910061CF38 /* ThemesViewExtension.swift */,
 			);
@@ -500,7 +513,6 @@
 				49C61F722623939A00EBB1C3 /* ContentViewExtension.swift in Sources */,
 				493B3A96253BD31200CAF0F9 /* NewEntryView.swift in Sources */,
 				D283573126516893009165DF /* BackgroundColours.swift in Sources */,
-				492F956325A9E48F00F56126 /* ShoppingItemsStore.swift in Sources */,
 				D283572D2651682D009165DF /* Font.swift in Sources */,
 				D2D9BED6265559FC005529EF /* HamburgerMenu.swift in Sources */,
 			);
