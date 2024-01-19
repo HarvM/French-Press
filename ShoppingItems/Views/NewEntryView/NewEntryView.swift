@@ -47,17 +47,16 @@ struct NewEntryView: View {
                                 ItemQuantitySectionView(quantityOfShoppingItem: quantitySelected)
                             }
                             ItemPickerSectionView(selectedMeasurement: selectedMeasurement)
-                        }/// End of Section
-                        .padding(Constants.sectionPadding.rawValue)
-
+                                .padding(Constants.sectionPadding.rawValue)
+                        }
                     // MARK: - TextEditor (Extra Notes) Section
                     Section(header: Text(stringStore.extraNotes)
                         .modifier(TitleModifier())) {
                             HStack {
                                 ItemNotesSectionView(noteOnShoppingItem: notesOnItem)
+                                    .padding(Constants.sectionPadding.rawValue)
                             }
                         } /// End of section
-                        .padding(Constants.sectionPadding.rawValue)
                 } ///End of Form
                 .modifier(FormModifier())
                 // MARK: - Button that will save the user's entry - sits at the bottom of the view
