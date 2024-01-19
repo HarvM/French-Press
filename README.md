@@ -27,5 +27,8 @@ I've also returned from the shops more times than I care to remember missing an 
 ## Inspiration
 The Bear application is a beauty
 
+## Kudos
+The rainbow animation was taken from here: https://kieranb662.github.io/blog/2020/04/15/Rainbow
+
 ## Contact
 Created by [Marc Harvey](https://www.linkedin.com/in/marc-harvey-lru/) - feel free to contact me!
