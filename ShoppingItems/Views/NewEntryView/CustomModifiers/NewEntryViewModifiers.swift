@@ -34,6 +34,7 @@ struct SaveButtonStyling: ViewModifier {
                    height: NewEntryViewConstants.saveButtonWidthOrHeight.rawValue)
             .cornerRadius(.infinity)
             .overlay(Circle()
+                .inset(by: 5)
                 .stroke(Color.black, lineWidth: 5)
                 .frame(width: NewEntryViewConstants.saveButtonWidthOrHeight.rawValue,
                        height: NewEntryViewConstants.saveButtonWidthOrHeight.rawValue)

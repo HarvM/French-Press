@@ -9,7 +9,7 @@ struct RainbowAnimation: ViewModifier {
         Color(hue: $0, saturation: 1, brightness: 1)
     }
     // 2
-    var duration: Double = 4
+    var duration: Double = 6
     var animation: Animation {
         Animation
             .linear(duration: duration)
