@@ -9,20 +9,11 @@ struct ItemNotesSectionView: View {
     var body: some View {
         TextField(stringStore.typeHere,
                   text: $noteOnShoppingItem.notesOnItem.text)
-            .frame(height: 50)
-            .multilineTextAlignment(.leading)
-            .font(.custom(DefaultFont.defaultFont.rawValue,
-                          size: 16,
-                          relativeTo: .headline))
-            .ignoresSafeArea(.keyboard,
-                             edges: .bottom)
+        .modifier(TypeHereStyling())
         Spacer()
         /// Will display the number of characters already typed and the limit
         Text("\(noteOnShoppingItem.notesOnItem.text.count)|40")
-            .font(.custom(DefaultFont.defaultFont.rawValue,
-                          size: 16,
-                          relativeTo: .headline))
-            .foregroundColor(.gray)
+            .modifier(NotesOnItemStyling())
     }
 }
 

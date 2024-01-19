@@ -20,21 +20,18 @@ struct PopulatedView: View {
                             ForEach(shoppingItemEntries, id: \.self) {
                                 shoppingItem in
                                 HStack {
-                                    CellView(preferredMeasurement: shoppingItem.preferredMeasurement, quantitySelected: shoppingItem.quantitySelected, itemToBeAdded: shoppingItem.itemToBeAdded)
+                                    CellView(preferredMeasurement: shoppingItem.preferredMeasurement,
+                                             quantitySelected: shoppingItem.quantitySelected,
+                                             itemToBeAdded: shoppingItem.itemToBeAdded)
                                     NavigationLink("", destination: DetailView (itemToBeDisplayed: shoppingItem))
                                 } /// End of HStack
                             }
                             .onDelete(perform: self.deleteItem)
                             .onMove(perform: moveItem)
                         } /// End of Section
-                        .frame(alignment: .leading)
-                        .listStyle(PlainListStyle())
-                        .listRowBackground(Color(BackgroundColours.defaultBackground.rawValue)
-                            .edgesIgnoringSafeArea(.all))
+                        .modifier(SectionStyling())
                     } /// End of List
-                    .padding(.top)
-                    .padding(.leading, 20)
-                    .listRowSeparator(.hidden)
+                    .modifier(ListStyling())
                 } /// End VStack
                 .id(UUID())
                 .listStyle(PlainListStyle())
@@ -45,19 +42,10 @@ struct PopulatedView: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink(destination: NewEntryView()
                             .navigationTitle(stringStore.addItem)
-                            .frame(minWidth: 0,
-                                   idealWidth: 0,
-                                   maxWidth: .infinity,
-                                   minHeight: 0,
-                                   idealHeight: 0,
-                                   maxHeight: .infinity,
-                                   alignment:.center)
-                                .edgesIgnoringSafeArea(.all)
+                            .modifier(ToolbarStyling())
                         ){
                             Image(ContentViewImages.plusImage.rawValue)
-                                .frame(width: 35,
-                                       height: 35)
-                                .cornerRadius(38.5)
+                                .modifier(PlusButtonStyling())
                         }
                     }
                 } /// End of toolbar
@@ -93,5 +81,12 @@ extension PopulatedView {
             self.modelContext.delete(deleteItem)
             self.generator.notificationOccurred(.error)
         }
+    }
+}
+
+struct BackgroundStyling: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+        Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
     }
 }

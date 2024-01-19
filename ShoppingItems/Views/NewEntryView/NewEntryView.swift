@@ -3,7 +3,13 @@ import CoreData
 
 @available(iOS 17.0, *)
 struct NewEntryView: View {
-    
+
+    // MARK: Padding enum
+    private enum Constants: CGFloat {
+        case sectionPadding = 5
+        case topStackPadding = 35
+    }
+
     // MARK: - Properties
     @Environment(\.presentationMode) var presentationMode
     @State var itemToBeAdded = ShoppingItem()
@@ -16,81 +22,71 @@ struct NewEntryView: View {
     let stringStore = StringStore()
     let generator = UINotificationFeedbackGenerator()
 
-    // MARK: - Body the UI that will have a Form (Item Entry, Stepper, and Notes) and a Save Button (bottom of view)
+    //  View that contains a Form (Item Entry, Stepper, and Notes) and a Save Button (bottom of view)
     var body: some View {
         ZStack {
             Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all)
             VStack {
-                Spacer().frame(height: 45)
-                    Form {
-                        // MARK: - TextEditor - Item entry (Main) section
-                        Section (header: Text(stringStore.whatWouldYouLike)
-                            .foregroundColor(.yellow)
-                            .truncationMode(.head)
-                            .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
-                                VStack {
-                                    HStack {
-                                        ItemNameSectionView(selectedShoppingItem: itemToBeAdded)
-                                    }
-                                    .font(.headline)
-                                } /// End of Section
-                                .padding(5)
-                            }
-                        
-                        // MARK: - Picker Section for quantity & quantity type
-                        Section (header: Text(stringStore.howManyWouldYouLike)
-                            .foregroundColor(.yellow)
-                            .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
-                                VStack {
-                                    ItemQuantitySectionView(quantityOfShoppingItem: quantitySelected)
-                                }
-                                ItemPickerSectionView(selectedMeasurement: selectedMeasurement)
-                            }/// End of Section
-                            .padding(2)
-                        
-                        // MARK: - TextEditor (Extra Notes) Section
-                        Section(header: Text(stringStore.extraNotes)
-                            .foregroundColor(.yellow)
-                            .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))) {
+                Spacer().frame(height: Constants.topStackPadding.rawValue)
+                Form {
+                    // MARK: - TextEditor - Item entry (Main) section
+                    Section (header: Text(stringStore.whatWouldYouLike)
+                        .modifier(TitleModifier())) {
+                            VStack {
                                 HStack {
-                                    ItemNotesSectionView(noteOnShoppingItem: notesOnItem)
+                                    ItemNameSectionView(selectedShoppingItem: itemToBeAdded)
                                 }
-                            } /// End of section
-                            .padding(2)
-                    } ///End of Form
-                    .clipped()
-                    .padding(.top)
-                    .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
-                    .modifier(AdaptsToKeyboard())
-                    .scrollContentBackground(.hidden)
+                                .font(.headline)
+                            } /// End of Section
+                            .padding(Constants.sectionPadding.rawValue)
+                        }
+                    // MARK: - Picker Section for quantity & quantity type
+                    Section (header: Text(stringStore.howManyWouldYouLike)
+                        .modifier(TitleModifier())) {
+                            VStack {
+                                ItemQuantitySectionView(quantityOfShoppingItem: quantitySelected)
+                            }
+                            ItemPickerSectionView(selectedMeasurement: selectedMeasurement)
+                        }/// End of Section
+                        .padding(Constants.sectionPadding.rawValue)
+
+                    // MARK: - TextEditor (Extra Notes) Section
+                    Section(header: Text(stringStore.extraNotes)
+                        .modifier(TitleModifier())) {
+                            HStack {
+                                ItemNotesSectionView(noteOnShoppingItem: notesOnItem)
+                            }
+                        } /// End of section
+                        .padding(Constants.sectionPadding.rawValue)
+                } ///End of Form
+                .modifier(FormModifier())
                 // MARK: - Button that will save the user's entry - sits at the bottom of the view
-                HStack(alignment: .center, spacing: 10) {
+                HStack(alignment: .center) {
                     Button(action: { self.saveShoppingitem(itemToBeAdded: itemToBeAdded.itemTitleWithTextLimit.text,
-                                                            notesOnItem: notesOnItem.notesOnItem.text,
-                                                            quantitySelected: quantitySelected.newItemQuantity.text,
-                                                            preferredMeasurement: String(self.stringStore.measurementFound[selectedMeasurement.userSelectedMeasurement]))},
-                           label: {
-                        Image(ContentViewImages.plusImage.rawValue)
+                                                           notesOnItem: notesOnItem.notesOnItem.text,
+                                                           quantitySelected: quantitySelected.newItemQuantity.text,
+                                                           preferredMeasurement: String(self.stringStore.measurementFound[selectedMeasurement.userSelectedMeasurement]))},
+                           label: { Image(ContentViewImages.plusImage.rawValue)
                             .resizable()
-                            .frame(width: 45, height: 45)
-                            .cornerRadius(.infinity)
-                            .padding(.bottom, 28)
+                            .modifier(SaveButtonStyling())
                     })
                     .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
                     .alert(isPresented: $showingAlert) { () -> Alert in
                         Alert(title: Text(stringStore.oneMoment),
                               message: Text(stringStore.makeSure),
-                              dismissButton: .default(Text(ContentViewImages.thumbsUp.rawValue))
-                        )
+                              dismissButton: .default(Text(ContentViewImages.thumbsUp.rawValue)))
                     }
-                } /// End of HStack
-                .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
+                } // End of HStack
+                .background(Color(BackgroundColours.defaultBackground.rawValue)
+                    .edgesIgnoringSafeArea(.all))
             } /// End of VStack
-            .padding(.top, 40)
-            .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
+            .padding(.top, Constants.topStackPadding.rawValue)
+            .background(Color(BackgroundColours.defaultBackground.rawValue)
+                .edgesIgnoringSafeArea(.all))
         } /// End of ZStack
         .edgesIgnoringSafeArea(.all)
-        .background(Color(BackgroundColours.defaultBackground.rawValue).edgesIgnoringSafeArea(.all))
+        .background(Color(BackgroundColours.defaultBackground.rawValue)
+            .edgesIgnoringSafeArea(.all))
         .navigationBarTitleDisplayMode(.inline)
     } /// End of body
 } /// End of View

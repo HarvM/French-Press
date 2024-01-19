@@ -8,14 +8,7 @@ struct ItemQuantitySectionView: View {
     var body: some View {
         TextField(stringStore.typeQuantityHere,
                   text: $quantityOfShoppingItem.newItemQuantity.text)
-            .frame (height: 40)
-            .multilineTextAlignment(.leading)
-            .keyboardType(.decimalPad)
-            .font(.custom(DefaultFont.defaultFont.rawValue,
-                          size: 16,
-                          relativeTo: .headline))
-            .ignoresSafeArea(.keyboard,
-                             edges: .bottom)
+        .modifier(ItemQuantityStyling())
     }
 }
 

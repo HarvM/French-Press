@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ItemPickerSectionView: View {
-    
+
     let stringStore = StringStore()
     @ObservedObject var selectedMeasurement: ItemMeasurement
 
@@ -11,9 +11,7 @@ struct ItemPickerSectionView: View {
                 Text(self.stringStore.measurementFound[$0])
                     .frame(height: 40)
             }
-            .font(.custom(DefaultFont.defaultFont.rawValue,
-                          size: 16,
-                          relativeTo: .headline))
+            .modifier(ItemPickerStyling())
         }
         .pickerStyle(DefaultPickerStyle())
         .foregroundColor(.red)

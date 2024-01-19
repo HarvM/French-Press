@@ -8,19 +8,12 @@ struct ItemNameSectionView: View {
     @Environment(\.modelContext) private var context
 
     var body: some View {
-        TextField(stringStore.typeTheItemHere, 
+        TextField(stringStore.typeTheItemHere,
                   text: $selectedShoppingItem.itemTitleWithTextLimit.text)
-            .frame (height: 40)
-            .multilineTextAlignment(.leading)
-            .font(.custom(DefaultFont.defaultFont.rawValue, 
-                          size: 16,
-                          relativeTo: .headline))
+        .modifier(ItemNameStyling())
         /// Will display the number of characters already typed and the limit
         Text("\(selectedShoppingItem.itemTitleWithTextLimit.text.count)|30")
-            .font(.custom(DefaultFont.defaultFont.rawValue, 
-                          size: 16,
-                          relativeTo: .headline))
-            .foregroundColor(.gray)
+            .modifier(ItemLimitStyling())
     }
 }
 

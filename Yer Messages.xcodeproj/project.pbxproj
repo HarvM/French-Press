@@ -3,12 +3,21 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		195FB8B52B11666B00412375 /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195FB8B42B11666B00412375 /* EmptyListView.swift */; };
 		195FB8B72B1166EE00412375 /* PopulatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195FB8B62B1166EE00412375 /* PopulatedView.swift */; };
+		19D9D7012B35E39400EDC20E /* UserInstructionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D9D7002B35E39400EDC20E /* UserInstructionsView.swift */; };
+		19D9D7042B35ED3500EDC20E /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 19D9D7032B35ED3500EDC20E /* SDWebImageSwiftUI */; };
+		19D9D7062B35FD8200EDC20E /* leftDrag.gif in Resources */ = {isa = PBXBuildFile; fileRef = 19D9D7052B35FD8200EDC20E /* leftDrag.gif */; };
+		19E721252B5A8E6100970B39 /* Rainbow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E721242B5A8E6100970B39 /* Rainbow.swift */; };
+		19E721282B5AA06500970B39 /* PopulatedViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E721272B5AA06500970B39 /* PopulatedViewModifiers.swift */; };
+		19E7212C2B5AC0CB00970B39 /* EmptyViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E7212B2B5AC0CB00970B39 /* EmptyViewModifiers.swift */; };
+		19E7212F2B5AC70400970B39 /* NewEntryViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E7212E2B5AC70400970B39 /* NewEntryViewModifiers.swift */; };
+		19E721322B5ACF8D00970B39 /* NewEntryViewCustomModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E721312B5ACF8D00970B39 /* NewEntryViewCustomModifiers.swift */; };
+		19E721352B5AD16000970B39 /* DetailViewCustomModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E721342B5AD16000970B39 /* DetailViewCustomModifiers.swift */; };
 		19ED178E2A582CD8001BF709 /* ShoppingItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19ED178D2A582CD8001BF709 /* ShoppingItems.swift */; };
 		19ED17902A584ABD001BF709 /* YerMessagesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19ED178F2A584ABD001BF709 /* YerMessagesApp.swift */; };
 		491D795223C11D1700B537EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491D795123C11D1700B537EB /* AppDelegate.swift */; };
@@ -82,6 +91,14 @@
 /* Begin PBXFileReference section */
 		195FB8B42B11666B00412375 /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
 		195FB8B62B1166EE00412375 /* PopulatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulatedView.swift; sourceTree = "<group>"; };
+		19D9D7002B35E39400EDC20E /* UserInstructionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInstructionsView.swift; sourceTree = "<group>"; };
+		19D9D7052B35FD8200EDC20E /* leftDrag.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = leftDrag.gif; sourceTree = "<group>"; };
+		19E721242B5A8E6100970B39 /* Rainbow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rainbow.swift; sourceTree = "<group>"; };
+		19E721272B5AA06500970B39 /* PopulatedViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulatedViewModifiers.swift; sourceTree = "<group>"; };
+		19E7212B2B5AC0CB00970B39 /* EmptyViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewModifiers.swift; sourceTree = "<group>"; };
+		19E7212E2B5AC70400970B39 /* NewEntryViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryViewModifiers.swift; sourceTree = "<group>"; };
+		19E721312B5ACF8D00970B39 /* NewEntryViewCustomModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryViewCustomModifiers.swift; sourceTree = "<group>"; };
+		19E721342B5AD16000970B39 /* DetailViewCustomModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewCustomModifiers.swift; sourceTree = "<group>"; };
 		19ED178D2A582CD8001BF709 /* ShoppingItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShoppingItems.swift; path = ShoppingItems/SwiftDataNew/ShoppingItems.swift; sourceTree = "<group>"; };
 		19ED178F2A584ABD001BF709 /* YerMessagesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YerMessagesApp.swift; sourceTree = "<group>"; };
 		491D794E23C11D1700B537EB /* Yer Messages.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yer Messages.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,6 +150,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19D9D7042B35ED3500EDC20E /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,6 +177,7 @@
 				491D795823C11D1700B537EB /* ContentView.swift */,
 				195FB8B62B1166EE00412375 /* PopulatedView.swift */,
 				195FB8B42B11666B00412375 /* EmptyListView.swift */,
+				19E721262B5AA04300970B39 /* CustomModifiers */,
 				19C820E72B233AFB007708A0 /* Extensions */,
 			);
 			path = ContentView;
@@ -168,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				493B3A95253BD31200CAF0F9 /* NewEntryView.swift */,
+				19E7212D2B5AC6EA00970B39 /* CustomModifiers */,
 				19C820E82B233B20007708A0 /* Extension */,
 				CB474BC5286DD02B00FBD2C0 /* NewEntryViewChildViews */,
 			);
@@ -178,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				499C66A8256743AE00EDD614 /* DetailView.swift */,
+				19E721332B5AD13C00970B39 /* CustomModifiers */,
 			);
 			path = DetailView;
 			sourceTree = "<group>";
@@ -214,6 +235,48 @@
 				49C61F7B262393F200EBB1C3 /* NewEntryViewExtension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		19D9D6FF2B35B5DA00EDC20E /* ModalSheetView */ = {
+			isa = PBXGroup;
+			children = (
+				19D9D7052B35FD8200EDC20E /* leftDrag.gif */,
+				19D9D7002B35E39400EDC20E /* UserInstructionsView.swift */,
+			);
+			path = ModalSheetView;
+			sourceTree = "<group>";
+		};
+		19E721262B5AA04300970B39 /* CustomModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				19E721272B5AA06500970B39 /* PopulatedViewModifiers.swift */,
+				19E7212B2B5AC0CB00970B39 /* EmptyViewModifiers.swift */,
+			);
+			path = CustomModifiers;
+			sourceTree = "<group>";
+		};
+		19E7212D2B5AC6EA00970B39 /* CustomModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				19E7212E2B5AC70400970B39 /* NewEntryViewModifiers.swift */,
+			);
+			path = CustomModifiers;
+			sourceTree = "<group>";
+		};
+		19E721302B5ACF7900970B39 /* CustomModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				19E721312B5ACF8D00970B39 /* NewEntryViewCustomModifiers.swift */,
+			);
+			path = CustomModifiers;
+			sourceTree = "<group>";
+		};
+		19E721332B5AD13C00970B39 /* CustomModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				19E721342B5AD16000970B39 /* DetailViewCustomModifiers.swift */,
+			);
+			path = CustomModifiers;
 			sourceTree = "<group>";
 		};
 		491D794523C11D1700B537EB = {
@@ -287,6 +350,7 @@
 		4983E8B624660808005E9063 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				19D9D6FF2B35B5DA00EDC20E /* ModalSheetView */,
 				195FB8AF2B10F26100412375 /* ContentView */,
 				195FB8B02B10F27800412375 /* NewEntryView */,
 				195FB8B12B10F2A600412375 /* DetailView */,
@@ -323,6 +387,7 @@
 				D283572E2651686F009165DF /* AppImages.swift */,
 				D283573026516893009165DF /* BackgroundColours.swift */,
 				D244FC1B27DD0AD900BEAD25 /* StringStore.swift */,
+				19E721242B5A8E6100970B39 /* Rainbow.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -330,6 +395,7 @@
 		CB474BC5286DD02B00FBD2C0 /* NewEntryViewChildViews */ = {
 			isa = PBXGroup;
 			children = (
+				19E721302B5ACF7900970B39 /* CustomModifiers */,
 				CBFAE7002868C4F100DFB86C /* ItemNameSectionView.swift */,
 				CBFAE7062868E11900DFB86C /* ItemNotesSectionView.swift */,
 				CBFAE7042868DF0800DFB86C /* ItemQuantitySectionView.swift */,
@@ -366,6 +432,9 @@
 			dependencies = (
 			);
 			name = "Yer Messages";
+			packageProductDependencies = (
+				19D9D7032B35ED3500EDC20E /* SDWebImageSwiftUI */,
+			);
 			productName = ShoppingItems;
 			productReference = 491D794E23C11D1700B537EB /* Yer Messages.app */;
 			productType = "com.apple.product-type.application";
@@ -438,6 +507,9 @@
 				Base,
 			);
 			mainGroup = 491D794523C11D1700B537EB;
+			packageReferences = (
+				19D9D7022B35ED3500EDC20E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = 491D794F23C11D1700B537EB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -455,6 +527,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				491D796123C11D1800B537EB /* LaunchScreen.storyboard in Resources */,
+				19D9D7062B35FD8200EDC20E /* leftDrag.gif in Resources */,
 				491D795E23C11D1800B537EB /* Preview Assets.xcassets in Resources */,
 				491D795B23C11D1800B537EB /* Assets.xcassets in Resources */,
 			);
@@ -481,6 +554,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19D9D7012B35E39400EDC20E /* UserInstructionsView.swift in Sources */,
+				19E7212C2B5AC0CB00970B39 /* EmptyViewModifiers.swift in Sources */,
 				498B43092559F15500734F40 /* CheckboxStyle.swift in Sources */,
 				491D798723C1EAA800B537EB /* CellView.swift in Sources */,
 				CBFAE7012868C4F100DFB86C /* ItemNameSectionView.swift in Sources */,
@@ -498,7 +573,12 @@
 				49C85B60254780E400A9C901 /* TextLimit.swift in Sources */,
 				CBFAE7072868E11900DFB86C /* ItemNotesSectionView.swift in Sources */,
 				491D795423C11D1700B537EB /* SceneDelegate.swift in Sources */,
+				19E721252B5A8E6100970B39 /* Rainbow.swift in Sources */,
+				19E721282B5AA06500970B39 /* PopulatedViewModifiers.swift in Sources */,
+				19E721322B5ACF8D00970B39 /* NewEntryViewCustomModifiers.swift in Sources */,
+				19E7212F2B5AC70400970B39 /* NewEntryViewModifiers.swift in Sources */,
 				195FB8B52B11666B00412375 /* EmptyListView.swift in Sources */,
+				19E721352B5AD16000970B39 /* DetailViewCustomModifiers.swift in Sources */,
 				D2EE5802267125910061CF38 /* ThemesViewExtension.swift in Sources */,
 				D2D9BED4265545EC005529EF /* BurgerMenuContent.swift in Sources */,
 				494682DE256B46CE0088BC51 /* ColourExtension.swift in Sources */,
@@ -848,6 +928,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		19D9D7022B35ED3500EDC20E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		19D9D7032B35ED3500EDC20E /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 19D9D7022B35ED3500EDC20E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		49968CA02565897200725D4A /* ShoppingItems.xcdatamodeld */ = {

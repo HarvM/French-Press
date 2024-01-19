@@ -9,7 +9,7 @@ extension NewEntryView {
         var trimmedItem = itemToBeAdded.trimmingCharacters(in: .whitespacesAndNewlines)
         var trimmedNote = notesOnItem.trimmingCharacters(in: .whitespacesAndNewlines)
         var trimmedQuantity = quantitySelected.trimmingCharacters(in: .whitespacesAndNewlines)
-        let chosenMeasurement = self.stringStore.measurementFound[selectedMeasurement.userSelectedMeasurement]
+        let chosenMeasurement = self.stringStore.measurementFound[$selectedMeasurement.userSelectedMeasurement.wrappedValue]
 
         if trimmedQuantity.isEmpty  {
             trimmedQuantity = "1"
