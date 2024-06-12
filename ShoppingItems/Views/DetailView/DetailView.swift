@@ -33,7 +33,7 @@ struct DetailView: View {
                         } /// End of Section
                         .padding(.bottom, geometry.size.height/2)
                     } /// End of VStack
-                    .frame(width: geometry.size.width-10,
+                    .frame(width: geometry.size.width,
                            height: geometry.size.height,
                            alignment: .center)
                 } /// End of GeometryReader

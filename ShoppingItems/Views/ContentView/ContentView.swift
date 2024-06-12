@@ -42,22 +42,6 @@ struct ContentView: View {
     }
 }
 
-struct KeyboardAvoiderDemo: View {
-    @State var text = ""
-    
-    var body: some View {
-        VStack {
-            TextField("Demo", text: self.$text)
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .contentShape(Rectangle())
-        .onTapGesture {}
-        .onLongPressGesture(
-            pressing: { isPressed in if isPressed { self.endEditing() } },
-            perform: {})
-    }
-}
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         EmptyView()

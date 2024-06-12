@@ -233,8 +233,8 @@
 		19D9D6FF2B35B5DA00EDC20E /* ModalSheetView */ = {
 			isa = PBXGroup;
 			children = (
-				19D9D7052B35FD8200EDC20E /* leftDrag.gif */,
 				19D9D7002B35E39400EDC20E /* UserInstructionsView.swift */,
+				19D9D7052B35FD8200EDC20E /* leftDrag.gif */,
 			);
 			path = ModalSheetView;
 			sourceTree = "<group>";
