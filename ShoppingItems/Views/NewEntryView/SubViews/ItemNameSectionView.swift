@@ -18,9 +18,6 @@ struct ItemNameSectionView: View {
 }
 
 class ShoppingItem: ObservableObject {
-    init(itemTitleWithTextLimit: TextLimit = TextLimit(limit: 30)) {
-        self.itemTitleWithTextLimit = itemTitleWithTextLimit
-    }
     @Published var itemTitleWithTextLimit = TextLimit(limit: 30)
 }
 

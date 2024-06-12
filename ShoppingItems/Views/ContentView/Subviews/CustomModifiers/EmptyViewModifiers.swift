@@ -4,7 +4,7 @@ private enum EmptyListConstant: CGFloat {
     case plusButtonHeightOrWidth = 35
 }
 
-struct EmptyListStlying: ViewModifier {
+struct EmptyListStyling: ViewModifier {
     func body(content: Content) -> some View {
         content
             .frame(minWidth: 0,

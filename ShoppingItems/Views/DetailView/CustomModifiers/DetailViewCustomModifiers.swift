@@ -1,6 +1,5 @@
 import SwiftUI
 
-
 struct DetailItemAddedStyling: ViewModifier {
     private let fontSizeItemToBeDisplayed: CGFloat = 35
     private let lineLimit: Int =  3

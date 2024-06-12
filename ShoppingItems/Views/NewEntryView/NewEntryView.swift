@@ -1,7 +1,6 @@
 import SwiftUI
 import CoreData
 
-@available(iOS 17.0, *)
 struct NewEntryView: View {
 
     // MARK: Padding enum

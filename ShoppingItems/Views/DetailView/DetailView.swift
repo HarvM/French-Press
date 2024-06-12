@@ -1,7 +1,5 @@
 import SwiftUI
-import SpriteKit
 
-@available(iOS 17.0, *)
 struct DetailView: View {
     
     // MARK: - Properties

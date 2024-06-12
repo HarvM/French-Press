@@ -2,15 +2,10 @@ import SwiftUI
 import Foundation
 import SwiftData
 
-@available(iOS 17.0, *)
 struct ContentView: View {
     
     // MARK: - Properties
-    @State var isEditing = false
-    @State var showHamburgerMenu = false
     let stringStore = StringStore()
-    @Environment (\.presentationMode) var presentationMode
-    @Environment (\.colorScheme) var colorScheme
     @Query var shoppingItemEntries: [ShoppingItems]
 
     // MARK: Main body of the view
@@ -32,7 +27,7 @@ struct ContentView: View {
             PopulatedView()
         }
     }
-    
+
     init() {
         UIPickerView.appearance().backgroundColor = UIColor(Color(BackgroundColours.defaultBackground.rawValue))
         UIPickerView.appearance().tintColor = UIColor(Color(BackgroundColours.defaultBackground.rawValue))

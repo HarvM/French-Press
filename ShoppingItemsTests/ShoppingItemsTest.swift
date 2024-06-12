@@ -15,7 +15,6 @@ class ShoppingItemsTest: XCTestCase {
     
     //MARK: - NOTE TO SELF: Need to sort how the CoreData is managed in "Shopping Items"
     
-    
     var coreData = ShoppingItems()
     let context = UnitTestHelpers.setUpInMemoryManagedObjectContext()
 

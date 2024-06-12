@@ -25,7 +25,7 @@ struct EmptyListView: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink(destination: NewEntryView()
                             .navigationTitle(stringStore.addItem)
-                            .modifier(EmptyListStlying())
+                            .modifier(EmptyListStyling())
                         ){
                             Image(ContentViewImages.plusImage.rawValue)
                                 .modifier(PlusButtonEmptyViewStyling())
@@ -33,6 +33,7 @@ struct EmptyListView: View {
                     }
                 } /// End of toolbar
             } /// End of ZStack
+            /// Alter this later to be a modal popup
             //            .fullScreenCover(isPresented: $something) {
             //                UserInstructionsView()
             //            }
