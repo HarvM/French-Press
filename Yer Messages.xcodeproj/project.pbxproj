@@ -764,6 +764,8 @@
 				DEVELOPMENT_TEAM = YU65V62LAA;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ShoppingItems/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Yer Messages";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -787,6 +789,8 @@
 				DEVELOPMENT_TEAM = YU65V62LAA;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ShoppingItems/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Yer Messages";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
